@@ -1,10 +1,24 @@
 [
   {
+    "objectID": "00_setup.html",
+    "href": "00_setup.html",
+    "title": "환경설정",
+    "section": "",
+    "text": "1"
+  },
+  {
     "objectID": "01_cmdline.html",
     "href": "01_cmdline.html",
     "title": "명령라인 데이터 분석",
     "section": "",
     "text": "운영체제에서 기본기능만 사용하여 데이터 분석을 수행한다."
+  },
+  {
+    "objectID": "01_cmdline.html#두번째",
+    "href": "01_cmdline.html#두번째",
+    "title": "명령라인 데이터 분석",
+    "section": "1.1 두번째",
+    "text": "1.1 두번째"
   },
   {
     "objectID": "index.html",

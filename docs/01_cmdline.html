@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="kr" xml:lang="kr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.3.34">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="이광춘">
+<meta name="description" content="Command Line 방식으로 데이터를 분석하는 방법을 일별한다.">
 
 <title>데이터 과학 - 명령라인 데이터 분석</title>
 <style>
@@ -47,20 +49,19 @@ ul.task-list li input[type="checkbox"] {
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-no-results-text": "일치 없음",
+    "search-matching-documents-text": "일치된 문서",
+    "search-copy-link-title": "검색 링크 복사",
+    "search-hide-matches-text": "추가 검색 결과 숨기기",
+    "search-more-match-text": "추가 검색결과",
+    "search-more-matches-text": "추가 검색결과",
+    "search-clear-button-title": "제거",
+    "search-detached-cancel-button-title": "취소",
+    "search-submit-button-title": "검색"
   }
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -80,13 +81,24 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">
+    <a class="nav-link" href="./index.html" rel="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cmdline.qmd">
- <span class="menu-text">콘솔 데이터 분석</span></a>
+    <a class="nav-link" href="./00_setup.html" rel="">
+ <span class="menu-text">실습환경</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="">
+ <span class="menu-text">교재</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="./01_cmdline.html" rel="">
+ <span class="dropdown-text">콘솔 데이터 분석</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
@@ -98,7 +110,16 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul class="collapse">
+  <li><a href="#첫번째" id="toc-첫번째" class="nav-link active" data-scroll-target="#첫번째"><span class="toc-section-number">1</span>  첫번째</a>
+  <ul class="collapse">
+  <li><a href="#두번째" id="toc-두번째" class="nav-link" data-scroll-target="#두번째"><span class="toc-section-number">1.1</span>  두번째</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -108,11 +129,35 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="title">명령라인 데이터 분석</h1>
 </div>
 
+<div>
+  <div class="description">
+    Command Line 방식으로 데이터를 분석하는 방법을 일별한다.
+  </div>
+</div>
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">저자</div>
+  <div class="quarto-title-meta-heading">소속</div>
+  
+    <div class="quarto-title-meta-contents">
+    이광춘 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            TCS
+          </p>
+      </div>
+    </div>
 
 <div class="quarto-title-meta">
 
-    
+      
+    <div>
+    <div class="quarto-title-meta-heading">공개</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2022년 12월 08일</p>
+    </div>
+  </div>
   
     
   </div>
@@ -121,8 +166,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>운영체제에서 기본기능만 사용하여 데이터 분석을 수행한다.</p>
+<section id="첫번째" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 첫번째</h1>
+<section id="두번째" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="두번째"><span class="header-section-number">1.1</span> 두번째</h2>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -165,12 +216,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "복사완료!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "복사완료!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -259,6 +310,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><a href="https://quarto.org/">Quarto</a> 로 제작</div>   
+  </div>
+</footer>
 
 
 

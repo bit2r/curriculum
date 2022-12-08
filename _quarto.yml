@@ -1,20 +1,35 @@
 project:
   type: website
   output-dir: docs
+  preview:
+    port: 3333
+    browser: true
+
+lang: kr
+date-format: "YYYY년 MM월 DD일"
 
 website:
   title: "데이터 과학"
+  page-footer:
+    left: "[Quarto](https://quarto.org/) 로 제작"
   navbar:
+    background: "#0068B7"  
     left:
       - href: index.qmd
         text: "Home"
-      - href: cmdline.qmd
-        text: "콘솔 데이터 분석"
+      - href: 00_setup.qmd
+        text: "실습환경"
+      - text: "교재"
+        menu:
+        - href: 01_cmdline.qmd
+          text: "콘솔 데이터 분석"        
 format:
   html:
     theme: cosmo
-    css: styles.css
+      - litera
+      - css/quarto-fonts.css
     toc: true
 
-
+execute:
+  freeze: true
 

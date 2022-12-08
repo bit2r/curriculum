@@ -1,6 +1,6 @@
 ---
-title: "명령라인 데이터 분석"
-description: "Command Line 방식으로 데이터를 분석하는 방법을 일별한다."
+title: "환경설정"
+description: "소프트웨어, 데이터, 콘텐츠, 프로젝트"
 date: today # 날짜 설정: now, last-modified
 author:
   - name: 이광춘
@@ -21,9 +21,5 @@ editor_options:
   chunk_output_type: console
 ---
 
-운영체제에서 기본기능만 사용하여 데이터 분석을 수행한다.
-
-# 첫번째
-
-## 두번째
+# 
 
