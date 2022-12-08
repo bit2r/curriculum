@@ -1,11 +1,24 @@
 ---
-title: "curriculum"
+title: "데이터 과학 커리큘럼"
 ---
 
-This is a Quarto website.
+# 데이터 과학
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+|      학습 내용       |            학습상세            |  일정  |
+|:--------------------:|:------------------------------:|:------:|
+| 명령라인 데이터 분석 |             Shell              | 01주차 |
+|    디지털 글쓰기     |       마크다운 / Quarto        | 02주차 |
+|      버전 제어       |          Git / GitHub          | 03주차 |
+|      프로그래밍      |              SQL               | 04주차 |
+|      프로그래밍      |               R                | 05주차 |
+|      프로그래밍      |             파이썬             | 06주차 |
+|       대쉬보드       | Flexdashboard / Shinydashboard | 07주차 |
+|       통계모형       |   tidymodels / scikit-learn    | 08주차 |
+|   데이터 과학 제품   |          RESTful API           | 09주차 |
+|     특수 데이터      |      시계열(Time Series)       | 10주차 |
+|     특수 데이터      |      공간정보(Geospatial)      | 11주차 |
+|    비정형 데이터     |        텍스트와 이미지         | 12주차 |
 
-```{r}
-1 + 1
-```
+
+
+
