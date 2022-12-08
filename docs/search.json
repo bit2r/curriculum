@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "cmdline.html",
+    "href": "cmdline.html",
+    "title": "명령라인 데이터 분석",
+    "section": "",
+    "text": "운영체제에서 기본기능만 사용하여 데이터 분석을 수행한다."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "curriculum",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  }
+]
