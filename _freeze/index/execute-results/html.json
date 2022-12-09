@@ -1,0 +1,14 @@
+{
+  "hash": "2618b6026f963ec2f9ca9b7f2e61482f",
+  "result": {
+    "markdown": "---\ntitle: \"데이터 과학 커리큘럼\"\ndescription: 실무적으로 데이터를 통해 가치를 창출하는데 꼭 필요한 기본기를 교육합니다.\ndate: today # 날짜 설정: now, last-modified\nauthor:\n  - name: 이광춘\n    url: https://www.linkedin.com/in/kwangchunlee/\n    affiliation: 한국 R 사용자회\n    affiliation-url: https://github.com/bit2r\ntitle-block-banner: true\n#title-block-banner: \"#562457\"\nformat:\n  html:\n    theme: \n      - flatly\n      - css/quarto-fonts.css\n    code-fold: false\n    toc: true\n    toc-depth: 3\n    toc-title: 목차\n    number-sections: true\n    highlight-style: github    \n    self-contained: false\nbibliography: bibliography.bib\nlink-citations: yes\ncsl: apa-single-spaced.csl\neditor_options: \n  chunk_output_type: console\n---\n\n\n# 교육 전후\n\n체계적인 데이터 과학 교육전에는 실무 업무를 동시에 진행하면서 그때 그때 필요한\n도구를 학습하여 적용하는 방식으로 진행된 반면 교육 후에는 다양한 도구를 그때 \n데이터의 상황과 문제에 맞춰 체계적으로 데이터 과학 제품을 개발하여 \n가치를 창출하고 유지발전시켜 나가게 됩니다.\n\n::: {#before-after layout-ncol=2}\n\n\n{{< video D:/curriculum/now_gs.mp4 >}}\n\n\n{{< video D:/curriculum/future_gs.mp4 >}}\n\n\n\n:::\n\n\n\n\n# 학습 내용\n\n|      과목명          |            학습상세            |  일정  |\n|:--------------------:|:------------------------------:|:------:|\n| 명령라인 데이터 분석 |             Shell              | 01주차 |\n|    디지털 글쓰기     |       마크다운 / Quarto        | 02주차 |\n|      버전 제어       |          Git / GitHub          | 03주차 |\n|      프로그래밍      |              SQL               | 04주차 |\n|      프로그래밍      |               R                | 05주차 |\n|      프로그래밍      |             파이썬             | 06주차 |\n|       대쉬보드       | Flexdashboard / Shinydashboard | 07주차 |\n|       통계모형       |   tidymodels / scikit-learn    | 08주차 |\n|   데이터 과학 제품   |          RESTful API           | 09주차 |\n|     특수 데이터      |      시계열(Time Series)       | 10주차 |\n|     특수 데이터      |      공간정보(Geospatial)      | 11주차 |\n|    비정형 데이터     |        텍스트와 이미지         | 12주차 |\n\n## 디지털 글쓰기\n\n\n{{< video https://www.youtube.com/embed/y7Ai5TUVCEQ >}}\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

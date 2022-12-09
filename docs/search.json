@@ -1,26 +1,5 @@
 [
   {
-    "objectID": "01_setup_scenario.html",
-    "href": "01_setup_scenario.html",
-    "title": "개발환경 설정",
-    "section": "",
-    "text": "1 Git Bash\n윈도우 환경에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구.\n\nGit for Windows: https://gitforwindows.org/\n\n\n\n2 WSL\n윈도우 10/11에서 WSL(Windows Subsystem Linux)을 설치하여 윈도우에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구\n\nWindows Subsystem for Linux (WSL) : https://learn.microsoft.com/en-us/windows/wsl/install\n\n\n\n3 도커\n격리 가상화 기술을 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구\n\n도커: https://www.docker.com/\n\n\n\n4 클라우드\n데이터 과학에 특화된 클라우드 서비스를 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어는 물론 데이터 과학에 필요한 다양한 기능을 지원하는 서비스\n\nPosit Cloud (formerly RStudio Cloud): https://posit.cloud/\n빛에듀: http://bit-edu.iptime.org/rstudio/"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "데이터 과학 커리큘럼",
-    "section": "",
-    "text": "1 교육 전후\n체계적인 데이터 과학 교육전에는 실무 업무를 동시에 진행하면서 그때 그때 필요한 도구를 학습하여 적용하는 방식으로 진행된 반면 교육 후에는 다양한 도구를 그때 데이터의 상황과 문제에 맞춰 체계적으로 데이터 과학 제품을 개발하여 가치를 창출하고 유지발전시켜 나가게 됩니다.\n\n\n\n\n\n\n\n\n\n\n\n\n2 학습 내용\n\n\n\n과목명\n학습상세\n일정\n\n\n\n\n명령라인 데이터 분석\nShell\n01주차\n\n\n디지털 글쓰기\n마크다운 / Quarto\n02주차\n\n\n버전 제어\nGit / GitHub\n03주차\n\n\n프로그래밍\nSQL\n04주차\n\n\n프로그래밍\nR\n05주차\n\n\n프로그래밍\n파이썬\n06주차\n\n\n대쉬보드\nFlexdashboard / Shinydashboard\n07주차\n\n\n통계모형\ntidymodels / scikit-learn\n08주차\n\n\n데이터 과학 제품\nRESTful API\n09주차\n\n\n특수 데이터\n시계열(Time Series)\n10주차\n\n\n특수 데이터\n공간정보(Geospatial)\n11주차\n\n\n비정형 데이터\n텍스트와 이미지\n12주차"
-  },
-  {
-    "objectID": "11_shell.html",
-    "href": "11_shell.html",
-    "title": "유닉스 쉘(Shell)",
-    "section": "",
-    "text": "1 유닉스 쉘"
-  },
-  {
     "objectID": "00_setup.html",
     "href": "00_setup.html",
     "title": "환경설정",
@@ -42,6 +21,13 @@
     "text": "3.2 블로그\n\n데이터 과학: https://statkclee.github.io/data-science/\n시각화: https://statkclee.github.io/viz/\n문서제작: http://aispiration.com/comp_document/\n\n쿼토(Quarto): https://r2bit.com/quarto/\n파워포인트(PPT): https://r2bit.com/bitSlide/\n웹슬라이드(Xaringan): http://aispiration.com/ds-authoring/\n\n데이터 과학 제품: http://aispiration.com/data-product/\n딥러닝 기본기 : https://aispiration.com/united-states/\n…"
   },
   {
+    "objectID": "01_setup_scenario.html",
+    "href": "01_setup_scenario.html",
+    "title": "개발환경 설정",
+    "section": "",
+    "text": "1 Git Bash\n윈도우 환경에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구.\n\nGit for Windows: https://gitforwindows.org/\n\n\n\n2 WSL\n윈도우 10/11에서 WSL(Windows Subsystem Linux)을 설치하여 윈도우에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구\n\nWindows Subsystem for Linux (WSL) : https://learn.microsoft.com/en-us/windows/wsl/install\n\n\n\n3 도커\n격리 가상화 기술을 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구\n\n도커: https://www.docker.com/\n\n\n\n4 클라우드\n데이터 과학에 특화된 클라우드 서비스를 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어는 물론 데이터 과학에 필요한 다양한 기능을 지원하는 서비스\n\nPosit Cloud (formerly RStudio Cloud): https://posit.cloud/\n빛에듀: http://bit-edu.iptime.org/rstudio/"
+  },
+  {
     "objectID": "10_cmdline.html",
     "href": "10_cmdline.html",
     "title": "명령라인 데이터 분석",
@@ -61,5 +47,26 @@
     "title": "명령라인 데이터 분석",
     "section": "3.2 데이터 정제",
     "text": "3.2 데이터 정제\n\n3.2.1 행 뽑아내기\n\n행 위치정보를 기반으로 해서 행 절대번호를 활용하여 추출한다.\n\nhead, sed, awk\n\n패턴을 주고 연관된 행만 추출한다.\n\ngrep 명령어에 정규표현식으로 패턴을 담아 매칭되는 것만 뽑아낸다.\n사용례: grep -i session paper.txt\n\n무작위로 행을 추출한다.\n\nshuf 명령어를 사용한다.\n사용례: shuf -n 10 data.csv\n\n\n\n\n3.2.2 값 추출\n기본적인 값추출 전략은 grep 명령어로 행을 뽑아내고, cut 명령어로 구분자를 두거나 고정된 열위치에 해당하는 열에서 값을 추출한다. cut 명령어로 열을 쪼개는데 구분자로 ,를 사용하고 뽑아내는 열로 -f 인자를 두고 3번째 행이후 모두를 지정한다.\n\n$ grep -i session paper.txt | cut -d ',' -f3-\n$ grep -i session paper.txt | cut -c 7-\n\n\n\n3.2.3 값 바꾸기\n값을 바꾸거나 삭제할 때 사용하는 명령어가 tr로 translate 번역의 약자다.\n공백 을 *로 바꾼다.\n$ echo 'We Love Data Science!' | tr ' ' '*'\nWe*Love*Data*Science!"
+  },
+  {
+    "objectID": "11_shell.html",
+    "href": "11_shell.html",
+    "title": "유닉스 쉘(Shell)",
+    "section": "",
+    "text": "1 유닉스 쉘"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "데이터 과학 커리큘럼",
+    "section": "",
+    "text": "1 교육 전후\n체계적인 데이터 과학 교육전에는 실무 업무를 동시에 진행하면서 그때 그때 필요한 도구를 학습하여 적용하는 방식으로 진행된 반면 교육 후에는 다양한 도구를 그때 데이터의 상황과 문제에 맞춰 체계적으로 데이터 과학 제품을 개발하여 가치를 창출하고 유지발전시켜 나가게 됩니다.\n\n\n\n\n\n\n\n\n\n\n\n\n2 학습 내용\n\n\n\n과목명\n학습상세\n일정\n\n\n\n\n명령라인 데이터 분석\nShell\n01주차\n\n\n디지털 글쓰기\n마크다운 / Quarto\n02주차\n\n\n버전 제어\nGit / GitHub\n03주차\n\n\n프로그래밍\nSQL\n04주차\n\n\n프로그래밍\nR\n05주차\n\n\n프로그래밍\n파이썬\n06주차\n\n\n대쉬보드\nFlexdashboard / Shinydashboard\n07주차\n\n\n통계모형\ntidymodels / scikit-learn\n08주차\n\n\n데이터 과학 제품\nRESTful API\n09주차\n\n\n특수 데이터\n시계열(Time Series)\n10주차\n\n\n특수 데이터\n공간정보(Geospatial)\n11주차\n\n\n비정형 데이터\n텍스트와 이미지\n12주차"
+  },
+  {
+    "objectID": "index.html#디지털-글쓰기",
+    "href": "index.html#디지털-글쓰기",
+    "title": "데이터 과학 커리큘럼",
+    "section": "2.1 디지털 글쓰기",
+    "text": "2.1 디지털 글쓰기"
   }
 ]

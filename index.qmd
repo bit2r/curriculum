@@ -37,9 +37,9 @@ editor_options:
 
 ::: {#before-after layout-ncol=2}
 
-{{< video "fig/now_gs.mp4" >}}
+{{< video fig/now_gs.mp4 >}}
 
-{{< video "fig/future_gs.mp4" >}}
+{{< video fig/future_gs.mp4 >}}
 
 :::
 
@@ -62,7 +62,6 @@ editor_options:
 |     특수 데이터      |      시계열(Time Series)       | 10주차 |
 |     특수 데이터      |      공간정보(Geospatial)      | 11주차 |
 |    비정형 데이터     |        텍스트와 이미지         | 12주차 |
-
 
 
 
