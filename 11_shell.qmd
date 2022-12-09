@@ -1,0 +1,29 @@
+---
+title: "유닉스 쉘(Shell)"
+description: "소프트웨어 카펜트리 쉘 프로그래밍 기본기를 학습합니다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+editor_options: 
+  chunk_output_type: console
+---
+
+
+# [유닉스 쉘](http://aispiration.com/shell-novice-kr/)
+
+

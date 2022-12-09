@@ -17,12 +17,21 @@ website:
     left:
       - href: index.qmd
         text: "Home"
-      - href: 00_setup.qmd
-        text: "실습환경"
+      - text: "개발환경"
+        menu:
+        - href: 00_setup.qmd
+          text: "실습환경"
+        - href: 01_setup_scenario.qmd
+          text: "환경설정상세"
       - text: "교재"
         menu:
-        - href: 01_cmdline.qmd
-          text: "콘솔 데이터 분석"        
+        - href: 10_cmdline.qmd
+          text: "콘솔 데이터 분석"
+        - href: 11_shell.qmd
+          text: "쉘(Shell)"
+        - text: "-----"
+        - text: "프로그래밍: R"        
+          
 format:
   html:
     theme: cosmo

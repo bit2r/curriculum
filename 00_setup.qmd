@@ -31,7 +31,7 @@ editor_options:
 
 ## 버젼제어 
 
-- Git for Windows: https://gitforwindows.org/
+- Git for Windows: <https://gitforwindows.org/>
 
 ## 프로그래밍 언어
 
@@ -87,6 +87,10 @@ editor_options:
 
 - 클라우드 컴퓨팅 소개 - 유전체학(Genomics) : <http://aispiration.com/cloud-genomics-kr/>
 - `r-cloudlayer` : <https://github.com/statkclee/r-cloudlayer> (TO-DO)
+
+# 도커
+
+- 도커 데스크탑: <https://www.docker.com/>
 
 
 

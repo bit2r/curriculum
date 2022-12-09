@@ -1,0 +1,57 @@
+---
+title: "개발환경 설정"
+description: "다양한 개발환경 설정 방법을 살펴본다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - flatly
+      - css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+# Git Bash
+
+윈도우 환경에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구.
+
+- Git for Windows: <https://gitforwindows.org/>
+
+
+# WSL
+
+윈도우 10/11에서 WSL(Windows Subsystem Linux)을 설치하여 윈도우에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구
+
+- Windows Subsystem for Linux (WSL) : <https://learn.microsoft.com/en-us/windows/wsl/install>
+
+# 도커
+
+격리 가상화 기술을 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구
+
+- 도커: <https://www.docker.com/>
+
+# 클라우드
+
+데이터 과학에 특화된 클라우드 서비스를 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어는 물론 데이터 과학에 필요한 다양한 기능을 지원하는 서비스
+
+- Posit Cloud (formerly RStudio Cloud): <https://posit.cloud/>
+- 빛에듀: <http://bit-edu.iptime.org/rstudio/>
+
+
+
+
+
+
+
+
+

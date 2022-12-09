@@ -1,24 +1,24 @@
 [
   {
-    "objectID": "01_cmdline.html",
-    "href": "01_cmdline.html",
-    "title": "명령라인 데이터 분석",
+    "objectID": "01_setup_scenario.html",
+    "href": "01_setup_scenario.html",
+    "title": "개발환경 설정",
     "section": "",
-    "text": "저작권 걱정없이 저작물을 받을 수 있는 경로는 여러 곳이 존재한다. 하지만, PDF, HWP, TXT 파일은 압축하여 제공하고 있어 사람손이 몇번씩 가는 문제점이 있다. 작업과정에 추가로 프로세스를 넣어주어야만 된다. 어차치 TXT로 작업하는데 …\n대표적 국내외 공유 저작물 저장소 1 2로 다음을 꼽을 수 있다.\n\n미국: 구텐베르크(Gutenberg) 프로젝트\n일본: 일본판 구텐베르크, 아오조라 문고(靑空文庫, あおぞらぶんこ)\n대한민국\n\n공공누리 포털\n직지(http://www.jikji.org/)\n공유마당"
+    "text": "1 Git Bash\n윈도우 환경에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구.\n\nGit for Windows: https://gitforwindows.org/\n\n\n\n2 WSL\n윈도우 10/11에서 WSL(Windows Subsystem Linux)을 설치하여 윈도우에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구\n\nWindows Subsystem for Linux (WSL) : https://learn.microsoft.com/en-us/windows/wsl/install\n\n\n\n3 도커\n격리 가상화 기술을 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구\n\n도커: https://www.docker.com/\n\n\n\n4 클라우드\n데이터 과학에 특화된 클라우드 서비스를 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어는 물론 데이터 과학에 필요한 다양한 기능을 지원하는 서비스\n\nPosit Cloud (formerly RStudio Cloud): https://posit.cloud/\n빛에듀: http://bit-edu.iptime.org/rstudio/"
   },
   {
-    "objectID": "01_cmdline.html#데이터-가져오기",
-    "href": "01_cmdline.html#데이터-가져오기",
-    "title": "명령라인 데이터 분석",
-    "section": "3.1 데이터 가져오기",
-    "text": "3.1 데이터 가져오기\n데이터를 가져오는 방식은 결국 텍스트로 유닉스/리눅스 환경으로 불러와야만 된다. csvkit 에 in2csv, csvcut, csvlook, sql2csv, csvsql이 포함되어 있다.\nsudo pip install csvkit 명령어로 설치한다.\n\n로컬 파일: cp 복사, 원격파일 복사: scp 복사\n압축파일: tar, unzip, unrar 명령어로 압축된 파일을 푼다.\n\n압축파일 확장자: .tar.gz, .zip, .rar\n압축파일 푸는 종결자 unpack\n\n스프레드쉬트: in2csv는 표형식 엑셀 데이터를 받아 csv 파일로 변환.\n\n$ in2csv ne_1033_data.xlsx | csvcut -c county,item_name,quantity | csvlook | head\n\n데이터베이스: sql2csv\n\nsql2csv --db 'sqlite:///iris.db' --query 'SELECT * FROM iris where petal_length > 6.5' | csvlook\n\n인터넷: curl을 활용하여 인터넷 자원을 긁어온다.\n\ncurl -s http://www.gutenberg.org/files/13693/13693-t/13693-t.tex -o number-theory.txt\n\n\nAPI: curl 물론, API 토큰, 비밀키 등을 설정하거나 일일 이용한도가 있을 수도 있다. 특히, curlicue를 활용하여 트위터 데이터를 바로 가져와서 활용할 수 있다. 자세한 사항은 Create Your Own Dataset Consuming Twitter API 블로그를 참조한다.\n\nRANDOM USER GENERATOR, curl -s http://api.randomuser.me | jq '.'"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "데이터 과학 커리큘럼",
+    "section": "",
+    "text": "데이터 과학\n\n\n\n학습 내용\n학습상세\n일정\n\n\n\n\n명령라인 데이터 분석\nShell\n01주차\n\n\n디지털 글쓰기\n마크다운 / Quarto\n02주차\n\n\n버전 제어\nGit / GitHub\n03주차\n\n\n프로그래밍\nSQL\n04주차\n\n\n프로그래밍\nR\n05주차\n\n\n프로그래밍\n파이썬\n06주차\n\n\n대쉬보드\nFlexdashboard / Shinydashboard\n07주차\n\n\n통계모형\ntidymodels / scikit-learn\n08주차\n\n\n데이터 과학 제품\nRESTful API\n09주차\n\n\n특수 데이터\n시계열(Time Series)\n10주차\n\n\n특수 데이터\n공간정보(Geospatial)\n11주차\n\n\n비정형 데이터\n텍스트와 이미지\n12주차"
   },
   {
-    "objectID": "01_cmdline.html#데이터-정제",
-    "href": "01_cmdline.html#데이터-정제",
-    "title": "명령라인 데이터 분석",
-    "section": "3.2 데이터 정제",
-    "text": "3.2 데이터 정제\n\n3.2.1 행 뽑아내기\n\n행 위치정보를 기반으로 해서 행 절대번호를 활용하여 추출한다.\n\nhead, sed, awk\n\n패턴을 주고 연관된 행만 추출한다.\n\ngrep 명령어에 정규표현식으로 패턴을 담아 매칭되는 것만 뽑아낸다.\n사용례: grep -i session paper.txt\n\n무작위로 행을 추출한다.\n\nshuf 명령어를 사용한다.\n사용례: shuf -n 10 data.csv\n\n\n\n\n3.2.2 값 추출\n기본적인 값추출 전략은 grep 명령어로 행을 뽑아내고, cut 명령어로 구분자를 두거나 고정된 열위치에 해당하는 열에서 값을 추출한다. cut 명령어로 열을 쪼개는데 구분자로 ,를 사용하고 뽑아내는 열로 -f 인자를 두고 3번째 행이후 모두를 지정한다.\n\n$ grep -i session paper.txt | cut -d ',' -f3-\n$ grep -i session paper.txt | cut -c 7-\n\n\n\n3.2.3 값 바꾸기\n값을 바꾸거나 삭제할 때 사용하는 명령어가 tr로 translate 번역의 약자다.\n공백 을 *로 바꾼다.\n$ echo 'We Love Data Science!' | tr ' ' '*'\nWe*Love*Data*Science!"
+    "objectID": "11_shell.html",
+    "href": "11_shell.html",
+    "title": "유닉스 쉘(Shell)",
+    "section": "",
+    "text": "1 유닉스 쉘"
   },
   {
     "objectID": "00_setup.html",
@@ -42,10 +42,24 @@
     "text": "3.2 블로그\n\n데이터 과학: https://statkclee.github.io/data-science/\n시각화: https://statkclee.github.io/viz/\n문서제작: http://aispiration.com/comp_document/\n\n쿼토(Quarto): https://r2bit.com/quarto/\n파워포인트(PPT): https://r2bit.com/bitSlide/\n웹슬라이드(Xaringan): http://aispiration.com/ds-authoring/\n\n데이터 과학 제품: http://aispiration.com/data-product/\n딥러닝 기본기 : https://aispiration.com/united-states/\n…"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "데이터 과학 커리큘럼",
+    "objectID": "10_cmdline.html",
+    "href": "10_cmdline.html",
+    "title": "명령라인 데이터 분석",
     "section": "",
-    "text": "데이터 과학\n\n\n\n학습 내용\n학습상세\n일정\n\n\n\n\n명령라인 데이터 분석\nShell\n01주차\n\n\n디지털 글쓰기\n마크다운 / Quarto\n02주차\n\n\n버전 제어\nGit / GitHub\n03주차\n\n\n프로그래밍\nSQL\n04주차\n\n\n프로그래밍\nR\n05주차\n\n\n프로그래밍\n파이썬\n06주차\n\n\n대쉬보드\nFlexdashboard / Shinydashboard\n07주차\n\n\n통계모형\ntidymodels / scikit-learn\n08주차\n\n\n데이터 과학 제품\nRESTful API\n09주차\n\n\n특수 데이터\n시계열(Time Series)\n10주차\n\n\n특수 데이터\n공간정보(Geospatial)\n11주차\n\n\n비정형 데이터\n텍스트와 이미지\n12주차"
+    "text": "저작권 걱정없이 저작물을 받을 수 있는 경로는 여러 곳이 존재한다. 하지만, PDF, HWP, TXT 파일은 압축하여 제공하고 있어 사람손이 몇번씩 가는 문제점이 있다. 작업과정에 추가로 프로세스를 넣어주어야만 된다. 어차치 TXT로 작업하는데 …\n대표적 국내외 공유 저작물 저장소 1 2로 다음을 꼽을 수 있다.\n\n미국: 구텐베르크(Gutenberg) 프로젝트\n일본: 일본판 구텐베르크, 아오조라 문고(靑空文庫, あおぞらぶんこ)\n대한민국\n\n공공누리 포털\n직지(http://www.jikji.org/)\n공유마당"
+  },
+  {
+    "objectID": "10_cmdline.html#데이터-가져오기",
+    "href": "10_cmdline.html#데이터-가져오기",
+    "title": "명령라인 데이터 분석",
+    "section": "3.1 데이터 가져오기",
+    "text": "3.1 데이터 가져오기\n데이터를 가져오는 방식은 결국 텍스트로 유닉스/리눅스 환경으로 불러와야만 된다. csvkit 에 in2csv, csvcut, csvlook, sql2csv, csvsql이 포함되어 있다.\nsudo pip install csvkit 명령어로 설치한다.\n\n로컬 파일: cp 복사, 원격파일 복사: scp 복사\n압축파일: tar, unzip, unrar 명령어로 압축된 파일을 푼다.\n\n압축파일 확장자: .tar.gz, .zip, .rar\n압축파일 푸는 종결자 unpack\n\n스프레드쉬트: in2csv는 표형식 엑셀 데이터를 받아 csv 파일로 변환.\n\n$ in2csv ne_1033_data.xlsx | csvcut -c county,item_name,quantity | csvlook | head\n\n데이터베이스: sql2csv\n\nsql2csv --db 'sqlite:///iris.db' --query 'SELECT * FROM iris where petal_length > 6.5' | csvlook\n\n인터넷: curl을 활용하여 인터넷 자원을 긁어온다.\n\ncurl -s http://www.gutenberg.org/files/13693/13693-t/13693-t.tex -o number-theory.txt\n\n\nAPI: curl 물론, API 토큰, 비밀키 등을 설정하거나 일일 이용한도가 있을 수도 있다. 특히, curlicue를 활용하여 트위터 데이터를 바로 가져와서 활용할 수 있다. 자세한 사항은 Create Your Own Dataset Consuming Twitter API 블로그를 참조한다.\n\nRANDOM USER GENERATOR, curl -s http://api.randomuser.me | jq '.'"
+  },
+  {
+    "objectID": "10_cmdline.html#데이터-정제",
+    "href": "10_cmdline.html#데이터-정제",
+    "title": "명령라인 데이터 분석",
+    "section": "3.2 데이터 정제",
+    "text": "3.2 데이터 정제\n\n3.2.1 행 뽑아내기\n\n행 위치정보를 기반으로 해서 행 절대번호를 활용하여 추출한다.\n\nhead, sed, awk\n\n패턴을 주고 연관된 행만 추출한다.\n\ngrep 명령어에 정규표현식으로 패턴을 담아 매칭되는 것만 뽑아낸다.\n사용례: grep -i session paper.txt\n\n무작위로 행을 추출한다.\n\nshuf 명령어를 사용한다.\n사용례: shuf -n 10 data.csv\n\n\n\n\n3.2.2 값 추출\n기본적인 값추출 전략은 grep 명령어로 행을 뽑아내고, cut 명령어로 구분자를 두거나 고정된 열위치에 해당하는 열에서 값을 추출한다. cut 명령어로 열을 쪼개는데 구분자로 ,를 사용하고 뽑아내는 열로 -f 인자를 두고 3번째 행이후 모두를 지정한다.\n\n$ grep -i session paper.txt | cut -d ',' -f3-\n$ grep -i session paper.txt | cut -c 7-\n\n\n\n3.2.3 값 바꾸기\n값을 바꾸거나 삭제할 때 사용하는 명령어가 tr로 translate 번역의 약자다.\n공백 을 *로 바꾼다.\n$ echo 'We Love Data Science!' | tr ' ' '*'\nWe*Love*Data*Science!"
   }
 ]
