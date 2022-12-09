@@ -40,5 +40,12 @@
     "title": "환경설정",
     "section": "3.2 블로그",
     "text": "3.2 블로그\n\n데이터 과학: https://statkclee.github.io/data-science/\n시각화: https://statkclee.github.io/viz/\n문서제작: http://aispiration.com/comp_document/\n\n쿼토(Quarto): https://r2bit.com/quarto/\n파워포인트(PPT): https://r2bit.com/bitSlide/\n웹슬라이드(Xaringan): http://aispiration.com/ds-authoring/\n\n데이터 과학 제품: http://aispiration.com/data-product/\n딥러닝 기본기 : https://aispiration.com/united-states/\n…"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "데이터 과학 커리큘럼",
+    "section": "",
+    "text": "데이터 과학\n\n\n\n학습 내용\n학습상세\n일정\n\n\n\n\n명령라인 데이터 분석\nShell\n01주차\n\n\n디지털 글쓰기\n마크다운 / Quarto\n02주차\n\n\n버전 제어\nGit / GitHub\n03주차\n\n\n프로그래밍\nSQL\n04주차\n\n\n프로그래밍\nR\n05주차\n\n\n프로그래밍\n파이썬\n06주차\n\n\n대쉬보드\nFlexdashboard / Shinydashboard\n07주차\n\n\n통계모형\ntidymodels / scikit-learn\n08주차\n\n\n데이터 과학 제품\nRESTful API\n09주차\n\n\n특수 데이터\n시계열(Time Series)\n10주차\n\n\n특수 데이터\n공간정보(Geospatial)\n11주차\n\n\n비정형 데이터\n텍스트와 이미지\n12주차"
   }
 ]
