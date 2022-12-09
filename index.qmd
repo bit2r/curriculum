@@ -1,10 +1,54 @@
 ---
 title: "데이터 과학 커리큘럼"
+description: 실무적으로 데이터를 통해 가치를 창출하는데 꼭 필요한 기본기를 교육합니다.
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    url: https://www.linkedin.com/in/kwangchunlee/
+    affiliation: 한국 R 사용자회
+    affiliation-url: https://github.com/bit2r
+title-block-banner: true
+#title-block-banner: "#562457"
+format:
+  html:
+    theme: 
+      - flatly
+      - css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 3
+    toc-title: 목차
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+editor_options: 
+  chunk_output_type: console
 ---
 
-# 데이터 과학
+# 교육 전후
 
-|      학습 내용       |            학습상세            |  일정  |
+체계적인 데이터 과학 교육전에는 실무 업무를 동시에 진행하면서 그때 그때 필요한
+도구를 학습하여 적용하는 방식으로 진행된 반면 교육 후에는 다양한 도구를 그때 
+데이터의 상황과 문제에 맞춰 체계적으로 데이터 과학 제품을 개발하여 
+가치를 창출하고 유지발전시켜 나가게 됩니다.
+
+::: {#before-after layout-ncol=2}
+
+{{< video "fig/now_gs.mp4" >}}
+
+{{< video "fig/future_gs.mp4" >}}
+
+:::
+
+
+
+
+# 학습 내용
+
+|      과목명          |            학습상세            |  일정  |
 |:--------------------:|:------------------------------:|:------:|
 | 명령라인 데이터 분석 |             Shell              | 01주차 |
 |    디지털 글쓰기     |       마크다운 / Quarto        | 02주차 |
