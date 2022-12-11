@@ -26,6 +26,14 @@ link-citations: yes
 csl: apa-single-spaced.csl
 editor_options: 
   chunk_output_type: console
+knitr:
+  opts_chunk: 
+    message: false
+    warning: false
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true  
 ---
 
 # 교육 전후
@@ -48,20 +56,57 @@ editor_options:
 
 # 학습 내용
 
-|      과목명          |            학습상세            |  일정  |
-|:--------------------:|:------------------------------:|:------:|
-| 명령라인 데이터 분석 |             Shell              | 01주차 |
-|    디지털 글쓰기     |       마크다운 / Quarto        | 02주차 |
-|      버전 제어       |          Git / GitHub          | 03주차 |
-|      프로그래밍      |              SQL               | 04주차 |
-|      프로그래밍      |               R                | 05주차 |
-|      프로그래밍      |             파이썬             | 06주차 |
-|       대쉬보드       | Flexdashboard / Shinydashboard | 07주차 |
-|       통계모형       |   tidymodels / scikit-learn    | 08주차 |
-|   데이터 과학 제품   |          RESTful API           | 09주차 |
-|     특수 데이터      |      시계열(Time Series)       | 10주차 |
-|     특수 데이터      |      공간정보(Geospatial)      | 11주차 |
-|    비정형 데이터     |        텍스트와 이미지         | 12주차 |
 
+```{r}
+#| echo: false
+library(tidyverse)
+library(gt)
 
+courses <- tribble(~"과목명", ~"학습상세", ~"일정", 
+        "디지털 글쓰기(보고서)", "마크다운 / Quarto",  "01주차",
+        "명령라인 데이터 분석", "Shell",  "02주차",
+        "버전 제어", "Git / GitHub",  "03주차", 
+        "프로그래밍", "SQL",  "04주차", 
+        "프로그래밍", "R",  "05주차", 
+        "프로그래밍", "파이썬",  "06주차", 
+        "대쉬보드", "Flexdashboard / Shinydashboard",  "07주차", 
+        "통계모형", "tidymodels / scikit-learn",  "08주차", 
+        "데이터 과학 제품", "RESTful API",  "09주차", 
+        "특수 데이터", "시계열(Time Series)",  "10주차", 
+        "특수 데이터", "공간정보(Geospatial) / 텍스트 분석",  "11주차", 
+        "비정형 데이터", "텍스트와 이미지 (딥러닝)",  "12주차") 
+
+courses %>% 
+  select(일정, everything()) %>% 
+  gt() %>% 
+  tab_options(table.align='center',
+              table.width = px(500)) %>% 
+  tab_header(
+      title = "데이터 과학 교육과정"
+    ) %>% 
+  tab_style( 
+    style = cell_text( size = "large", weight = "bold"),
+    locations = list( cells_column_labels()  )
+    ) %>% 
+  tab_style( 
+    style = cell_text( size = "x-small", weight = "bold"),
+    locations = list( cells_row_groups() )
+    )  %>% 
+  tab_style( 
+    style = cell_text( size = "large"),
+    locations = list( cells_body() )
+    ) %>%
+  opt_table_font(
+    font = list(
+      google_font(name = "Dongle"),
+      "Cochin", "Serif"
+    )
+  ) %>% 
+  cols_align(
+    align = "center",
+    columns = everything()
+  )  
+  
+
+```
 
