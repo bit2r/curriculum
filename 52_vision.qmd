@@ -1,0 +1,33 @@
+---
+title: "딥러닝 - 비전"
+description: "이미지와 영상 딥러닝을 학습합니다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+editor_options: 
+  chunk_output_type: console
+---
+
+
+# [딥러닝 기본기](https://aispiration.com/united-states/)
+
+
+
+
+
+

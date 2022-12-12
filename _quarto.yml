@@ -16,21 +16,56 @@ website:
     background: "#0068B7"  
     left:
       - href: index.qmd
-        text: "Home"
+        text: "학습개요"
       - text: "개발환경"
         menu:
-        - href: 00_setup.qmd
-          text: "실습환경"
-        - href: 01_setup_scenario.qmd
-          text: "환경설정상세"
+          - href: 00_setup.qmd
+            text: "실습환경"
+          - href: 01_setup_scenario.qmd
+            text: "환경설정상세"
       - text: "교재"
         menu:
-        - href: 10_cmdline.qmd
-          text: "콘솔 데이터 분석"
-        - href: 11_shell.qmd
-          text: "쉘(Shell)"
-        - text: "-----"
-        - text: "프로그래밍: R"        
+          - text: "-----"
+          - href: 10_cmdline.qmd
+            text: "명령라인 데이터 분석"
+          - href: 11_shell.qmd
+            text: "쉘(Shell)"
+          - href: 12_writing.qmd
+            text: "디지털 글쓰기(보고서)"
+          - href: 13_git.qmd
+            text: "Git/GitHub"
+          - text: "-----"
+          - href: 20_sql.qmd          
+            text: "프로그래밍: SQL"
+          - href: 21_r.qmd          
+            text: "프로그래밍: R"
+          - href: 22_python.qmd          
+            text: "프로그래밍: 파이썬"          
+          - text: "-----"
+          - href: 30_dashboard.qmd
+            text: "대쉬보드"
+          - href: 31_models.qmd          
+            text: "기계학습"
+          - href: 32_product.qmd          
+            text: "데이터과학 제품과 서비스"            
+          - text: "-----"
+          - href: 41_time_series.qmd
+            text: "시계열 데이터"
+          - href: 42_network.qmd
+            text: "네트워크 데이터"
+          - href: 43_geospatial.qmd          
+            text: "공간정보 데이터"
+          - href: 44_text_mining.qmd          
+            text: "텍스트 데이터"            
+          - text: "-----"
+          - href: 51_nlp.qmd          
+            text: "딥러닝 - NLP"
+          - href: 52_vision.qmd
+            text: "딥러닝 - 비젼"
+      - href: project.qmd
+        text: "프로젝트"
+      - href: data.qmd
+        text: "데이터셋"
           
 format:
   html:

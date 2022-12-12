@@ -66,15 +66,15 @@ library(tidyverse)
 library(gt)
 
 courses <- tribble(~"과목명", ~"학습상세", ~"일정", ~"데이터셋",
-        "환경설정", "학습 도구 설치 및 학습환경",  "00주차", "",
+        "환경설정", "학습 도구 설치 및 학습환경",  "00주차", "파머 펭귄, BitData",
         "디지털 글쓰기(보고서)", "마크다운 / Quarto",  "01주차", "BitData",
         "명령라인 데이터 분석", "Shell",  "02주차", "SWC",
         "버전 제어", "Git / GitHub",  "03주차", "",
         "프로그래밍", "SQL",  "04주차", "Data Carpentry, DVD 렌탈",
-        "프로그래밍", "R",  "05주차", "파머 펭귄, BitData",
+        "프로그래밍", "R",  "05주차", "gapminder",
         "프로그래밍", "파이썬",  "06주차", "",
         "대쉬보드", "Flexdashboard / Shinydashboard",  "07주차", "",
-        "통계모형", "tidymodels / scikit-learn",  "08주차", "",
+        "기계학습", "tidymodels / scikit-learn",  "08주차", "",
         "데이터 과학 제품", "RESTful API",  "09주차", "",
         "특수 데이터", "시계열(Time Series)",  "10주차", "KOSPI",
         "특수 데이터", "공간정보(Geospatial) / 텍스트 분석",  "11주차", "미디어오늘",

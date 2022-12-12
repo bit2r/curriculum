@@ -1,0 +1,37 @@
+---
+title: "대쉬보드"
+description: "대쉬보드(Dashboard) 제작방법을 학습합니다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+editor_options: 
+  chunk_output_type: console
+---
+
+
+# 대쉬보드 개발 과정
+
+1. [데이터 및 EDA](http://aispiration.com/president/president-minju-race.html)
+1. [모듈](http://aispiration.com/president/minju_module.html)
+1. [대쉬보드](http://aispiration.com/president/minj_dashboard.html)
+
+
+
+
+
+

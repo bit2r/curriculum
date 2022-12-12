@@ -1,0 +1,29 @@
+---
+title: "디지털 글쓰기(보고서)"
+description: "업무에 필요한 다양한 보고서를 개발한다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+editor_options: 
+  chunk_output_type: console
+---
+
+
+# [디지털 글쓰기](https://github.com/bit2r/bitBook)
+
+

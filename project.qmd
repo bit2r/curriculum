@@ -1,0 +1,42 @@
+---
+title: "프로젝트"
+description: "모둠을 구성해서 데이터 과학 프로젝트를 통해 데이터과학 제품과 서비스를 개발합니다. "
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+editor_options: 
+  chunk_output_type: console
+---
+
+
+# 모둠 구성
+
+## R & R
+
+- 기획
+- 분석
+- 개발
+- 테스트
+- 운영
+- ...
+
+
+
+
+
+
