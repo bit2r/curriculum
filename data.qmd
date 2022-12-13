@@ -24,15 +24,33 @@ editor_options:
 ---
 
 
-# 유명한 데이터셋
+# 학습 데이터셋
 
-- gapminder
-- palmer penguin
-- iris
-- MNIST
-- BitData
-- Data Carpentry
-- ...
+## 데이터 과학
+
+- [gapminder](https://www.gapminder.org/data/)
+    - R 데이터 패키지: [`gapminder`: Data from Gapminder](https://cran.r-project.org/web/packages/gapminder/index.html)
+- [palmer penguin](https://allisonhorst.github.io/palmerpenguins/)
+    - [iris](https://en.wikipedia.org/wiki/Iris_flower_data_set)
+    - R built-in 내장 데이터: `iris`
+    - [펭귄 vs 붓꽃 데이터](http://aispiration.com/data-science/ds-iris-penguin.html)
+- [BitData](https://r2bit.com/bitData/)
+
+## 딥러닝
+
+- [MNIST](https://www.tensorflow.org/datasets/catalog/mnist)
+
+
+## SQL
+
+- [Data Carpentry](https://figshare.com/articles/dataset/Portal_Project_Teaching_Database/1314459), [원데이터](https://esapubs.org/archive/ecol/E090/118/), [weecology/portal-teachingdb](https://github.com/weecology/portal-teachingdb)
+- DVD 대여 데이터베이스: [GitHub, PostgreSQL Sample Database](https://github.com/devrimgunduz/pagila), [PostgreSQL Sample Database](http://www.postgresqltutorial.com/postgresql-sample-database/), [Load PostgreSQL Sample Database](http://www.postgresqltutorial.com/load-postgresql-sample-database/)
+- [Software Carpentry: `survey.db`](http://swcarpentry.github.io/sql-novice-survey/files/survey.db) , [DB 설치방법](http://aispiration.com/data-science/data-handling-sql.html)
+    
+
+    
+    
+    
 
 
 

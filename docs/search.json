@@ -172,6 +172,6 @@
     "href": "data.html",
     "title": "데이터셋",
     "section": "",
-    "text": "1 유명한 데이터셋\n\ngapminder\npalmer penguin\niris\nMNIST\nBitData\nData Carpentry\n…"
+    "text": "gapminder\n\nR 데이터 패키지: gapminder: Data from Gapminder\n\npalmer penguin\n\niris\nR built-in 내장 데이터: iris\n펭귄 vs 붓꽃 데이터\n\nBitData\n\n\n\n\n\nMNIST\n\n\n\n\n\nData Carpentry, 원데이터, weecology/portal-teachingdb\nDVD 대여 데이터베이스: GitHub, PostgreSQL Sample Database, PostgreSQL Sample Database, Load PostgreSQL Sample Database\nSoftware Carpentry: survey.db , DB 설치방법"
   }
 ]
