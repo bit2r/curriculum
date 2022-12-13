@@ -64,8 +64,12 @@ website:
             text: "딥러닝 - 비젼"
       - href: project.qmd
         text: "프로젝트"
-      - href: data.qmd
-        text: "데이터셋"
+      - text: "데이터셋"
+        menu:
+          - href: data.qmd
+            text: "데이터셋"
+          - href: data_chatGPT.qmd
+            text: "chatGPT 데이터셋"
           
 format:
   html:
