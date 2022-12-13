@@ -1,0 +1,66 @@
+---
+title: "데이터 X-레이"
+description: "분석 데이터를 일별하는 기법을 일별합니다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    css: css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+editor_options: 
+  chunk_output_type: console
+---
+
+# `skimr`
+
+[`skimr`](https://cran.r-project.org/web/packages/skimr/vignettes/skimr.html) 패키지를 사용하여 분석할 데이터와 친숙해진다.
+
+```{r}
+#| class-output: output
+
+library(tidyverse)
+
+bitData::penguins %>% 
+  skimr::skim()
+```
+
+# `dataxray`
+
+[`dataxray`](https://github.com/agstn/dataxray) 패키지를 사용해서 데이터에 대한 이해를 더욱 높일 수 있다.
+
+:::{.column-page}
+
+```{r}
+#| class-output: output
+
+library(dataxray)
+
+bitData::penguins %>% 
+   make_xray() %>% 
+   view_xray()
+```
+
+:::
+
+# `Hmisc::describe()`
+
+[`Hmisc`](https://cran.r-project.org/web/packages/Hmisc/index.html) 패키지를 통해 과거 20년전 데이터 분석방법을 음미합니다.
+
+```{r}
+#| class-output: output
+
+Hmisc::describe(bitData::penguins)
+```
+
+

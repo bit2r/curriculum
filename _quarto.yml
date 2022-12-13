@@ -4,6 +4,9 @@ project:
   preview:
     port: 3333
     browser: true
+  render:
+    - "*.qmd"
+    - "!flexdashboard/"
 
 lang: kr
 date-format: "YYYY년 MM월 DD일"
@@ -70,6 +73,12 @@ website:
             text: "데이터셋"
           - href: data_chatGPT.qmd
             text: "chatGPT 데이터셋"
+      - text: "운동장"
+        menu:
+          - href: dataxray.qmd
+            text: "데이터 X-레이"        
+          - href: flexdashboard/penguin_flexdashboard.html
+            text: "대쉬보드: 파머펭귄"
           
 format:
   html:
@@ -80,4 +89,7 @@ format:
 
 execute:
   freeze: true
+  message: false
+  warning: false
+
 

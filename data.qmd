@@ -8,8 +8,7 @@ author:
 title-block-banner: false
 format:
   html:
-    theme: 
-      - css/quarto-fonts.css
+    css: css/quarto-fonts.css
     code-fold: false
     toc: true
     toc-depth: 2
