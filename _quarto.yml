@@ -27,7 +27,7 @@ website:
           - href: 01_setup_scenario.qmd
             text: "환경설정상세"
           - href: 02_setup_sql.qmd
-            text: "환경설정상세"            
+            text: "Sqlite 데이터베이스"            
       - text: "교재"
         menu:
           - text: "-----"
