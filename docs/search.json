@@ -187,5 +187,12 @@
     "title": "프로젝트",
     "section": "",
     "text": "기획\n분석\n개발\n테스트\n운영\n…"
+  },
+  {
+    "objectID": "02_setup_sql.html",
+    "href": "02_setup_sql.html",
+    "title": "SQL 환경설정",
+    "section": "",
+    "text": "SQLite 다운로드 웹사이트에서 운영체제에 적합한 SQlite 소프트웨어를 설치한다.\n예를 들어, 윈도우 10 환경에서 “Precompiled Binaries for Windows” → sqlite-tools-win32-x86-3400000.zip 파일을 다운로드 받는다.\n다음으로 압축을 풀어 다음\n\n\n\n\n \n\n\n\n\nSqlite 환경등록\n\n\n\n\n\nSQlite 실행과 종료\n\n\n\n그림 1: ?(caption)"
   }
 ]

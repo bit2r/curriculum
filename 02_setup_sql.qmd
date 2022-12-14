@@ -1,0 +1,51 @@
+---
+title: "SQL 환경설정"
+description: "데이터 과학 SQL 데이터베이스 환경설정을 준비합니다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    css: css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+editor_options: 
+  chunk_output_type: console
+filters:
+  - lightbox
+lightbox: auto  
+---
+
+# SQlite
+
+## 데이터베이스 시스템
+
+[SQLite 다운로드](https://www.sqlite.org/download.html) 웹사이트에서 운영체제에 
+적합한 SQlite 소프트웨어를 설치한다.
+
+예를 들어, 윈도우 10 환경에서 "Precompiled Binaries for Windows" &rarr; `sqlite-tools-win32-x86-3400000.zip` 파일을 다운로드 받는다.
+
+다음으로 압축을 풀어 다음 
+
+::: {#fig-sqlite layout-ncol=4}
+
+![SQlite 다운로드](fig/sqlite3_download.png)
+![SQlite 설치](fig/sqlite_unzip.png)
+
+![Sqlite 환경등록](fig/sqlite_path.png)
+
+![SQlite 실행과 종료](fig/sqlite3_install.png)
+
+SQlite 설치 및 헬로월드
+
+:::
+

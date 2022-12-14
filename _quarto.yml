@@ -26,6 +26,8 @@ website:
             text: "실습환경"
           - href: 01_setup_scenario.qmd
             text: "환경설정상세"
+          - href: 02_setup_sql.qmd
+            text: "환경설정상세"            
       - text: "교재"
         menu:
           - text: "-----"
