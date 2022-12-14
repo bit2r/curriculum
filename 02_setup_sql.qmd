@@ -25,12 +25,12 @@ filters:
 lightbox: auto  
 ---
 
-# SQlite
+#  데이터베이스 시스템
 
-## 데이터베이스 시스템
 
-[SQLite 다운로드](https://www.sqlite.org/download.html) 웹사이트에서 운영체제에 
-적합한 SQlite 소프트웨어를 설치한다.
+[SQLite 다운로드](https://www.sqlite.org/download.html) 웹사이트에서 운영체제에  적합한 SQlite 소프트웨어를 설치한다.
+
+## 윈도우즈
 
 예를 들어, 윈도우 10 환경에서 "Precompiled Binaries for Windows" &rarr; `sqlite-tools-win32-x86-3400000.zip` 파일을 다운로드 받는다.
 
@@ -48,4 +48,78 @@ lightbox: auto
 SQlite 설치 및 헬로월드
 
 :::
+
+## 맥 설치
+
+맥에서 Sqlite를 설치하는 방법은 매우 단순하다. 
+[DB Browser for SQLite](https://sqlitebrowser.org/dl/) 웹사이트에서 
+맥버전(Intell or Apple Silicon) 버전을 다운로드 받아 설치하면 된다.
+
+![](fig/sqlite_mac_install.png)
+```{r}
+#| eval: false
+
+ ~/swc/curriculum   main ±  sqlite3 --version
+3.37.0 2021-12-09 01:34:53 9ff244ce0739f8ee52a3e9671adb4ee54c83c640b02e3f9d185fd2f9a179aapl
+~/swc/curriculum   main  sqlite3
+SQLite version 3.37.0 2021-12-09 01:34:53
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite> .quit
+ ~/swc/curriculum   main 
+```
+
+![](fig/sqlite_db_browser.png)
+
+# 데이터베이스:  `survey.db`
+
+소프트웨어 카페트리 학습용 `survey.db` 파일을 다운로드하여 `data/survey.db`로 저장시킨다.
+콘솔에서 데이터베이스 테이블을 확인하고 테이블 중 한 테이블을 골라 SQL 쿼리를 보낸다.
+
+```{r}
+#| eval: false
+fs::dir_create("data")
+
+download.file(url = "https://github.com/swcarpentry/sql-novice-survey/raw/gh-pages/files/survey.db",
+              destfile = "data/survey.db")
+```
+
+```
+trying URL 'https://github.com/swcarpentry/sql-novice-survey/raw/gh-pages/files/survey.db'
+Content type 'application/octet-stream' length 6144 bytes
+==================================================
+downloaded 6144 bytes
+```
+
+
+# SQL 쿼리
+
+## 명령라인
+
+SQlite가 설치되고 데이터베이스가 있다면 SQL 쿼리문을 작성하여 원하는 결과를 얻을 수 있다.
+
+
+```{r}
+#| eval: false
+ ~/swc/curriculum   main ±  sqlite3 data/survey.db
+SQLite version 3.37.0 2021-12-09 01:34:53
+Enter ".help" for usage hints.
+sqlite> .table
+Person   Site     Survey   Visited
+sqlite> SELECT * from Person;
+dyer|William|Dyer
+pb|Frank|Pabodie
+lake|Anderson|Lake
+roe|Valentina|Roerich
+danforth|Frank|Danforth
+sqlite> .quit
+```
+
+## 쿼리도구
+
+동일한 사항을 `DB Browser for SQLite` 쿼리도구를 사용하면 직관적으로 다양한 SQL 문을 데이터베이스에 던져 원하는 결과를 얻을 수 있다.
+
+![](fig/sqlite_query_tool.png)
+
 
