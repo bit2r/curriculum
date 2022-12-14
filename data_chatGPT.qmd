@@ -24,21 +24,18 @@ editor_options:
 
 OpenAI에서 최근에 공개한 [chatGPT](https://openai.com/blog/chatgpt/)와 함께 인공지능과 공존할 수 있는 방법을 모색해 봅니다.
 
-
 # 회귀모형
 
 ::: {.callout-caution collapse="true"}
 ## what is the best dataset for regression?
 
 There is no one "best" dataset for regression, as the appropriate dataset will depend on the specific problem you are trying to solve. Some common datasets that are often used for regression include the **Boston Housing dataset**, the **California Housing dataset**, and the **Diabetes dataset**. These datasets are well-studied and can be easily accessed by researchers, making them a good starting point for many regression tasks. Ultimately, the best dataset for your regression problem will depend on the specific problem you are trying to solve and the nature of the data you have available.
-
 :::
 
 ::: {.callout-caution collapse="true"}
 ## how about mpg dataset?
 
 The mpg dataset is a dataset that contains information on the fuel efficiency of different cars. It is commonly used in regression tasks, as the goal is often to predict **a car's fuel efficiency** based on various features such as its engine size and horsepower. This dataset can be a good choice for regression tasks, as it contains a large number of records and a variety of features that can be used to train a regression model. However, as with any dataset, it's important to carefully evaluate the quality and relevance of the data before using it for your specific task.
-
 :::
 
 ::: {.callout-caution collapse="true"}
@@ -69,9 +66,7 @@ predict(model, newdata = data.frame(displ = 3))
 
 ```
 
-
 This code fits a linear regression model using the displ and hwy variables from the mpg dataset, and then uses the model to predict the fuel efficiency of a car with a displacement of 3. Note that this is a very simple example, and there are many different ways to perform regression in R. For more information and examples, you can refer to the R documentation and tutorials on regression.
-
 :::
 
 # 분류모형
@@ -118,7 +113,7 @@ score = model.score(X_test, y_test)
 print("Accuracy:", score)
 ```
 
-This code creates a logistic regression model and trains it on the Iris dataset. It then evaluates the model on the test data and prints the model's accuracy. This is just one example of how you might build a classification model using Python – there are many other algorithms and approaches that you can use.
+This code creates a logistic regression model and trains it on the Iris dataset. It then evaluates the model on the test data and prints the model's accuracy. This is just one example of how you might build a classification model using Python -- there are many other algorithms and approaches that you can use.
 :::
 
 ::: {.callout-caution collapse="true"}
@@ -165,8 +160,7 @@ lr_pred %>% metrics(truth = testing(splits) %>% pull(Species), estimate = .pred_
   metric_set(acc)
 ```
 
-This code uses the tidymodels package to create a logistic regression model and train it on the Iris dataset. It then evaluates the model on the test data and prints the model's accuracy. This is just one example of how you might build a classification model using `tidymodels` – there are many other algorithms and approaches that you can use.
-
+This code uses the tidymodels package to create a logistic regression model and train it on the Iris dataset. It then evaluates the model on the test data and prints the model's accuracy. This is just one example of how you might build a classification model using `tidymodels` -- there are many other algorithms and approaches that you can use.
 :::
 
 # 차원축소
@@ -182,12 +176,11 @@ Sure! There are many publicly available datasets that would be suitable for prac
 
 Sure! Here are a few other publicly available datasets that you could use for practicing principal component analysis:
 
-- The Wine dataset, which contains chemical analysis of 13 different wines grown in the same region in Italy. This dataset can be used to classify the wines based on their chemical properties.
-- The MNIST dataset, which contains images of handwritten digits. This dataset can be used to classify the digits based on their visual appearance.
-- The Human Activity Recognition dataset, which contains sensor readings from smartphones worn by 30 different subjects performing six different activities. This dataset can be used to classify the activities based on the sensor readings.
+-   The Wine dataset, which contains chemical analysis of 13 different wines grown in the same region in Italy. This dataset can be used to classify the wines based on their chemical properties.
+-   The MNIST dataset, which contains images of handwritten digits. This dataset can be used to classify the digits based on their visual appearance.
+-   The Human Activity Recognition dataset, which contains sensor readings from smartphones worn by 30 different subjects performing six different activities. This dataset can be used to classify the activities based on the sensor readings.
 
 These are just a few examples - there are many other publicly available datasets that you could use for practicing principal component analysis. You can find many more by searching online for "multivariate datasets" or "principal component analysis datasets."
-
 :::
 
 ::: {.callout-caution collapse="true"}
@@ -207,8 +200,40 @@ pca <- prcomp(data, scale = TRUE)
 print(pca)
 
 ```
-
 :::
 
+# SQL 데이터베이스
 
+::: {.callout-caution collapse="true"}
+## What is the best dataset for learning SQL?
 
+There are many datasets that you can use to learn SQL, and the best one for you will depend on your goals and what you want to learn. One option is the **Northwind database**, which is a small, well-known dataset that is often used for learning SQL. It includes data on customers, orders, and products, and you can use it to practice a wide range of SQL queries. Other options include the **AdventureWorks database** and the **Chinook database**, both of which are similar to Northwind and can be used for learning SQL. Ultimately, the best dataset for you to use will depend on your individual learning goals and what you hope to get out of the experience.
+:::
+
+::: {.callout-caution collapse="true"}
+## I need license free datasets. which one is the best for learning SQL?
+
+If you are looking for license-free datasets for learning SQL, you have several options. One option is the Northwind database, which is a small, well-known dataset that is often used for learning SQL. It includes data on customers, orders, and products, and you can use it to practice a wide range of SQL queries. Other options include the AdventureWorks database and the Chinook database, both of which are similar to Northwind and can be used for learning SQL. Additionally, there are many other free and open datasets available online that you can use for learning SQL. Some websites that offer free datasets include Kaggle, the UCI Machine Learning Repository, and the US government's data.gov website.
+:::
+
+::: {.callout-caution collapse="true"}
+## Is Northwind dataset really copyright-free?
+
+The Northwind database is **not copyright-free**. It is copyrighted by Microsoft, and its use is subject to the terms of the Microsoft SQL Server Sample License Agreement. However, Microsoft allows users to download and use the Northwind database for **educational and non-commercial purposes**, provided that they comply with the terms of the license agreement. If you want to use the Northwind database for commercial purposes, you will need to obtain a commercial license from Microsoft. It is important to always read and understand the terms of any license agreement before using a dataset for any purpose.
+:::
+
+::: {.callout-caution collapse="true"}
+## how about DVD rental dataset?
+
+I'm sorry, but I am not able to browse the internet to find information on specific datasets. As a large language model trained by OpenAI, my knowledge is based on the text that I have been trained on, and I do not have the ability to browse the internet or access external information. I can only provide information based on what I have been trained on, which has a fixed cutoff date. In this case, I do not have any information on the DVD rental dataset, as my training data only goes up **until 2021** and I do not have the ability to access or browse external information.
+:::
+
+|                          저작권                           |  데이터베이스  |                                                 데이터셋                                                  | 설명                                                                                                                                                                                                                          |
+|:---------:|:---------------:|:--------------:|----------------------------------|
+|                           상용                            | Microsoft SQL  | [Northwind](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs) | The Northwind database contains the sales data for a fictitious company called \"Northwind Traders,\" which imports and exports specialty foods from around the world.                                                        |
+|                           상용                            | Microsoft SQL  |       [AdventureWorks](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks)       | OLTP database for a fictitious, multinational manufacturing company called **Adventure Works** Cycles                                                                                                                         |
+| [CC0](https://creativecommons.org/publicdomain/zero/1.0/) | Northwind 대안 |                          [Chinook](https://github.com/lerocha/chinook-database)                           | digital media store                                                                                                                                                                                                           |
+|                           상용                            |  Oracle MySQL  |                              [Sakila](https://dev.mysql.com/doc/sakila/en/)                               | Movie rental database with actors, ratings, payments, etc                                                                                                                                                                     |
+|                            BSD                            |   PostgreSQL   |                             [Pagila](https://github.com/devrimgunduz/pagila)                              | **DVD rental store**, containing information about films (like title, category, actresses), rental stores (like address, staff members, customers) and rentals, where a customer rents a film from a store through its staff. |
+|                            MIT                            |    SQlite3     |                        [survey](https://swcarpentry.github.io/sql-novice-survey/)                         | Education DB for SQL lesson of the Software Carpentry                                                                                                                                                                         |
+|                            MIT                            |    SQlite3     | [Portal Project Teaching](https://figshare.com/articles/dataset/Portal_Project_Teaching_Database/1314459) | Education DB for SQL lesson of the Data Carpentry                                                                                                                                                                             |

@@ -264,8 +264,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu--3">    
         <li>
+    <a class="dropdown-item" href="./dataxray.html" rel="">
+ <span class="dropdown-text">데이터 X-레이</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./flexdashboard/penguin_flexdashboard.html" rel="">
- <span class="dropdown-text">파머펭귄</span></a>
+ <span class="dropdown-text">대쉬보드: 파머펭귄</span></a>
   </li>  
     </ul>
   </li>
@@ -287,6 +291,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#회귀모형" id="toc-회귀모형" class="nav-link active" data-scroll-target="#회귀모형"><span class="toc-section-number">1</span>  회귀모형</a></li>
   <li><a href="#분류모형" id="toc-분류모형" class="nav-link" data-scroll-target="#분류모형"><span class="toc-section-number">2</span>  분류모형</a></li>
   <li><a href="#차원축소" id="toc-차원축소" class="nav-link" data-scroll-target="#차원축소"><span class="toc-section-number">3</span>  차원축소</a></li>
+  <li><a href="#sql-데이터베이스" id="toc-sql-데이터베이스" class="nav-link" data-scroll-target="#sql-데이터베이스"><span class="toc-section-number">4</span>  SQL 데이터베이스</a></li>
   </ul>
 </nav>
     </div>
@@ -324,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">공개</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2022년 12월 13일</p>
+      <p class="date">2022년 12월 14일</p>
     </div>
   </div>
   
@@ -617,6 +622,127 @@ show me a sample R code for the Wine dataset.
 </div>
 </div>
 </div>
+</section>
+<section id="sql-데이터베이스" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> SQL 데이터베이스</h1>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+What is the best dataset for learning SQL?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>There are many datasets that you can use to learn SQL, and the best one for you will depend on your goals and what you want to learn. One option is the <strong>Northwind database</strong>, which is a small, well-known dataset that is often used for learning SQL. It includes data on customers, orders, and products, and you can use it to practice a wide range of SQL queries. Other options include the <strong>AdventureWorks database</strong> and the <strong>Chinook database</strong>, both of which are similar to Northwind and can be used for learning SQL. Ultimately, the best dataset for you to use will depend on your individual learning goals and what you hope to get out of the experience.</p>
+</div>
+</div>
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+I need license free datasets. which one is the best for learning SQL?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If you are looking for license-free datasets for learning SQL, you have several options. One option is the Northwind database, which is a small, well-known dataset that is often used for learning SQL. It includes data on customers, orders, and products, and you can use it to practice a wide range of SQL queries. Other options include the AdventureWorks database and the Chinook database, both of which are similar to Northwind and can be used for learning SQL. Additionally, there are many other free and open datasets available online that you can use for learning SQL. Some websites that offer free datasets include Kaggle, the UCI Machine Learning Repository, and the US government’s data.gov website.</p>
+</div>
+</div>
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Is Northwind dataset really copyright-free?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The Northwind database is <strong>not copyright-free</strong>. It is copyrighted by Microsoft, and its use is subject to the terms of the Microsoft SQL Server Sample License Agreement. However, Microsoft allows users to download and use the Northwind database for <strong>educational and non-commercial purposes</strong>, provided that they comply with the terms of the license agreement. If you want to use the Northwind database for commercial purposes, you will need to obtain a commercial license from Microsoft. It is important to always read and understand the terms of any license agreement before using a dataset for any purpose.</p>
+</div>
+</div>
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+how about DVD rental dataset?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>I’m sorry, but I am not able to browse the internet to find information on specific datasets. As a large language model trained by OpenAI, my knowledge is based on the text that I have been trained on, and I do not have the ability to browse the internet or access external information. I can only provide information based on what I have been trained on, which has a fixed cutoff date. In this case, I do not have any information on the DVD rental dataset, as my training data only goes up <strong>until 2021</strong> and I do not have the ability to access or browse external information.</p>
+</div>
+</div>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">저작권</th>
+<th style="text-align: center;">데이터베이스</th>
+<th style="text-align: center;">데이터셋</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">상용</td>
+<td style="text-align: center;">Microsoft SQL</td>
+<td style="text-align: center;"><a href="https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/northwind-pubs">Northwind</a></td>
+<td>The Northwind database contains the sales data for a fictitious company called "Northwind Traders," which imports and exports specialty foods from around the world.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">상용</td>
+<td style="text-align: center;">Microsoft SQL</td>
+<td style="text-align: center;"><a href="https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks">AdventureWorks</a></td>
+<td>OLTP database for a fictitious, multinational manufacturing company called <strong>Adventure Works</strong> Cycles</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a></td>
+<td style="text-align: center;">Northwind 대안</td>
+<td style="text-align: center;"><a href="https://github.com/lerocha/chinook-database">Chinook</a></td>
+<td>digital media store</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">상용</td>
+<td style="text-align: center;">Oracle MySQL</td>
+<td style="text-align: center;"><a href="https://dev.mysql.com/doc/sakila/en/">Sakila</a></td>
+<td>Movie rental database with actors, ratings, payments, etc</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">BSD</td>
+<td style="text-align: center;">PostgreSQL</td>
+<td style="text-align: center;"><a href="https://github.com/devrimgunduz/pagila">Pagila</a></td>
+<td><strong>DVD rental store</strong>, containing information about films (like title, category, actresses), rental stores (like address, staff members, customers) and rentals, where a customer rents a film from a store through its staff.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">MIT</td>
+<td style="text-align: center;">SQlite3</td>
+<td style="text-align: center;"><a href="https://swcarpentry.github.io/sql-novice-survey/">survey</a></td>
+<td>Education DB for SQL lesson of the Software Carpentry</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">MIT</td>
+<td style="text-align: center;">SQlite3</td>
+<td style="text-align: center;"><a href="https://figshare.com/articles/dataset/Portal_Project_Teaching_Database/1314459">Portal Project Teaching</a></td>
+<td>Education DB for SQL lesson of the Data Carpentry</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
