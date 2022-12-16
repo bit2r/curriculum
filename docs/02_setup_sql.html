@@ -306,7 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#명령라인" id="toc-명령라인" class="nav-link" data-scroll-target="#명령라인"><span class="toc-section-number">3.1</span>  명령라인</a></li>
   <li><a href="#쿼리도구" id="toc-쿼리도구" class="nav-link" data-scroll-target="#쿼리도구"><span class="toc-section-number">3.2</span>  쿼리도구</a></li>
   </ul></li>
-  <li><a href="#duckdb" id="toc-duckdb" class="nav-link" data-scroll-target="#duckdb"><span class="toc-section-number">4</span>  <code>duckDB</code></a>
+  <li><a href="#duckdb" id="toc-duckdb" class="nav-link" data-scroll-target="#duckdb"><span class="toc-section-number">4</span>  <code>DuckDB</code></a>
   <ul class="collapse">
   <li><a href="#데이터셋" id="toc-데이터셋" class="nav-link" data-scroll-target="#데이터셋"><span class="toc-section-number">4.1</span>  데이터셋</a></li>
   <li><a href="#데이터베이스" id="toc-데이터베이스" class="nav-link" data-scroll-target="#데이터베이스"><span class="toc-section-number">4.2</span>  데이터베이스</a></li>
@@ -318,6 +318,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#dbeaver-sql-쿼리-도구" id="toc-dbeaver-sql-쿼리-도구" class="nav-link" data-scroll-target="#dbeaver-sql-쿼리-도구"><span class="toc-section-number">4.8</span>  DBeaver SQL 쿼리 도구</a></li>
   <li><a href="#파일-크기" id="toc-파일-크기" class="nav-link" data-scroll-target="#파일-크기"><span class="toc-section-number">4.9</span>  파일 크기</a></li>
   </ul></li>
+  <li><a href="#데이터베이스와-쿼리도구" id="toc-데이터베이스와-쿼리도구" class="nav-link" data-scroll-target="#데이터베이스와-쿼리도구"><span class="toc-section-number">5</span>  데이터베이스와 쿼리도구</a></li>
   </ul>
 </nav>
     </div>
@@ -377,25 +378,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 27.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="fig/sqlite3_download.png" class="lightbox" title="SQlite 다운로드" data-gallery="quarto-lightbox-gallery-1"><img src="fig/sqlite3_download.png" class="img-fluid figure-img" width="361"></a></p>
+<p><a href="fig/sqlite3_download.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="SQlite 다운로드"><img src="fig/sqlite3_download.png" class="img-fluid figure-img" width="361"></a></p>
 <p></p><figcaption class="figure-caption">SQlite 다운로드</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 22.7%;justify-content: center;">
 <figure class="figure">
-<p><a href="fig/sqlite_unzip.png" class="lightbox" title="SQlite 설치" data-gallery="quarto-lightbox-gallery-2"><img src="fig/sqlite_unzip.png" class="img-fluid figure-img" width="300"></a></p>
+<p><a href="fig/sqlite_unzip.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="SQlite 설치"><img src="fig/sqlite_unzip.png" class="img-fluid figure-img" width="300"></a></p>
 <p></p><figcaption class="figure-caption">SQlite 설치</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 22.7%;justify-content: center;">
 <figure class="figure">
-<p><a href="fig/sqlite_path.png" class="lightbox" title="Sqlite 환경등록" data-gallery="quarto-lightbox-gallery-3"><img src="fig/sqlite_path.png" class="img-fluid figure-img" width="300"></a></p>
+<p><a href="fig/sqlite_path.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Sqlite 환경등록"><img src="fig/sqlite_path.png" class="img-fluid figure-img" width="300"></a></p>
 <p></p><figcaption class="figure-caption">Sqlite 환경등록</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center" style="flex-basis: 27.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="fig/sqlite3_install.png" class="lightbox" title="SQlite 실행과 종료" data-gallery="quarto-lightbox-gallery-4"><img src="fig/sqlite3_install.png" class="img-fluid figure-img" width="360"></a></p>
+<p><a href="fig/sqlite3_install.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="SQlite 실행과 종료"><img src="fig/sqlite3_install.png" class="img-fluid figure-img" width="360"></a></p>
 <p></p><figcaption class="figure-caption">SQlite 실행과 종료</figcaption><p></p>
 </figure>
 </div>
@@ -475,7 +476,7 @@ downloaded 6144 bytes</code></pre>
 </section>
 </section>
 <section id="duckdb" class="level1 page-columns page-full" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> <code>duckDB</code></h1>
+<h1 data-number="4"><span class="header-section-number">4</span> <code>DuckDB</code></h1>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class=""><a href="https://lorentzen.ch/index.php/2022/04/02/duckdb-quacking-sql/">DuckDB: Quacking SQL, “Lost in Translation between R and Python 8”</a></span></div></div>
 <p>DuckDB는 “SQLite for Analytics” 별명을 갖고 있다. 과거 OLAP(online analytical processing)을 OLTP와 함께 회자되던 시절이 있었고 그 OLAP을 구현하는 것으로 이해할 수 있다.</p>
 <section id="데이터셋" class="level2" data-number="4.1">
@@ -584,7 +585,7 @@ downloaded 6144 bytes</code></pre>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.145 sec elapsed</code></pre>
+<pre><code>0.124 sec elapsed</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fare_summary</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -625,7 +626,7 @@ GROUP BY payment_type</code></pre>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>trips_sql_query</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Source:   SQL [4 x 2]
-# Database: DuckDB 0.6.1 [tidyverse@Darwin 21.6.0:R 4.2.2//Users/tidyverse/swc/curriculum/data/taxis.duckdb]
+# Database: DuckDB 0.6.1 [root@Darwin 21.6.0:R 4.2.2//Users/tidyverse/swc/curriculum/data/taxis.duckdb]
   payment_type average_fare
          &lt;int&gt;        &lt;dbl&gt;
 1            1         65.4
@@ -695,9 +696,40 @@ GROUP BY payment_type</code></pre>
 1 data/taxis.duckdb file         258M</code></pre>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="데이터베이스와-쿼리도구" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 데이터베이스와 쿼리도구</h1>
+<p>각 데이터베이스와 궁합이 맞는 다양한 SQL 쿼리도구가 있다. 적절한 도구를 사용하여 업무 생산성을 높혀보자.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">순</th>
+<th style="text-align: center;">데이터베이스</th>
+<th style="text-align: center;">SQL 쿼리도구</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">SQLite DuckDB</td>
+<td style="text-align: center;"><a href="https://dbeaver.io/">DBeaver</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">MySQL</td>
+<td style="text-align: center;"><p><a href="https://www.heidisql.com/">HeidiSQ L</a></p>
+<p><a href="https://www.m%20ysql.com/products/workbench/">MySQL Workbench</a></p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">[postgreSQL] (https://www.postgresql.org/)</td>
+<td style="text-align: center;"><a href="https://www.pgadmin.org/">pgAdm in</a></td>
+</tr>
+</tbody>
+</table>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -840,7 +872,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left"><a href="https://quarto.org/">Quarto</a> 로 제작</div>   
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true,"openEffect":"zoom"});</script>
 
 
 

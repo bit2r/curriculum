@@ -42,16 +42,13 @@ editor:
 확인한다.
 
 ::: {#fig-sqlite layout-ncol="4"}
-
-![SQlite 다운로드](fig/sqlite3_download.png){width="361"} 
+![SQlite 다운로드](fig/sqlite3_download.png){width="361"}
 
 ![SQlite 설치](fig/sqlite_unzip.png){width="300"}
 
 ![Sqlite 환경등록](fig/sqlite_path.png){width="300"}
 
-
 ![SQlite 실행과 종료](fig/sqlite3_install.png){width="360" height="200"}
-
 
 SQlite 설치 및 헬로월드
 :::
@@ -129,7 +126,7 @@ sqlite> .quit
 
 ![](fig/sqlite_query_tool.png)
 
-# `duckDB`
+# `DuckDB`
 
 [[DuckDB: Quacking SQL, "Lost in Translation between R and Python
 8"](https://lorentzen.ch/index.php/2022/04/02/duckdb-quacking-sql/)]{.aside}
@@ -332,3 +329,24 @@ fs::file_info("data/taxis.duckdb") %>%
   select(path, type, size)
 ```
 
+# 데이터베이스와 쿼리도구
+
+각 데이터베이스와 궁합이 맞는 다양한 SQL 쿼리도구가 있다. 
+적절한 도구를 사용하여 업무 생산성을 높혀보자.
+
++------+-------------------------------+-------------------------------+
+| 순   | 데이터베이스                  | SQL 쿼리도구                  |
++:====:+:=============================:+:=============================:+
+| 1    | SQLite DuckDB                 | [                             |
+|      |                               | DBeaver](https://dbeaver.io/) |
++------+-------------------------------+-------------------------------+
+| 2    | MySQL                         | [HeidiSQ                      |
+|      |                               | L](https://www.heidisql.com/) |
+|      |                               |                               |
+|      |                               | [MySQL                        |
+|      |                               | Workbench](https://www.m      |
+|      |                               | ysql.com/products/workbench/) |
++------+-------------------------------+-------------------------------+
+| 3    | [postgreSQL]                  | [pgAdm                        |
+|      | (https://www.postgresql.org/) | in](https://www.pgadmin.org/) |
++------+-------------------------------+-------------------------------+
