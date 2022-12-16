@@ -193,7 +193,7 @@
     "href": "02_setup_sql.html",
     "title": "SQL 환경설정",
     "section": "",
-    "text": "SQLite 다운로드 웹사이트에서 운영체제에 적합한 SQlite 소프트웨어를 설치한다.\n\n\n예를 들어, 윈도우 10 환경에서 “Precompiled Binaries for Windows” → sqlite-tools-win32-x86-3400000.zip 파일을 다운로드 받는다.\n다음으로 압축을 풀어 다음\n\n\n\n\n \n\n\n\n\nSqlite 환경등록\n\n\n\n\n\nSQlite 실행과 종료\n\n\n\n그림 1: SQlite 설치 및 헬로월드\n\n\n\n\n\n맥에서 Sqlite를 설치하는 방법은 매우 단순하다. DB Browser for SQLite 웹사이트에서 맥버전(Intell or Apple Silicon) 버전을 다운로드 받아 설치하면 된다.\n\n\n\n\n\n\n ~/swc/curriculum   main ±  sqlite3 --version\n3.37.0 2021-12-09 01:34:53 9ff244ce0739f8ee52a3e9671adb4ee54c83c640b02e3f9d185fd2f9a179aapl\n~/swc/curriculum   main  sqlite3\nSQLite version 3.37.0 2021-12-09 01:34:53\nEnter \".help\" for usage hints.\nConnected to a transient in-memory database.\nUse \".open FILENAME\" to reopen on a persistent database.\nsqlite> .quit\n ~/swc/curriculum   main "
+    "text": "SQLite 다운로드 웹사이트에서 운영체제에 적합한 SQlite 소프트웨어를 설치한다.\n\n\n예를 들어, 윈도우 10 환경에서 “Precompiled Binaries for Windows” → sqlite-tools-win32-x86-3400000.zip 파일을 다운로드 받는다.\n다음으로 압축을 풀어 다음 순서로 설치를 완료하고 정상적으로 설치되었는지 확인한다.\n\n\n\n\n\n\nSQlite 다운로드\n\n\n\n\n\nSQlite 설치\n\n\n\n\n\nSqlite 환경등록\n\n\n\n\n\nSQlite 실행과 종료\n\n\n\n그림 1: SQlite 설치 및 헬로월드\n\n\n\n\n\n맥에서 Sqlite를 설치하는 방법은 매우 단순하다. DB Browser for SQLite 웹사이트에서 맥버전(Intell or Apple Silicon) 버전을 다운로드 받아 설치하면 된다.\n\n\n\n\n\n\n ~/swc/curriculum   main ±  sqlite3 --version\n3.37.0 2021-12-09 01:34:53 9ff244ce0739f8ee52a3e9671adb4ee54c83c640b02e3f9d185fd2f9a179aapl\n~/swc/curriculum   main  sqlite3\nSQLite version 3.37.0 2021-12-09 01:34:53\nEnter \".help\" for usage hints.\nConnected to a transient in-memory database.\nUse \".open FILENAME\" to reopen on a persistent database.\nsqlite> .quit\n ~/swc/curriculum   main "
   },
   {
     "objectID": "02_setup_sql.html#명령라인",
@@ -208,5 +208,68 @@
     "title": "SQL 환경설정",
     "section": "3.2 쿼리도구",
     "text": "3.2 쿼리도구\n동일한 사항을 DB Browser for SQLite 쿼리도구를 사용하면 직관적으로 다양한 SQL 문을 데이터베이스에 던져 원하는 결과를 얻을 수 있다."
+  },
+  {
+    "objectID": "02_setup_sql.html#데이터셋",
+    "href": "02_setup_sql.html#데이터셋",
+    "title": "SQL 환경설정",
+    "section": "4.1 데이터셋",
+    "text": "4.1 데이터셋\nNYC Taxi Trip Data - Google Public Data 데이터셋은 구글 빅쿼리(Bigquery) 공개 데이터셋중 일부로 뉴육택시 운행 천만건을 담고 있다. 뉴욕 택시 데이터셋에 대한 자세한 정보는 캐글 웹사이트에서 확인할 수 있다."
+  },
+  {
+    "objectID": "02_setup_sql.html#데이터베이스",
+    "href": "02_setup_sql.html#데이터베이스",
+    "title": "SQL 환경설정",
+    "section": "4.2 데이터베이스",
+    "text": "4.2 데이터베이스\nduckdb패키지를 설치하여 taxis.duckdb를 파일로 생성하고 연결을 시켜둔다.\n\nlibrary(tidyverse)\nlibrary(duckdb)\nlibrary(DBI)\nlibrary(vroom)\nlibrary(tictoc)\n\ndatabase_path <- paste0(here::here(), \"/data/taxis.duckdb\")\nfile.remove(database_path)\ncon <- dbConnect(duckdb(), dbdir = database_path)\ndbListTables(con) \n\ndata\\ 디렉토리 아래 뉴욕 택시 운행 데이터와 duckdb가 하나 파일명으로 taxis.duckdb 생성된 것이 확인된다.\n\nfs::dir_tree(\"data\")\n\ndata\n├── original_cleaned_nyc_taxi_data_2018.csv\n├── survey.db\n└── taxis.duckdb"
+  },
+  {
+    "objectID": "02_setup_sql.html#테이블-추가",
+    "href": "02_setup_sql.html#테이블-추가",
+    "title": "SQL 환경설정",
+    "section": "4.3 테이블 추가",
+    "text": "4.3 테이블 추가\nduckdb 데이터베이스에 뉴욕택시 데이터셋을 테이블로 추가한다.\n\ntaxis_path <- paste0(here::here(), \"/data/original_cleaned_nyc_taxi_data_2018.csv\")\ntable_create_qry <- glue::glue(\n  \"CREATE TABLE trips AS SELECT * FROM read_csv_auto ('{taxis_path}')\"\n  )\ndbExecute(con, table_create_qry)\n\n[1] 8319928"
+  },
+  {
+    "objectID": "02_setup_sql.html#테이블-확인",
+    "href": "02_setup_sql.html#테이블-확인",
+    "title": "SQL 환경설정",
+    "section": "4.4 테이블 확인",
+    "text": "4.4 테이블 확인\ndbListTables() 명령어로 데이터베이스 내 테이블이 제대로 올라갔는지 확인한다.\n\ndbListTables(con)\n\n[1] \"trips\""
+  },
+  {
+    "objectID": "02_setup_sql.html#db-연결-끊기",
+    "href": "02_setup_sql.html#db-연결-끊기",
+    "title": "SQL 환경설정",
+    "section": "4.5 DB 연결 끊기",
+    "text": "4.5 DB 연결 끊기\ncon으로 DB에 연결을 했다면 다음으로 연결을 dbDisconnect() 명령어로 연결을 해제한다.\n\ndbDisconnect(con, shutdown=TRUE)"
+  },
+  {
+    "objectID": "02_setup_sql.html#sql-쿼리-1",
+    "href": "02_setup_sql.html#sql-쿼리-1",
+    "title": "SQL 환경설정",
+    "section": "4.6 SQL 쿼리",
+    "text": "4.6 SQL 쿼리\n지금까지 작업한 사항내용을 그림으로 요약하면 다음과 같다.\n\n파일 duckDB 데이터베이스를 생성한다.\n데이터베이스에 con DB 핸들러를 통해 R/파이썬 연결을 시킨다.\nCSV 파일을 테이블로 데이터베이스에 올린다.\n정상적으로 테이블이 데이터베이스에 등록되었는지를 확인한다.\nDB 핸들러를 반납하고 연결을 해제시킨다.\n\n\n\n\n\n\n이제부터 본격적으로 OLAP 분석작업을 수행한다. 파일 “/data/taxis.duckdb” 데이터베이스에 DB 핸들러를 연결시킨다. 그리고 나서 분석대상 테이블이 존재하는지 dbListTables() 명령어로 확인한다.\n\nlibrary(tidyverse)\nlibrary(duckdb)\nlibrary(DBI)\nlibrary(vroom)\nlibrary(tictoc)\n\ndatabase_path <- paste0(here::here(), \"/data/taxis.duckdb\")\n\ncon <-dbConnect(duckdb::duckdb(), dbdir = database_path, read_only=TRUE)\n\ndbListTables(con)\n\n[1] \"trips\"\n\n\ntictock 패키지를 통해 해당 쿼리가 수행되는데 실행된 시간을 측정한다.\n\ntic()\n\nfare_summary <- con |> \n  tbl(\"trips\") |> \n  dplyr::select(payment_type, fare_amount, trip_distance) |> \n  filter(trip_distance > 18) |> \n  group_by(payment_type) |> \n  summarise(average_fare = mean(fare_amount, na.rm = TRUE)) |> \n  collect()\n\ntoc()\n\n0.145 sec elapsed\n\nfare_summary\n\n# A tibble: 4 × 2\n  payment_type average_fare\n         <int>        <dbl>\n1            1         65.4\n2            2         60.9\n3            3         62.5\n4            4         67.1"
+  },
+  {
+    "objectID": "02_setup_sql.html#sql-문",
+    "href": "02_setup_sql.html#sql-문",
+    "title": "SQL 환경설정",
+    "section": "4.7 SQL 문",
+    "text": "4.7 SQL 문\ndplyr 데이터 핸들링 문법이 매우 직관적이고 사용하기 편하다. 이를 SQL문으로 변환하는 것도 단순하다. 이를 동일하게 SQL 문으로 작성하여 쿼리문을 던져 분석작업을 수행하자.\n\nlibrary(dbplyr)\n\ntrips_db <- tbl(con, \"trips\")\n\ntrips_sql_query <- trips_db %>% \n  dplyr::select(payment_type, fare_amount, trip_distance) %>% \n  filter(trip_distance > 18) %>% \n  group_by(payment_type) %>% \n  summarise(average_fare = mean(fare_amount, na.rm = TRUE)) %>% \n  show_query()\n\n<SQL>\nSELECT payment_type, AVG(fare_amount) AS average_fare\nFROM (\n  SELECT payment_type, fare_amount, trip_distance\n  FROM trips\n) q01\nWHERE (trip_distance > 18.0)\nGROUP BY payment_type\n\ntrips_sql_query\n\n# Source:   SQL [4 x 2]\n# Database: DuckDB 0.6.1 [tidyverse@Darwin 21.6.0:R 4.2.2//Users/tidyverse/swc/curriculum/data/taxis.duckdb]\n  payment_type average_fare\n         <int>        <dbl>\n1            1         65.4\n2            2         60.9\n3            3         62.5\n4            4         67.1\n\n\n동일한 결과를 dbGetQuery()함수로 결과값을 얻을 수 있다.\n\nsql_query_from_dbplyr <- \"SELECT payment_type, AVG(fare_amount) AS average_fare\nFROM (\n  SELECT payment_type, fare_amount, trip_distance\n  FROM trips\n) q01\nWHERE (trip_distance > 18.0)\nGROUP BY payment_type\"\n\n# dbGetQuery(con, \"SELECT * FROM trips LIMIT 5;\")\ndbGetQuery(con, sql_query_from_dbplyr)\n\n  payment_type average_fare\n1            1     65.40479\n2            2     60.86640\n3            3     62.52643\n4            4     67.13895"
+  },
+  {
+    "objectID": "02_setup_sql.html#dbeaver-sql-쿼리-도구",
+    "href": "02_setup_sql.html#dbeaver-sql-쿼리-도구",
+    "title": "SQL 환경설정",
+    "section": "4.8 DBeaver SQL 쿼리 도구",
+    "text": "4.8 DBeaver SQL 쿼리 도구\nDBeaver Community - Free Universal Database Tool 도구를 다운로드 받고 앞서 구축한 뉴욕 택시 데이터베이스를 연결하면 동일한 결과를 얻을 수 있다.\n먼저, DBeaver Community - Free Universal Database Tool 웹사이트에서 운영체제에 맞는 SQL 쿼리 도구를 설치한다.\n\n\n\n\n\n그리고 나서 앞서 dbplyr show_query() 함수를 사용해서 SQL 문을 복사하여 붙여넣기 하면 해당 결과를 얻을 수 있다."
+  },
+  {
+    "objectID": "02_setup_sql.html#파일-크기",
+    "href": "02_setup_sql.html#파일-크기",
+    "title": "SQL 환경설정",
+    "section": "4.9 파일 크기",
+    "text": "4.9 파일 크기\n뉴욕 택시 원본파일 크기를 살펴보자. 이를 위해서 fs패키지 file_info()함수를 사용해서 확인한다.\n\nfs::file_info(\"data/original_cleaned_nyc_taxi_data_2018.csv\") %>% \n  select(path, type, size)\n\n# A tibble: 1 × 3\n  path                                         type         size\n  <fs::path>                                   <fct> <fs::bytes>\n1 data/original_cleaned_nyc_taxi_data_2018.csv file         719M\n\n\nCSV 파일을 duckDB에서 가져왔을 때 데이터베이스 크기를 살펴보자.\n\nfs::file_info(\"data/taxis.duckdb\") %>% \n  select(path, type, size)\n\n# A tibble: 1 × 3\n  path              type         size\n  <fs::path>        <fct> <fs::bytes>\n1 data/taxis.duckdb file         258M"
   }
 ]

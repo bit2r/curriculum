@@ -306,11 +306,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#명령라인" id="toc-명령라인" class="nav-link" data-scroll-target="#명령라인"><span class="toc-section-number">3.1</span>  명령라인</a></li>
   <li><a href="#쿼리도구" id="toc-쿼리도구" class="nav-link" data-scroll-target="#쿼리도구"><span class="toc-section-number">3.2</span>  쿼리도구</a></li>
   </ul></li>
+  <li><a href="#duckdb" id="toc-duckdb" class="nav-link" data-scroll-target="#duckdb"><span class="toc-section-number">4</span>  <code>duckDB</code></a>
+  <ul class="collapse">
+  <li><a href="#데이터셋" id="toc-데이터셋" class="nav-link" data-scroll-target="#데이터셋"><span class="toc-section-number">4.1</span>  데이터셋</a></li>
+  <li><a href="#데이터베이스" id="toc-데이터베이스" class="nav-link" data-scroll-target="#데이터베이스"><span class="toc-section-number">4.2</span>  데이터베이스</a></li>
+  <li><a href="#테이블-추가" id="toc-테이블-추가" class="nav-link" data-scroll-target="#테이블-추가"><span class="toc-section-number">4.3</span>  테이블 추가</a></li>
+  <li><a href="#테이블-확인" id="toc-테이블-확인" class="nav-link" data-scroll-target="#테이블-확인"><span class="toc-section-number">4.4</span>  테이블 확인</a></li>
+  <li><a href="#db-연결-끊기" id="toc-db-연결-끊기" class="nav-link" data-scroll-target="#db-연결-끊기"><span class="toc-section-number">4.5</span>  DB 연결 끊기</a></li>
+  <li><a href="#sql-쿼리-1" id="toc-sql-쿼리-1" class="nav-link" data-scroll-target="#sql-쿼리-1"><span class="toc-section-number">4.6</span>  SQL 쿼리</a></li>
+  <li><a href="#sql-문" id="toc-sql-문" class="nav-link" data-scroll-target="#sql-문"><span class="toc-section-number">4.7</span>  SQL 문</a></li>
+  <li><a href="#dbeaver-sql-쿼리-도구" id="toc-dbeaver-sql-쿼리-도구" class="nav-link" data-scroll-target="#dbeaver-sql-쿼리-도구"><span class="toc-section-number">4.8</span>  DBeaver SQL 쿼리 도구</a></li>
+  <li><a href="#파일-크기" id="toc-파일-크기" class="nav-link" data-scroll-target="#파일-크기"><span class="toc-section-number">4.9</span>  파일 크기</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -343,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">공개</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2022년 12월 14일</p>
+      <p class="date">2022년 12월 16일</p>
     </div>
   </div>
   
@@ -359,22 +371,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="윈도우즈" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="윈도우즈"><span class="header-section-number">1.1</span> 윈도우즈</h2>
 <p>예를 들어, 윈도우 10 환경에서 “Precompiled Binaries for Windows” → <code>sqlite-tools-win32-x86-3400000.zip</code> 파일을 다운로드 받는다.</p>
-<p>다음으로 압축을 풀어 다음</p>
+<p>다음으로 압축을 풀어 다음 순서로 설치를 완료하고 정상적으로 설치되었는지 확인한다.</p>
 <div id="fig-sqlite" class="quarto-layout-panel">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><a href="fig/sqlite3_download.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="SQlite 다운로드"><img src="fig/sqlite3_download.png" class="img-fluid figure-img" alt="SQlite 다운로드"></a> <a href="fig/sqlite_unzip.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="SQlite 설치"><img src="fig/sqlite_unzip.png" class="img-fluid figure-img" alt="SQlite 설치"></a></p>
-</div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 27.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="fig/sqlite_path.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Sqlite 환경등록"><img src="fig/sqlite_path.png" class="img-fluid figure-img"></a></p>
+<p><a href="fig/sqlite3_download.png" class="lightbox" title="SQlite 다운로드" data-gallery="quarto-lightbox-gallery-1"><img src="fig/sqlite3_download.png" class="img-fluid figure-img" width="361"></a></p>
+<p></p><figcaption class="figure-caption">SQlite 다운로드</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 22.7%;justify-content: center;">
+<figure class="figure">
+<p><a href="fig/sqlite_unzip.png" class="lightbox" title="SQlite 설치" data-gallery="quarto-lightbox-gallery-2"><img src="fig/sqlite_unzip.png" class="img-fluid figure-img" width="300"></a></p>
+<p></p><figcaption class="figure-caption">SQlite 설치</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 22.7%;justify-content: center;">
+<figure class="figure">
+<p><a href="fig/sqlite_path.png" class="lightbox" title="Sqlite 환경등록" data-gallery="quarto-lightbox-gallery-3"><img src="fig/sqlite_path.png" class="img-fluid figure-img" width="300"></a></p>
 <p></p><figcaption class="figure-caption">Sqlite 환경등록</figcaption><p></p>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center" style="flex-basis: 27.3%;justify-content: center;">
 <figure class="figure">
-<p><a href="fig/sqlite3_install.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="SQlite 실행과 종료"><img src="fig/sqlite3_install.png" class="img-fluid figure-img"></a></p>
+<p><a href="fig/sqlite3_install.png" class="lightbox" title="SQlite 실행과 종료" data-gallery="quarto-lightbox-gallery-4"><img src="fig/sqlite3_install.png" class="img-fluid figure-img" width="360"></a></p>
 <p></p><figcaption class="figure-caption">SQlite 실행과 종료</figcaption><p></p>
 </figure>
 </div>
@@ -450,6 +471,229 @@ downloaded 6144 bytes</code></pre>
 <figure class="figure">
 <p><a href="fig/sqlite_query_tool.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="fig/sqlite_query_tool.png" class="img-fluid figure-img"></a></p>
 </figure>
+</div>
+</section>
+</section>
+<section id="duckdb" class="level1 page-columns page-full" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <code>duckDB</code></h1>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class=""><a href="https://lorentzen.ch/index.php/2022/04/02/duckdb-quacking-sql/">DuckDB: Quacking SQL, “Lost in Translation between R and Python 8”</a></span></div></div>
+<p>DuckDB는 “SQLite for Analytics” 별명을 갖고 있다. 과거 OLAP(online analytical processing)을 OLTP와 함께 회자되던 시절이 있었고 그 OLAP을 구현하는 것으로 이해할 수 있다.</p>
+<section id="데이터셋" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="데이터셋"><span class="header-section-number">4.1</span> 데이터셋</h2>
+<p><a href="https://www.kaggle.com/datasets/neilclack/nyc-taxi-trip-data-google-public-data">NYC Taxi Trip Data - Google Public Data</a> 데이터셋은 구글 빅쿼리(Bigquery) 공개 데이터셋중 일부로 뉴육택시 운행 천만건을 담고 있다. 뉴욕 택시 데이터셋에 대한 자세한 정보는 캐글 웹사이트에서 확인할 수 있다.</p>
+<div class="cell">
+
+</div>
+</section>
+<section id="데이터베이스" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="데이터베이스"><span class="header-section-number">4.2</span> 데이터베이스</h2>
+<p><code>duckdb</code>패키지를 설치하여 <code>taxis.duckdb</code>를 파일로 생성하고 연결을 시켜둔다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(duckdb)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vroom)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tictoc)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>database_path <span class="ot">&lt;-</span> <span class="fu">paste0</span>(here<span class="sc">::</span><span class="fu">here</span>(), <span class="st">"/data/taxis.duckdb"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">file.remove</span>(database_path)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">duckdb</span>(), <span class="at">dbdir =</span> database_path)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con) </span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>data\</code> 디렉토리 아래 뉴욕 택시 운행 데이터와 <code>duckdb</code>가 하나 파일명으로 <code>taxis.duckdb</code> 생성된 것이 확인된다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_tree</span>(<span class="st">"data"</span>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>data
+├── original_cleaned_nyc_taxi_data_2018.csv
+├── survey.db
+└── taxis.duckdb</code></pre>
+</div>
+</div>
+</section>
+<section id="테이블-추가" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="테이블-추가"><span class="header-section-number">4.3</span> 테이블 추가</h2>
+<p>duckdb 데이터베이스에 뉴욕택시 데이터셋을 테이블로 추가한다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>taxis_path <span class="ot">&lt;-</span> <span class="fu">paste0</span>(here<span class="sc">::</span><span class="fu">here</span>(), <span class="st">"/data/original_cleaned_nyc_taxi_data_2018.csv"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>table_create_qry <span class="ot">&lt;-</span> glue<span class="sc">::</span><span class="fu">glue</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CREATE TABLE trips AS SELECT * FROM read_csv_auto ('{taxis_path}')"</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(con, table_create_qry)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>[1] 8319928</code></pre>
+</section>
+<section id="테이블-확인" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="테이블-확인"><span class="header-section-number">4.4</span> 테이블 확인</h2>
+<p><code>dbListTables()</code> 명령어로 데이터베이스 내 테이블이 제대로 올라갔는지 확인한다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>[1] "trips"</code></pre>
+</section>
+<section id="db-연결-끊기" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="db-연결-끊기"><span class="header-section-number">4.5</span> DB 연결 끊기</h2>
+<p><code>con</code>으로 DB에 연결을 했다면 다음으로 연결을 <code>dbDisconnect()</code> 명령어로 연결을 해제한다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con, <span class="at">shutdown=</span><span class="cn">TRUE</span>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sql-쿼리-1" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="sql-쿼리-1"><span class="header-section-number">4.6</span> SQL 쿼리</h2>
+<p>지금까지 작업한 사항내용을 그림으로 요약하면 다음과 같다.</p>
+<ol type="1">
+<li>파일 duckDB 데이터베이스를 생성한다.</li>
+<li>데이터베이스에 <code>con</code> DB 핸들러를 통해 R/파이썬 연결을 시킨다.</li>
+<li>CSV 파일을 테이블로 데이터베이스에 올린다.</li>
+<li>정상적으로 테이블이 데이터베이스에 등록되었는지를 확인한다.</li>
+<li>DB 핸들러를 반납하고 연결을 해제시킨다.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="fig/duckdb_nyc_taxi.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="fig/duckdb_nyc_taxi.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>이제부터 본격적으로 OLAP 분석작업을 수행한다. 파일 “/data/taxis.duckdb” 데이터베이스에 DB 핸들러를 연결시킨다. 그리고 나서 분석대상 테이블이 존재하는지 <code>dbListTables()</code> 명령어로 확인한다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(duckdb)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vroom)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tictoc)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>database_path <span class="ot">&lt;-</span> <span class="fu">paste0</span>(here<span class="sc">::</span><span class="fu">here</span>(), <span class="st">"/data/taxis.duckdb"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span><span class="fu">dbConnect</span>(duckdb<span class="sc">::</span><span class="fu">duckdb</span>(), <span class="at">dbdir =</span> database_path, <span class="at">read_only=</span><span class="cn">TRUE</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "trips"</code></pre>
+</div>
+</div>
+<p><code>tictock</code> 패키지를 통해 해당 쿼리가 수행되는데 실행된 시간을 측정한다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>fare_summary <span class="ot">&lt;-</span> con <span class="sc">|&gt;</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span>(<span class="st">"trips"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(payment_type, fare_amount, trip_distance) <span class="sc">|&gt;</span> </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trip_distance <span class="sc">&gt;</span> <span class="dv">18</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(payment_type) <span class="sc">|&gt;</span> </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_fare =</span> <span class="fu">mean</span>(fare_amount, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.145 sec elapsed</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fare_summary</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  payment_type average_fare
+         &lt;int&gt;        &lt;dbl&gt;
+1            1         65.4
+2            2         60.9
+3            3         62.5
+4            4         67.1</code></pre>
+</div>
+</div>
+</section>
+<section id="sql-문" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="sql-문"><span class="header-section-number">4.7</span> SQL 문</h2>
+<p>dplyr 데이터 핸들링 문법이 매우 직관적이고 사용하기 편하다. 이를 SQL문으로 변환하는 것도 단순하다. 이를 동일하게 SQL 문으로 작성하여 쿼리문을 던져 분석작업을 수행하자.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>trips_db <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"trips"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>trips_sql_query <span class="ot">&lt;-</span> trips_db <span class="sc">%&gt;%</span> </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(payment_type, fare_amount, trip_distance) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trip_distance <span class="sc">&gt;</span> <span class="dv">18</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(payment_type) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_fare =</span> <span class="fu">mean</span>(fare_amount, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;SQL&gt;
+SELECT payment_type, AVG(fare_amount) AS average_fare
+FROM (
+  SELECT payment_type, fare_amount, trip_distance
+  FROM trips
+) q01
+WHERE (trip_distance &gt; 18.0)
+GROUP BY payment_type</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>trips_sql_query</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Source:   SQL [4 x 2]
+# Database: DuckDB 0.6.1 [tidyverse@Darwin 21.6.0:R 4.2.2//Users/tidyverse/swc/curriculum/data/taxis.duckdb]
+  payment_type average_fare
+         &lt;int&gt;        &lt;dbl&gt;
+1            1         65.4
+2            2         60.9
+3            3         62.5
+4            4         67.1</code></pre>
+</div>
+</div>
+<p>동일한 결과를 <code>dbGetQuery()</code>함수로 결과값을 얻을 수 있다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sql_query_from_dbplyr <span class="ot">&lt;-</span> <span class="st">"SELECT payment_type, AVG(fare_amount) AS average_fare</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="st">FROM (</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT payment_type, fare_amount, trip_distance</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM trips</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="st">) q01</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE (trip_distance &gt; 18.0)</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY payment_type"</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># dbGetQuery(con, "SELECT * FROM trips LIMIT 5;")</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con, sql_query_from_dbplyr)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  payment_type average_fare
+1            1     65.40479
+2            2     60.86640
+3            3     62.52643
+4            4     67.13895</code></pre>
+</div>
+</div>
+</section>
+<section id="dbeaver-sql-쿼리-도구" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="dbeaver-sql-쿼리-도구"><span class="header-section-number">4.8</span> DBeaver SQL 쿼리 도구</h2>
+<p><a href="https://dbeaver.io/download/">DBeaver Community - Free Universal Database Tool</a> 도구를 다운로드 받고 앞서 구축한 뉴욕 택시 데이터베이스를 연결하면 동일한 결과를 얻을 수 있다.</p>
+<p>먼저, <a href="https://dbeaver.io/download/">DBeaver Community - Free Universal Database Tool</a> 웹사이트에서 운영체제에 맞는 SQL 쿼리 도구를 설치한다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="fig/DBeaver_duckdb.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="fig/DBeaver_duckdb.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>그리고 나서 앞서 <a href="https://dbplyr.tidyverse.org/">dbplyr</a> <code>show_query()</code> 함수를 사용해서 SQL 문을 복사하여 붙여넣기 하면 해당 결과를 얻을 수 있다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="fig/dplyr_to_dbeaver.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="fig/dplyr_to_dbeaver.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</section>
+<section id="파일-크기" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="파일-크기"><span class="header-section-number">4.9</span> 파일 크기</h2>
+<p>뉴욕 택시 원본파일 크기를 살펴보자. 이를 위해서 <code>fs</code>패키지 <code>file_info()</code>함수를 사용해서 확인한다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">file_info</span>(<span class="st">"data/original_cleaned_nyc_taxi_data_2018.csv"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(path, type, size)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  path                                         type         size
+  &lt;fs::path&gt;                                   &lt;fct&gt; &lt;fs::bytes&gt;
+1 data/original_cleaned_nyc_taxi_data_2018.csv file         719M</code></pre>
+</div>
+</div>
+<p>CSV 파일을 duckDB에서 가져왔을 때 데이터베이스 크기를 살펴보자.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">file_info</span>(<span class="st">"data/taxis.duckdb"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(path, type, size)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  path              type         size
+  &lt;fs::path&gt;        &lt;fct&gt; &lt;fs::bytes&gt;
+1 data/taxis.duckdb file         258M</code></pre>
+</div>
 </div>
 
 
@@ -596,7 +840,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left"><a href="https://quarto.org/">Quarto</a> 로 제작</div>   
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true});</script>
 
 
 
