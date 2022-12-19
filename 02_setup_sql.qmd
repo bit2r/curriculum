@@ -144,8 +144,6 @@ Data](https://www.kaggle.com/datasets/neilclack/nyc-taxi-trip-data-google-public
 천만건을 담고 있다. 뉴욕 택시 데이터셋에 대한 자세한 정보는 캐글
 웹사이트에서 확인할 수 있다.
 
-
-
 ## 데이터베이스
 
 `duckdb`패키지를 설치하여 `taxis.duckdb`를 파일로 생성하고 연결을
@@ -330,43 +328,17 @@ fs::file_info("data/taxis.duckdb") %>%
 
 # 데이터베이스와 쿼리도구
 
-각 데이터베이스와 궁합이 맞는 다양한 SQL 쿼리도구가 있다. 
-적절한 도구를 사용하여 업무 생산성을 높혀보자.
+각 데이터베이스와 궁합이 맞는 다양한 SQL 쿼리도구가 있다. 적절한 도구를
+사용하여 업무 생산성을 높혀보자.
 
-+------+-------------------------------+-------------------------------+
-| 순   | 데이터베이스                  | SQL 쿼리도구                  |
-+:====:+:=============================:+:=============================:+
-| 1    | SQLite DuckDB                 | [                             |
-|      |                               | DBeaver](https://dbeaver.io/) |
-+------+-------------------------------+-------------------------------+
-| 2    | MySQL                         | [HeidiSQ                      |
-|      |                               | L](https://www.heidisql.com/) |
-|      |                               |                               |
-|      |                               | [MySQL                        |
-|      |                               | Workbench](https://www.m      |
-|      |                               | ysql.com/products/workbench/) |
-+------+-------------------------------+-------------------------------+
-| 3    | [postgreSQL]                  | [pgAdm                        |
-|      | (https://www.postgresql.org/) | in](https://www.pgadmin.org/) |
-+------+-------------------------------+-------------------------------+
-
-
-# 파이썬
-
-```{python}
-import duckdb
-# to start an in-memory database
-# con = duckdb.connect(database=':memory:')
-# to use a database file (not shared between processes)
-# con = duckdb.connect(database='data/taxis.duckdb', read_only=False)
-# to use a database file (shared between processes)
-con = duckdb.connect(database='data/taxis.duckdb', read_only=True)
-```
-
-```{python}
-import requests
-
-x = requests.get('https://www.wikipedia.org/')
-
-print(x.text)
-```
++-------------+---------------------------+---------------------------+
+| 순          | 데이터베이스              | SQL 쿼리도구              |
++:===========:+:=========================:+:=========================:+
+| 1           | SQLite DuckDB             | DBeaver                   |
++-------------+---------------------------+---------------------------+
+| 2           | MySQL                     | HeidiSQ L                 |
+|             |                           |                           |
+|             |                           | MySQL Workbench           |
++-------------+---------------------------+---------------------------+
+| 3           | postgreSQL                | pgAdm in                  |
++-------------+---------------------------+---------------------------+
