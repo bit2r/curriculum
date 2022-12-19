@@ -7,4 +7,5 @@
 
 data/original_cleaned_nyc_taxi_data_2018.csv
 data/taxis.duckdb
+data/dscl/
 
