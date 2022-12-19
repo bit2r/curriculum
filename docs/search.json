@@ -23,9 +23,9 @@
   {
     "objectID": "01_setup_scenario.html",
     "href": "01_setup_scenario.html",
-    "title": "개발환경 설정",
+    "title": "CLI 개발환경",
     "section": "",
-    "text": "1 Git Bash\n윈도우 환경에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구.\n\nGit for Windows: https://gitforwindows.org/\n\n\n\n2 WSL\n윈도우 10/11에서 WSL(Windows Subsystem Linux)을 설치하여 윈도우에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구\n\nWindows Subsystem for Linux (WSL) : https://learn.microsoft.com/en-us/windows/wsl/install\n\n\n\n3 도커\n격리 가상화 기술을 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구\n\n도커: https://www.docker.com/\n\n\n\n4 클라우드\n데이터 과학에 특화된 클라우드 서비스를 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어는 물론 데이터 과학에 필요한 다양한 기능을 지원하는 서비스\n\nPosit Cloud (formerly RStudio Cloud): https://posit.cloud/\n빛에듀: http://bit-edu.iptime.org/rstudio/"
+    "text": "윈도우 환경에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구.\n\nGit for Windows: https://gitforwindows.org/\n\n\n\n\n윈도우 10/11에서 WSL(Windows Subsystem Linux)을 설치하여 윈도우에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구\n\nWindows Subsystem for Linux (WSL) : https://learn.microsoft.com/en-us/windows/wsl/install\n\n\n\n\n격리 가상화 기술을 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구\n\n도커: https://www.docker.com/\n\n명령라인 데이터 분석 작업을 수행하기 위한 환경을 개별적으로 구축하기 보다 이미 구축된 도커 환경을 가져와서 준비한다. [@janssens2021data]\n\n도커를 다운로드 받아 설치한다.\n도커허브에서 도커이미지를 받아온다.\n\ndatasciencetoolbox/dsatcl2e\n\n도커를 실행시키고 로컬 디렉토리와 도커 컨테이너 디렉토리를 일치시킨다.\n\n\n\n\n도커 로컬 디렉토리와 컨테이너 디렉토리 마운트 작업\n\n\n$ docker pull datasciencetoolbox/dsatcl2e \n$ docker run --rm -it datasciencetoolbox/dsatcl2e\n$ docker run --rm -it -v \"$(pwd)\":/home/dst/data datasciencetoolbox/dsatcl2e\n\n\n\n데이터 과학에 특화된 클라우드 서비스를 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어는 물론 데이터 과학에 필요한 다양한 기능을 지원하는 서비스\n\nPosit Cloud (formerly RStudio Cloud): https://posit.cloud/\n빛에듀: http://bit-edu.iptime.org/rstudio/"
   },
   {
     "objectID": "10_cmdline.html",
@@ -271,5 +271,19 @@
     "title": "SQL 환경설정",
     "section": "4.9 파일 크기",
     "text": "4.9 파일 크기\n뉴욕 택시 원본파일 크기를 살펴보자. 이를 위해서 fs패키지 file_info()함수를 사용해서 확인한다.\n\nfs::file_info(\"data/original_cleaned_nyc_taxi_data_2018.csv\") %>% \n  select(path, type, size)\n\n# A tibble: 1 × 3\n  path                                         type         size\n  <fs::path>                                   <fct> <fs::bytes>\n1 data/original_cleaned_nyc_taxi_data_2018.csv file         719M\n\n\nCSV 파일을 duckDB에서 가져왔을 때 데이터베이스 크기를 살펴보자.\n\nfs::file_info(\"data/taxis.duckdb\") %>% \n  select(path, type, size)\n\n# A tibble: 1 × 3\n  path              type         size\n  <fs::path>        <fct> <fs::bytes>\n1 data/taxis.duckdb file         258M"
+  },
+  {
+    "objectID": "01_setup_scenario.html#최신-배쉬-설치",
+    "href": "01_setup_scenario.html#최신-배쉬-설치",
+    "title": "CLI 개발환경",
+    "section": "2.1 최신 배쉬 설치",
+    "text": "2.1 최신 배쉬 설치\n명령라인 데이터분석을 위해서는 먼저 다음과 같이 다양한 쉘 중에서 특정 쉘(bash)을 지정하고 이를 기본 쉘로 설정한다. 왜냐하면 경우에 따라서 쉘 명령어가 동작하지 않는 경우가 있기 때문이다.\n$ brew install bash\n$ which -a bash\n$ sudo chsh -s /usr/local/bin/bash\n$ bash --version\nGNU bash, version 5.2.15(1)-release (x86_64-apple-darwin21.6.0)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\n\n\n\n\n\nzsh → bash 기본 쉘 설정\n\n\n\n맥에서 zsh가 기본 쉘로 설정된 경우 이를 bash로 상기 명령어로 지정한다.\n$ sudo chsh -s /usr/local/bin/bash"
+  },
+  {
+    "objectID": "01_setup_scenario.html#배쉬툴-설치",
+    "href": "01_setup_scenario.html#배쉬툴-설치",
+    "title": "CLI 개발환경",
+    "section": "2.2 배쉬툴 설치",
+    "text": "2.2 배쉬툴 설치\n배쉬를 설정하고 기본 쉘로 설정한 후에 생산성 향상과 즐거운 데이터분석업무를 위해서 필요한 추가 도구를 설정한다. ble.sh와 bash-it이 가장 많이 사용되고 있어 둘 중에서 마음에 드는 것을 설치한다.\n\n\n\n\n\n배쉬 설치 후 첫 실행화면\n\n\n\n배쉬\n\n\n그림 1: 배쉬 도구 설치 전후 비교\n\n\nbash-it을 다운로드 받아 다음 명령어로 설치한다.\n$ git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it\n$ ~/.bash_it/install.sh\n$ source ~/.bash_profile"
   }
 ]

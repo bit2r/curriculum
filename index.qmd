@@ -26,6 +26,9 @@ link-citations: yes
 csl: apa-single-spaced.csl
 editor_options: 
   chunk_output_type: console
+filters:
+  - lightbox
+lightbox: auto  
 knitr:
   opts_chunk: 
     message: false

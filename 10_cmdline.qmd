@@ -171,42 +171,4 @@ $ asciinema -yt "Start Here !!!"
 ```
 
 
-# 도커
-
-명령라인 데이터 분석 작업을 수행하기 위한 환경을 개별적으로 구축하기 보다 이미 구축된 도커 환경을 가져와서 준비한다. [@janssens2021data]
-
-1. [도커](https://www.docker.com/products/docker-desktop/)를 다운로드 받아 설치한다.
-1. [도커허브](https://hub.docker.com/)에서 도커이미지를 받아온다.
-    - [datasciencetoolbox/dsatcl2e](https://hub.docker.com/r/datasciencetoolbox/dsatcl2e)
-1. 도커를 실행시키고 로컬 디렉토리와 도커 컨테이너 디렉토리를 일치시킨다.
-
-
-![도커 로컬 디렉토리와 컨테이너 디렉토리 마운트 작업](fig/docker_volume_mount.jpg)
-
-
-```{bash}
-#| eval: false
-$ docker pull datasciencetoolbox/dsatcl2e 
-$ docker run --rm -it datasciencetoolbox/dsatcl2e
-$ docker run --rm -it -v "$(pwd)":/home/dst/data datasciencetoolbox/dsatcl2e
-```
-
-
-# 배쉬 기본설정
-
-명령라인 데이터분석을 위해서는 먼저 다음과 같이 다양한 쉘 중에서 특정 쉘(bash)을 지정하고 이를 기본 쉘로 설정한다. 왜냐하면 경우에 따라서 쉘 명령어가 동작하지 않는 경우가 있기 때문이다.
-
-```{bash}
-#| eval: false
-$ brew install bash
-$ which -a bash
-$ sudo chsh -s /usr/local/bin/bash
-$ bash --version
-GNU bash, version 5.2.15(1)-release (x86_64-apple-darwin21.6.0)
-Copyright (C) 2022 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-
-This is free software; you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-```
 

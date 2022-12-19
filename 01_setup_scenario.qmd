@@ -1,5 +1,5 @@
 ---
-title: "개발환경 설정"
+title: "CLI 개발환경"
 description: "다양한 개발환경 설정 방법을 살펴본다."
 date: today # 날짜 설정: now, last-modified
 author:
@@ -19,28 +19,48 @@ format:
     self-contained: false
 editor_options: 
   chunk_output_type: console
+filters:
+  - lightbox
+lightbox: auto  
 ---
 
-# Git Bash
+# 개발도구
+
+## Git Bash
 
 윈도우 환경에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구.
 
 - Git for Windows: <https://gitforwindows.org/>
 
-
-# WSL
+## WSL
 
 윈도우 10/11에서 WSL(Windows Subsystem Linux)을 설치하여 윈도우에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구
 
 - Windows Subsystem for Linux (WSL) : <https://learn.microsoft.com/en-us/windows/wsl/install>
 
-# 도커
+## 도커
 
 격리 가상화 기술을 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구
 
 - 도커: <https://www.docker.com/>
 
-# 클라우드
+명령라인 데이터 분석 작업을 수행하기 위한 환경을 개별적으로 구축하기 보다 이미 구축된 도커 환경을 가져와서 준비한다. [@janssens2021data]
+
+1. [도커](https://www.docker.com/products/docker-desktop/)를 다운로드 받아 설치한다.
+1. [도커허브](https://hub.docker.com/)에서 도커이미지를 받아온다.
+    - [datasciencetoolbox/dsatcl2e](https://hub.docker.com/r/datasciencetoolbox/dsatcl2e)
+1. 도커를 실행시키고 로컬 디렉토리와 도커 컨테이너 디렉토리를 일치시킨다.
+
+![도커 로컬 디렉토리와 컨테이너 디렉토리 마운트 작업](fig/docker_volume_mount.jpg)
+
+
+````bash
+$ docker pull datasciencetoolbox/dsatcl2e 
+$ docker run --rm -it datasciencetoolbox/dsatcl2e
+$ docker run --rm -it -v "$(pwd)":/home/dst/data datasciencetoolbox/dsatcl2e
+````
+
+## 클라우드
 
 데이터 과학에 특화된 클라우드 서비스를 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어는 물론 데이터 과학에 필요한 다양한 기능을 지원하는 서비스
 
@@ -48,10 +68,57 @@ editor_options:
 - 빛에듀: <http://bit-edu.iptime.org/rstudio/>
 
 
+# 맥에서 배쉬 설정
+
+## 최신 배쉬 설치
+
+명령라인 데이터분석을 위해서는 먼저 다음과 같이 다양한 쉘 중에서 특정 쉘(bash)을 지정하고 이를 기본 쉘로 설정한다. 왜냐하면 경우에 따라서 쉘 명령어가 동작하지 않는 경우가 있기 때문이다.
+
+````bash
+$ brew install bash
+$ which -a bash
+$ sudo chsh -s /usr/local/bin/bash
+$ bash --version
+GNU bash, version 5.2.15(1)-release (x86_64-apple-darwin21.6.0)
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+````
+
+:::{.callout-note}
+
+### `zsh` &rarr; `bash` 기본 쉘 설정
+
+맥에서 `zsh`가 기본 쉘로 설정된 경우 이를 `bash`로 상기 명령어로 지정한다.
+
+````bash
+$ sudo chsh -s /usr/local/bin/bash
+````
+:::
 
 
+## 배쉬툴 설치
 
+배쉬를 설정하고 기본 쉘로 설정한 후에 생산성 향상과 즐거운 데이터분석업무를 위해서 필요한 추가 도구를 설정한다. [ble.sh](https://github.com/akinomyoga/ble.sh)와 [bash-it](https://github.com/Bash-it/bash-it)이 가장 많이 사용되고 있어 둘 중에서 마음에 드는 것을 설치한다.
 
+::: {#fig-bash layout-ncol=2}
+
+![배쉬 설치 후 첫 실행화면](fig/bash_original.png){#bash-original}
+
+![배쉬 ](fig/bash_highlight.png){#bash-highlight}
+
+배쉬 도구 설치 전후 비교
+:::
+
+[bash-it](https://github.com/Bash-it/bash-it.git)을 다운로드 받아 다음 명령어로 설치한다.
+
+````bash
+$ git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
+$ ~/.bash_it/install.sh
+$ source ~/.bash_profile
+````
 
 
 
