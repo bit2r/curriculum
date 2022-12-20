@@ -16,6 +16,9 @@ format:
     number-sections: true
     highlight-style: github    
     self-contained: false
+filters:
+  - lightbox
+lightbox: auto
 bibliography: bibliography.bib
 link-citations: yes
 csl: apa-single-spaced.csl
@@ -26,4 +29,59 @@ editor_options:
 
 # [디지털 글쓰기](https://github.com/bit2r/bitBook)
 
+[참조: [https://www.meyerperin.com/using-quarto/](https://github.com/lucas-a-meyer/using-quarto)]{.aside}
 
+# 콘텐츠 가치사슬
+
+데이터 과학을 구성하고 있는 데이터, 코드, 시각화 그래프, 보고서, 논문, 모형 등 **가치사슬(Value Chain)**을 실무적으로 살펴보면 다음과 같다. 즉, 최종 데이터 과학 결과물만 가치가 있고 그 준비과정과 중간에 산출되는 결과물은 비용으로 간주된다. [이미지 출처: David Robinson (`@drrob`) 발표내용을 Amelia McNamara 박사가 사진 촬영한 것]{.aside}
+
+
+![데이터 과학 콘텐츠 가치 사슬](fig/content-value-chain.jpg)
+
+::: {.column-page layout-ncol=2}
+::: {.column width="45%"}
+### `ipynb` &rarr; 작업결과물 {-}
+
+```{mermaid}
+graph TD
+    A[.ipynb] --> B(("Pandoc"))
+    B ----> E[.doc]
+    B ----> H[.pptx]
+    B --> C[.md]
+    B --> D[.tex] 
+    D --> F((Xetex))
+    C --> I((Hugo))
+    F --> G[.pdf]
+    I --> J[.html]
+    style B fill:#FF6655AA
+    style F fill:#88ffFF
+    style I fill:#88ffFF
+```
+
+:::
+
+::: {.column width="55%"}
+### `quarto` &rarr; 작업결과물 {-}
+
+```{mermaid}
+graph TD
+Q[.qmd] --> A
+subgraph "쿼토(Quarto)"
+    A[.ipynb] --> B(("Pandoc"))
+    B --> C[.md]
+    B --> D[.tex] 
+    D --> F((Xetex))
+    C --> I((Hugo))
+    style B fill:#FF6655AA
+    style F fill:#88ffFF
+    style I fill:#88ffFF
+end
+    B ----> E[.doc]
+    B ----> H[.pptx]
+    F --> G[.pdf]
+    I --> J[.html]
+```
+
+:::
+
+:::

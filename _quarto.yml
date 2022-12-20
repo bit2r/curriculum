@@ -7,6 +7,7 @@ project:
   render:
     - "*.qmd"
     - "!flexdashboard/"
+    - "!*.ipynb"    
 
 lang: kr
 date-format: "YYYY년 MM월 DD일"
@@ -30,6 +31,8 @@ website:
             text: "Sqlite 데이터베이스"
           - href: 03_setup_python.qmd
             text: "파이썬"
+          - href: hello_world_jupyter.qmd
+            text: "쥬피터 노트북"
       - text: "교재"
         menu:
           - text: "-----"

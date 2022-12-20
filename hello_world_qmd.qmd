@@ -1,0 +1,82 @@
+---
+jupyter: python3
+---
+
+# 헬로월드 파이썬
+
+## 데이터와 시각화
+
+```{python}
+training_set = {'Dog':[[1,2],[2,3],[3,1]], 'Cat':[[11,20],[14,15],[12,15]]}
+testing_set = [15,20]
+
+#ploting all data
+import matplotlib.pyplot as plt
+c = 'x'
+for data in training_set:
+	print(data)
+	
+	#print(training_set[data])
+	for i in training_set[data]:
+		plt.plot(i[0], i[1], c, color='c')
+	
+	c = 'o'
+plt.show()
+```
+
+## 기계학습
+
+```{python}
+# 기계학습모형 데이터셋 준비
+x = []
+y = []
+for group in training_set:
+	
+	for features in training_set[group]:
+		x.append(features)
+		y.append(group)
+
+# 기계학습모형 특정
+from sklearn import preprocessing, neighbors
+
+# 데이터에 모형 적합
+clf = neighbors.KNeighborsClassifier()
+clf.fit(x, y)
+```
+
+## 모형성능
+
+```{python}
+# 예측모형 성능 평가
+from sklearn.metrics import accuracy_score
+import pandas as pd
+
+dog_df = pd.DataFrame.from_dict(training_set['Dog'])
+dog_df['Y'] = "Dog"
+
+cat_df = pd.DataFrame.from_dict(training_set['Cat'])
+cat_df['Y'] = "Cat"
+
+trainging_df = pd.concat([dog_df, cat_df])
+
+feature_df = trainging_df.drop(['Y'], axis=1)
+label_df = trainging_df['Y']
+
+Y_preds = clf.predict(feature_df)
+
+print('모형 정확도   : {:.3f}'.format(accuracy_score(label_df, Y_preds)))
+```
+
+## 모형예측
+
+```{python}
+# 분류모형 예측
+import numpy as np
+testing_set = np.array(testing_set)
+testing_set = testing_set.reshape(1,-1)
+
+# 예측
+prediction = clf.predict(testing_set)
+print(prediction)
+```
+

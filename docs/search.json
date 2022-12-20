@@ -60,7 +60,7 @@
     "href": "12_writing.html",
     "title": "디지털 글쓰기(보고서)",
     "section": "",
-    "text": "1 디지털 글쓰기"
+    "text": "1 디지털 글쓰기\n참조: https://www.meyerperin.com/using-quarto/\n\n\n2 콘텐츠 가치사슬\n데이터 과학을 구성하고 있는 데이터, 코드, 시각화 그래프, 보고서, 논문, 모형 등 가치사슬(Value Chain)을 실무적으로 살펴보면 다음과 같다. 즉, 최종 데이터 과학 결과물만 가치가 있고 그 준비과정과 중간에 산출되는 결과물은 비용으로 간주된다. 이미지 출처: David Robinson (@drrob) 발표내용을 Amelia McNamara 박사가 사진 촬영한 것\n\n\n\n데이터 과학 콘텐츠 가치 사슬\n\n\n\n\n\n\nipynb → 작업결과물\n\n\n\n\ngraph TD\n    A[.ipynb] --> B((\"Pandoc\"))\n    B ----> E[.doc]\n    B ----> H[.pptx]\n    B --> C[.md]\n    B --> D[.tex] \n    D --> F((Xetex))\n    C --> I((Hugo))\n    F --> G[.pdf]\n    I --> J[.html]\n    style B fill:#FF6655AA\n    style F fill:#88ffFF\n    style I fill:#88ffFF\n\n\n\n\n\n\n\n\n\n\n\n\nquarto → 작업결과물\n\n\n\n\ngraph TD\nQ[.qmd] --> A\nsubgraph \"쿼토(Quarto)\"\n    A[.ipynb] --> B((\"Pandoc\"))\n    B --> C[.md]\n    B --> D[.tex] \n    D --> F((Xetex))\n    C --> I((Hugo))\n    style B fill:#FF6655AA\n    style F fill:#88ffFF\n    style I fill:#88ffFF\nend\n    B ----> E[.doc]\n    B ----> H[.pptx]\n    F --> G[.pdf]\n    I --> J[.html]"
   },
   {
     "objectID": "13_git.html",
@@ -291,7 +291,7 @@
     "href": "03_setup_python.html",
     "title": "파이썬 환경설정",
     "section": "",
-    "text": "참조: Riddhiman (Apr 19, 2022), “Getting started with Python using R and reticulate”, R’tichoke\n\n\nR/쿼토 환경에서 파이썬을 사용하는 가장 간단한 방법은 미니콘다를 사용하는 방식이다. 미니콘다(miniconda)는 작고 가볍기 때문에 아나콘다를 기본 기능을 사용할 수 있는 장점도 있다. 추후 필요한 기능에 필요한 패키지를 설치하여 사용한다.\nR에서 이를 가능하게 하는 방식이 reticulate 패키지를 설치한 후 전체 과정을 단순화시킬 수 있다.\n\ninstall.packages(\"reticulate\")\nlibrary(reticulate)\ninstall_miniconda(path = \"c:/miniconda\", update = TRUE)\n\n\n\n\n미니콘다가 다른 이슈없이 설치되었다면 conda_list() 함수를 사용해서 `r-reticulate``\n\nuse_python(): 파이썬이 설치된 경로.\nuse_virtualenv(): 파이썬 가상환경(virtualenv)이 설치된 경로.\nuse_condaenv(): 콘다 환경이 설치된 경로.\n\n\nconda_list(conda = \"c:/miniconda/_conda.exe\")\n\n            name                                                           python\n1   r-reticulate                     C:\\\\miniconda\\\\envs\\\\r-reticulate/python.exe\n6      miniconda                                         C:\\\\miniconda/python.exe\n콘다환경에서 가상환경을 구축한다. 가상환경의 명칭을 pyenv로 특정한다.\n\nuse_condaenv(condaenv = \"r-reticulate\", conda = \"c:/miniconda/_conda.exe\")\n\nconda_create(envname = \"pyenv\", conda = \"c:/miniconda/_conda.exe\")\n\n\n\n\nreticulate 패키지에 포함된 py_install() 함수로 기계학습과 데이터 과학에 필요한 패키지를 설치한다.\n\nreticulate::py_install(packages = c(\"pandas\", \"scikit-learn\", \"matplotlib\"))"
+    "text": "참조: Riddhiman (Apr 19, 2022), “Getting started with Python using R and reticulate”, R’tichoke\n\n\nR/쿼토 환경에서 파이썬을 사용하는 가장 간단한 방법은 미니콘다를 사용하는 방식이다. 미니콘다(miniconda)는 작고 가볍기 때문에 아나콘다를 기본 기능을 사용할 수 있는 장점도 있다. 추후 필요한 기능에 필요한 패키지를 설치하여 사용한다.\nR에서 이를 가능하게 하는 방식이 reticulate 패키지를 설치한 후 전체 과정을 단순화시킬 수 있다.\n\ninstall.packages(\"reticulate\")\nlibrary(reticulate)\ninstall_miniconda(path = \"c:/miniconda\", update = TRUE)\n\n\n\n\n미니콘다가 다른 이슈없이 설치되었다면 conda_list() 함수를 사용해서 `r-reticulate``\n\nuse_python(): 파이썬이 설치된 경로.\nuse_virtualenv(): 파이썬 가상환경(virtualenv)이 설치된 경로.\nuse_condaenv(): 콘다 환경이 설치된 경로.\n\n\nconda_list(conda = \"c:/miniconda/_conda.exe\")\n\n            name                                                           python\n1   r-reticulate                     C:\\\\miniconda\\\\envs\\\\r-reticulate/python.exe\n6      miniconda                                         C:\\\\miniconda/python.exe\n콘다환경에서 가상환경을 구축한다. 가상환경의 명칭을 pyenv로 특정한다.\n\nuse_condaenv(condaenv = \"r-reticulate\", conda = \"c:/miniconda/_conda.exe\")\n\nconda_create(envname = \"pyenv\", conda = \"c:/miniconda/_conda.exe\")\n\n\n\n\nreticulate 패키지에 포함된 py_install() 함수로 기계학습과 데이터 과학에 필요한 패키지를 설치한다. 추후 .ipynb 쥬피터 노트북 파이썬 결과물을 쿼토에서 컴파일하는데 필요한 jupyter 패키지도 설치한다.\n\nreticulate::py_install(packages = c(\"pandas\", \"scikit-learn\", \"matplotlib\"))\nreticulate::py_install(packages = c(\"jupyter\"))"
   },
   {
     "objectID": "03_setup_python.html#파이썬-환경구축-1",
@@ -327,5 +327,40 @@
     "title": "파이썬 환경설정",
     "section": "2.5 분류모형 예측",
     "text": "2.5 분류모형 예측\n실제로 기계학습모형에 사용된 적이 없는 개와 고양이 데이터를 직접 넣어 어떻게 예측하는지 확인해보자.\n\n# 분류모형 예측\nimport numpy as np\ntesting_set = np.array(testing_set)\ntesting_set = testing_set.reshape(1,-1)\n\n# 예측\nprediction = clf.predict(testing_set)\nprint(prediction)\n\n['Cat']"
+  },
+  {
+    "objectID": "hello_world_sklearn.html",
+    "href": "hello_world_sklearn.html",
+    "title": "데이터 과학",
+    "section": "",
+    "text": "training_set = {'Dog':[[1,2],[2,3],[3,1]], 'Cat':[[11,20],[14,15],[12,15]]}\ntesting_set = [15,20]\n\n#ploting all data\nimport matplotlib.pyplot as plt\nc = 'x'\nfor data in training_set:\n    print(data)\n    \n    #print(training_set[data])\n    for i in training_set[data]:\n        plt.plot(i[0], i[1], c, color='c')\n    \n    c = 'o'\nplt.show()\n\n# 기계학습모형 데이터셋 준비\nx = []\ny = []\nfor group in training_set:\n    \n    for features in training_set[group]:\n        x.append(features)\n        y.append(group)\n\n# 기계학습모형 특정\nfrom sklearn import preprocessing, neighbors\n\n# 데이터에 모형 적합\nclf = neighbors.KNeighborsClassifier()\nclf.fit(x, y)\n\n# 예측모형 성능 평가\nfrom sklearn.metrics import accuracy_score\nimport pandas as pd\n\ndog_df = pd.DataFrame.from_dict(training_set['Dog'])\ndog_df['Y'] = \"Dog\"\n\ncat_df = pd.DataFrame.from_dict(training_set['Cat'])\ncat_df['Y'] = \"Cat\"\n\ntrainging_df = pd.concat([dog_df, cat_df])\n\nfeature_df = trainging_df.drop(['Y'], axis=1)\nlabel_df = trainging_df['Y']\n\nY_preds = clf.predict(feature_df)\n\nprint('모형 정확도   : {:.3f}'.format(accuracy_score(label_df, Y_preds)))\n\n# 분류모형 예측\nimport numpy as np\ntesting_set = np.array(testing_set)\ntesting_set = testing_set.reshape(1,-1)\n\n# 예측\nprediction = clf.predict(testing_set)\nprint(prediction)\n\nDog\nCat\n\n\n\n\n\n모형 정확도   : 1.000\n['Cat']"
+  },
+  {
+    "objectID": "hello_world_jupyter.html",
+    "href": "hello_world_jupyter.html",
+    "title": "데이터 과학",
+    "section": "",
+    "text": "training_set = {'Dog':[[1,2],[2,3],[3,1]], 'Cat':[[11,20],[14,15],[12,15]]}\ntesting_set = [15,20]\n\n#ploting all data\nimport matplotlib.pyplot as plt\nc = 'x'\nfor data in training_set:\n    print(data)\n    \n    #print(training_set[data])\n    for i in training_set[data]:\n        plt.plot(i[0], i[1], c, color='c')\n    \n    c = 'o'\nplt.show()\n\nDog\nCat\n\n\n\n\n\n\n\n\n\n# 기계학습모형 데이터셋 준비\nx = []\ny = []\nfor group in training_set:\n    \n    for features in training_set[group]:\n        x.append(features)\n        y.append(group)\n\n# 기계학습모형 특정\nfrom sklearn import preprocessing, neighbors\n\n# 데이터에 모형 적합\nclf = neighbors.KNeighborsClassifier()\nclf.fit(x, y)\n\nKNeighborsClassifier()In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.KNeighborsClassifierKNeighborsClassifier()\n\n\n\n\n\n\n# 예측모형 성능 평가\nfrom sklearn.metrics import accuracy_score\nimport pandas as pd\n\ndog_df = pd.DataFrame.from_dict(training_set['Dog'])\ndog_df['Y'] = \"Dog\"\n\ncat_df = pd.DataFrame.from_dict(training_set['Cat'])\ncat_df['Y'] = \"Cat\"\n\ntrainging_df = pd.concat([dog_df, cat_df])\n\nfeature_df = trainging_df.drop(['Y'], axis=1)\nlabel_df = trainging_df['Y']\n\nY_preds = clf.predict(feature_df)\n\nprint('모형 정확도   : {:.3f}'.format(accuracy_score(label_df, Y_preds)))\n\n모형 정확도   : 1.000\n\n\n\n\n\n\n# 분류모형 예측\nimport numpy as np\ntesting_set = np.array(testing_set)\ntesting_set = testing_set.reshape(1,-1)\n\n# 예측\nprediction = clf.predict(testing_set)\nprint(prediction)\n\n['Cat']"
+  },
+  {
+    "objectID": "03_setup_python.html#ipynb-.qmd-1",
+    "href": "03_setup_python.html#ipynb-.qmd-1",
+    "title": "파이썬 환경설정",
+    "section": "3.1 .ipynb → .qmd",
+    "text": "3.1 .ipynb → .qmd\n개와 고양이 분류 예측모형 개발을 파이썬 쥬피터 노트북으로 개발을 하였다면 이를 쿼토로 변환시켜 _quarto.yml 파일에 등재시킬 수 있는 .qmd 파일로 변환시킨다.\n$ quarto convert hello_world_jupyter.ipynb\nConverted to hello_world_jupyter.qmd"
+  },
+  {
+    "objectID": "03_setup_python.html#qmd-.ipynb",
+    "href": "03_setup_python.html#qmd-.ipynb",
+    "title": "파이썬 환경설정",
+    "section": "3.2 .qmd → .ipynb",
+    "text": "3.2 .qmd → .ipynb\n마찬가지로 .qmd 파일을 쥬피터 .ipynb 파일로 변환시킬 경우 동일하게 quarto convert 명령어를 사용한다.\n$ quarto convert hello_world_qmd.qmd\nConverted to hello_world_qmd.ipynb"
+  },
+  {
+    "objectID": "hello_world_qmd.html",
+    "href": "hello_world_qmd.html",
+    "title": "데이터 과학",
+    "section": "",
+    "text": "training_set = {'Dog':[[1,2],[2,3],[3,1]], 'Cat':[[11,20],[14,15],[12,15]]}\ntesting_set = [15,20]\n\n#ploting all data\nimport matplotlib.pyplot as plt\nc = 'x'\nfor data in training_set:\n    print(data)\n    \n    #print(training_set[data])\n    for i in training_set[data]:\n        plt.plot(i[0], i[1], c, color='c')\n    \n    c = 'o'\nplt.show()\n\nDog\nCat\n\n\n\n\n\n\n\n\n\n# 기계학습모형 데이터셋 준비\nx = []\ny = []\nfor group in training_set:\n    \n    for features in training_set[group]:\n        x.append(features)\n        y.append(group)\n\n# 기계학습모형 특정\nfrom sklearn import preprocessing, neighbors\n\n# 데이터에 모형 적합\nclf = neighbors.KNeighborsClassifier()\nclf.fit(x, y)\n\nKNeighborsClassifier()In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.KNeighborsClassifierKNeighborsClassifier()\n\n\n\n\n\n\n# 예측모형 성능 평가\nfrom sklearn.metrics import accuracy_score\nimport pandas as pd\n\ndog_df = pd.DataFrame.from_dict(training_set['Dog'])\ndog_df['Y'] = \"Dog\"\n\ncat_df = pd.DataFrame.from_dict(training_set['Cat'])\ncat_df['Y'] = \"Cat\"\n\ntrainging_df = pd.concat([dog_df, cat_df])\n\nfeature_df = trainging_df.drop(['Y'], axis=1)\nlabel_df = trainging_df['Y']\n\nY_preds = clf.predict(feature_df)\n\nprint('모형 정확도   : {:.3f}'.format(accuracy_score(label_df, Y_preds)))\n\n모형 정확도   : 1.000\n\n\n\n\n\n\n# 분류모형 예측\nimport numpy as np\ntesting_set = np.array(testing_set)\ntesting_set = testing_set.reshape(1,-1)\n\n# 예측\nprediction = clf.predict(testing_set)\nprint(prediction)\n\n['Cat']"
   }
 ]

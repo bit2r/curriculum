@@ -172,6 +172,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="dropdown-item" href="./03_setup_python.html">
  <span class="dropdown-text">파이썬</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./hello_world_jupyter.html">
+ <span class="dropdown-text">쥬피터 노트북</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -313,6 +317,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#분류모형-성능" id="toc-분류모형-성능" class="nav-link" data-scroll-target="#분류모형-성능"><span class="toc-section-number">2.4</span>  분류모형 성능</a></li>
   <li><a href="#분류모형-예측" id="toc-분류모형-예측" class="nav-link" data-scroll-target="#분류모형-예측"><span class="toc-section-number">2.5</span>  분류모형 예측</a></li>
   </ul></li>
+  <li><a href="#ipynb-.qmd" id="toc-ipynb-.qmd" class="nav-link" data-scroll-target="#ipynb-.qmd"><span class="toc-section-number">3</span>  <code>.ipynb</code> ↔︎ <code>.qmd</code></a>
+  <ul class="collapse">
+  <li><a href="#ipynb-.qmd-1" id="toc-ipynb-.qmd-1" class="nav-link" data-scroll-target="#ipynb-.qmd-1"><span class="toc-section-number">3.1</span>  <code>.ipynb</code> → <code>.qmd</code></a></li>
+  <li><a href="#qmd-.ipynb" id="toc-qmd-.ipynb" class="nav-link" data-scroll-target="#qmd-.ipynb"><span class="toc-section-number">3.2</span>  <code>.qmd</code> → <code>.ipynb</code></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -396,9 +405,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="패키지-설치" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="패키지-설치"><span class="header-section-number">1.3</span> 패키지 설치</h2>
-<p><code>reticulate</code> 패키지에 포함된 <code>py_install()</code> 함수로 기계학습과 데이터 과학에 필요한 패키지를 설치한다.</p>
+<p><code>reticulate</code> 패키지에 포함된 <code>py_install()</code> 함수로 기계학습과 데이터 과학에 필요한 패키지를 설치한다. 추후 <code>.ipynb</code> 쥬피터 노트북 파이썬 결과물을 쿼토에서 컴파일하는데 필요한 <code>jupyter</code> 패키지도 설치한다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(<span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"pandas"</span>, <span class="st">"scikit-learn"</span>, <span class="st">"matplotlib"</span>))</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(<span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"pandas"</span>, <span class="st">"scikit-learn"</span>, <span class="st">"matplotlib"</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(<span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"jupyter"</span>))</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -508,6 +518,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>['Cat']</code></pre>
 </div>
 </div>
+</section>
+</section>
+<section id="ipynb-.qmd" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <code>.ipynb</code> ↔︎ <code>.qmd</code></h1>
+<section id="ipynb-.qmd-1" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="ipynb-.qmd-1"><span class="header-section-number">3.1</span> <code>.ipynb</code> → <code>.qmd</code></h2>
+<p>개와 고양이 분류 예측모형 개발을 파이썬 쥬피터 노트북으로 개발을 하였다면 이를 쿼토로 변환시켜 <code>_quarto.yml</code> 파일에 등재시킬 수 있는 <code>.qmd</code> 파일로 변환시킨다.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> quarto convert hello_world_jupyter.ipynb</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Converted</span> to hello_world_jupyter.qmd</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="qmd-.ipynb" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="qmd-.ipynb"><span class="header-section-number">3.2</span> <code>.qmd</code> → <code>.ipynb</code></h2>
+<p>마찬가지로 <code>.qmd</code> 파일을 쥬피터 <code>.ipynb</code> 파일로 변환시킬 경우 동일하게 <code>quarto convert</code> 명령어를 사용한다.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> quarto convert hello_world_qmd.qmd</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Converted</span> to hello_world_qmd.ipynb</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -653,7 +678,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left"><a href="https://quarto.org/">Quarto</a> 로 제작</div>   
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":true,"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox"});</script>
+<script>var lightboxQuarto = GLightbox({"loop":true,"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});</script>
 
 
 
