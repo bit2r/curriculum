@@ -25,7 +25,7 @@ website:
         menu:
           - href: 00_setup.qmd
             text: "실습환경"
-          - href: 01_setup_scenario.qmd
+          - href: 01_setup_bash.qmd
             text: "CLI 개발환경"
           - href: 02_setup_sql.qmd
             text: "Sqlite 데이터베이스"

@@ -369,5 +369,26 @@
     "title": "고급 데이터과학: R",
     "section": "",
     "text": "1 R\nR 다운로드 웹사이트에서 운영체제에 맞는 R 엔진을 다운로드 받아 설치한다.\n\n\n2 Rtools\nC/C++/Fortran 코드를 컴파일해서 R 패키지를 윈도우 환경에서 사용할 경우 Rtools 설치하여 사용한다.\n\n\n3 RStudio\nR기반 통합개발환경(IDE)으로 RStudio를 많이 사용하고 있고 최근에는 VS Code 를 설치하여 R 혹은 파이썬 데이터과학 제품을 개발하는 사례로 늘고 있다.\n\n\n4 쿼토(Quarto)\n쿼토(Quarto)를 다운로드하여 과 R마크다운을 통해 수행한 다양한 데이터 과학 작업을 통합관리 추진하는데 필요하다.\n\n\n5 글꼴\n네이버 나눔 글꼴을 다운로드 받아 설치하게 되면 가시성 좋은 데이터 과학 산출물과 코딩 가독성을 높일 수 있다.\n\n\n6 R 패키지\nCRAN (Comprehensive R Archive Network) 에서 정식 등록된 고품질 다양한 패키지를 설치한다.\n\nRprofile.site\n.Rprofile\n\n파일에 다음 사항을 지정하면 패키지 저장소를 지정할 수 있다.\n\nlocal({\n  r <- getOption(\"repos\")\n  r[\"CRAN\"] <- \"http://cran.cnr.berkeley.edu/\"\n  options(repos = r)\n})\n\nJavier Luraschi (November 21, 2022), “Managing Packages with the RStudio IDE”, Posit Support, Repositories - R Package Repositories\nRStudio 상단 메뉴에서 Tools → Global Options → Packages로 가면 패키지 저장소를 지정할 수도 있다."
+  },
+  {
+    "objectID": "01_setup_bash.html",
+    "href": "01_setup_bash.html",
+    "title": "CLI 개발환경",
+    "section": "",
+    "text": "윈도우 환경에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구.\n\nGit for Windows: https://gitforwindows.org/\n\n\n\n\n윈도우 10/11에서 WSL(Windows Subsystem Linux)을 설치하여 윈도우에서 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구\n\nWindows Subsystem for Linux (WSL) : https://learn.microsoft.com/en-us/windows/wsl/install\n\n\n\n\n격리 가상화 기술을 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어를 사용하여 컴퓨터를 조작할 수 있도록 해주는 도구\n\n도커: https://www.docker.com/\n\n명령라인 데이터 분석 작업을 수행하기 위한 환경을 개별적으로 구축하기 보다 이미 구축된 도커 환경을 가져와서 준비한다. [@janssens2021data]\n\n도커를 다운로드 받아 설치한다.\n도커허브에서 도커이미지를 받아온다.\n\ndatasciencetoolbox/dsatcl2e\n\n도커를 실행시키고 로컬 디렉토리와 도커 컨테이너 디렉토리를 일치시킨다.\n\n\n\n\n도커 로컬 디렉토리와 컨테이너 디렉토리 마운트 작업\n\n\n$ docker pull datasciencetoolbox/dsatcl2e \n$ docker run --rm -it datasciencetoolbox/dsatcl2e\n$ docker run --rm -it -v \"$(pwd)\":/home/dst/data datasciencetoolbox/dsatcl2e\n\n\n\n데이터 과학에 특화된 클라우드 서비스를 사용하여 운영체제에 독립적으로 유닉스/리눅스 쉘 명령어는 물론 데이터 과학에 필요한 다양한 기능을 지원하는 서비스\n\nPosit Cloud (formerly RStudio Cloud): https://posit.cloud/\n빛에듀: http://bit-edu.iptime.org/rstudio/"
+  },
+  {
+    "objectID": "01_setup_bash.html#최신-배쉬-설치",
+    "href": "01_setup_bash.html#최신-배쉬-설치",
+    "title": "CLI 개발환경",
+    "section": "2.1 최신 배쉬 설치",
+    "text": "2.1 최신 배쉬 설치\n명령라인 데이터분석을 위해서는 먼저 다음과 같이 다양한 쉘 중에서 특정 쉘(bash)을 지정하고 이를 기본 쉘로 설정한다. 왜냐하면 경우에 따라서 쉘 명령어가 동작하지 않는 경우가 있기 때문이다.\n$ brew install bash\n$ which -a bash\n$ sudo chsh -s /usr/local/bin/bash\n$ bash --version\nGNU bash, version 5.2.15(1)-release (x86_64-apple-darwin21.6.0)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\n\n\n\n\n\nzsh → bash 기본 쉘 설정\n\n\n\n맥에서 zsh가 기본 쉘로 설정된 경우 이를 bash로 상기 명령어로 지정한다.\n$ sudo chsh -s /usr/local/bin/bash"
+  },
+  {
+    "objectID": "01_setup_bash.html#배쉬툴-설치",
+    "href": "01_setup_bash.html#배쉬툴-설치",
+    "title": "CLI 개발환경",
+    "section": "2.2 배쉬툴 설치",
+    "text": "2.2 배쉬툴 설치\n배쉬를 설정하고 기본 쉘로 설정한 후에 생산성 향상과 즐거운 데이터분석업무를 위해서 필요한 추가 도구를 설정한다. ble.sh와 bash-it이 가장 많이 사용되고 있어 둘 중에서 마음에 드는 것을 설치한다.\n\n\n\n\n\n배쉬 설치 후 첫 실행화면\n\n\n\n배쉬\n\n\n그림 1: 배쉬 도구 설치 전후 비교\n\n\nbash-it을 다운로드 받아 다음 명령어로 설치한다.\n$ git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it\n$ ~/.bash_it/install.sh\n$ source ~/.bash_profile"
   }
 ]
