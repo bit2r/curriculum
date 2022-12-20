@@ -170,5 +170,22 @@ We*Love*Data*Science!
 $ asciinema -yt "Start Here !!!"
 ```
 
+# 데이터 가져오기
 
+`curl` 쉘명령어로 URL 파일을 로컬 파일로 가져올 수 있다. [movies.txt](https://github.com/jeroenjanssens/data-science-at-the-command-line/blob/master/book/2e/data/ch02/movies.txt) 파일을 직접 로컬 파일로 가져오자.
+
+```bash
+$ curl https://raw.githubusercontent.com/jeroenjanssens/data-science-at-the-command-line/master/book/2e/data/ch02/movies.txt --output data/movies.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    61  100    61    0     0    205      0 --:--:-- --:--:-- --:--:--   206
+
+$ cat data/movies.txt
+Matrix
+Star Wars
+Home Alone
+Indiana Jones
+Back to the Future
+
+```
 
