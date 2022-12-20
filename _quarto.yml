@@ -33,6 +33,8 @@ website:
             text: "파이썬"
           - href: hello_world_jupyter.qmd
             text: "쥬피터 노트북"
+          - href: 04_setup_r.qmd
+            text: "고급 데이터과학: R"            
       - text: "교재"
         menu:
           - text: "-----"

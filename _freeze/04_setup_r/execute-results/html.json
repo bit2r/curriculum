@@ -1,0 +1,14 @@
+{
+  "hash": "a5e0139aa8057e7de9a8be9d8b4bf191",
+  "result": {
+    "markdown": "---\ntitle: \"고급 데이터과학: R\"\ndescription: \"고급 데이터 과학 R 개발 환경을 준비합니다.\"\ndate: today # 날짜 설정: now, last-modified\nauthor:\n  - name: 이광춘\n    affiliation: TCS\ntitle-block-banner: false\nformat:\n  html:\n    css: css/quarto-fonts.css\n    code-fold: false\n    code-overflow: wrap    \n    toc: true\n    toc-depth: 2\n    number-sections: true\n    highlight-style: github    \n    self-contained: false\nbibliography: bibliography.bib\nlink-citations: yes\ncsl: apa-single-spaced.csl\nengine: knitr\neditor_options: \n  chunk_output_type: console\nfilters:\n  - lightbox\nlightbox: auto  \neditor: \n  markdown: \n    wrap: 72\n---\n\n\n\n# R\n\n[R 다운로드](https://cran.rstudio.com/) 웹사이트에서 운영체제에 맞는 R 엔진을 다운로드 받아 설치한다.\n\n# Rtools \n\nC/C++/Fortran 코드를 컴파일해서 R 패키지를 윈도우 환경에서 사용할 경우 [Rtools](https://cran.r-project.org/bin/windows/Rtools/) 설치하여 사용한다.\n\n# RStudio\n\nR기반 통합개발환경(IDE)으로 [RStudio](https://posit.co/downloads/)를 많이 사용하고 있고 최근에는 VS Code 를 설치하여 R 혹은 파이썬 데이터과학 제품을 개발하는 사례로 늘고 있다.\n\n# 쿼토(Quarto)\n\n[쿼토(Quarto)](https://quarto.org/docs/download/)를 다운로드하여 과 R마크다운을 통해 수행한 다양한 데이터 과학 작업을 통합관리 추진하는데 필요하다.\n\n# 글꼴\n\n네이버 [나눔 글꼴](https://hangeul.naver.com/font)을 다운로드 받아 설치하게 되면 가시성 좋은 데이터 과학 산출물과 코딩 가독성을 높일 수 있다.\n\n# R 패키지\n\n[CRAN (Comprehensive R Archive Network)](https://cran.r-project.org) 에서 정식 등록된 고품질 다양한 패키지를 설치한다.\n\n- `Rprofile.site`\n- `.Rprofile`\n\n파일에 다음 사항을 지정하면 패키지 저장소를 지정할 수 있다.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlocal({\n  r <- getOption(\"repos\")\n  r[\"CRAN\"] <- \"http://cran.cnr.berkeley.edu/\"\n  options(repos = r)\n})\n```\n:::\n\n\n[[Javier Luraschi (November 21, 2022), \"Managing Packages with the RStudio IDE\", Posit Support](https://support.posit.co/hc/en-us/articles/360004067074),\n[Repositories - R Package Repositories](https://solutions.posit.co/envs-pkgs/environments/repositories/)\n]{.aside}\n\nRStudio 상단 메뉴에서 `Tools` &rarr; `Global Options` &rarr; `Packages`로 가면 패키지 저장소를 지정할 수도 있다.\n\n![](fig/rstudio-package-repo.png)\n\n\n\n\n\n\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
