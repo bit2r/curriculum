@@ -1,6 +1,14 @@
-curl -s "https://raw.githubusercontent.com/statkclee/ml/gh-pages/data/B%EC%82%AC%EA%B0%90%EA%B3%BC_%EB%9F%AC%EB%B8%8C%EB%A0%88%ED%84%B0.txt" | \
-grep -oE '\w+' | \
-sort | \
-uniq -c | \
-sort -nr | \
-head -n 5
+
+curl https://raw.githubusercontent.com/jeroenjanssens/data-science-at-the-command-line/master/book/2e/data/ch02/movies.txt --output data/movies.txt
+
+curl -sL "https://raw.githubusercontent.com/stopwords-iso/stopwords-en/master/stopwords-en.txt" |
+sort | tee stopwords 
+
+curl -sL "https://www.gutenberg.org/files/11/11-0.txt" |                        
+tr '[:upper:]' '[:lower:]' |            
+grep -oE "[a-z\']{2,}" |                
+sort |              
+grep -Fvwf stopwords |                  
+uniq -c |           
+sort -nr |          
+head -n 10
