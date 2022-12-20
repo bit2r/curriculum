@@ -27,7 +27,9 @@ website:
           - href: 01_setup_scenario.qmd
             text: "CLI 개발환경"
           - href: 02_setup_sql.qmd
-            text: "Sqlite 데이터베이스"            
+            text: "Sqlite 데이터베이스"
+          - href: 03_setup_python.qmd
+            text: "파이썬"
       - text: "교재"
         menu:
           - text: "-----"

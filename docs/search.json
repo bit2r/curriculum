@@ -285,5 +285,47 @@
     "title": "CLI 개발환경",
     "section": "2.2 배쉬툴 설치",
     "text": "2.2 배쉬툴 설치\n배쉬를 설정하고 기본 쉘로 설정한 후에 생산성 향상과 즐거운 데이터분석업무를 위해서 필요한 추가 도구를 설정한다. ble.sh와 bash-it이 가장 많이 사용되고 있어 둘 중에서 마음에 드는 것을 설치한다.\n\n\n\n\n\n배쉬 설치 후 첫 실행화면\n\n\n\n배쉬\n\n\n그림 1: 배쉬 도구 설치 전후 비교\n\n\nbash-it을 다운로드 받아 다음 명령어로 설치한다.\n$ git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it\n$ ~/.bash_it/install.sh\n$ source ~/.bash_profile"
+  },
+  {
+    "objectID": "03_setup_python.html",
+    "href": "03_setup_python.html",
+    "title": "파이썬 환경설정",
+    "section": "",
+    "text": "참조: Riddhiman (Apr 19, 2022), “Getting started with Python using R and reticulate”, R’tichoke\n\n\nR/쿼토 환경에서 파이썬을 사용하는 가장 간단한 방법은 미니콘다를 사용하는 방식이다. 미니콘다(miniconda)는 작고 가볍기 때문에 아나콘다를 기본 기능을 사용할 수 있는 장점도 있다. 추후 필요한 기능에 필요한 패키지를 설치하여 사용한다.\nR에서 이를 가능하게 하는 방식이 reticulate 패키지를 설치한 후 전체 과정을 단순화시킬 수 있다.\n\ninstall.packages(\"reticulate\")\nlibrary(reticulate)\ninstall_miniconda(path = \"c:/miniconda\", update = TRUE)\n\n\n\n\n미니콘다가 다른 이슈없이 설치되었다면 conda_list() 함수를 사용해서 `r-reticulate``\n\nuse_python(): 파이썬이 설치된 경로.\nuse_virtualenv(): 파이썬 가상환경(virtualenv)이 설치된 경로.\nuse_condaenv(): 콘다 환경이 설치된 경로.\n\n\nconda_list(conda = \"c:/miniconda/_conda.exe\")\n\n            name                                                           python\n1   r-reticulate                     C:\\\\miniconda\\\\envs\\\\r-reticulate/python.exe\n6      miniconda                                         C:\\\\miniconda/python.exe\n콘다환경에서 가상환경을 구축한다. 가상환경의 명칭을 pyenv로 특정한다.\n\nuse_condaenv(condaenv = \"r-reticulate\", conda = \"c:/miniconda/_conda.exe\")\n\nconda_create(envname = \"pyenv\", conda = \"c:/miniconda/_conda.exe\")\n\n\n\n\nreticulate 패키지에 포함된 py_install() 함수로 기계학습과 데이터 과학에 필요한 패키지를 설치한다.\n\nreticulate::py_install(packages = c(\"pandas\", \"scikit-learn\", \"matplotlib\"))"
+  },
+  {
+    "objectID": "03_setup_python.html#파이썬-환경구축-1",
+    "href": "03_setup_python.html#파이썬-환경구축-1",
+    "title": "파이썬 환경설정",
+    "section": "2.1 파이썬 환경구축",
+    "text": "2.1 파이썬 환경구축\n콘다환경을 구축하여 파이썬 데이터 과학 프로그램을 실행시킬 수 있는 환경을 구축한다.\n\nlibrary(reticulate)\nuse_condaenv(condaenv = \"r-reticulate\", conda = \"c:/miniconda/_conda.exe\")"
+  },
+  {
+    "objectID": "03_setup_python.html#시각화",
+    "href": "03_setup_python.html#시각화",
+    "title": "파이썬 환경설정",
+    "section": "2.2 시각화",
+    "text": "2.2 시각화\n고양이와 개에 대한 피쳐(Feature)를 바탕으로 고양이와 개를 분류하는 분류기계학습 모형을 개발해보자. 먼저, 기계학습을 위한 훈련 시험 데이터를 준비하고 시각화를 한다.\n\ntraining_set = {'Dog':[[1,2],[2,3],[3,1]], 'Cat':[[11,20],[14,15],[12,15]]}\ntesting_set = [15,20]\n\n#ploting all data\nimport matplotlib.pyplot as plt\nc = 'x'\nfor data in training_set:\n    print(data)\n    \n    #print(training_set[data])\n    for i in training_set[data]:\n        plt.plot(i[0], i[1], c, color='c')\n    \n    c = 'o'\nplt.show()"
+  },
+  {
+    "objectID": "03_setup_python.html#분류모형",
+    "href": "03_setup_python.html#분류모형",
+    "title": "파이썬 환경설정",
+    "section": "2.3 분류모형",
+    "text": "2.3 분류모형\n다양한 기계학습모형이 존재하지만 먼저 KNN 분류모형을 적합시켜 고양이와 개 분류 기계학습모형을 개발한다.\n\n# 기계학습모형 데이터셋 준비\nx = []\ny = []\nfor group in training_set:\n    \n    for features in training_set[group]:\n        x.append(features)\n        y.append(group)\n\n# 기계학습모형 특정\nfrom sklearn import preprocessing, neighbors\n\n# 데이터에 모형 적합\nclf = neighbors.KNeighborsClassifier()\nclf.fit(x, y)\n\nKNeighborsClassifier()In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.KNeighborsClassifierKNeighborsClassifier()"
+  },
+  {
+    "objectID": "03_setup_python.html#분류모형-성능",
+    "href": "03_setup_python.html#분류모형-성능",
+    "title": "파이썬 환경설정",
+    "section": "2.4 분류모형 성능",
+    "text": "2.4 분류모형 성능\n데이터에 적합시킨 모형이 얼마나 고양이와 개를 잘 분류하는지 예측 정확도를 따져보자.\n\n# 예측모형 성능 평가\nfrom sklearn.metrics import accuracy_score\nimport pandas as pd\n\ndog_df = pd.DataFrame.from_dict(training_set['Dog'])\ndog_df['Y'] = \"Dog\"\n\ncat_df = pd.DataFrame.from_dict(training_set['Cat'])\ncat_df['Y'] = \"Cat\"\n\ntrainging_df = pd.concat([dog_df, cat_df])\n\nfeature_df = trainging_df.drop(['Y'], axis=1)\nlabel_df = trainging_df['Y']\n\nY_preds = clf.predict(feature_df)\n\nprint('모형 정확도   : {:.3f}'.format(accuracy_score(label_df, Y_preds)))\n\n모형 정확도   : 1.000"
+  },
+  {
+    "objectID": "03_setup_python.html#분류모형-예측",
+    "href": "03_setup_python.html#분류모형-예측",
+    "title": "파이썬 환경설정",
+    "section": "2.5 분류모형 예측",
+    "text": "2.5 분류모형 예측\n실제로 기계학습모형에 사용된 적이 없는 개와 고양이 데이터를 직접 넣어 어떻게 예측하는지 확인해보자.\n\n# 분류모형 예측\nimport numpy as np\ntesting_set = np.array(testing_set)\ntesting_set = testing_set.reshape(1,-1)\n\n# 예측\nprediction = clf.predict(testing_set)\nprint(prediction)\n\n['Cat']"
   }
 ]
