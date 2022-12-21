@@ -11,6 +11,7 @@ format:
     theme: 
       - css/quarto-fonts.css
     code-fold: false
+    code-overflow: wrap
     toc: true
     toc-depth: 2
     number-sections: true
@@ -27,9 +28,6 @@ editor_options:
 ---
 
 
-# [디지털 글쓰기](https://github.com/bit2r/bitBook)
-
-[참조: [https://www.meyerperin.com/using-quarto/](https://github.com/lucas-a-meyer/using-quarto)]{.aside}
 
 # 콘텐츠 가치사슬
 
@@ -85,3 +83,75 @@ end
 :::
 
 :::
+
+
+# 실습
+
+::: {.callout-caution collapse="true"}
+## 실습 시간
+
+```{r}
+#| echo: false
+library(countdown)
+countdown::countdown(minutes = 10, seconds = 00, 
+          left = 0, right = 0,
+          bottom = 1,
+          padding = "50px",
+          margin = "5%",
+          font_size = "6em")
+```
+:::
+
+
+## 쿼토 설치
+
+## 쿼토 헬로월드
+
+## 워드문서
+
+::: {.callout-caution collapse="true"}
+## 마크다운 파일을 컴파일하여 워드문서 생성
+
+````bash
+pandoc -s ko_markdown.md -o ko_markdown.docx
+````
+
+:::
+
+## HTML 문서
+
+::: {.callout-caution collapse="true"}
+## 마크다운 파일을 컴파일하여 HTML 문서 생성
+
+````bash
+pandoc -s ko_markdown.md -o ko_markdown.html
+````
+:::
+
+## PDF 문서
+
+::: {.callout-caution collapse="true"}
+
+## 마크다운 파일을 컴파일하여 PDF 문서 생성
+
+````bash
+pandoc -s ko_markdown.md -o ko_markdown.pdf
+pandoc -s ko_markdown.md -o ko_markdown.pdf --pdf-engine=xelatex
+pandoc -s ko_markdown.md -o ko_markdown.pdf --pdf-engine=xelatex --variable mainfont='Nanum Myeongjo' -V fontsize=11pt -V papersize:"a4paper" -V geometry:margin=1in
+````
+
+:::
+
+# 관련정보
+
+- 인터랙티브 마크다운 편집기: [bit-edu 디지털 글쓰기](http://bit-edu.iptime.org/docs/digitalwriting/)
+- [디지털 글쓰기 전자책](https://github.com/bit2r/bitBook)
+- [한국 R 사용자회 웹사이트](https://github.com/bit2r/bit2r.github.io)
+- [웹슬라이드 - PPT](https://r2bit.com/bitSlide/)
+- [한글 쿼토(Quarto) 튜토리얼](https://r2bit.com/quarto/)
+- [마크다운 기초](http://aispiration.com/comp_document/)
+
+[참조: [https://www.meyerperin.com/using-quarto/](https://github.com/lucas-a-meyer/using-quarto)]{.aside}
+
+[[`countdown`](https://github.com/gadenbuie/countdown) 패키지를 사용]{.aside}
+
