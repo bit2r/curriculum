@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="이광춘">
-<meta name="description" content="업무에 필요한 다양한 보고서를 개발한다.">
+<meta name="description" content="통계 및 확률 기본기를 확인합니다.">
 
-<title>데이터 과학 - 디지털 글쓰기(보고서)</title>
+<title>데이터 과학 - 통계와 확률</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,69 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -104,9 +41,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -126,13 +60,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "검색"
   }
 }</script>
-<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
-<link href="site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
-<script src="site_libs/countdown-0.4.0/countdown.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<link rel="stylesheet" href="css/quarto-fonts.css">
 </head>
 
 <body class="nav-fixed">
@@ -296,6 +227,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
     </ul>
   </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">퀴즈</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li>
+    <a class="dropdown-item" href="./mcq_stat.html">
+ <span class="dropdown-text">확률과 통계</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
@@ -311,30 +253,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">목차</h2>
    
   <ul class="collapse">
-  <li><a href="#콘텐츠-가치사슬" id="toc-콘텐츠-가치사슬" class="nav-link active" data-scroll-target="#콘텐츠-가치사슬"><span class="toc-section-number">1</span>  콘텐츠 가치사슬</a></li>
-  <li><a href="#실습" id="toc-실습" class="nav-link" data-scroll-target="#실습"><span class="toc-section-number">2</span>  실습</a>
-  <ul class="collapse">
-  <li><a href="#쿼토-설치" id="toc-쿼토-설치" class="nav-link" data-scroll-target="#쿼토-설치"><span class="toc-section-number">2.1</span>  쿼토 설치</a></li>
-  <li><a href="#쿼토-헬로월드" id="toc-쿼토-헬로월드" class="nav-link" data-scroll-target="#쿼토-헬로월드"><span class="toc-section-number">2.2</span>  쿼토 헬로월드</a></li>
-  <li><a href="#워드문서" id="toc-워드문서" class="nav-link" data-scroll-target="#워드문서"><span class="toc-section-number">2.3</span>  워드문서</a></li>
-  <li><a href="#html-문서" id="toc-html-문서" class="nav-link" data-scroll-target="#html-문서"><span class="toc-section-number">2.4</span>  HTML 문서</a></li>
-  <li><a href="#pdf-문서" id="toc-pdf-문서" class="nav-link" data-scroll-target="#pdf-문서"><span class="toc-section-number">2.5</span>  PDF 문서</a></li>
-  </ul></li>
-  <li><a href="#관련정보" id="toc-관련정보" class="nav-link" data-scroll-target="#관련정보"><span class="toc-section-number">3</span>  관련정보</a></li>
+  <li><a href="#mcq-01번" id="toc-mcq-01번" class="nav-link active" data-scroll-target="#mcq-01번"><span class="toc-section-number">1</span>  MCQ 01번</a></li>
+  <li><a href="#mcq-02번" id="toc-mcq-02번" class="nav-link" data-scroll-target="#mcq-02번"><span class="toc-section-number">2</span>  MCQ 02번</a></li>
+  <li><a href="#mcq-03번" id="toc-mcq-03번" class="nav-link" data-scroll-target="#mcq-03번"><span class="toc-section-number">3</span>  MCQ 03번</a></li>
+  <li><a href="#mcq-04번" id="toc-mcq-04번" class="nav-link" data-scroll-target="#mcq-04번"><span class="toc-section-number">4</span>  MCQ 04번</a></li>
+  <li><a href="#mcq-05번" id="toc-mcq-05번" class="nav-link" data-scroll-target="#mcq-05번"><span class="toc-section-number">5</span>  MCQ 05번</a></li>
+  <li><a href="#mcq-06번" id="toc-mcq-06번" class="nav-link" data-scroll-target="#mcq-06번"><span class="toc-section-number">6</span>  MCQ 06번</a></li>
+  <li><a href="#mcq-07번" id="toc-mcq-07번" class="nav-link" data-scroll-target="#mcq-07번"><span class="toc-section-number">7</span>  MCQ 07번</a></li>
+  <li><a href="#mcq-08번" id="toc-mcq-08번" class="nav-link" data-scroll-target="#mcq-08번"><span class="toc-section-number">8</span>  MCQ 08번</a></li>
+  <li><a href="#mcq-09번" id="toc-mcq-09번" class="nav-link" data-scroll-target="#mcq-09번"><span class="toc-section-number">9</span>  MCQ 09번</a></li>
+  <li><a href="#mcq-10번" id="toc-mcq-10번" class="nav-link" data-scroll-target="#mcq-10번"><span class="toc-section-number">10</span>  MCQ 10번</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">디지털 글쓰기(보고서)</h1>
+<h1 class="title">통계와 확률</h1>
 </div>
 
 <div>
   <div class="description">
-    업무에 필요한 다양한 보고서를 개발한다.
+    통계 및 확률 기본기를 확인합니다.
   </div>
 </div>
 
@@ -368,186 +310,302 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="콘텐츠-가치사슬" class="level1 page-columns page-full" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> 콘텐츠 가치사슬</h1>
-<div class="page-columns page-full"><p>데이터 과학을 구성하고 있는 데이터, 코드, 시각화 그래프, 보고서, 논문, 모형 등 <strong>가치사슬(Value Chain)</strong>을 실무적으로 살펴보면 다음과 같다. 즉, 최종 데이터 과학 결과물만 가치가 있고 그 준비과정과 중간에 산출되는 결과물은 비용으로 간주된다. </p><div class="no-row-height column-margin column-container"><span class="">이미지 출처: David Robinson (<code>@drrob</code>) 발표내용을 Amelia McNamara 박사가 사진 촬영한 것</span></div></div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="fig/content-value-chain.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="데이터 과학 콘텐츠 가치 사슬"><img src="fig/content-value-chain.jpg" class="img-fluid figure-img"></a></p>
-<p></p><figcaption class="figure-caption">데이터 과학 콘텐츠 가치 사슬</figcaption><p></p>
-</figure>
-</div>
-<div class="column-page quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="column quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
-<section id="ipynb-작업결과물" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="ipynb-작업결과물"><code>ipynb</code> → 작업결과물</h3>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">graph TD
-    A[.ipynb] --&gt; B(("Pandoc"))
-    B ----&gt; E[.doc]
-    B ----&gt; H[.pptx]
-    B --&gt; C[.md]
-    B --&gt; D[.tex] 
-    D --&gt; F((Xetex))
-    C --&gt; I((Hugo))
-    F --&gt; G[.pdf]
-    I --&gt; J[.html]
-    style B fill:#FF6655AA
-    style F fill:#88ffFF
-    style I fill:#88ffFF
-</pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-</section>
-</div>
-<div class="column quarto-layout-cell" style="flex-basis: 55.0%;justify-content: center;">
-<section id="quarto-작업결과물" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="quarto-작업결과물"><code>quarto</code> → 작업결과물</h3>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">graph TD
-Q[.qmd] --&gt; A
-subgraph "쿼토(Quarto)"
-    A[.ipynb] --&gt; B(("Pandoc"))
-    B --&gt; C[.md]
-    B --&gt; D[.tex] 
-    D --&gt; F((Xetex))
-    C --&gt; I((Hugo))
-    style B fill:#FF6655AA
-    style F fill:#88ffFF
-    style I fill:#88ffFF
-end
-    B ----&gt; E[.doc]
-    B ----&gt; H[.pptx]
-    F --&gt; G[.pdf]
-    I --&gt; J[.html]
-</pre>
-<div id="mermaid-tooltip-2" class="mermaidTooltip">
-
-</div>
-<p></p>
-</div>
-</div>
-</div>
-</section>
-</div>
-</div>
-</div>
-</section>
-<section id="실습" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> 실습</h1>
+<section id="mcq-01번" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="mcq-01번"><span class="header-section-number">1</span> MCQ 01번</h2>
+<p>통계에서 모든 경우의 수를 포함하는 집합을 일컷는 용어는?</p>
+<ol type="1">
+<li>표본 공간(Sample Space)</li>
+<li>포함집합(Super Set)</li>
+<li>포함공간(Super Space)</li>
+<li>표본집합(Sample Set)</li>
+</ol>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-실습 시간
+정답
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_f45ecff9" data-update-every="1" tabindex="0" style="right:0;bottom:1;left:0;margin:5%;padding:50px;font-size:6em;">
-<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
-<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<ul>
+<li>정답: 1</li>
+<li><strong>난이도: 쉬움</strong></li>
+</ul>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<section id="쿼토-설치" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="쿼토-설치"><span class="header-section-number">2.1</span> 쿼토 설치</h2>
 </section>
-<section id="쿼토-헬로월드" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="쿼토-헬로월드"><span class="header-section-number">2.2</span> 쿼토 헬로월드</h2>
-</section>
-<section id="워드문서" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="워드문서"><span class="header-section-number">2.3</span> 워드문서</h2>
+<section id="mcq-02번" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="mcq-02번"><span class="header-section-number">2</span> MCQ 02번</h2>
+<p>다음 데이터에서 중위수(Median)을 계산하시오.</p>
+<p>데이터: <code>23, 97, 12, 38, 62</code></p>
+<ol type="1">
+<li>38</li>
+<li>12</li>
+<li>62</li>
+<li>23</li>
+</ol>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-마크다운 파일을 컴파일하여 워드문서 생성
+정답
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span> ko_markdown.md <span class="at">-o</span> ko_markdown.docx</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>정답: 1</li>
+<li><strong>난이도: 쉬움</strong></li>
+</ul>
 </div>
 </div>
 </div>
 </section>
-<section id="html-문서" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="html-문서"><span class="header-section-number">2.4</span> HTML 문서</h2>
+<section id="mcq-03번" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="mcq-03번"><span class="header-section-number">3</span> MCQ 03번</h2>
+<p>동전 던지기를 했을 때 뒷면이 나올 확률은 얼마인가?</p>
+<ol type="1">
+<li>1</li>
+<li>0.5</li>
+<li>0.25</li>
+<li>0</li>
+</ol>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-마크다운 파일을 컴파일하여 HTML 문서 생성
+정답
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span> ko_markdown.md <span class="at">-o</span> ko_markdown.html</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>정답: 2</li>
+<li><strong>난이도: 쉬움</strong></li>
+</ul>
 </div>
 </div>
 </div>
 </section>
-<section id="pdf-문서" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="pdf-문서"><span class="header-section-number">2.5</span> PDF 문서</h2>
+<section id="mcq-04번" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="mcq-04번"><span class="header-section-number">4</span> MCQ 04번</h2>
+<p>다음 문장 중 참인 것을 모두 고르시오</p>
+<ol type="1">
+<li>전체 관측점 집합을 모집단이라고 한다.</li>
+<li>표본은 모집단을 진실되게 대표해야 한다.</li>
+<li>표본은 모집단의 부분집합이다.</li>
+<li>1,2 &amp; 3 모두</li>
+</ol>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-마크다운 파일을 컴파일하여 PDF 문서 생성
+정답
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span> ko_markdown.md <span class="at">-o</span> ko_markdown.pdf</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span> ko_markdown.md <span class="at">-o</span> ko_markdown.pdf <span class="at">--pdf-engine</span><span class="op">=</span>xelatex</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-s</span> ko_markdown.md <span class="at">-o</span> ko_markdown.pdf <span class="at">--pdf-engine</span><span class="op">=</span>xelatex <span class="at">--variable</span> mainfont=<span class="st">'Nanum Myeongjo'</span> <span class="at">-V</span> fontsize=11pt <span class="at">-V</span> papersize:<span class="st">"a4paper"</span> <span class="at">-V</span> geometry:margin=1in</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="관련정보" class="level1 page-columns page-full" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> 관련정보</h1>
 <ul>
-<li>인터랙티브 마크다운 편집기: <a href="http://bit-edu.iptime.org/docs/digitalwriting/">bit-edu 디지털 글쓰기</a></li>
-<li><a href="https://github.com/bit2r/bitBook">디지털 글쓰기 전자책</a></li>
-<li><a href="https://github.com/bit2r/bit2r.github.io">한국 R 사용자회 웹사이트</a></li>
-<li><a href="https://r2bit.com/bitSlide/">웹슬라이드 - PPT</a></li>
-<li><a href="https://r2bit.com/quarto/">한글 쿼토(Quarto) 튜토리얼</a></li>
-<li><a href="http://aispiration.com/comp_document/">마크다운 기초</a></li>
+<li>정답: 4</li>
+<li><strong>난이도: 중간</strong></li>
 </ul>
-<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">참조: <a href="https://github.com/lucas-a-meyer/using-quarto">https://www.meyerperin.com/using-quarto/</a></span></div></div>
-<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class=""><a href="https://github.com/gadenbuie/countdown"><code>countdown</code></a> 패키지를 사용</span></div></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-05번" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="mcq-05번"><span class="header-section-number">5</span> MCQ 05번</h2>
+<p>확률변수 <span class="math inline">\(X\)</span>의 평균 <span class="math inline">\(E(X)\)</span>는 다음 중 무엇을 표현하는가?</p>
+<ol type="1">
+<li>평균</li>
+<li>중위수</li>
+<li>표준편차</li>
+<li>분산</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 1</li>
+<li><strong>난이도: 중간</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-06번" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="mcq-06번"><span class="header-section-number">6</span> MCQ 06번</h2>
+<p>PDF는 다음 중 무엇의 줄임말인가?</p>
+<ol type="1">
+<li>Potential Distribution Function</li>
+<li>Probability Distribution Function</li>
+<li>Potential Derivation Function</li>
+<li>Probability Derivation Function</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 2</li>
+<li><strong>난이도: 중간</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-07번" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="mcq-07번"><span class="header-section-number">7</span> MCQ 07번</h2>
+<p>다음 수식은 무엇을 표현하고 있는가?</p>
+<ul>
+<li><span class="math inline">\(Y = \alpha + \beta X\)</span></li>
+</ul>
+<ol type="1">
+<li>단순 선형 회귀</li>
+<li>다중 선형 회귀</li>
+<li>이항 분포</li>
+<li>포아송 분포</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 1</li>
+<li><strong>난이도: 중간</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-08번" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="mcq-08번"><span class="header-section-number">8</span> MCQ 08번</h2>
+<p>다음과 같이 학생 성적이 주어졌을 때, 평균을 구하시오.</p>
+<ul>
+<li><code>90, 85, 89, 93, 100, 78, 86</code></li>
+</ul>
+<ol type="1">
+<li>87.8</li>
+<li>88.71</li>
+<li>73.4</li>
+<li>84.2</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 2</li>
+<li><strong>난이도: 중간</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-09번" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="mcq-09번"><span class="header-section-number">9</span> MCQ 09번</h2>
+<p>다음 분포 중 이산형 분포가 아닌 것은 무엇인가?</p>
+<ol type="1">
+<li>베르누이 분포</li>
+<li>이항 분포</li>
+<li>코시 분포</li>
+<li>포아송 분포</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 3</li>
+<li><strong>난이도: 어려움</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-10번" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="mcq-10번"><span class="header-section-number">10</span> MCQ 10번</h2>
+<p>독립변수를 이르는 다른 명칭은 다음 중 어느 것인가?</p>
+<ol type="1">
+<li>반응 변수 (Response Variable)</li>
+<li>설명된 변수 (Explained Variable)</li>
+<li>반응자 (Reactor)</li>
+<li>회귀변수(Regressor)</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 4</li>
+<li><strong>난이도: 어려움</strong></li>
+</ul>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -692,7 +750,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left"><a href="https://quarto.org/">Quarto</a> 로 제작</div>   
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":true,"descPosition":"bottom","closeEffect":"zoom"});</script>
 
 
 

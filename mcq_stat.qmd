@@ -1,0 +1,189 @@
+---
+title: "통계와 확률"
+description: "통계 및 확률 기본기를 확인합니다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    css: css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+engine: knitr
+editor_options: 
+  chunk_output_type: console
+filters:
+  - lightbox
+lightbox: auto  
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+
+## MCQ 01번 
+
+통계에서 모든 경우의 수를 포함하는 집합을 일컷는 용어는?
+
+1. 표본 공간(Sample Space)
+1. 포함집합(Super Set)
+1. 포함공간(Super Space)
+1. 표본집합(Sample Set)
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 1
+- **난이도: 쉬움**
+:::
+
+## MCQ 02번 
+
+다음 데이터에서 중위수(Median)을 계산하시오.
+
+데이터: `23, 97, 12, 38, 62`
+
+1. 38
+1. 12
+1. 62
+1. 23
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 1
+- **난이도: 쉬움**
+:::
+
+
+## MCQ 03번 
+
+동전 던지기를 했을 때 뒷면이 나올 확률은 얼마인가?
+
+1. 1
+1. 0.5
+1. 0.25
+1. 0
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 2
+- **난이도: 쉬움**
+:::
+
+
+## MCQ 04번 
+
+다음 문장 중 참인 것을 모두 고르시오
+
+1. 전체 관측점 집합을 모집단이라고 한다.
+1. 표본은 모집단을 진실되게 대표해야 한다.
+1. 표본은 모집단의 부분집합이다.
+1. 1,2 & 3 모두
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 4
+- **난이도: 중간**
+:::
+
+## MCQ 05번 
+
+확률변수 $X$의 평균 $E(X)$는 다음 중 무엇을 표현하는가?
+
+1. 평균
+1. 중위수
+1. 표준편차
+1. 분산
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 1
+- **난이도: 중간**
+:::
+
+## MCQ 06번 
+
+PDF는 다음 중 무엇의 줄임말인가?
+
+1. Potential Distribution Function
+1. Probability Distribution Function
+1. Potential Derivation Function
+1. Probability Derivation Function
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 2
+- **난이도: 중간**
+:::
+
+## MCQ 07번 
+
+다음 수식은 무엇을 표현하고 있는가?
+
+- $Y = \alpha + \beta X$
+
+1. 단순 선형 회귀
+1. 다중 선형 회귀
+1. 이항 분포
+1. 포아송 분포
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 1
+- **난이도: 중간**
+:::
+
+## MCQ 08번 
+
+다음과 같이 학생 성적이 주어졌을 때, 평균을 구하시오.
+
+- `90, 85, 89, 93, 100, 78, 86`
+
+1. 87.8
+1. 88.71
+1. 73.4
+1. 84.2
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 2
+- **난이도: 중간**
+:::
+
+## MCQ 09번 
+
+다음 분포 중 이산형 분포가 아닌 것은 무엇인가?
+
+1. 베르누이 분포
+1. 이항 분포
+1. 코시 분포
+1. 포아송 분포
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 3
+- **난이도: 어려움**
+:::
+
+## MCQ 10번 
+
+독립변수를 이르는 다른 명칭은 다음 중 어느 것인가?
+
+1. 반응 변수 (Response Variable)
+1. 설명된 변수 (Explained Variable)
+1. 반응자 (Reactor)
+1. 회귀변수(Regressor)
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 4
+- **난이도: 어려움**
+:::

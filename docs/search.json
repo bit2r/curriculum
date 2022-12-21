@@ -439,5 +439,138 @@
     "title": "디지털 글쓰기(보고서)",
     "section": "2.5 PDF 문서",
     "text": "2.5 PDF 문서\n\n\n\n\n\n\n마크다운 파일을 컴파일하여 PDF 문서 생성\n\n\n\n\n\npandoc -s ko_markdown.md -o ko_markdown.pdf\npandoc -s ko_markdown.md -o ko_markdown.pdf --pdf-engine=xelatex\npandoc -s ko_markdown.md -o ko_markdown.pdf --pdf-engine=xelatex --variable mainfont='Nanum Myeongjo' -V fontsize=11pt -V papersize:\"a4paper\" -V geometry:margin=1in"
+  },
+  {
+    "objectID": "mcq_stat.html",
+    "href": "mcq_stat.html",
+    "title": "통계와 확률",
+    "section": "",
+    "text": "통계에서 모든 경우의 수를 포함하는 집합을 일컷는 용어는?\n\n표본 공간(Sample Space)\n포함집합(Super Set)\n포함공간(Super Space)\n표본집합(Sample Set)\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 쉬움"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-2번",
+    "href": "mcq_stat.html#mcq-2번",
+    "title": "통계와 확률",
+    "section": "2 MCQ 2번",
+    "text": "2 MCQ 2번\n다음 데이터에서 중위수(Median)을 계산하시오.\n데이터: 23, 97, 12, 38, 62\n\n38\n12\n62\n23\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 쉬움"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-2번-1",
+    "href": "mcq_stat.html#mcq-2번-1",
+    "title": "통계와 확률",
+    "section": "3 MCQ 2번",
+    "text": "3 MCQ 2번\n다음 데이터에서 중위수(Median)을 계산하시오.\n\n데이터: 23, 97, 12, 38, 62\n\n\n38\n12\n62\n23\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 쉬움"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-3번",
+    "href": "mcq_stat.html#mcq-3번",
+    "title": "통계와 확률",
+    "section": "4 MCQ 3번",
+    "text": "4 MCQ 3번\n동전 던지기를 했을 때 뒷면이 나올 확률은 얼마인가?\n\n1\n0.5\n0.25\n0\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 2\n난이도: 쉬움"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-4번",
+    "href": "mcq_stat.html#mcq-4번",
+    "title": "통계와 확률",
+    "section": "5 MCQ 4번",
+    "text": "5 MCQ 4번\n다음 문장 중 참인 것을 모두 고르시오\n\n전체 관측점 집합을 모집단이라고 한다.\n표본은 모집단을 진실되게 대표해야 한다.\n표본은 모집단의 부분집합이다.\n1,2 & 3 모두\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 4\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-5번",
+    "href": "mcq_stat.html#mcq-5번",
+    "title": "통계와 확률",
+    "section": "6 MCQ 5번",
+    "text": "6 MCQ 5번\n확률변수 \\(X\\)의 평균 \\(E(X)\\)는 다음 중 무엇을 표현하는가?\n\n평균\n중위수\n표준편차\n분산\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-6번",
+    "href": "mcq_stat.html#mcq-6번",
+    "title": "통계와 확률",
+    "section": "7 MCQ 6번",
+    "text": "7 MCQ 6번\nPDF는 다음 중 무엇의 줄임말인가?\n\nPotential Distribution Function\nProbability Distribution Function\nPotential Derivation Function\nProbability Derivation Function\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 2\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-7번",
+    "href": "mcq_stat.html#mcq-7번",
+    "title": "통계와 확률",
+    "section": "8 MCQ 7번",
+    "text": "8 MCQ 7번\n다음 수식은 무엇을 표현하고 있는가?\n\n\\(Y = \\alpha + \\beta X\\)\n\n\n단순 선형 회귀\n다중 선형 회귀\n이항 분포\n포아송 분포\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-8번",
+    "href": "mcq_stat.html#mcq-8번",
+    "title": "통계와 확률",
+    "section": "9 MCQ 8번",
+    "text": "9 MCQ 8번\n다음과 같이 학생 성적이 주어졌을 때, 평균을 구하시오.\n\n90, 85, 89, 93, 100, 78, 86\n\n\n87.8\n88.71\n73.4\n84.2\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 2\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-9번",
+    "href": "mcq_stat.html#mcq-9번",
+    "title": "통계와 확률",
+    "section": "10 MCQ 9번",
+    "text": "10 MCQ 9번\n다음 분포 중 이산형 분포가 아닌 것은 무엇인가?\n\n베르누이 분포\n이항 분포\n코시 분포\n포아송 분포\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 3\n난이도: 어려움"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-10번",
+    "href": "mcq_stat.html#mcq-10번",
+    "title": "통계와 확률",
+    "section": "10 MCQ 10번",
+    "text": "10 MCQ 10번\n독립변수를 이르는 다른 명칭은 다음 중 어느 것인가?\n\n반응 변수 (Response Variable)\n설명된 변수 (Explained Variable)\n반응자 (Reactor)\n회귀변수(Regressor)\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 4\n난이도: 어려움"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-02번",
+    "href": "mcq_stat.html#mcq-02번",
+    "title": "통계와 확률",
+    "section": "2 MCQ 02번",
+    "text": "2 MCQ 02번\n다음 데이터에서 중위수(Median)을 계산하시오.\n데이터: 23, 97, 12, 38, 62\n\n38\n12\n62\n23\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 쉬움"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-03번",
+    "href": "mcq_stat.html#mcq-03번",
+    "title": "통계와 확률",
+    "section": "3 MCQ 03번",
+    "text": "3 MCQ 03번\n동전 던지기를 했을 때 뒷면이 나올 확률은 얼마인가?\n\n1\n0.5\n0.25\n0\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 2\n난이도: 쉬움"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-04번",
+    "href": "mcq_stat.html#mcq-04번",
+    "title": "통계와 확률",
+    "section": "4 MCQ 04번",
+    "text": "4 MCQ 04번\n다음 문장 중 참인 것을 모두 고르시오\n\n전체 관측점 집합을 모집단이라고 한다.\n표본은 모집단을 진실되게 대표해야 한다.\n표본은 모집단의 부분집합이다.\n1,2 & 3 모두\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 4\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-05번",
+    "href": "mcq_stat.html#mcq-05번",
+    "title": "통계와 확률",
+    "section": "5 MCQ 05번",
+    "text": "5 MCQ 05번\n확률변수 \\(X\\)의 평균 \\(E(X)\\)는 다음 중 무엇을 표현하는가?\n\n평균\n중위수\n표준편차\n분산\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-06번",
+    "href": "mcq_stat.html#mcq-06번",
+    "title": "통계와 확률",
+    "section": "6 MCQ 06번",
+    "text": "6 MCQ 06번\nPDF는 다음 중 무엇의 줄임말인가?\n\nPotential Distribution Function\nProbability Distribution Function\nPotential Derivation Function\nProbability Derivation Function\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 2\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-07번",
+    "href": "mcq_stat.html#mcq-07번",
+    "title": "통계와 확률",
+    "section": "7 MCQ 07번",
+    "text": "7 MCQ 07번\n다음 수식은 무엇을 표현하고 있는가?\n\n\\(Y = \\alpha + \\beta X\\)\n\n\n단순 선형 회귀\n다중 선형 회귀\n이항 분포\n포아송 분포\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-08번",
+    "href": "mcq_stat.html#mcq-08번",
+    "title": "통계와 확률",
+    "section": "8 MCQ 08번",
+    "text": "8 MCQ 08번\n다음과 같이 학생 성적이 주어졌을 때, 평균을 구하시오.\n\n90, 85, 89, 93, 100, 78, 86\n\n\n87.8\n88.71\n73.4\n84.2\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 2\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_stat.html#mcq-09번",
+    "href": "mcq_stat.html#mcq-09번",
+    "title": "통계와 확률",
+    "section": "9 MCQ 09번",
+    "text": "9 MCQ 09번\n다음 분포 중 이산형 분포가 아닌 것은 무엇인가?\n\n베르누이 분포\n이항 분포\n코시 분포\n포아송 분포\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 3\n난이도: 어려움"
   }
 ]

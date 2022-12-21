@@ -7,7 +7,8 @@ project:
   render:
     - "*.qmd"
     - "!flexdashboard/"
-    - "!*.ipynb"    
+    - "!*.ipynb"
+    - "!learnr/"
 
 lang: kr
 date-format: "YYYY년 MM월 DD일"
@@ -88,6 +89,11 @@ website:
             text: "데이터 X-레이"        
           - href: flexdashboard/penguin_flexdashboard.html
             text: "대쉬보드: 파머펭귄"
+      - text: "퀴즈"
+        menu:
+          - href: mcq_stat.qmd
+            text: "확률과 통계"
+
           
 format:
   html:
