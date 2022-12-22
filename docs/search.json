@@ -572,5 +572,82 @@
     "title": "통계와 확률",
     "section": "9 MCQ 09번",
     "text": "9 MCQ 09번\n다음 분포 중 이산형 분포가 아닌 것은 무엇인가?\n\n베르누이 분포\n이항 분포\n코시 분포\n포아송 분포\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 3\n난이도: 어려움"
+  },
+  {
+    "objectID": "code/project.html#하위-목적",
+    "href": "code/project.html#하위-목적",
+    "title": "프로젝트 개요",
+    "section": "2.1 하위 목적",
+    "text": "2.1 하위 목적\n강조 문서를 보여줍니다."
+  },
+  {
+    "objectID": "mcq_ds.html",
+    "href": "mcq_ds.html",
+    "title": "데이터 과학",
+    "section": "",
+    "text": "데이터 과학에서 사용되는 언어는 다음 중 어떤 것인가요?\n\nC\nC++\n자바\n루비\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 4\n난이도: 쉬움"
+  },
+  {
+    "objectID": "mcq_ds.html#mcq-02번",
+    "href": "mcq_ds.html#mcq-02번",
+    "title": "데이터 과학",
+    "section": "2 MCQ 02번",
+    "text": "2 MCQ 02번\nEDA는 다음 중 무엇을 줄임말인가?\n\nExplain Data Artifacts\nExploratory Data Analytics\nExploratory Data Analysis\nExplain Data Analysis\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 3\n난이도: 쉬움"
+  },
+  {
+    "objectID": "mcq_ds.html#mcq-03번",
+    "href": "mcq_ds.html#mcq-03번",
+    "title": "데이터 과학",
+    "section": "3 MCQ 03번",
+    "text": "3 MCQ 03번\n범주형 데이터를 표현하는데 다음 중 적합한 그래프는 무엇인가요?\n\n산점도 그래프\n선 그래프\n막대\n면적 그래프\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 3\n난이도: 쉬움"
+  },
+  {
+    "objectID": "mcq_ds.html#mcq-04번",
+    "href": "mcq_ds.html#mcq-04번",
+    "title": "데이터 과학",
+    "section": "4 MCQ 04번",
+    "text": "4 MCQ 04번\n행(Row)은 데이터의 어느 부분을 표현한 용어인가?\n\n수평\n수직\n대각선\n1,2 & 3 모두\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_ds.html#mcq-05번",
+    "href": "mcq_ds.html#mcq-05번",
+    "title": "데이터 과학",
+    "section": "5 MCQ 05번",
+    "text": "5 MCQ 05번\n데이터에 대한 시각적 표현을 일컷는 용어는 무엇인가?\n\n데이터셋\n시각화\nEDA\n데이터 표현\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 2\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_ds.html#mcq-06번",
+    "href": "mcq_ds.html#mcq-06번",
+    "title": "데이터 과학",
+    "section": "6 MCQ 06번",
+    "text": "6 MCQ 06번\n다음 중 R을 실행하는 방법은 무엇인가?\n\nOS\n디스크 OS\nCLI\n사용자 인터페이스 OS\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 3\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_ds.html#mcq-07번",
+    "href": "mcq_ds.html#mcq-07번",
+    "title": "데이터 과학",
+    "section": "7 MCQ 07번",
+    "text": "7 MCQ 07번\n다음 중 기계학습 알고리즘이 아닌 것은 무엇인가?\n\nSVM\n회귀모형\n나이브 베이즈\nSVG\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 4\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_ds.html#mcq-08번",
+    "href": "mcq_ds.html#mcq-08번",
+    "title": "데이터 과학",
+    "section": "8 MCQ 08번",
+    "text": "8 MCQ 08번\n다음 중 데이터 과학 작업흐름을 가장 잘 표현한 것은 무엇인가?\n\n의사소통 → 데이터 가져오기 → 데이터 정제 → EDA → 시각화 → 모형\n데이터 가져오기 → 의사소통 → EDA → 시각화 → 모형 → 데이터 정제\n데이터 가져오기 → 데이터 정제 → EDA → 시각화 → 모형 → 의사소통\n데이터 가져오기 → 시각화 → 모형 → 데이터 정제 → 의사소통 → EDA\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 3\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_ds.html#mcq-09번",
+    "href": "mcq_ds.html#mcq-09번",
+    "title": "데이터 과학",
+    "section": "9 MCQ 09번",
+    "text": "9 MCQ 09번\n통계적/분석적 도구를 사용하여 데이터를 평가하는 방법을 일컷는 용어는 무엇인가?\n\n데이터 탐색\n데이터 분석\n데이터 시각화\n데이터 마이닝\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 2\n난이도: 어려움"
+  },
+  {
+    "objectID": "mcq_ds.html#mcq-10번",
+    "href": "mcq_ds.html#mcq-10번",
+    "title": "데이터 과학",
+    "section": "10 MCQ 10번",
+    "text": "10 MCQ 10번\n다음 중 맞는 것을 모두 고르시오?\n\n원데이터는 데이터 정제작업 후에 얻어진다.\n실제 원천 데이터는 처리된 데이터다.\n원데이터가 실제 원천 데이터다.\n2번과 3번\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 3\n난이도: 어려움"
   }
 ]

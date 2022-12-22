@@ -1,0 +1,14 @@
+{
+  "hash": "ecbcfc3f35153f83b87869eed72db4d7",
+  "result": {
+    "markdown": "---\ntitle: \"데이터 과학\"\ndescription: \"데이터 과학 기본기를 확인합니다.\"\ndate: today # 날짜 설정: now, last-modified\nauthor:\n  - name: 이광춘\n    affiliation: TCS\ntitle-block-banner: false\nformat:\n  html:\n    css: css/quarto-fonts.css\n    code-fold: false\n    toc: true\n    toc-depth: 2\n    number-sections: true\n    highlight-style: github    \n    self-contained: false\nbibliography: bibliography.bib\nlink-citations: yes\ncsl: apa-single-spaced.csl\nengine: knitr\neditor_options: \n  chunk_output_type: console\nfilters:\n  - lightbox\nlightbox: auto  \neditor: \n  markdown: \n    wrap: 72\n---\n\n\n\n## MCQ 01번 \n\n데이터 과학에서 사용되는 언어는 다음 중 어떤 것인가요?\n\n1. C\n1. C++\n1. 자바\n1. 루비\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 4\n- **난이도: 쉬움**\n:::\n\n## MCQ 02번 \n\nEDA는 다음 중 무엇을 줄임말인가?\n\n1. Explain Data Artifacts\n1. Exploratory Data Analytics\n1. Exploratory Data Analysis\n1. Explain Data Analysis\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 3\n- **난이도: 쉬움**\n:::\n\n\n## MCQ 03번 \n\n범주형 데이터를 표현하는데 다음 중 적합한 그래프는 무엇인가요?\n\n1. 산점도 그래프\n1. 선 그래프\n1. 막대\n1. 면적 그래프\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 3\n- **난이도: 쉬움**\n:::\n\n\n## MCQ 04번 \n\n행(Row)은 데이터의 어느 부분을 표현한 용어인가?\n\n1. 수평\n1. 수직\n1. 대각선\n1. 1,2 & 3 모두\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 1\n- **난이도: 중간**\n:::\n\n## MCQ 05번 \n\n데이터에 대한 시각적 표현을 일컷는 용어는 무엇인가?\n\n1. 데이터셋\n1. 시각화\n1. EDA\n1. 데이터 표현\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 2\n- **난이도: 중간**\n:::\n\n## MCQ 06번 \n\n다음 중 R을 실행하는 방법은 무엇인가?\n\n1. OS\n1. 디스크 OS\n1. CLI\n1. 사용자 인터페이스 OS\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 3\n- **난이도: 중간**\n:::\n\n## MCQ 07번 \n\n다음 중 기계학습 알고리즘이 아닌 것은 무엇인가?\n\n1. SVM\n1. 회귀모형\n1. 나이브 베이즈\n1. SVG\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 4\n- **난이도: 중간**\n:::\n\n## MCQ 08번 \n\n다음 중 데이터 과학 작업흐름을 가장 잘 표현한 것은 무엇인가?\n\n1. 의사소통 &rarr; 데이터 가져오기 &rarr; 데이터 정제 &rarr; EDA &rarr; 시각화 &rarr; 모형 \n1. 데이터 가져오기 &rarr; 의사소통 &rarr; EDA &rarr; 시각화 &rarr; 모형 &rarr; 데이터 정제\n1. 데이터 가져오기 &rarr; 데이터 정제 &rarr; EDA &rarr; 시각화 &rarr; 모형 &rarr; 의사소통\n1. 데이터 가져오기 &rarr; 시각화 &rarr; 모형 &rarr; 데이터 정제 &rarr; 의사소통 &rarr; EDA\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 3\n- **난이도: 중간**\n:::\n\n## MCQ 09번 \n\n통계적/분석적 도구를 사용하여 데이터를 평가하는 방법을 일컷는 용어는 무엇인가? \n\n1. 데이터 탐색\n1. 데이터 분석\n1. 데이터 시각화\n1. 데이터 마이닝\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 2\n- **난이도: 어려움**\n:::\n\n## MCQ 10번 \n\n다음 중 맞는 것을 모두 고르시오?\n\n1. 원데이터는 데이터 정제작업 후에 얻어진다.\n1. 실제 원천 데이터는 처리된 데이터다.\n1. 원데이터가 실제 원천 데이터다.\n1. 2번과 3번\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 3\n- **난이도: 어려움**\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

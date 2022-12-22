@@ -1,0 +1,57 @@
+---
+title: "프로젝트 개요"
+description: 실무적으로 데이터를 통해 가치를 창출하는데 꼭 필요한 기본기를 교육합니다.
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    url: https://www.linkedin.com/in/kwangchunlee/
+    affiliation: 한국 R 사용자회
+    affiliation-url: https://github.com/bit2r
+title-block-banner: true
+#title-block-banner: "#562457"
+format:
+  html:
+    theme: 
+      - flatly
+      - css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 3
+    toc-title: 목차
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+editor_options: 
+  chunk_output_type: console
+filters:
+  - lightbox
+lightbox: auto  
+knitr:
+  opts_chunk: 
+    message: false
+    warning: false
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true  
+---
+
+# 제목
+
+# 목적
+
+## 하위 목적
+
+**강조** 문서를 보여줍니다.
+
+# 데이터
+
+# 방법론
+
+# 가설...
+
+# 실험/분석 결과
+
+# 결론
+
+# 향후 계획

@@ -1,0 +1,16 @@
+{
+  "hash": "b72a2da8b19ffe11c985075085fa7a75",
+  "result": {
+    "markdown": "---\ntitle: \"프로젝트 개요\"\ndescription: 실무적으로 데이터를 통해 가치를 창출하는데 꼭 필요한 기본기를 교육합니다.\ndate: today # 날짜 설정: now, last-modified\nauthor:\n  - name: 이광춘\n    url: https://www.linkedin.com/in/kwangchunlee/\n    affiliation: 한국 R 사용자회\n    affiliation-url: https://github.com/bit2r\ntitle-block-banner: true\n#title-block-banner: \"#562457\"\nformat:\n  html:\n    theme: \n      - flatly\n      - css/quarto-fonts.css\n    code-fold: false\n    toc: true\n    toc-depth: 3\n    toc-title: 목차\n    number-sections: true\n    highlight-style: github    \n    self-contained: false\neditor_options: \n  chunk_output_type: console\nfilters:\n  - lightbox\nlightbox: auto  \nknitr:\n  opts_chunk: \n    message: false\n    warning: false\n    collapse: true\n    comment: \"#>\" \n    R.options:\n      knitr.graphics.auto_pdf: true  \n---\n\n\n# 제목\n\n# 목적\n\n## 하위 목적\n\n**강조** 문서를 보여줍니다.\n\n# 데이터\n\n# 방법론\n\n# 가설...\n\n# 실험/분석 결과\n\n# 결론\n\n# 향후 계획\n",
+    "supporting": [
+      "project_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

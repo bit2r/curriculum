@@ -93,7 +93,8 @@ website:
         menu:
           - href: mcq_stat.qmd
             text: "확률과 통계"
-
+          - href: mcq_ds.qmd
+            text: "데이터 과학"
           
 format:
   html:

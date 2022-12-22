@@ -1,0 +1,183 @@
+---
+title: "데이터 과학"
+description: "데이터 과학 기본기를 확인합니다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    css: css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+engine: knitr
+editor_options: 
+  chunk_output_type: console
+filters:
+  - lightbox
+lightbox: auto  
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+
+## MCQ 01번 
+
+데이터 과학에서 사용되는 언어는 다음 중 어떤 것인가요?
+
+1. C
+1. C++
+1. 자바
+1. 루비
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 4
+- **난이도: 쉬움**
+:::
+
+## MCQ 02번 
+
+EDA는 다음 중 무엇을 줄임말인가?
+
+1. Explain Data Artifacts
+1. Exploratory Data Analytics
+1. Exploratory Data Analysis
+1. Explain Data Analysis
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 3
+- **난이도: 쉬움**
+:::
+
+
+## MCQ 03번 
+
+범주형 데이터를 표현하는데 다음 중 적합한 그래프는 무엇인가요?
+
+1. 산점도 그래프
+1. 선 그래프
+1. 막대
+1. 면적 그래프
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 3
+- **난이도: 쉬움**
+:::
+
+
+## MCQ 04번 
+
+행(Row)은 데이터의 어느 부분을 표현한 용어인가?
+
+1. 수평
+1. 수직
+1. 대각선
+1. 1,2 & 3 모두
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 1
+- **난이도: 중간**
+:::
+
+## MCQ 05번 
+
+데이터에 대한 시각적 표현을 일컷는 용어는 무엇인가?
+
+1. 데이터셋
+1. 시각화
+1. EDA
+1. 데이터 표현
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 2
+- **난이도: 중간**
+:::
+
+## MCQ 06번 
+
+다음 중 R을 실행하는 방법은 무엇인가?
+
+1. OS
+1. 디스크 OS
+1. CLI
+1. 사용자 인터페이스 OS
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 3
+- **난이도: 중간**
+:::
+
+## MCQ 07번 
+
+다음 중 기계학습 알고리즘이 아닌 것은 무엇인가?
+
+1. SVM
+1. 회귀모형
+1. 나이브 베이즈
+1. SVG
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 4
+- **난이도: 중간**
+:::
+
+## MCQ 08번 
+
+다음 중 데이터 과학 작업흐름을 가장 잘 표현한 것은 무엇인가?
+
+1. 의사소통 &rarr; 데이터 가져오기 &rarr; 데이터 정제 &rarr; EDA &rarr; 시각화 &rarr; 모형 
+1. 데이터 가져오기 &rarr; 의사소통 &rarr; EDA &rarr; 시각화 &rarr; 모형 &rarr; 데이터 정제
+1. 데이터 가져오기 &rarr; 데이터 정제 &rarr; EDA &rarr; 시각화 &rarr; 모형 &rarr; 의사소통
+1. 데이터 가져오기 &rarr; 시각화 &rarr; 모형 &rarr; 데이터 정제 &rarr; 의사소통 &rarr; EDA
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 3
+- **난이도: 중간**
+:::
+
+## MCQ 09번 
+
+통계적/분석적 도구를 사용하여 데이터를 평가하는 방법을 일컷는 용어는 무엇인가? 
+
+1. 데이터 탐색
+1. 데이터 분석
+1. 데이터 시각화
+1. 데이터 마이닝
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 2
+- **난이도: 어려움**
+:::
+
+## MCQ 10번 
+
+다음 중 맞는 것을 모두 고르시오?
+
+1. 원데이터는 데이터 정제작업 후에 얻어진다.
+1. 실제 원천 데이터는 처리된 데이터다.
+1. 원데이터가 실제 원천 데이터다.
+1. 2번과 3번
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 3
+- **난이도: 어려움**
+:::
