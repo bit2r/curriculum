@@ -368,7 +368,7 @@
     "href": "04_setup_r.html",
     "title": "고급 데이터과학: R",
     "section": "",
-    "text": "1 R\nR 다운로드 웹사이트에서 운영체제에 맞는 R 엔진을 다운로드 받아 설치한다.\n\n\n2 Rtools\nC/C++/Fortran 코드를 컴파일해서 R 패키지를 윈도우 환경에서 사용할 경우 Rtools 설치하여 사용한다.\n\n\n3 RStudio\nR기반 통합개발환경(IDE)으로 RStudio를 많이 사용하고 있고 최근에는 VS Code 를 설치하여 R 혹은 파이썬 데이터과학 제품을 개발하는 사례로 늘고 있다.\n\n\n4 쿼토(Quarto)\n쿼토(Quarto)를 다운로드하여 과 R마크다운을 통해 수행한 다양한 데이터 과학 작업을 통합관리 추진하는데 필요하다.\n\n\n5 글꼴\n네이버 나눔 글꼴을 다운로드 받아 설치하게 되면 가시성 좋은 데이터 과학 산출물과 코딩 가독성을 높일 수 있다.\n\n\n6 R 패키지\nCRAN (Comprehensive R Archive Network) 에서 정식 등록된 고품질 다양한 패키지를 설치한다.\n\nRprofile.site\n.Rprofile\n\n파일에 다음 사항을 지정하면 패키지 저장소를 지정할 수 있다.\n\nlocal({\n  r <- getOption(\"repos\")\n  r[\"CRAN\"] <- \"http://cran.cnr.berkeley.edu/\"\n  options(repos = r)\n})\n\nJavier Luraschi (November 21, 2022), “Managing Packages with the RStudio IDE”, Posit Support, Repositories - R Package Repositories\nRStudio 상단 메뉴에서 Tools → Global Options → Packages로 가면 패키지 저장소를 지정할 수도 있다."
+    "text": "R 다운로드 웹사이트에서 운영체제에 맞는 R 엔진을 다운로드 받아 설치한다."
   },
   {
     "objectID": "01_setup_bash.html",
@@ -649,5 +649,12 @@
     "title": "데이터 과학",
     "section": "10 MCQ 10번",
     "text": "10 MCQ 10번\n다음 중 맞는 것을 모두 고르시오?\n\n원데이터는 데이터 정제작업 후에 얻어진다.\n실제 원천 데이터는 처리된 데이터다.\n원데이터가 실제 원천 데이터다.\n2번과 3번\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 3\n난이도: 어려움"
+  },
+  {
+    "objectID": "04_setup_r.html#로컬-글꼴---no-font-name",
+    "href": "04_setup_r.html#로컬-글꼴---no-font-name",
+    "title": "고급 데이터과학: R",
+    "section": "5.1 로컬 글꼴 - “No Font Name”",
+    "text": "5.1 로컬 글꼴 - “No Font Name”\n로컬 컴퓨터에 설치를 했으나 제대로 “No Font Name” 이슈가 있는 경우 다음과 같이 해결한다. 즉, Rttf2pt1 이전 버전을 사용하여 운영체제에 등록된 폰트를 R에서 사용할 수 있는 폰트로 등록한다. 그리고 나서, loadfonts() 함수를 사용해서 글꼴을 시각화에서 사용할 수 있도록 조치를 취한다.\n문제해결: How can I resolve the “No Font Name” issue when importing fonts into R using extrafont?, Dataholic, “추가 폰트 사용하기”\n\nlibrary(extrafont)\nlibrary(remotes)\n\nremotes::install_version(\"Rttf2pt1\", version = \"1.3.8\")\nfont_import(paths=\"C:/Windows/Fonts\", prompt=FALSE) # 한번만 실행한다.\n\nloadfonts(device = \"win\", quiet = TRUE)"
   }
 ]

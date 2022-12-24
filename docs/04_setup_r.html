@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="kr" xml:lang="kr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -292,6 +292,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
     </ul>
   </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">퀴즈</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li>
+    <a class="dropdown-item" href="./mcq_stat.html">
+ <span class="dropdown-text">확률과 통계</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./mcq_ds.html">
+ <span class="dropdown-text">데이터 과학</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
@@ -311,7 +326,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#rtools" id="toc-rtools" class="nav-link" data-scroll-target="#rtools"><span class="toc-section-number">2</span>  Rtools</a></li>
   <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio"><span class="toc-section-number">3</span>  RStudio</a></li>
   <li><a href="#쿼토quarto" id="toc-쿼토quarto" class="nav-link" data-scroll-target="#쿼토quarto"><span class="toc-section-number">4</span>  쿼토(Quarto)</a></li>
-  <li><a href="#글꼴" id="toc-글꼴" class="nav-link" data-scroll-target="#글꼴"><span class="toc-section-number">5</span>  글꼴</a></li>
+  <li><a href="#글꼴" id="toc-글꼴" class="nav-link" data-scroll-target="#글꼴"><span class="toc-section-number">5</span>  글꼴</a>
+  <ul class="collapse">
+  <li><a href="#로컬-글꼴---no-font-name" id="toc-로컬-글꼴---no-font-name" class="nav-link" data-scroll-target="#로컬-글꼴---no-font-name"><span class="toc-section-number">5.1</span>  로컬 글꼴 - “No Font Name”</a></li>
+  </ul></li>
   <li><a href="#r-패키지" id="toc-r-패키지" class="nav-link" data-scroll-target="#r-패키지"><span class="toc-section-number">6</span>  R 패키지</a></li>
   </ul>
 </nav>
@@ -350,7 +368,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">공개</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2022년 12월 21일</p>
+      <p class="date">2022년 12월 24일</p>
     </div>
   </div>
   
@@ -376,9 +394,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1 data-number="4"><span class="header-section-number">4</span> 쿼토(Quarto)</h1>
 <p><a href="https://quarto.org/docs/download/">쿼토(Quarto)</a>를 다운로드하여 과 R마크다운을 통해 수행한 다양한 데이터 과학 작업을 통합관리 추진하는데 필요하다.</p>
 </section>
-<section id="글꼴" class="level1" data-number="5">
+<section id="글꼴" class="level1 page-columns page-full" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> 글꼴</h1>
-<p>네이버 <a href="https://hangeul.naver.com/font">나눔 글꼴</a>을 다운로드 받아 설치하게 되면 가시성 좋은 데이터 과학 산출물과 코딩 가독성을 높일 수 있다.</p>
+<p>네이버 <a href="https://hangeul.naver.com/font">나눔 글꼴</a>을 다운로드 받아 설치하게 되면 가시성 좋은 데이터 과학 산출물과 코딩 가독성을 높일 수 있다. 시각화 및 코딩에 사용되는 글꼴은 웹폰트 혹은 설치형 로컬 폰트를 사용할 수 있다. 다만, 로컬 컴퓨터에 설치할 경우 <code>Rttf2pt1</code> 이슈로 인해서 다음 사항에 주의한다.</p>
+<section id="로컬-글꼴---no-font-name" class="level2 page-columns page-full" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="로컬-글꼴---no-font-name"><span class="header-section-number">5.1</span> 로컬 글꼴 - “No Font Name”</h2>
+<p>로컬 컴퓨터에 설치를 했으나 제대로 <strong>“No Font Name”</strong> 이슈가 있는 경우 다음과 같이 해결한다. 즉, <code>Rttf2pt1</code> 이전 버전을 사용하여 운영체제에 등록된 폰트를 R에서 사용할 수 있는 폰트로 등록한다. 그리고 나서, <code>loadfonts()</code> 함수를 사용해서 글꼴을 시각화에서 사용할 수 있도록 조치를 취한다.</p>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">문제해결: <a href="https://stackoverflow.com/questions/61204259/how-can-i-resolve-the-no-font-name-issue-when-importing-fonts-into-r-using-ext">How can I resolve the “No Font Name” issue when importing fonts into R using extrafont?</a>, <a href="https://choonghyunryu.github.io/posts/2021-01-27-rfonts/">Dataholic, “추가 폰트 사용하기”</a></span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(remotes)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_version</span>(<span class="st">"Rttf2pt1"</span>, <span class="at">version =</span> <span class="st">"1.3.8"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">font_import</span>(<span class="at">paths=</span><span class="st">"C:/Windows/Fonts"</span>, <span class="at">prompt=</span><span class="cn">FALSE</span>) <span class="co"># 한번만 실행한다.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">loadfonts</span>(<span class="at">device =</span> <span class="st">"win"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 </section>
 <section id="r-패키지" class="level1 page-columns page-full" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> R 패키지</h1>
@@ -389,11 +421,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>파일에 다음 사항을 지정하면 패키지 저장소를 지정할 수 있다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">local</span>({</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> <span class="fu">getOption</span>(<span class="st">"repos"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  r[<span class="st">"CRAN"</span>] <span class="ot">&lt;-</span> <span class="st">"http://cran.cnr.berkeley.edu/"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">options</span>(<span class="at">repos =</span> r)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">local</span>({</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> <span class="fu">getOption</span>(<span class="st">"repos"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  r[<span class="st">"CRAN"</span>] <span class="ot">&lt;-</span> <span class="st">"http://cran.cnr.berkeley.edu/"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">options</span>(<span class="at">repos =</span> r)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class=""><a href="https://support.posit.co/hc/en-us/articles/360004067074">Javier Luraschi (November 21, 2022), “Managing Packages with the RStudio IDE”, Posit Support</a>, <a href="https://solutions.posit.co/envs-pkgs/environments/repositories/">Repositories - R Package Repositories</a></span></div></div>
 <p>RStudio 상단 메뉴에서 <code>Tools</code> → <code>Global Options</code> → <code>Packages</code>로 가면 패키지 저장소를 지정할 수도 있다.</p>
@@ -546,7 +578,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left"><a href="https://quarto.org/">Quarto</a> 로 제작</div>   
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":true,"closeEffect":"zoom","descPosition":"bottom"});</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","loop":true,"selector":".lightbox","descPosition":"bottom"});</script>
 
 
 
