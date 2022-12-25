@@ -137,7 +137,7 @@ IDE"](https://support.posit.co/hc/en-us/articles/200551916)]{.aside}
 
 ![훈스펠(hunspell) 사전 다운로드](fig/spelling-dictionary.png)
 
-## 한글 사전 다운로드
+## 한글 사전 복사
 
 ![훈스펠(hunspell) 사전 설치](fig/spelling-copy.png)
 
