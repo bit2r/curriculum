@@ -9,6 +9,7 @@ project:
     - "!flexdashboard/"
     - "!*.ipynb"
     - "!learnr/"
+    - "!flipbook"
 
 lang: kr
 date-format: "YYYY년 MM월 DD일"
@@ -22,6 +23,18 @@ website:
     left:
       - href: index.qmd
         text: "학습개요"
+      - text: "모래시계"
+        menu:
+          - href: timer_five.qmd
+            text: "5 분"
+          - href: timer_ten.qmd
+            text: "10분"
+          - href: timer_twenty.qmd
+            text: "20분"
+          - href: timer_thirty.qmd
+            text: "30분"            
+          - href: timer_hour.qmd
+            text: "1시간"                        
       - text: "개발환경"
         menu:
           - href: 00_setup.qmd

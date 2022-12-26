@@ -1,0 +1,41 @@
+---
+title: "모래시계"
+description: "5, 10, 20, 30, 60분 타이머"
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+filters:
+  - lightbox
+lightbox: auto
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+```{r}
+#| echo: false
+library(countdown)
+countdown::countdown(minutes = 20, seconds = 00, 
+          left = 0, right = 0,
+          bottom = 1,
+          padding = "50px",
+          margin = "5%",
+          font_size = "10em")
+```
+
