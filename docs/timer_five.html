@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="이광춘">
 <meta name="description" content="5, 10, 20, 30, 60분 타이머">
 
 <title>데이터 과학 - 모래시계</title>
@@ -100,15 +99,15 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">10분</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./timer_twenty.qmd">
+    <a class="dropdown-item" href="./timer_twenty.html">
  <span class="dropdown-text">20분</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./timer_thirty.qmd">
+    <a class="dropdown-item" href="./timer_thirty.html">
  <span class="dropdown-text">30분</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./timer_hour.qmd">
+    <a class="dropdown-item" href="./timer_hour.html">
  <span class="dropdown-text">1시간</span></a>
   </li>  
     </ul>
@@ -316,7 +315,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">공개</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2022년 12월 27일</p>
+      <p class="date">today</p>
     </div>
   </div>
   
@@ -328,7 +327,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_6f0dae4d" data-update-every="1" tabindex="0" style="right:0;bottom:1;left:0;margin:5%;padding:50px;font-size:10em;">
+<div class="countdown" id="timer_5941d3a6" data-update-every="1" tabindex="0" style="right:0;bottom:1;left:0;margin:5%;padding:50px;font-size:10em;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -336,6 +335,38 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
+<pre class="{r}"><code>#| echo: false
+library(countdown)
+countdown::countdown(minutes = 60, seconds = 00, 
+          left = 0, right = 0,
+          bottom = 1,
+          padding = "50px",
+          margin = "5%",
+          font_size = "10em")</code></pre>
+<pre class="{r}"><code>#| echo: false
+library(countdown)
+countdown::countdown(minutes = 10, seconds = 00, 
+          left = 0, right = 0,
+          bottom = 1,
+          padding = "50px",
+          margin = "5%",
+          font_size = "10em")</code></pre>
+<pre class="{r}"><code>#| echo: false
+library(countdown)
+countdown::countdown(minutes = 30, seconds = 00, 
+          left = 0, right = 0,
+          bottom = 1,
+          padding = "50px",
+          margin = "5%",
+          font_size = "10em")</code></pre>
+<pre class="{r}"><code>#| echo: false
+library(countdown)
+countdown::countdown(minutes = 20, seconds = 00, 
+          left = 0, right = 0,
+          bottom = 1,
+          padding = "50px",
+          margin = "5%",
+          font_size = "10em")</code></pre>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

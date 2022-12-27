@@ -662,7 +662,7 @@
     "href": "timer_five.html",
     "title": "모래시계",
     "section": "",
-    "text": "−+\n05:00"
+    "text": "−+\n05:00\n\n\n\n\n\n#| echo: false\nlibrary(countdown)\ncountdown::countdown(minutes = 60, seconds = 00, \n          left = 0, right = 0,\n          bottom = 1,\n          padding = \"50px\",\n          margin = \"5%\",\n          font_size = \"10em\")\n#| echo: false\nlibrary(countdown)\ncountdown::countdown(minutes = 10, seconds = 00, \n          left = 0, right = 0,\n          bottom = 1,\n          padding = \"50px\",\n          margin = \"5%\",\n          font_size = \"10em\")\n#| echo: false\nlibrary(countdown)\ncountdown::countdown(minutes = 30, seconds = 00, \n          left = 0, right = 0,\n          bottom = 1,\n          padding = \"50px\",\n          margin = \"5%\",\n          font_size = \"10em\")\n#| echo: false\nlibrary(countdown)\ncountdown::countdown(minutes = 20, seconds = 00, \n          left = 0, right = 0,\n          bottom = 1,\n          padding = \"50px\",\n          margin = \"5%\",\n          font_size = \"10em\")"
   },
   {
     "objectID": "timer_ten.html",
