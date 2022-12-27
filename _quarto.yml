@@ -52,6 +52,9 @@ website:
       - text: "교재"
         menu:
           - text: "-----"
+          - href: 99_statistics.qmd
+            text: "통계학"
+          - text: "-----"
           - href: 10_cmdline.qmd
             text: "명령라인 데이터 분석"
           - href: 11_shell.qmd

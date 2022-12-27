@@ -1,0 +1,25 @@
+---
+title: "통계학"
+description: "통계학의 기본기를 다양한 사례를 통해 다져봅니다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - flatly
+      - css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+# [통계 강의 슬라이드](https://r2bit.github.io/practice/statistics.html)
+
