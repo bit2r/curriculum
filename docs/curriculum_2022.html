@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="kr" xml:lang="kr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="이광춘">
+<meta name="description" content="실무적으로 데이터를 통해 가치를 창출하는데 꼭 필요한 기본기를 교육합니다.">
+
+<title>데이터 과학 - 2022년 교과과정</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "일치 없음",
+    "search-matching-documents-text": "일치된 문서",
+    "search-copy-link-title": "검색 링크 복사",
+    "search-hide-matches-text": "추가 검색 결과 숨기기",
+    "search-more-match-text": "추가 검색결과",
+    "search-more-matches-text": "추가 검색결과",
+    "search-clear-button-title": "제거",
+    "search-detached-cancel-button-title": "취소",
+    "search-submit-button-title": "검색"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">데이터 과학</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">들어가며</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">커리큐럼</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="./curriculum_2023.html">
+ <span class="dropdown-text">2023년</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./curriculum_2022.html">
+ <span class="dropdown-text">2022년</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">모래시계</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--1">    
+        <li>
+    <a class="dropdown-item" href="./timer_five.html">
+ <span class="dropdown-text">5 분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_ten.html">
+ <span class="dropdown-text">10분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_twenty.html">
+ <span class="dropdown-text">20분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_thirty.html">
+ <span class="dropdown-text">30분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_hour.html">
+ <span class="dropdown-text">1시간</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">개발환경</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--2">    
+        <li>
+    <a class="dropdown-item" href="./00_setup.html">
+ <span class="dropdown-text">실습환경</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./01_setup_bash.html">
+ <span class="dropdown-text">CLI 개발환경</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./02_setup_sql.html">
+ <span class="dropdown-text">Sqlite 데이터베이스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./03_setup_python.html">
+ <span class="dropdown-text">파이썬</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./hello_world_jupyter.html">
+ <span class="dropdown-text">쥬피터 노트북</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./04_setup_r.html">
+ <span class="dropdown-text">고급 데이터과학: R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">교재</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--3">    
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./99_statistics.html">
+ <span class="dropdown-text">통계학</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./10_cmdline.html">
+ <span class="dropdown-text">명령라인 데이터 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./11_shell.html">
+ <span class="dropdown-text">쉘(Shell)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./12_writing.html">
+ <span class="dropdown-text">디지털 글쓰기(보고서)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./13_git.html">
+ <span class="dropdown-text">Git/GitHub</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./20_sql.html">
+ <span class="dropdown-text">프로그래밍: SQL</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./21_r.html">
+ <span class="dropdown-text">프로그래밍: R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./22_python.html">
+ <span class="dropdown-text">프로그래밍: 파이썬</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./30_dashboard.html">
+ <span class="dropdown-text">대쉬보드</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./31_models.html">
+ <span class="dropdown-text">기계학습</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./32_product.html">
+ <span class="dropdown-text">데이터과학 제품과 서비스</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./41_time_series.html">
+ <span class="dropdown-text">시계열 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./42_network.html">
+ <span class="dropdown-text">네트워크 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./43_geospatial.html">
+ <span class="dropdown-text">공간정보 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./44_text_mining.html">
+ <span class="dropdown-text">텍스트 데이터</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./51_nlp.html">
+ <span class="dropdown-text">딥러닝 - NLP</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./52_vision.html">
+ <span class="dropdown-text">딥러닝 - 비젼</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./project.html">
+ <span class="menu-text">프로젝트</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">데이터셋</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li>
+    <a class="dropdown-item" href="./data.html">
+ <span class="dropdown-text">데이터셋</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./data_chatGPT.html">
+ <span class="dropdown-text">chatGPT 데이터셋</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">운동장</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--5">    
+        <li>
+    <a class="dropdown-item" href="./dataxray.html">
+ <span class="dropdown-text">데이터 X-레이</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./flexdashboard/penguin_flexdashboard.html">
+ <span class="dropdown-text">대쉬보드: 파머펭귄</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--6" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">퀴즈</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--6">    
+        <li>
+    <a class="dropdown-item" href="./mcq_stat.html">
+ <span class="dropdown-text">확률과 통계</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./mcq_ds.html">
+ <span class="dropdown-text">데이터 과학</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">2022년 교과과정</h1>
+                  <div>
+        <div class="description">
+          실무적으로 데이터를 통해 가치를 창출하는데 꼭 필요한 기본기를 교육합니다.
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">저자</div>
+    <div class="quarto-title-meta-heading">소속</div>
+    
+      <div class="quarto-title-meta-contents">
+      <a href="https://www.linkedin.com/in/kwangchunlee/">이광춘</a> 
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              <a href="https://github.com/bit2r">
+              한국 R 사용자회
+              </a>
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">공개</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">2022년 12월 28일</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul>
+  <li><a href="#학습-내용" id="toc-학습-내용" class="nav-link active" data-scroll-target="#학습-내용"><span class="toc-section-number">1</span>  학습 내용</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+
+
+
+
+<section id="학습-내용" class="level1 page-columns page-full" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 학습 내용</h1>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class=""><span class="citation" data-cites="janssens2021data">Janssens (<a href="#ref-janssens2021data" role="doc-biblioref">2021</a>)</span>, <span class="citation" data-cites="wickham2016r">Wickham &amp; Grolemund (<a href="#ref-wickham2016r" role="doc-biblioref">2016</a>)</span>, <span class="citation" data-cites="palmer-penguins">Horst et al. (<a href="#ref-palmer-penguins" role="doc-biblioref">2020</a>)</span>, <span class="citation" data-cites="xie2020r">Xie et al. (<a href="#ref-xie2020r" role="doc-biblioref">2020</a>)</span>, <span class="citation" data-cites="severance2013python">Severance (<a href="#ref-severance2013python" role="doc-biblioref">2013</a>)</span>, <span class="citation" data-cites="wilson2006software">Wilson (<a href="#ref-wilson2006software" role="doc-biblioref">2006</a>)</span>, <span class="citation" data-cites="bitTA">한국R사용자회 (<a href="#ref-bitTA" role="doc-biblioref">2022</a>)</span></span></div></div>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="hkeblnhjvz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Dongle:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html {
+  font-family: Dongle, Cochin, Serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#hkeblnhjvz) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 500px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#hkeblnhjvz) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#hkeblnhjvz) .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+:where(#hkeblnhjvz) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#hkeblnhjvz) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#hkeblnhjvz) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#hkeblnhjvz) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#hkeblnhjvz) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#hkeblnhjvz) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#hkeblnhjvz) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#hkeblnhjvz) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#hkeblnhjvz) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#hkeblnhjvz) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+:where(#hkeblnhjvz) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#hkeblnhjvz) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#hkeblnhjvz) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#hkeblnhjvz) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#hkeblnhjvz) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#hkeblnhjvz) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#hkeblnhjvz) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#hkeblnhjvz) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#hkeblnhjvz) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#hkeblnhjvz) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#hkeblnhjvz) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#hkeblnhjvz) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#hkeblnhjvz) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#hkeblnhjvz) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#hkeblnhjvz) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#hkeblnhjvz) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#hkeblnhjvz) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#hkeblnhjvz) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#hkeblnhjvz) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#hkeblnhjvz) .gt_left {
+  text-align: left;
+}
+
+:where(#hkeblnhjvz) .gt_center {
+  text-align: center;
+}
+
+:where(#hkeblnhjvz) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#hkeblnhjvz) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#hkeblnhjvz) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#hkeblnhjvz) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#hkeblnhjvz) .gt_super {
+  font-size: 65%;
+}
+
+:where(#hkeblnhjvz) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#hkeblnhjvz) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#hkeblnhjvz) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#hkeblnhjvz) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#hkeblnhjvz) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#hkeblnhjvz) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#hkeblnhjvz) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <td colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">데이터 과학 교육과정</td>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="font-size: large; font-weight: bold;" scope="col" id="일정">일정</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="font-size: large; font-weight: bold;" scope="col" id="과목명">과목명</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="font-size: large; font-weight: bold;" scope="col" id="학습상세">학습상세</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="font-size: large; font-weight: bold;" scope="col" id="데이터셋">데이터셋</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="일정" class="gt_row gt_center" style="font-size: large;">00주차</td>
+<td headers="과목명" class="gt_row gt_center" style="font-size: large;">환경설정</td>
+<td headers="학습상세" class="gt_row gt_center" style="font-size: large;">학습 도구 설치 및 학습환경</td>
+<td headers="데이터셋" class="gt_row gt_center" style="font-size: large;">파머 펭귄, BitData</td></tr>
+    <tr><td headers="일정" class="gt_row gt_center" style="font-size: large;">01주차</td>
+<td headers="과목명" class="gt_row gt_center" style="font-size: large;">디지털 글쓰기(보고서)</td>
+<td headers="학습상세" class="gt_row gt_center" style="font-size: large;">마크다운 / Quarto</td>
+<td headers="데이터셋" class="gt_row gt_center" style="font-size: large;">BitData</td></tr>
+    <tr><td headers="일정" class="gt_row gt_center" style="font-size: large;">02주차</td>
+<td headers="과목명" class="gt_row gt_center" style="font-size: large;">명령라인 데이터 분석</td>
+<td headers="학습상세" class="gt_row gt_center" style="font-size: large;">자동화(Shell)</td>
+<td headers="데이터셋" class="gt_row gt_center" style="font-size: large;">SWC</td></tr>
+    <tr><td headers="일정" class="gt_row gt_center" style="font-size: large;">03주차</td>
+<td headers="과목명" class="gt_row gt_center" style="font-size: large;">버전 제어</td>
+<td headers="학습상세" class="gt_row gt_center" style="font-size: large;">버전제어/협업(Git / GitHub / GitLab)</td>
+<td headers="데이터셋" class="gt_row gt_center" style="font-size: large;"></td></tr>
+    <tr><td headers="일정" class="gt_row gt_center" style="font-size: large;">04주차</td>
+<td headers="과목명" class="gt_row gt_center" style="font-size: large;">프로그래밍</td>
+<td headers="학습상세" class="gt_row gt_center" style="font-size: large;">SQL</td>
+<td headers="데이터셋" class="gt_row gt_center" style="font-size: large;">Data Carpentry, DVD 렌탈</td></tr>
+    <tr><td headers="일정" class="gt_row gt_center" style="font-size: large;">05주차</td>
+<td headers="과목명" class="gt_row gt_center" style="font-size: large;">프로그래밍</td>
+<td headers="학습상세" class="gt_row gt_center" style="font-size: large;">시각화</td>
+<td headers="데이터셋" class="gt_row gt_center" style="font-size: large;">gapminder</td></tr>
+    <tr><td headers="일정" class="gt_row gt_center" style="font-size: large;">06주차</td>
+<td headers="과목명" class="gt_row gt_center" style="font-size: large;">프로그래밍</td>
+<td headers="학습상세" class="gt_row gt_center" style="font-size: large;">파이썬</td>
+<td headers="데이터셋" class="gt_row gt_center" style="font-size: large;"></td></tr>
+    <tr><td headers="일정" class="gt_row gt_center" style="font-size: large;">07주차</td>
+<td headers="과목명" class="gt_row gt_center" style="font-size: large;">대쉬보드</td>
+<td headers="학습상세" class="gt_row gt_center" style="font-size: large;">Flexdashboard / Shinydashboard</td>
+<td headers="데이터셋" class="gt_row gt_center" style="font-size: large;"></td></tr>
+    <tr><td headers="일정" class="gt_row gt_center" style="font-size: large;">08주차</td>
+<td headers="과목명" class="gt_row gt_center" style="font-size: large;">기계학습</td>
+<td headers="학습상세" class="gt_row gt_center" style="font-size: large;">tidymodels / scikit-learn</td>
+<td headers="데이터셋" class="gt_row gt_center" style="font-size: large;"></td></tr>
+    <tr><td headers="일정" class="gt_row gt_center" style="font-size: large;">09주차</td>
+<td headers="과목명" class="gt_row gt_center" style="font-size: large;">데이터 과학 제품</td>
+<td headers="학습상세" class="gt_row gt_center" style="font-size: large;">RESTful API</td>
+<td headers="데이터셋" class="gt_row gt_center" style="font-size: large;"></td></tr>
+    <tr><td headers="일정" class="gt_row gt_center" style="font-size: large;">10주차</td>
+<td headers="과목명" class="gt_row gt_center" style="font-size: large;">특수 데이터</td>
+<td headers="학습상세" class="gt_row gt_center" style="font-size: large;">시계열(Time Series)</td>
+<td headers="데이터셋" class="gt_row gt_center" style="font-size: large;">KOSPI</td></tr>
+    <tr><td headers="일정" class="gt_row gt_center" style="font-size: large;">11주차</td>
+<td headers="과목명" class="gt_row gt_center" style="font-size: large;">특수 데이터</td>
+<td headers="학습상세" class="gt_row gt_center" style="font-size: large;">공간정보(Geospatial) / 텍스트 분석</td>
+<td headers="데이터셋" class="gt_row gt_center" style="font-size: large;">미디어오늘</td></tr>
+    <tr><td headers="일정" class="gt_row gt_center" style="font-size: large;">12주차</td>
+<td headers="과목명" class="gt_row gt_center" style="font-size: large;">비정형 데이터</td>
+<td headers="학습상세" class="gt_row gt_center" style="font-size: large;">텍스트와 이미지 (딥러닝)</td>
+<td headers="데이터셋" class="gt_row gt_center" style="font-size: large;"></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">참고문헌</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-palmer-penguins" class="csl-entry" role="doc-biblioentry">
+Horst, A. M., Hill, A. P., &amp; Gorman, K. B. (2020). <em>Palmerpenguins: Palmer archipelago (antarctica) penguin data</em>. <a href="https://allisonhorst.github.io/palmerpenguins/">https://allisonhorst.github.io/palmerpenguins/</a>
+</div>
+<div id="ref-janssens2021data" class="csl-entry" role="doc-biblioentry">
+Janssens, J. (2021). <em>Data science at the command line</em>. " O’Reilly Media, Inc.".
+</div>
+<div id="ref-severance2013python" class="csl-entry" role="doc-biblioentry">
+Severance, C. (2013). <em>Python for informatics: Exploring information</em>. CreateSpace.
+</div>
+<div id="ref-wickham2016r" class="csl-entry" role="doc-biblioentry">
+Wickham, H., &amp; Grolemund, G. (2016). <em>R for data science: Import, tidy, transform, visualize, and model data</em>. " O’Reilly Media, Inc.".
+</div>
+<div id="ref-wilson2006software" class="csl-entry" role="doc-biblioentry">
+Wilson, G. (2006). Software carpentry: Getting scientists to write better code by making them more productive. <em>Computing in Science &amp; Engineering</em>, <em>8</em>(6), 66–69.
+</div>
+<div id="ref-xie2020r" class="csl-entry" role="doc-biblioentry">
+Xie, Y., Dervieux, C., &amp; Riederer, E. (2020). <em>R markdown cookbook</em>. Chapman; Hall/CRC.
+</div>
+<div id="ref-bitTA" class="csl-entry" role="doc-biblioentry">
+한국R사용자회. (2022). <em>R 텍스트마이닝</em>. <a href="https://r2bit.com/book_tm/">https://r2bit.com/book_tm/</a>
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "복사완료!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "복사완료!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><a href="https://quarto.org/">Quarto</a> 로 제작</div>   
+  </div>
+</footer>
+
+
+
+</body></html>

@@ -1,0 +1,101 @@
+---
+title: "2022년 교과과정"
+description: 실무적으로 데이터를 통해 가치를 창출하는데 꼭 필요한 기본기를 교육합니다.
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    url: https://www.linkedin.com/in/kwangchunlee/
+    affiliation: 한국 R 사용자회
+    affiliation-url: https://github.com/bit2r
+title-block-banner: true
+#title-block-banner: "#562457"
+format:
+  html:
+    theme: 
+      - flatly
+      - css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 3
+    toc-title: 목차
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+editor_options: 
+  chunk_output_type: console
+filters:
+  - lightbox
+lightbox: auto  
+knitr:
+  opts_chunk: 
+    message: false
+    warning: false
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true  
+---
+
+
+# 학습 내용
+
+
+```{r}
+#| echo: false
+library(tidyverse)
+library(gt)
+
+courses <- tribble(
+  ~"과목명", ~"학습상세", ~"일정", ~"데이터셋",
+  "문제정의", "데이터 과학 문제 정의",  "01주차", "BitData",
+  "가설검정", "NHST 프레임워크",  "02주차", "차 데이터 등",
+  "통계모형", "회귀모형 개발",  "03주차", "아이스크림 매출 등",
+  "기계학습", "CART - Regression",  "04주차", "아파트 가격 예측 등",
+  "기계학습", "CART - Classification", "05주차", "펭귄 성별 분류 등",
+  "기계학습", "비지도학습",  "06주차", "포켓몬 등",
+  "기계학습", "모형 최적화(Hyper parameter turning)",  "07주차", "와인품질, 신용불량예측 등",
+  "기계학습", "Explainabl Machine Learning",  "08주차", "FIFA 선수가치 등",
+  "프로젝트", "프로젝트 지도",  "09주차", "자체 데이터",
+  "프로젝트", "프로젝트 지도",  "10주차", "자체 데이터",
+  "프로젝트", "프로젝트 지도",  "11주차", "자체 데이터",
+  "심화주제", "시계열, 공간정보, 텍스트 등",  "12주차", "항공승객 등")
+
+courses %>% 
+  select(일정, everything()) %>% 
+  gt() %>% 
+  tab_options(table.align='center',
+              table.width = px(500)) %>% 
+  tab_header(
+      title = "데이터 과학 교육과정"
+    ) %>% 
+  tab_style( 
+    style = cell_text( size = "large", weight = "bold"),
+    locations = list( cells_column_labels()  )
+    ) %>% 
+  tab_style( 
+    style = cell_text( size = "x-small", weight = "bold"),
+    locations = list( cells_row_groups() )
+    )  %>% 
+  tab_style( 
+    style = cell_text( size = "large"),
+    locations = list( cells_body() )
+    ) %>%
+  opt_table_font(
+    font = list(
+      google_font(name = "Dongle"),
+      "Cochin", "Serif"
+    )
+  ) %>% 
+  cols_align(
+    align = "center",
+    columns = everything()
+  )  
+
+```
+
+
+
+

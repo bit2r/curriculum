@@ -22,7 +22,13 @@ website:
     background: "#0068B7"  
     left:
       - href: index.qmd
-        text: "학습개요"
+        text: "들어가며"
+      - text: "커리큐럼"
+        menu:
+          - href: curriculum_2023.qmd
+            text: "2023년"
+          - href: curriculum_2022.qmd
+            text: "2022년"
       - text: "모래시계"
         menu:
           - href: timer_five.qmd

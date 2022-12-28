@@ -1,0 +1,106 @@
+---
+title: "2022년 교과과정"
+description: 실무적으로 데이터를 통해 가치를 창출하는데 꼭 필요한 기본기를 교육합니다.
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    url: https://www.linkedin.com/in/kwangchunlee/
+    affiliation: 한국 R 사용자회
+    affiliation-url: https://github.com/bit2r
+title-block-banner: true
+#title-block-banner: "#562457"
+format:
+  html:
+    theme: 
+      - flatly
+      - css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 3
+    toc-title: 목차
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+editor_options: 
+  chunk_output_type: console
+filters:
+  - lightbox
+lightbox: auto  
+knitr:
+  opts_chunk: 
+    message: false
+    warning: false
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true  
+---
+
+
+
+
+# 학습 내용
+
+[@janssens2021data, @wickham2016r, @palmer-penguins, @xie2020r, 
+ @severance2013python, @wilson2006software, @bitTA]{.aside}
+
+
+```{r}
+#| echo: false
+library(tidyverse)
+library(gt)
+
+courses <- tribble(~"과목명", ~"학습상세", ~"일정", ~"데이터셋",
+        "환경설정", "학습 도구 설치 및 학습환경",  "00주차", "파머 펭귄, BitData",
+        "디지털 글쓰기(보고서)", "마크다운 / Quarto",  "01주차", "BitData",
+        "명령라인 데이터 분석", "자동화(Shell)",  "02주차", "SWC",
+        "버전 제어", "버전제어/협업(Git / GitHub / GitLab)",  "03주차", "",
+        "프로그래밍", "SQL",  "04주차", "Data Carpentry, DVD 렌탈",
+        "프로그래밍", "시각화",  "05주차", "gapminder",
+        "프로그래밍", "파이썬",  "06주차", "",
+        "대쉬보드", "Flexdashboard / Shinydashboard",  "07주차", "",
+        "기계학습", "tidymodels / scikit-learn",  "08주차", "",
+        "데이터 과학 제품", "RESTful API",  "09주차", "",
+        "특수 데이터", "시계열(Time Series)",  "10주차", "KOSPI",
+        "특수 데이터", "공간정보(Geospatial) / 텍스트 분석",  "11주차", "미디어오늘",
+        "비정형 데이터", "텍스트와 이미지 (딥러닝)",  "12주차", "")
+
+courses %>% 
+  select(일정, everything()) %>% 
+  gt() %>% 
+  tab_options(table.align='center',
+              table.width = px(500)) %>% 
+  tab_header(
+      title = "데이터 과학 교육과정"
+    ) %>% 
+  tab_style( 
+    style = cell_text( size = "large", weight = "bold"),
+    locations = list( cells_column_labels()  )
+    ) %>% 
+  tab_style( 
+    style = cell_text( size = "x-small", weight = "bold"),
+    locations = list( cells_row_groups() )
+    )  %>% 
+  tab_style( 
+    style = cell_text( size = "large"),
+    locations = list( cells_body() )
+    ) %>%
+  opt_table_font(
+    font = list(
+      google_font(name = "Dongle"),
+      "Cochin", "Serif"
+    )
+  ) %>% 
+  cols_align(
+    align = "center",
+    columns = everything()
+  )  
+
+```
+
+
+
+
