@@ -21,5 +21,8 @@ editor_options:
   chunk_output_type: console
 ---
 
-# [통계 강의 슬라이드](https://r2bit.com/practice/statistics.html)
+# [통계 강의 슬라이드](https://r2bit.com/practice/slideshows/statistics/toc_stat.html)
+
+- 쥬피터 노트북
+    - [단순회귀모형(OLS)](code/ols.ipynb)
 
