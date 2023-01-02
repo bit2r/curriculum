@@ -1,0 +1,111 @@
+---
+title: "기계학습"
+description: "나무모형 (Tree-Based Model)"
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - flatly
+      - css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+editor_options: 
+  chunk_output_type: console
+---
+
+# 문제정의
+
+[캐글: [Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data)]{.aside}
+
+여성 가슴에서 미세한 바늘 흡인(FNA)로 추출한 덩어리를 디지털화된 이미지로부터 추출한 정보를 바탕으로 
+유방암 여부를 예측한다.
+
+범주 구분: 357 정상(benign), 212 유방암(malignant)
+
+# 데이터셋
+
+여성 가슴에서 미세한 바늘 흡인(FNA)로 추출한 덩어리를 디지털화된 이미지로부터 역산하여 계산한 피쳐를 담고 있고, 각 변수는 존재하는 세포핵의 특성을 나타낸다.
+
+- 변수 설명
+  - 1) ID number
+  - 2) Diagnosis (M = malignant, B = benign)
+- Ten real-valued features are computed for each cell nucleus:
+  - a) radius (mean of distances from center to points on the perimeter)
+  - b) texture (standard deviation of gray-scale values)
+  - c) perimeter
+  - d) area
+  - e) smoothness (local variation in radius lengths)
+  - f) compactness (perimeter^2 / area - 1.0)
+  - g) concavity (severity of concave portions of the contour)
+  - h) concave points (number of concave portions of the contour)
+  - i) symmetry
+  - j) fractal dimension ("coastline approximation" - 1)
+
+- field 3 is Mean Radius, field 13 is Radius SE, field 23 is Worst Radius.
+
+```{r}
+#| echo: false
+#| column: screen-inset-shaded
+
+library(tidyverse)
+
+cancer_raw <- read_csv("code/python_ml/data/breast_cancer.csv")
+
+cancer_raw %>% 
+  skimr::skim()
+```
+
+# 예측모형 (Jupyter Notebook)
+
+- [Decision Tree](code/python_ml/cancer_01_dt.ipynb)
+- [Cross Validation](code/python_ml/cancer_02_cv.ipynb)
+- [Ensemble - Voting](code/python_ml/cancer_03_ensemble_voting.ipynb)
+- [Ensemble - Bagging](code/python_ml/cancer_03_ensemble_bagging.ipynb)
+- [Ensemble - Random Forest](code/python_ml/cancer_03_ensemble_rf.ipynb)
+- [Ensemble - Stochastic Gradient Boosting](code/python_ml/cancer_03_ensemble_xgboost.ipynb)
+- [Hyper Parameter Tuning](code/python_ml/cancer_04_tuning.ipynb)
+- [Hyper Parameter Tuning - Random Forest](code/python_ml/cancer_04_tuning-rf.ipynb)
+
+# 실습 데이터셋
+
+- [데이터셋](code/python_ml/dataset.ipynb)
+
+## recommend three tabular machine learning dataset for classification problem
+
+
+::: {.callout-caution collapse="true"}
+Sure, here are three tabular machine learning datasets for classification problems:
+
+- Titanic: The Titanic dataset is a well-known dataset that contains information on the passengers of the Titanic. The task is to predict whether a passenger survived or not based on features such as their age, gender, and passenger class.
+- Credit Card Fraud Detection: This dataset contains credit card transaction data, and the task is to classify transactions as fraudulent or genuine. The dataset contains a large number of features, including the amount of the transaction, time of the transaction, and information about the card used.
+- Adult Census Income: This dataset contains information on the income of individuals based on features such as their age, education, and occupation. The task is to predict whether an individual has an income greater than or equal to $50,000 per year.
+
+I hope these datasets are helpful! Let me know if you have any other questions.
+:::
+
+
+## where can i download credit card fraud deteciton dataset and adult census income dateset?
+
+::: {.callout-caution collapse="true"}
+
+The Titanic dataset is also available on Kaggle at the following link: <https://www.kaggle.com/c/titanic>
+
+The Credit Card Fraud Detection dataset is available on Kaggle at the following link: <https://www.kaggle.com/mlg-ulb/creditcardfraud>
+
+The Adult Census Income dataset is available on the UCI Machine Learning Repository at the following link: <https://archive.ics.uci.edu/ml/datasets/Adult>
+
+These sites are well-known repositories for machine learning datasets and are a good resource for finding datasets for a variety of tasks.
+
+I hope this helps! Let me know if you have any other questions.
+:::
+
+
+
