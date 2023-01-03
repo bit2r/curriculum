@@ -99,7 +99,7 @@ mpg_raw %>%
     - [Ensemble - Bagging](code/python_ml/cancer_03_ensemble_bagging.ipynb)
     - [Ensemble - Random Forest](code/python_ml/cancer_03_ensemble_rf.ipynb)
         - [Ensemble - Random Forest Classifier](code/python_ml/cancer_03_ensemble_rf_classifier.ipynb)    
-    - [Ensemble - Stochastic Gradient Boosting](code/python_ml/cancer_03_ensemble_xgboost.ipynb)
+    - [Ensemble - Stochastic Gradient Boosting](code/python_ml/cancer_03_ensemble_boosting.ipynb)
     - [Hyper Parameter Tuning](code/python_ml/cancer_04_tuning.ipynb)
     - [Hyper Parameter Tuning - Random Forest](code/python_ml/cancer_04_tuning-rf.ipynb)
 - 회귀모형
@@ -108,7 +108,7 @@ mpg_raw %>%
     - [Ensemble - Voting](code/python_ml/auto_mpg_03_ensemble_voting.ipynb)
     - [Ensemble - Bagging](code/python_ml/auto_mpg_03_ensemble_bagging.ipynb)
     - [Ensemble - Random Forest](code/python_ml/auto_mpg_03_ensemble_rf.ipynb)
-    - [Ensemble - Stochastic Gradient Boosting](code/python_ml/auto_mpg_03_ensemble_xgboost.ipynb)
+    - [Ensemble - Stochastic Gradient Boosting](code/python_ml/auto_mpg_03_ensemble_boosting.ipynb)
     - [Hyper Parameter Tuning](code/python_ml/auto_mpg_04_tuning.ipynb)
     - [Hyper Parameter Tuning - Random Forest](code/python_ml/auto_mpg_04_tuning-rf.ipynb)
     
