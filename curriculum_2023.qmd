@@ -45,38 +45,30 @@ knitr:
 
 ```{r}
 #| echo: false
+#| column: page
+
 library(tidyverse)
 library(gt)
+library(readxl)
 
-courses <- tribble(
-  ~"과목명", ~"학습상세", ~"일정", ~"데이터셋",
-  "문제정의", "데이터 과학 문제 정의",  "01주차", "BitData",
-  "가설검정", "NHST 프레임워크",  "02주차", "차 데이터 등",
-  "통계모형", "회귀모형 개발",  "03주차", "아이스크림 매출 등",
-  "기계학습", "CART - Regression",  "04주차", "아파트 가격 예측 등",
-  "기계학습", "CART - Classification", "05주차", "펭귄 성별 분류 등",
-  "기계학습", "비지도학습",  "06주차", "포켓몬 등",
-  "기계학습", "모형 최적화(Hyper parameter turning)",  "07주차", "와인품질, 신용불량예측 등",
-  "기계학습", "Explainabl Machine Learning",  "08주차", "FIFA 선수가치 등",
-  "프로젝트", "프로젝트 지도",  "09주차", "자체 데이터",
-  "프로젝트", "프로젝트 지도",  "10주차", "자체 데이터",
-  "프로젝트", "프로젝트 지도",  "11주차", "자체 데이터",
-  "심화주제", "시계열, 공간정보, 텍스트 등",  "12주차", "항공승객 등")
+courses <- read_excel("data/curriculum_2023.xlsx", sheet = "level_01")
 
 courses %>% 
-  select(일정, everything()) %>% 
-  gt() %>% 
+  fill(c(일정, 과정)) %>% 
+  mutate(과정 = str_remove(과정, "^\\d+\\.\\s+")) %>% 
+  ## 표 작성
+  gt(groupname_col = c("일정", "과정")) %>% 
   tab_options(table.align='center',
-              table.width = px(500)) %>% 
+              table.width = px(600)) %>% 
   tab_header(
-      title = "데이터 과학 교육과정"
+      title =  md("# 데이터 과학 교육과정")
     ) %>% 
   tab_style( 
-    style = cell_text( size = "large", weight = "bold"),
+    style = cell_text( size = "x-large", weight = "bold"),
     locations = list( cells_column_labels()  )
     ) %>% 
   tab_style( 
-    style = cell_text( size = "x-small", weight = "bold"),
+    style = cell_text( size = "x-large", weight = "bold"),
     locations = list( cells_row_groups() )
     )  %>% 
   tab_style( 
@@ -90,8 +82,13 @@ courses %>%
     )
   ) %>% 
   cols_align(
-    align = "center",
-    columns = everything()
+    align = "left",
+    columns = 과정상세
+  )  %>% 
+  sub_missing(
+    columns = everything(),
+    rows = everything(),
+    missing_text = ""
   )  
 
 ```
