@@ -32,6 +32,8 @@ editor_options:
 
 # 데이터셋
 
+## 유방암 (분류)
+
 여성 가슴에서 미세한 바늘 흡인(FNA)로 추출한 덩어리를 디지털화된 이미지로부터 역산하여 계산한 피쳐를 담고 있고, 각 변수는 존재하는 세포핵의 특성을 나타낸다.
 
 - 변수 설명
@@ -63,16 +65,56 @@ cancer_raw %>%
   skimr::skim()
 ```
 
+## 연비 (예측)
+
+[데이터 출처: 캐글 [자동차 연비](https://www.kaggle.com/datasets/uciml/autompg-dataset)]{.aside}
+
+- 변수 설명
+    - mpg — Mileage/Miles Per Gallon
+    - cylinders — the power unit of the car where gasoline is turned into power
+    - displacement — engine displacement of the car
+    - horsepower — rate of the engine performance
+    - weight — the weight of a car
+    - acceleration — the acceleration of a car
+    - model — model of the car
+    - origin — the origin of the car
+    - car — the name of the car
+
+```{r}
+#| echo: false
+#| column: screen-inset-shaded
+
+mpg_raw <- read_csv("code/python_ml/data/auto-mpg.csv")
+
+mpg_raw %>% 
+  skimr::skim()
+```
+
 # 예측모형 (Jupyter Notebook)
 
-- [Decision Tree](code/python_ml/cancer_01_dt.ipynb)
-- [Cross Validation](code/python_ml/cancer_02_cv.ipynb)
-- [Ensemble - Voting](code/python_ml/cancer_03_ensemble_voting.ipynb)
-- [Ensemble - Bagging](code/python_ml/cancer_03_ensemble_bagging.ipynb)
-- [Ensemble - Random Forest](code/python_ml/cancer_03_ensemble_rf.ipynb)
-- [Ensemble - Stochastic Gradient Boosting](code/python_ml/cancer_03_ensemble_xgboost.ipynb)
-- [Hyper Parameter Tuning](code/python_ml/cancer_04_tuning.ipynb)
-- [Hyper Parameter Tuning - Random Forest](code/python_ml/cancer_04_tuning-rf.ipynb)
+- 분류모형
+    - [Decision Tree](code/python_ml/cancer_01_dt.ipynb)
+    - [Cross Validation](code/python_ml/cancer_02_cv.ipynb)
+    - [Ensemble - Voting](code/python_ml/cancer_03_ensemble_voting.ipynb)
+    - [Ensemble - Bagging](code/python_ml/cancer_03_ensemble_bagging.ipynb)
+    - [Ensemble - Random Forest](code/python_ml/cancer_03_ensemble_rf.ipynb)
+        - [Ensemble - Random Forest Classifier](code/python_ml/cancer_03_ensemble_rf_classifier.ipynb)    
+    - [Ensemble - Stochastic Gradient Boosting](code/python_ml/cancer_03_ensemble_xgboost.ipynb)
+    - [Hyper Parameter Tuning](code/python_ml/cancer_04_tuning.ipynb)
+    - [Hyper Parameter Tuning - Random Forest](code/python_ml/cancer_04_tuning-rf.ipynb)
+- 회귀모형
+    - [Decision Tree](code/python_ml/auto_mpg_01_dt.ipynb)
+    - [Cross Validation](code/python_ml/auto_mpg_02_cv.ipynb)
+    - [Ensemble - Voting](code/python_ml/auto_mpg_03_ensemble_voting.ipynb)
+    - [Ensemble - Bagging](code/python_ml/auto_mpg_03_ensemble_bagging.ipynb)
+    - [Ensemble - Random Forest](code/python_ml/auto_mpg_03_ensemble_rf.ipynb)
+    - [Ensemble - Stochastic Gradient Boosting](code/python_ml/auto_mpg_03_ensemble_xgboost.ipynb)
+    - [Hyper Parameter Tuning](code/python_ml/auto_mpg_04_tuning.ipynb)
+    - [Hyper Parameter Tuning - Random Forest](code/python_ml/auto_mpg_04_tuning-rf.ipynb)
+    
+    
+    
+    
 
 # 실습 데이터셋
 
