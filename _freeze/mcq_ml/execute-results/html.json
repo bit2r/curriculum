@@ -1,0 +1,14 @@
+{
+  "hash": "436c18fb5151ce99cdb56e9c14ecfbcf",
+  "result": {
+    "markdown": "---\ntitle: \"기\"\ndescription: \"통계 및 확률 기본기를 확인합니다.\"\ndate: today # 날짜 설정: now, last-modified\nauthor:\n  - name: 이광춘\n    affiliation: TCS\ntitle-block-banner: false\nformat:\n  html:\n    css: css/quarto-fonts.css\n    code-fold: false\n    toc: true\n    toc-depth: 2\n    number-sections: true\n    highlight-style: github    \n    self-contained: false\nbibliography: bibliography.bib\nlink-citations: yes\ncsl: apa-single-spaced.csl\nengine: knitr\neditor_options: \n  chunk_output_type: console\nfilters:\n  - lightbox\nlightbox: auto  \neditor: \n  markdown: \n    wrap: 72\n---\n\n\n\n## MCQ 01번 \n\n기계학습 알고즘ㅣ 아ㄴㅓ은?\n\n1. 표본 공간(Sample Space)\n1. 포함집합(Super Set)\n1. 포함공간(Super Space)\n1. 표본집합(Sample Set)\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 1\n- **난이도: 쉬움**\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

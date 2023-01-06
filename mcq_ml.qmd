@@ -1,0 +1,46 @@
+---
+title: "기"
+description: "통계 및 확률 기본기를 확인합니다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    css: css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+engine: knitr
+editor_options: 
+  chunk_output_type: console
+filters:
+  - lightbox
+lightbox: auto  
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+
+## MCQ 01번 
+
+기계학습 알고즘ㅣ 아ㄴㅓ은?
+
+1. 표본 공간(Sample Space)
+1. 포함집합(Super Set)
+1. 포함공간(Super Space)
+1. 표본집합(Sample Set)
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 1
+- **난이도: 쉬움**
+:::

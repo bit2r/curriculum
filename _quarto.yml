@@ -123,6 +123,8 @@ website:
             text: "확률과 통계"
           - href: mcq_ds.qmd
             text: "데이터 과학"
+          - href: mcq_ml.qmd
+            text: "기계학습"            
           
 format:
   html:

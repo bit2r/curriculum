@@ -662,7 +662,7 @@
     "href": "timer_five.html",
     "title": "모래시계",
     "section": "",
-    "text": "−+\n05:00\n\n\n\n\n\n#| echo: false\nlibrary(countdown)\ncountdown::countdown(minutes = 60, seconds = 00, \n          left = 0, right = 0,\n          bottom = 1,\n          padding = \"50px\",\n          margin = \"5%\",\n          font_size = \"10em\")\n#| echo: false\nlibrary(countdown)\ncountdown::countdown(minutes = 10, seconds = 00, \n          left = 0, right = 0,\n          bottom = 1,\n          padding = \"50px\",\n          margin = \"5%\",\n          font_size = \"10em\")\n#| echo: false\nlibrary(countdown)\ncountdown::countdown(minutes = 30, seconds = 00, \n          left = 0, right = 0,\n          bottom = 1,\n          padding = \"50px\",\n          margin = \"5%\",\n          font_size = \"10em\")\n#| echo: false\nlibrary(countdown)\ncountdown::countdown(minutes = 20, seconds = 00, \n          left = 0, right = 0,\n          bottom = 1,\n          padding = \"50px\",\n          margin = \"5%\",\n          font_size = \"10em\")"
+    "text": "−+\n05:00"
   },
   {
     "objectID": "timer_ten.html",
@@ -747,5 +747,12 @@
     "title": "기계학습",
     "section": "2.2 연비 (예측)",
     "text": "2.2 연비 (예측)\n데이터 출처: 캐글 자동차 연비\n\n변수 설명\n\nmpg — Mileage/Miles Per Gallon\ncylinders — the power unit of the car where gasoline is turned into power\ndisplacement — engine displacement of the car\nhorsepower — rate of the engine performance\nweight — the weight of a car\nacceleration — the acceleration of a car\nmodel — model of the car\norigin — the origin of the car\ncar — the name of the car\n\n\n\n\n\nData summary\n\n\nName\nPiped data\n\n\nNumber of rows\n398\n\n\nNumber of columns\n9\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\ncharacter\n2\n\n\nnumeric\n7\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: character\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmin\nmax\nempty\nn_unique\nwhitespace\n\n\n\n\nhorsepower\n0\n1\n1\n3\n0\n94\n0\n\n\ncar name\n0\n1\n6\n36\n0\n305\n0\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nmpg\n0\n1\n23.51\n7.82\n9\n17.50\n23.0\n29.00\n46.6\n▆▇▆▃▁\n\n\ncylinders\n0\n1\n5.45\n1.70\n3\n4.00\n4.0\n8.00\n8.0\n▇▁▃▁▃\n\n\ndisplacement\n0\n1\n193.43\n104.27\n68\n104.25\n148.5\n262.00\n455.0\n▇▂▂▃▁\n\n\nweight\n0\n1\n2970.42\n846.84\n1613\n2223.75\n2803.5\n3608.00\n5140.0\n▇▇▅▅▂\n\n\nacceleration\n0\n1\n15.57\n2.76\n8\n13.83\n15.5\n17.17\n24.8\n▁▆▇▃▁\n\n\nmodel year\n0\n1\n76.01\n3.70\n70\n73.00\n76.0\n79.00\n82.0\n▇▆▇▆▇\n\n\norigin\n0\n1\n1.57\n0.80\n1\n1.00\n1.0\n2.00\n3.0\n▇▁▂▁▂"
+  },
+  {
+    "objectID": "mcq_ml.html",
+    "href": "mcq_ml.html",
+    "title": "기",
+    "section": "",
+    "text": "기계학습 알고즘ㅣ 아ㄴㅓ은?\n\n표본 공간(Sample Space)\n포함집합(Super Set)\n포함공간(Super Space)\n표본집합(Sample Set)\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 쉬움"
   }
 ]
