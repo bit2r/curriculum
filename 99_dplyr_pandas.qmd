@@ -1,0 +1,382 @@
+---
+title: "데이터 다루기"
+description: "데이터프레임에 대해 살펴봅니다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - flatly
+      - css/quarto-fonts.css
+    code-fold: false
+    code-overflow: scroll
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+editor_options: 
+  chunk_output_type: console
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true  
+---
+
+
+```{r}
+#| include: false
+library(dplyr)
+library(palmerpenguins)
+```
+
+
+# `dplyr` 동사
+
+- arrange (다시 정렬하기) : 행을 다시 정렬한다.
+- select (변수 선택하기) : 변수명으로 특정 칼럼을 추출한다.
+- mutate (변수 추가하기) : 새로운 변수를 추가한다.
+- filter (관측점 필터링) : 특정 기준을 만족하는 행을 추출한다.
+- summarise (변수를 값으로 줄이기) : 변수를 값(스칼라)으로 요약한다.
+
+[`dplyr` 동사 개념](https://aispiration.com/data-science/data-handling-dplyr.html#5_dplyr_%EB%8F%99%EC%82%AC)
+
+# 팔머 펭귄
+
+## 데이터셋
+
+:::{layout-ncol="2"}
+
+```{r}
+#| eval: false
+library(dplyr)
+library(palmerpenguins)
+
+penguins
+```
+
+```{r}
+penguins 
+```
+
+:::
+
+## 오름/내림 차순 정렬
+
+:::{layout-ncol="2"}
+
+```{r}
+#| eval: false
+penguins %>% 
+  arrange(bill_length_mm)
+```
+
+```{r}
+#| echo: false
+penguins %>% 
+  arrange(bill_length_mm)
+```
+
+:::
+
+
+## 변수 선택
+
+:::{layout-ncol="2"}
+
+```{r}
+#| eval: false
+penguins %>% 
+  select(species, bill_length_mm, sex)
+```
+
+```{r}
+#| echo: false
+penguins %>% 
+  select(species, bill_length_mm, sex)
+```
+
+:::
+
+
+## 관측점 필터링
+
+:::{layout-ncol="2"}
+
+```{r}
+#| eval: false
+penguins %>% 
+  filter(island == "Dream")
+```
+
+```{r}
+#| echo: false
+penguins %>% 
+  filter(island == "Dream")
+```
+
+:::
+
+
+## 변수 생성
+
+[[체질량지수(BMI) 보고서](https://aispiration.com/comp_document/tutorial/01_rmarkdown/bmi.html)]{.aside}
+
+$$BMI = \frac{체중(kg)}{키(미터)^2}$$
+
+$$Bill(부리) = \frac{\text{부리길이}}{부리깊이} \times 2 $$
+
+:::{layout-ncol="2"}
+
+```{r}
+#| eval: false
+penguins %>% 
+  select(species, island, bill_length_mm,  bill_depth_mm) %>% 
+  mutate(bill =  bill_length_mm / bill_depth_mm * 2)
+
+```
+
+```{r}
+#| echo: false
+penguins %>% 
+  select(species, island, bill_length_mm,  bill_depth_mm) %>% 
+  mutate(bill =  bill_length_mm / bill_depth_mm * 2)
+
+```
+
+:::
+
+
+## 요약
+
+:::{layout-ncol="2"}
+
+```{r}
+#| eval: false
+penguins %>% 
+  tidyr::drop_na() %>% 
+  group_by(species) %>% 
+  summarise(부리길이평균 = mean(bill_length_mm))
+```
+
+```{r}
+#| echo: false
+penguins %>% 
+  tidyr::drop_na() %>% 
+  group_by(species) %>% 
+  summarise(부리길이평균 = mean(bill_length_mm))
+```
+
+:::
+
+
+# 파이썬 Suiba
+
+[
+```{r}
+#| eval: false
+library(reticulate)
+py_install("siuba")
+```
+]{.aside}
+
+## 데이터셋
+
+:::{layout-ncol="2"}
+
+```{python}
+#| eval: false
+import pandas as pd
+
+penguins = pd.read_csv("https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/palmerpenguins/data/penguins.csv")
+penguins.head()
+```
+
+```{python}
+#| echo: false
+import pandas as pd
+
+penguins = pd.read_csv("https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/palmerpenguins/data/penguins.csv")
+penguins.head()
+```
+
+:::
+
+## 오름/내림 차순 정렬
+
+:::{layout-ncol="2"}
+
+```{python}
+#| eval: false
+
+import siuba as si
+
+( penguins
+  >> si.arrange(si.__.bill_length_mm)
+)
+```
+
+```{python}
+#| echo: false
+import siuba as si
+
+( penguins
+  >> si.arrange(si._.bill_length_mm)
+)
+```
+
+:::
+
+
+## 변수 선택
+
+:::{layout-ncol="2"}
+
+```{python}
+#| eval: false
+import siuba as si
+
+( penguins   
+  >> si.select(si._.species, si._.bill_length_mm, si._.sex)
+)
+```
+
+
+```{python}
+#| echo: false
+import siuba as si
+
+( penguins   
+  >> si.select(si._.species, si._.bill_length_mm, si._.sex)
+)
+```
+
+:::
+
+
+## 관측점 필터링
+
+:::{layout-ncol="2"}
+
+```{python}
+#| eval: false
+import siuba as si
+
+( penguins   
+  >> si.filter(si._.island == "Dream")
+)
+```
+
+```{python}
+#| echo: false
+import siuba as si
+
+( penguins   
+  >> si.filter(si._.island == "Dream")
+)
+```
+
+:::
+
+
+## 변수 생성
+
+[[체질량지수(BMI) 보고서](https://aispiration.com/comp_document/tutorial/01_rmarkdown/bmi.html)]{.aside}
+
+$$BMI = \frac{체중(kg)}{키(미터)^2}$$
+
+$$Bill(부리) = \frac{\text{부리길이}}{부리깊이} \times 2 $$
+
+:::{layout-ncol="2"}
+
+```{python}
+#| eval: false
+import siuba as si
+
+( penguins   
+  >> si.select(si._.species, si._.island, si._.bill_length_mm, si._.bill_depth_mm)
+  >> si.mutate(bill =  si._.bill_length_mm / si._.bill_depth_mm * 2)
+)
+```
+
+```{python}
+#| echo: false
+import siuba as si
+
+( penguins   
+  >> si.select(si._.species, si._.island, si._.bill_length_mm, si._.bill_depth_mm)
+  >> si.mutate(bill =  si._.bill_length_mm / si._.bill_depth_mm * 2)
+)
+
+```
+
+:::
+
+
+## 요약
+
+:::{layout-ncol="2"}
+
+```{python}
+#| eval: false
+import siuba as si
+
+( penguins 
+    >> si.group_by(si._.species) 
+    >> si.summarize(부리길이평균 = si._.bill_length_mm.mean())
+)
+```
+
+```{python}
+#| echo: false
+import siuba as si
+
+( penguins 
+    >> si.group_by(si._.species) 
+    >> si.summarize(부리길이평균 = si._.bill_length_mm.mean())
+)
+```
+
+:::
+
+
+# Pandas 문법
+
+칼럼(변수)를 선택하는 다양한 방법
+
+## `df.column_name`
+
+```{python}
+penguins.island
+```
+
+##  `df['column_name']`
+
+```{python}
+penguins['island']
+```
+
+## `df[['column_name']]`
+
+```{python}
+penguins[['island']]
+```
+
+
+## `df.loc[:, 'column_name']`
+
+```{python}
+penguins.loc[:, 'island']
+```
+
+## `df.iloc[:, column_index]`
+
+```{python}
+penguins.iloc[:, 1]
+```
+

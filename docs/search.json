@@ -697,7 +697,7 @@
     "href": "99_statistics.html",
     "title": "통계학",
     "section": "",
-    "text": "1 통계 강의 슬라이드\n\n쥬피터 노트북\n\n단순회귀모형(OLS)"
+    "text": "1 확률과 통계\n\n통계 개념 슬라이드\nOLS 개념과 이론\n\n단순회귀모형(OLS) - ols.ipynb\n\n의사결정 나무모형"
   },
   {
     "objectID": "curriculum_2023.html",
@@ -754,5 +754,166 @@
     "title": "기",
     "section": "",
     "text": "기계학습 알고즘ㅣ 아ㄴㅓ은?\n\n표본 공간(Sample Space)\n포함집합(Super Set)\n포함공간(Super Space)\n표본집합(Sample Set)\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 쉬움"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html",
+    "href": "99_dplyr_pandas.html",
+    "title": "데이터 다루기",
+    "section": "",
+    "text": "arrange (다시 정렬하기) : 행을 다시 정렬한다.\nselect (변수 선택하기) : 변수명으로 특정 칼럼을 추출한다.\nmutate (변수 추가하기) : 새로운 변수를 추가한다.\nfilter (관측점 필터링) : 특정 기준을 만족하는 행을 추출한다.\nsummarise (변수를 값으로 줄이기) : 변수를 값(스칼라)으로 요약한다.\n\ndplyr 동사 개념"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#데이터셋",
+    "href": "99_dplyr_pandas.html#데이터셋",
+    "title": "데이터 다루기",
+    "section": "2.1 데이터셋",
+    "text": "2.1 데이터셋\n\n\n\nlibrary(dplyr)\nlibrary(palmerpenguins)\n\npenguins\n\n\npenguins \n#> # A tibble: 344 × 8\n#>    species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year\n#>    <fct>   <fct>              <dbl>         <dbl>      <int>   <int> <fct> <int>\n#>  1 Adelie  Torgersen           39.1          18.7        181    3750 male   2007\n#>  2 Adelie  Torgersen           39.5          17.4        186    3800 fema…  2007\n#>  3 Adelie  Torgersen           40.3          18          195    3250 fema…  2007\n#>  4 Adelie  Torgersen           NA            NA           NA      NA <NA>   2007\n#>  5 Adelie  Torgersen           36.7          19.3        193    3450 fema…  2007\n#>  6 Adelie  Torgersen           39.3          20.6        190    3650 male   2007\n#>  7 Adelie  Torgersen           38.9          17.8        181    3625 fema…  2007\n#>  8 Adelie  Torgersen           39.2          19.6        195    4675 male   2007\n#>  9 Adelie  Torgersen           34.1          18.1        193    3475 <NA>   2007\n#> 10 Adelie  Torgersen           42            20.2        190    4250 <NA>   2007\n#> # … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,\n#> #   ²​body_mass_g"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#오름내림-차순-정렬",
+    "href": "99_dplyr_pandas.html#오름내림-차순-정렬",
+    "title": "데이터 다루기",
+    "section": "2.2 오름/내림 차순 정렬",
+    "text": "2.2 오름/내림 차순 정렬\n\n\n\npenguins %>% \n  arrange(bill_length_mm)\n\n\n#> # A tibble: 344 × 8\n#>    species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year\n#>    <fct>   <fct>              <dbl>         <dbl>      <int>   <int> <fct> <int>\n#>  1 Adelie  Dream               32.1          15.5        188    3050 fema…  2009\n#>  2 Adelie  Dream               33.1          16.1        178    2900 fema…  2008\n#>  3 Adelie  Torgersen           33.5          19          190    3600 fema…  2008\n#>  4 Adelie  Dream               34            17.1        185    3400 fema…  2008\n#>  5 Adelie  Torgersen           34.1          18.1        193    3475 <NA>   2007\n#>  6 Adelie  Torgersen           34.4          18.4        184    3325 fema…  2007\n#>  7 Adelie  Biscoe              34.5          18.1        187    2900 fema…  2008\n#>  8 Adelie  Torgersen           34.6          21.1        198    4400 male   2007\n#>  9 Adelie  Torgersen           34.6          17.2        189    3200 fema…  2008\n#> 10 Adelie  Biscoe              35            17.9        190    3450 fema…  2008\n#> # … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,\n#> #   ²​body_mass_g"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#변수-선택",
+    "href": "99_dplyr_pandas.html#변수-선택",
+    "title": "데이터 다루기",
+    "section": "2.3 변수 선택",
+    "text": "2.3 변수 선택\n\n\n\npenguins %>% \n  select(species, bill_length_mm, sex)\n\n\n#> # A tibble: 344 × 3\n#>    species bill_length_mm sex   \n#>    <fct>            <dbl> <fct> \n#>  1 Adelie            39.1 male  \n#>  2 Adelie            39.5 female\n#>  3 Adelie            40.3 female\n#>  4 Adelie            NA   <NA>  \n#>  5 Adelie            36.7 female\n#>  6 Adelie            39.3 male  \n#>  7 Adelie            38.9 female\n#>  8 Adelie            39.2 male  \n#>  9 Adelie            34.1 <NA>  \n#> 10 Adelie            42   <NA>  \n#> # … with 334 more rows"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#관측점-필터링",
+    "href": "99_dplyr_pandas.html#관측점-필터링",
+    "title": "데이터 다루기",
+    "section": "2.4 관측점 필터링",
+    "text": "2.4 관측점 필터링\n\n\n\npenguins %>% \n  filter(island == \"Dream\")\n\n\n#> # A tibble: 124 × 8\n#>    species island bill_length_mm bill_depth_mm flipper_len…¹ body_…² sex    year\n#>    <fct>   <fct>           <dbl>         <dbl>         <int>   <int> <fct> <int>\n#>  1 Adelie  Dream            39.5          16.7           178    3250 fema…  2007\n#>  2 Adelie  Dream            37.2          18.1           178    3900 male   2007\n#>  3 Adelie  Dream            39.5          17.8           188    3300 fema…  2007\n#>  4 Adelie  Dream            40.9          18.9           184    3900 male   2007\n#>  5 Adelie  Dream            36.4          17             195    3325 fema…  2007\n#>  6 Adelie  Dream            39.2          21.1           196    4150 male   2007\n#>  7 Adelie  Dream            38.8          20             190    3950 male   2007\n#>  8 Adelie  Dream            42.2          18.5           180    3550 fema…  2007\n#>  9 Adelie  Dream            37.6          19.3           181    3300 fema…  2007\n#> 10 Adelie  Dream            39.8          19.1           184    4650 male   2007\n#> # … with 114 more rows, and abbreviated variable names ¹​flipper_length_mm,\n#> #   ²​body_mass_g"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#변수-생성",
+    "href": "99_dplyr_pandas.html#변수-생성",
+    "title": "데이터 다루기",
+    "section": "2.5 변수 생성",
+    "text": "2.5 변수 생성\n체질량지수(BMI) 보고서\n\\[BMI = \\frac{체중(kg)}{키(미터)^2}\\]\n\\[Bill(부리) = \\frac{\\text{부리길이}}{부리깊이} \\times 2 \\]\n\n\n\npenguins %>% \n  select(species, island, bill_length_mm,  bill_depth_mm) %>% \n  mutate(bill =  bill_length_mm / bill_depth_mm * 2)\n\n\n#> # A tibble: 344 × 5\n#>    species island    bill_length_mm bill_depth_mm  bill\n#>    <fct>   <fct>              <dbl>         <dbl> <dbl>\n#>  1 Adelie  Torgersen           39.1          18.7  4.18\n#>  2 Adelie  Torgersen           39.5          17.4  4.54\n#>  3 Adelie  Torgersen           40.3          18    4.48\n#>  4 Adelie  Torgersen           NA            NA   NA   \n#>  5 Adelie  Torgersen           36.7          19.3  3.80\n#>  6 Adelie  Torgersen           39.3          20.6  3.82\n#>  7 Adelie  Torgersen           38.9          17.8  4.37\n#>  8 Adelie  Torgersen           39.2          19.6  4   \n#>  9 Adelie  Torgersen           34.1          18.1  3.77\n#> 10 Adelie  Torgersen           42            20.2  4.16\n#> # … with 334 more rows"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#요약",
+    "href": "99_dplyr_pandas.html#요약",
+    "title": "데이터 다루기",
+    "section": "2.6 요약",
+    "text": "2.6 요약\n\n\n\npenguins %>% \n  tidyr::drop_na() %>% \n  group_by(species) %>% \n  summarise(부리길이평균 = mean(bill_length_mm))\n\n\n#> # A tibble: 3 × 2\n#>   species   부리길이평균\n#>   <fct>            <dbl>\n#> 1 Adelie            38.8\n#> 2 Chinstrap         48.8\n#> 3 Gentoo            47.6"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#데이터셋-1",
+    "href": "99_dplyr_pandas.html#데이터셋-1",
+    "title": "데이터 다루기",
+    "section": "3.1 데이터셋",
+    "text": "3.1 데이터셋\n\n\n\nimport pandas as pd\n\npenguins = pd.read_csv(\"https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/palmerpenguins/data/penguins.csv\")\npenguins.head()\n\n\n#>   species     island  bill_length_mm  ...  body_mass_g     sex  year\n#> 0  Adelie  Torgersen            39.1  ...       3750.0    male  2007\n#> 1  Adelie  Torgersen            39.5  ...       3800.0  female  2007\n#> 2  Adelie  Torgersen            40.3  ...       3250.0  female  2007\n#> 3  Adelie  Torgersen             NaN  ...          NaN     NaN  2007\n#> 4  Adelie  Torgersen            36.7  ...       3450.0  female  2007\n#> \n#> [5 rows x 8 columns]"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#오름내림-차순-정렬-1",
+    "href": "99_dplyr_pandas.html#오름내림-차순-정렬-1",
+    "title": "데이터 다루기",
+    "section": "3.2 오름/내림 차순 정렬",
+    "text": "3.2 오름/내림 차순 정렬\n\n\n\nimport siuba as si\n\n( penguins\n  >> si.arrange(si.__.bill_length_mm)\n)\n\n\n#>        species     island  bill_length_mm  ...  body_mass_g     sex  year\n#> 142     Adelie      Dream            32.1  ...       3050.0  female  2009\n#> 98      Adelie      Dream            33.1  ...       2900.0  female  2008\n#> 70      Adelie  Torgersen            33.5  ...       3600.0  female  2008\n#> 92      Adelie      Dream            34.0  ...       3400.0  female  2008\n#> 8       Adelie  Torgersen            34.1  ...       3475.0     NaN  2007\n#> ..         ...        ...             ...  ...          ...     ...   ...\n#> 253     Gentoo     Biscoe            55.9  ...       5600.0    male  2009\n#> 293  Chinstrap      Dream            58.0  ...       3700.0  female  2007\n#> 185     Gentoo     Biscoe            59.6  ...       6050.0    male  2007\n#> 3       Adelie  Torgersen             NaN  ...          NaN     NaN  2007\n#> 271     Gentoo     Biscoe             NaN  ...          NaN     NaN  2009\n#> \n#> [344 rows x 8 columns]"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#변수-선택-1",
+    "href": "99_dplyr_pandas.html#변수-선택-1",
+    "title": "데이터 다루기",
+    "section": "3.3 변수 선택",
+    "text": "3.3 변수 선택\n\n\n\nimport siuba as si\n\n( penguins   \n  >> si.select(si._.species, si._.bill_length_mm, si._.sex)\n)\n\n\n#>        species  bill_length_mm     sex\n#> 0       Adelie            39.1    male\n#> 1       Adelie            39.5  female\n#> 2       Adelie            40.3  female\n#> 3       Adelie             NaN     NaN\n#> 4       Adelie            36.7  female\n#> ..         ...             ...     ...\n#> 339  Chinstrap            55.8    male\n#> 340  Chinstrap            43.5  female\n#> 341  Chinstrap            49.6    male\n#> 342  Chinstrap            50.8    male\n#> 343  Chinstrap            50.2  female\n#> \n#> [344 rows x 3 columns]"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#관측점-필터링-1",
+    "href": "99_dplyr_pandas.html#관측점-필터링-1",
+    "title": "데이터 다루기",
+    "section": "3.4 관측점 필터링",
+    "text": "3.4 관측점 필터링\n\n\n\nimport siuba as si\n\n( penguins   \n  >> si.filter(si._.island == \"Dream\")\n)\n\n\n#>        species island  bill_length_mm  ...  body_mass_g     sex  year\n#> 30      Adelie  Dream            39.5  ...       3250.0  female  2007\n#> 31      Adelie  Dream            37.2  ...       3900.0    male  2007\n#> 32      Adelie  Dream            39.5  ...       3300.0  female  2007\n#> 33      Adelie  Dream            40.9  ...       3900.0    male  2007\n#> 34      Adelie  Dream            36.4  ...       3325.0  female  2007\n#> ..         ...    ...             ...  ...          ...     ...   ...\n#> 339  Chinstrap  Dream            55.8  ...       4000.0    male  2009\n#> 340  Chinstrap  Dream            43.5  ...       3400.0  female  2009\n#> 341  Chinstrap  Dream            49.6  ...       3775.0    male  2009\n#> 342  Chinstrap  Dream            50.8  ...       4100.0    male  2009\n#> 343  Chinstrap  Dream            50.2  ...       3775.0  female  2009\n#> \n#> [124 rows x 8 columns]"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#변수-생성-1",
+    "href": "99_dplyr_pandas.html#변수-생성-1",
+    "title": "데이터 다루기",
+    "section": "3.5 변수 생성",
+    "text": "3.5 변수 생성\n체질량지수(BMI) 보고서\n\\[BMI = \\frac{체중(kg)}{키(미터)^2}\\]\n\\[Bill(부리) = \\frac{\\text{부리길이}}{부리깊이} \\times 2 \\]\n\n\n\nimport siuba as si\n\n( penguins   \n  >> si.select(si._.species, si._.island, si._.bill_length_mm, si._.bill_depth_mm)\n  >> si.mutate(bill =  si._.bill_length_mm / si._.bill_depth_mm * 2)\n)\n\n\n#>        species     island  bill_length_mm  bill_depth_mm      bill\n#> 0       Adelie  Torgersen            39.1           18.7  4.181818\n#> 1       Adelie  Torgersen            39.5           17.4  4.540230\n#> 2       Adelie  Torgersen            40.3           18.0  4.477778\n#> 3       Adelie  Torgersen             NaN            NaN       NaN\n#> 4       Adelie  Torgersen            36.7           19.3  3.803109\n#> ..         ...        ...             ...            ...       ...\n#> 339  Chinstrap      Dream            55.8           19.8  5.636364\n#> 340  Chinstrap      Dream            43.5           18.1  4.806630\n#> 341  Chinstrap      Dream            49.6           18.2  5.450549\n#> 342  Chinstrap      Dream            50.8           19.0  5.347368\n#> 343  Chinstrap      Dream            50.2           18.7  5.368984\n#> \n#> [344 rows x 5 columns]"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#요약-1",
+    "href": "99_dplyr_pandas.html#요약-1",
+    "title": "데이터 다루기",
+    "section": "3.6 요약",
+    "text": "3.6 요약\n\n\n\nimport siuba as si\n\n( penguins \n    >> si.group_by(si._.species) \n    >> si.summarize(부리길이평균 = si._.bill_length_mm.mean())\n)\n\n\n#>      species     부리길이평균\n#> 0     Adelie  38.791391\n#> 1  Chinstrap  48.833824\n#> 2     Gentoo  47.504878"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#df.column_name-방식",
+    "href": "99_dplyr_pandas.html#df.column_name-방식",
+    "title": "데이터 다루기",
+    "section": "4.1 df.column_name 방식",
+    "text": "4.1 df.column_name 방식\n\npenguins.island\n#> 0      Torgersen\n#> 1      Torgersen\n#> 2      Torgersen\n#> 3      Torgersen\n#> 4      Torgersen\n#>          ...    \n#> 339        Dream\n#> 340        Dream\n#> 341        Dream\n#> 342        Dream\n#> 343        Dream\n#> Name: island, Length: 344, dtype: object"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#dfcolumn_name-방식",
+    "href": "99_dplyr_pandas.html#dfcolumn_name-방식",
+    "title": "데이터 다루기",
+    "section": "4.2 df['column_name'] 방식",
+    "text": "4.2 df['column_name'] 방식\n\npenguins['island']\n#> 0      Torgersen\n#> 1      Torgersen\n#> 2      Torgersen\n#> 3      Torgersen\n#> 4      Torgersen\n#>          ...    \n#> 339        Dream\n#> 340        Dream\n#> 341        Dream\n#> 342        Dream\n#> 343        Dream\n#> Name: island, Length: 344, dtype: object"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#dfcolumn_name-방식-1",
+    "href": "99_dplyr_pandas.html#dfcolumn_name-방식-1",
+    "title": "데이터 다루기",
+    "section": "4.3 df[['column_name']] 방식",
+    "text": "4.3 df[['column_name']] 방식\n\npenguins[['island']]\n#>         island\n#> 0    Torgersen\n#> 1    Torgersen\n#> 2    Torgersen\n#> 3    Torgersen\n#> 4    Torgersen\n#> ..         ...\n#> 339      Dream\n#> 340      Dream\n#> 341      Dream\n#> 342      Dream\n#> 343      Dream\n#> \n#> [344 rows x 1 columns]"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#df.loc-column_name-방식",
+    "href": "99_dplyr_pandas.html#df.loc-column_name-방식",
+    "title": "데이터 다루기",
+    "section": "4.4 df.loc[:, 'column_name'] 방식",
+    "text": "4.4 df.loc[:, 'column_name'] 방식\n\npenguins.loc[:, 'island']\n#> 0      Torgersen\n#> 1      Torgersen\n#> 2      Torgersen\n#> 3      Torgersen\n#> 4      Torgersen\n#>          ...    \n#> 339        Dream\n#> 340        Dream\n#> 341        Dream\n#> 342        Dream\n#> 343        Dream\n#> Name: island, Length: 344, dtype: object"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#df.iloc-column_index-방식",
+    "href": "99_dplyr_pandas.html#df.iloc-column_index-방식",
+    "title": "데이터 다루기",
+    "section": "4.5 df.iloc[:, column_index] 방식",
+    "text": "4.5 df.iloc[:, column_index] 방식\n\npenguins.iloc[:, 1]\n#> 0      Torgersen\n#> 1      Torgersen\n#> 2      Torgersen\n#> 3      Torgersen\n#> 4      Torgersen\n#>          ...    \n#> 339        Dream\n#> 340        Dream\n#> 341        Dream\n#> 342        Dream\n#> 343        Dream\n#> Name: island, Length: 344, dtype: object"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#df.column_name",
+    "href": "99_dplyr_pandas.html#df.column_name",
+    "title": "데이터 다루기",
+    "section": "4.1 df.column_name",
+    "text": "4.1 df.column_name\n\npenguins.island\n#> 0      Torgersen\n#> 1      Torgersen\n#> 2      Torgersen\n#> 3      Torgersen\n#> 4      Torgersen\n#>          ...    \n#> 339        Dream\n#> 340        Dream\n#> 341        Dream\n#> 342        Dream\n#> 343        Dream\n#> Name: island, Length: 344, dtype: object"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#dfcolumn_name",
+    "href": "99_dplyr_pandas.html#dfcolumn_name",
+    "title": "데이터 다루기",
+    "section": "4.2 df['column_name']",
+    "text": "4.2 df['column_name']\n\npenguins['island']\n#> 0      Torgersen\n#> 1      Torgersen\n#> 2      Torgersen\n#> 3      Torgersen\n#> 4      Torgersen\n#>          ...    \n#> 339        Dream\n#> 340        Dream\n#> 341        Dream\n#> 342        Dream\n#> 343        Dream\n#> Name: island, Length: 344, dtype: object"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#dfcolumn_name-1",
+    "href": "99_dplyr_pandas.html#dfcolumn_name-1",
+    "title": "데이터 다루기",
+    "section": "4.3 df[['column_name']]",
+    "text": "4.3 df[['column_name']]\n\npenguins[['island']]\n#>         island\n#> 0    Torgersen\n#> 1    Torgersen\n#> 2    Torgersen\n#> 3    Torgersen\n#> 4    Torgersen\n#> ..         ...\n#> 339      Dream\n#> 340      Dream\n#> 341      Dream\n#> 342      Dream\n#> 343      Dream\n#> \n#> [344 rows x 1 columns]"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#df.loc-column_name",
+    "href": "99_dplyr_pandas.html#df.loc-column_name",
+    "title": "데이터 다루기",
+    "section": "4.4 df.loc[:, 'column_name']",
+    "text": "4.4 df.loc[:, 'column_name']\n\npenguins.loc[:, 'island']\n#> 0      Torgersen\n#> 1      Torgersen\n#> 2      Torgersen\n#> 3      Torgersen\n#> 4      Torgersen\n#>          ...    \n#> 339        Dream\n#> 340        Dream\n#> 341        Dream\n#> 342        Dream\n#> 343        Dream\n#> Name: island, Length: 344, dtype: object"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#df.iloc-column_index",
+    "href": "99_dplyr_pandas.html#df.iloc-column_index",
+    "title": "데이터 다루기",
+    "section": "4.5 df.iloc[:, column_index]",
+    "text": "4.5 df.iloc[:, column_index]\n\npenguins.iloc[:, 1]\n#> 0      Torgersen\n#> 1      Torgersen\n#> 2      Torgersen\n#> 3      Torgersen\n#> 4      Torgersen\n#>          ...    \n#> 339        Dream\n#> 340        Dream\n#> 341        Dream\n#> 342        Dream\n#> 343        Dream\n#> Name: island, Length: 344, dtype: object"
   }
 ]

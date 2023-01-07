@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="kr" xml:lang="kr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="이광춘">
+<meta name="description" content="데이터프레임에 대해 살펴봅니다.">
+
+<title>데이터 과학 - 데이터 다루기</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "일치 없음",
+    "search-matching-documents-text": "일치된 문서",
+    "search-copy-link-title": "검색 링크 복사",
+    "search-hide-matches-text": "추가 검색 결과 숨기기",
+    "search-more-match-text": "추가 검색결과",
+    "search-more-matches-text": "추가 검색결과",
+    "search-clear-button-title": "제거",
+    "search-detached-cancel-button-title": "취소",
+    "search-submit-button-title": "검색"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">데이터 과학</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">들어가며</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">커리큐럼</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="./curriculum_2023.html">
+ <span class="dropdown-text">2023년</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./curriculum_2022.html">
+ <span class="dropdown-text">2022년</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">모래시계</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--1">    
+        <li>
+    <a class="dropdown-item" href="./timer_five.html">
+ <span class="dropdown-text">5 분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_ten.html">
+ <span class="dropdown-text">10분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_twenty.html">
+ <span class="dropdown-text">20분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_thirty.html">
+ <span class="dropdown-text">30분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_hour.html">
+ <span class="dropdown-text">1시간</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">개발환경</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--2">    
+        <li>
+    <a class="dropdown-item" href="./00_setup.html">
+ <span class="dropdown-text">실습환경</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./01_setup_bash.html">
+ <span class="dropdown-text">CLI 개발환경</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./02_setup_sql.html">
+ <span class="dropdown-text">Sqlite 데이터베이스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./03_setup_python.html">
+ <span class="dropdown-text">파이썬</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./hello_world_jupyter.html">
+ <span class="dropdown-text">쥬피터 노트북</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./04_setup_r.html">
+ <span class="dropdown-text">고급 데이터과학: R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">교재</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--3">    
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./99_statistics.html">
+ <span class="dropdown-text">통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_dplyr_pandas.html">
+ <span class="dropdown-text">데이터 다루기</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./10_cmdline.html">
+ <span class="dropdown-text">명령라인 데이터 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./11_shell.html">
+ <span class="dropdown-text">쉘(Shell)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./12_writing.html">
+ <span class="dropdown-text">디지털 글쓰기(보고서)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./13_git.html">
+ <span class="dropdown-text">Git/GitHub</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./20_sql.html">
+ <span class="dropdown-text">프로그래밍: SQL</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./21_r.html">
+ <span class="dropdown-text">프로그래밍: R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./22_python.html">
+ <span class="dropdown-text">프로그래밍: 파이썬</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./30_dashboard.html">
+ <span class="dropdown-text">대쉬보드</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./31_models.html">
+ <span class="dropdown-text">기계학습</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./32_product.html">
+ <span class="dropdown-text">데이터과학 제품과 서비스</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./41_time_series.html">
+ <span class="dropdown-text">시계열 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./42_network.html">
+ <span class="dropdown-text">네트워크 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./43_geospatial.html">
+ <span class="dropdown-text">공간정보 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./44_text_mining.html">
+ <span class="dropdown-text">텍스트 데이터</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./51_nlp.html">
+ <span class="dropdown-text">딥러닝 - NLP</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./52_vision.html">
+ <span class="dropdown-text">딥러닝 - 비젼</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">프로젝트</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./project.html">
+ <span class="dropdown-text">프로젝트</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./py_tree.html">
+ <span class="dropdown-text">나무모형</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">데이터셋</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--5">    
+        <li>
+    <a class="dropdown-item" href="./data.html">
+ <span class="dropdown-text">데이터셋</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./data_chatGPT.html">
+ <span class="dropdown-text">chatGPT 데이터셋</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--6" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">운동장</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--6">    
+        <li>
+    <a class="dropdown-item" href="./dataxray.html">
+ <span class="dropdown-text">데이터 X-레이</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./flexdashboard/penguin_flexdashboard.html">
+ <span class="dropdown-text">대쉬보드: 파머펭귄</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--7" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">퀴즈</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--7">    
+        <li>
+    <a class="dropdown-item" href="./mcq_stat.html">
+ <span class="dropdown-text">확률과 통계</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./mcq_ds.html">
+ <span class="dropdown-text">데이터 과학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./mcq_ml.html">
+ <span class="dropdown-text">기계학습</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul class="collapse">
+  <li><a href="#dplyr-동사" id="toc-dplyr-동사" class="nav-link active" data-scroll-target="#dplyr-동사"><span class="toc-section-number">1</span>  <code>dplyr</code> 동사</a></li>
+  <li><a href="#팔머-펭귄" id="toc-팔머-펭귄" class="nav-link" data-scroll-target="#팔머-펭귄"><span class="toc-section-number">2</span>  팔머 펭귄</a>
+  <ul class="collapse">
+  <li><a href="#데이터셋" id="toc-데이터셋" class="nav-link" data-scroll-target="#데이터셋"><span class="toc-section-number">2.1</span>  데이터셋</a></li>
+  <li><a href="#오름내림-차순-정렬" id="toc-오름내림-차순-정렬" class="nav-link" data-scroll-target="#오름내림-차순-정렬"><span class="toc-section-number">2.2</span>  오름/내림 차순 정렬</a></li>
+  <li><a href="#변수-선택" id="toc-변수-선택" class="nav-link" data-scroll-target="#변수-선택"><span class="toc-section-number">2.3</span>  변수 선택</a></li>
+  <li><a href="#관측점-필터링" id="toc-관측점-필터링" class="nav-link" data-scroll-target="#관측점-필터링"><span class="toc-section-number">2.4</span>  관측점 필터링</a></li>
+  <li><a href="#변수-생성" id="toc-변수-생성" class="nav-link" data-scroll-target="#변수-생성"><span class="toc-section-number">2.5</span>  변수 생성</a></li>
+  <li><a href="#요약" id="toc-요약" class="nav-link" data-scroll-target="#요약"><span class="toc-section-number">2.6</span>  요약</a></li>
+  </ul></li>
+  <li><a href="#파이썬-suiba" id="toc-파이썬-suiba" class="nav-link" data-scroll-target="#파이썬-suiba"><span class="toc-section-number">3</span>  파이썬 Suiba</a>
+  <ul class="collapse">
+  <li><a href="#데이터셋-1" id="toc-데이터셋-1" class="nav-link" data-scroll-target="#데이터셋-1"><span class="toc-section-number">3.1</span>  데이터셋</a></li>
+  <li><a href="#오름내림-차순-정렬-1" id="toc-오름내림-차순-정렬-1" class="nav-link" data-scroll-target="#오름내림-차순-정렬-1"><span class="toc-section-number">3.2</span>  오름/내림 차순 정렬</a></li>
+  <li><a href="#변수-선택-1" id="toc-변수-선택-1" class="nav-link" data-scroll-target="#변수-선택-1"><span class="toc-section-number">3.3</span>  변수 선택</a></li>
+  <li><a href="#관측점-필터링-1" id="toc-관측점-필터링-1" class="nav-link" data-scroll-target="#관측점-필터링-1"><span class="toc-section-number">3.4</span>  관측점 필터링</a></li>
+  <li><a href="#변수-생성-1" id="toc-변수-생성-1" class="nav-link" data-scroll-target="#변수-생성-1"><span class="toc-section-number">3.5</span>  변수 생성</a></li>
+  <li><a href="#요약-1" id="toc-요약-1" class="nav-link" data-scroll-target="#요약-1"><span class="toc-section-number">3.6</span>  요약</a></li>
+  </ul></li>
+  <li><a href="#pandas-문법" id="toc-pandas-문법" class="nav-link" data-scroll-target="#pandas-문법"><span class="toc-section-number">4</span>  Pandas 문법</a>
+  <ul class="collapse">
+  <li><a href="#df.column_name" id="toc-df.column_name" class="nav-link" data-scroll-target="#df.column_name"><span class="toc-section-number">4.1</span>  <code>df.column_name</code></a></li>
+  <li><a href="#dfcolumn_name" id="toc-dfcolumn_name" class="nav-link" data-scroll-target="#dfcolumn_name"><span class="toc-section-number">4.2</span>  <code>df['column_name']</code></a></li>
+  <li><a href="#dfcolumn_name-1" id="toc-dfcolumn_name-1" class="nav-link" data-scroll-target="#dfcolumn_name-1"><span class="toc-section-number">4.3</span>  <code>df[['column_name']]</code></a></li>
+  <li><a href="#df.loc-column_name" id="toc-df.loc-column_name" class="nav-link" data-scroll-target="#df.loc-column_name"><span class="toc-section-number">4.4</span>  <code>df.loc[:, 'column_name']</code></a></li>
+  <li><a href="#df.iloc-column_index" id="toc-df.iloc-column_index" class="nav-link" data-scroll-target="#df.iloc-column_index"><span class="toc-section-number">4.5</span>  <code>df.iloc[:, column_index]</code></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">데이터 다루기</h1>
+</div>
+
+<div>
+  <div class="description">
+    데이터프레임에 대해 살펴봅니다.
+  </div>
+</div>
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">저자</div>
+  <div class="quarto-title-meta-heading">소속</div>
+  
+    <div class="quarto-title-meta-contents">
+    이광춘 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            TCS
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">공개</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2023년 01월 08일</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="dplyr-동사" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> <code>dplyr</code> 동사</h1>
+<ul>
+<li>arrange (다시 정렬하기) : 행을 다시 정렬한다.</li>
+<li>select (변수 선택하기) : 변수명으로 특정 칼럼을 추출한다.</li>
+<li>mutate (변수 추가하기) : 새로운 변수를 추가한다.</li>
+<li>filter (관측점 필터링) : 특정 기준을 만족하는 행을 추출한다.</li>
+<li>summarise (변수를 값으로 줄이기) : 변수를 값(스칼라)으로 요약한다.</li>
+</ul>
+<p><a href="https://aispiration.com/data-science/data-handling-dplyr.html#5_dplyr_%EB%8F%99%EC%82%AC"><code>dplyr</code> 동사 개념</a></p>
+</section>
+<section id="팔머-펭귄" class="level1 page-columns page-full" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 팔머 펭귄</h1>
+<section id="데이터셋" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="데이터셋"><span class="header-section-number">2.1</span> 데이터셋</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>penguins</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 344 × 8</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;      &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 Adelie  Torgersen           39.1          18.7        181    3750 male   2007</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 Adelie  Torgersen           39.5          17.4        186    3800 fema…  2007</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 Adelie  Torgersen           40.3          18          195    3250 fema…  2007</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 Adelie  Torgersen           NA            NA           NA      NA &lt;NA&gt;   2007</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 Adelie  Torgersen           36.7          19.3        193    3450 fema…  2007</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Adelie  Torgersen           39.3          20.6        190    3650 male   2007</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 Adelie  Torgersen           38.9          17.8        181    3625 fema…  2007</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 Adelie  Torgersen           39.2          19.6        195    4675 male   2007</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Adelie  Torgersen           34.1          18.1        193    3475 &lt;NA&gt;   2007</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 Adelie  Torgersen           42            20.2        190    4250 &lt;NA&gt;   2007</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   ²​body_mass_g</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="오름내림-차순-정렬" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="오름내림-차순-정렬"><span class="header-section-number">2.2</span> 오름/내림 차순 정렬</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(bill_length_mm)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt; # A tibble: 344 × 8
+#&gt;    species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year
+#&gt;    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;      &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+#&gt;  1 Adelie  Dream               32.1          15.5        188    3050 fema…  2009
+#&gt;  2 Adelie  Dream               33.1          16.1        178    2900 fema…  2008
+#&gt;  3 Adelie  Torgersen           33.5          19          190    3600 fema…  2008
+#&gt;  4 Adelie  Dream               34            17.1        185    3400 fema…  2008
+#&gt;  5 Adelie  Torgersen           34.1          18.1        193    3475 &lt;NA&gt;   2007
+#&gt;  6 Adelie  Torgersen           34.4          18.4        184    3325 fema…  2007
+#&gt;  7 Adelie  Biscoe              34.5          18.1        187    2900 fema…  2008
+#&gt;  8 Adelie  Torgersen           34.6          21.1        198    4400 male   2007
+#&gt;  9 Adelie  Torgersen           34.6          17.2        189    3200 fema…  2008
+#&gt; 10 Adelie  Biscoe              35            17.9        190    3450 fema…  2008
+#&gt; # … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,
+#&gt; #   ²​body_mass_g</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="변수-선택" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="변수-선택"><span class="header-section-number">2.3</span> 변수 선택</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, bill_length_mm, sex)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt; # A tibble: 344 × 3
+#&gt;    species bill_length_mm sex   
+#&gt;    &lt;fct&gt;            &lt;dbl&gt; &lt;fct&gt; 
+#&gt;  1 Adelie            39.1 male  
+#&gt;  2 Adelie            39.5 female
+#&gt;  3 Adelie            40.3 female
+#&gt;  4 Adelie            NA   &lt;NA&gt;  
+#&gt;  5 Adelie            36.7 female
+#&gt;  6 Adelie            39.3 male  
+#&gt;  7 Adelie            38.9 female
+#&gt;  8 Adelie            39.2 male  
+#&gt;  9 Adelie            34.1 &lt;NA&gt;  
+#&gt; 10 Adelie            42   &lt;NA&gt;  
+#&gt; # … with 334 more rows</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="관측점-필터링" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="관측점-필터링"><span class="header-section-number">2.4</span> 관측점 필터링</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(island <span class="sc">==</span> <span class="st">"Dream"</span>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt; # A tibble: 124 × 8
+#&gt;    species island bill_length_mm bill_depth_mm flipper_len…¹ body_…² sex    year
+#&gt;    &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;         &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+#&gt;  1 Adelie  Dream            39.5          16.7           178    3250 fema…  2007
+#&gt;  2 Adelie  Dream            37.2          18.1           178    3900 male   2007
+#&gt;  3 Adelie  Dream            39.5          17.8           188    3300 fema…  2007
+#&gt;  4 Adelie  Dream            40.9          18.9           184    3900 male   2007
+#&gt;  5 Adelie  Dream            36.4          17             195    3325 fema…  2007
+#&gt;  6 Adelie  Dream            39.2          21.1           196    4150 male   2007
+#&gt;  7 Adelie  Dream            38.8          20             190    3950 male   2007
+#&gt;  8 Adelie  Dream            42.2          18.5           180    3550 fema…  2007
+#&gt;  9 Adelie  Dream            37.6          19.3           181    3300 fema…  2007
+#&gt; 10 Adelie  Dream            39.8          19.1           184    4650 male   2007
+#&gt; # … with 114 more rows, and abbreviated variable names ¹​flipper_length_mm,
+#&gt; #   ²​body_mass_g</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="변수-생성" class="level2 page-columns page-full" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="변수-생성"><span class="header-section-number">2.5</span> 변수 생성</h2>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class=""><a href="https://aispiration.com/comp_document/tutorial/01_rmarkdown/bmi.html">체질량지수(BMI) 보고서</a></span></div></div>
+<p><span class="math display">\[BMI = \frac{체중(kg)}{키(미터)^2}\]</span></p>
+<p><span class="math display">\[Bill(부리) = \frac{\text{부리길이}}{부리깊이} \times 2 \]</span></p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, island, bill_length_mm,  bill_depth_mm) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bill =</span>  bill_length_mm <span class="sc">/</span> bill_depth_mm <span class="sc">*</span> <span class="dv">2</span>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt; # A tibble: 344 × 5
+#&gt;    species island    bill_length_mm bill_depth_mm  bill
+#&gt;    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 Adelie  Torgersen           39.1          18.7  4.18
+#&gt;  2 Adelie  Torgersen           39.5          17.4  4.54
+#&gt;  3 Adelie  Torgersen           40.3          18    4.48
+#&gt;  4 Adelie  Torgersen           NA            NA   NA   
+#&gt;  5 Adelie  Torgersen           36.7          19.3  3.80
+#&gt;  6 Adelie  Torgersen           39.3          20.6  3.82
+#&gt;  7 Adelie  Torgersen           38.9          17.8  4.37
+#&gt;  8 Adelie  Torgersen           39.2          19.6  4   
+#&gt;  9 Adelie  Torgersen           34.1          18.1  3.77
+#&gt; 10 Adelie  Torgersen           42            20.2  4.16
+#&gt; # … with 334 more rows</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="요약" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="요약"><span class="header-section-number">2.6</span> 요약</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(부리길이평균 <span class="ot">=</span> <span class="fu">mean</span>(bill_length_mm))</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt; # A tibble: 3 × 2
+#&gt;   species   부리길이평균
+#&gt;   &lt;fct&gt;            &lt;dbl&gt;
+#&gt; 1 Adelie            38.8
+#&gt; 2 Chinstrap         48.8
+#&gt; 3 Gentoo            47.6</code></pre>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="파이썬-suiba" class="level1 page-columns page-full" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 파이썬 Suiba</h1>
+<p>[</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">py_install</span>(<span class="st">"siuba"</span>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>]{.aside}</p>
+<section id="데이터셋-1" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="데이터셋-1"><span class="header-section-number">3.1</span> 데이터셋</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/mcnakhaee/palmerpenguins/master/palmerpenguins/data/penguins.csv"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>penguins.head()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;   species     island  bill_length_mm  ...  body_mass_g     sex  year
+#&gt; 0  Adelie  Torgersen            39.1  ...       3750.0    male  2007
+#&gt; 1  Adelie  Torgersen            39.5  ...       3800.0  female  2007
+#&gt; 2  Adelie  Torgersen            40.3  ...       3250.0  female  2007
+#&gt; 3  Adelie  Torgersen             NaN  ...          NaN     NaN  2007
+#&gt; 4  Adelie  Torgersen            36.7  ...       3450.0  female  2007
+#&gt; 
+#&gt; [5 rows x 8 columns]</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="오름내림-차순-정렬-1" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="오름내림-차순-정렬-1"><span class="header-section-number">3.2</span> 오름/내림 차순 정렬</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> siuba <span class="im">as</span> si</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>( penguins</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">&gt;&gt;</span> si.arrange(si.__.bill_length_mm)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;        species     island  bill_length_mm  ...  body_mass_g     sex  year
+#&gt; 142     Adelie      Dream            32.1  ...       3050.0  female  2009
+#&gt; 98      Adelie      Dream            33.1  ...       2900.0  female  2008
+#&gt; 70      Adelie  Torgersen            33.5  ...       3600.0  female  2008
+#&gt; 92      Adelie      Dream            34.0  ...       3400.0  female  2008
+#&gt; 8       Adelie  Torgersen            34.1  ...       3475.0     NaN  2007
+#&gt; ..         ...        ...             ...  ...          ...     ...   ...
+#&gt; 253     Gentoo     Biscoe            55.9  ...       5600.0    male  2009
+#&gt; 293  Chinstrap      Dream            58.0  ...       3700.0  female  2007
+#&gt; 185     Gentoo     Biscoe            59.6  ...       6050.0    male  2007
+#&gt; 3       Adelie  Torgersen             NaN  ...          NaN     NaN  2007
+#&gt; 271     Gentoo     Biscoe             NaN  ...          NaN     NaN  2009
+#&gt; 
+#&gt; [344 rows x 8 columns]</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="변수-선택-1" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="변수-선택-1"><span class="header-section-number">3.3</span> 변수 선택</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> siuba <span class="im">as</span> si</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>( penguins   </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">&gt;&gt;</span> si.select(si._.species, si._.bill_length_mm, si._.sex)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;        species  bill_length_mm     sex
+#&gt; 0       Adelie            39.1    male
+#&gt; 1       Adelie            39.5  female
+#&gt; 2       Adelie            40.3  female
+#&gt; 3       Adelie             NaN     NaN
+#&gt; 4       Adelie            36.7  female
+#&gt; ..         ...             ...     ...
+#&gt; 339  Chinstrap            55.8    male
+#&gt; 340  Chinstrap            43.5  female
+#&gt; 341  Chinstrap            49.6    male
+#&gt; 342  Chinstrap            50.8    male
+#&gt; 343  Chinstrap            50.2  female
+#&gt; 
+#&gt; [344 rows x 3 columns]</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="관측점-필터링-1" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="관측점-필터링-1"><span class="header-section-number">3.4</span> 관측점 필터링</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> siuba <span class="im">as</span> si</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>( penguins   </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">&gt;&gt;</span> si.<span class="bu">filter</span>(si._.island <span class="op">==</span> <span class="st">"Dream"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;        species island  bill_length_mm  ...  body_mass_g     sex  year
+#&gt; 30      Adelie  Dream            39.5  ...       3250.0  female  2007
+#&gt; 31      Adelie  Dream            37.2  ...       3900.0    male  2007
+#&gt; 32      Adelie  Dream            39.5  ...       3300.0  female  2007
+#&gt; 33      Adelie  Dream            40.9  ...       3900.0    male  2007
+#&gt; 34      Adelie  Dream            36.4  ...       3325.0  female  2007
+#&gt; ..         ...    ...             ...  ...          ...     ...   ...
+#&gt; 339  Chinstrap  Dream            55.8  ...       4000.0    male  2009
+#&gt; 340  Chinstrap  Dream            43.5  ...       3400.0  female  2009
+#&gt; 341  Chinstrap  Dream            49.6  ...       3775.0    male  2009
+#&gt; 342  Chinstrap  Dream            50.8  ...       4100.0    male  2009
+#&gt; 343  Chinstrap  Dream            50.2  ...       3775.0  female  2009
+#&gt; 
+#&gt; [124 rows x 8 columns]</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="변수-생성-1" class="level2 page-columns page-full" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="변수-생성-1"><span class="header-section-number">3.5</span> 변수 생성</h2>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class=""><a href="https://aispiration.com/comp_document/tutorial/01_rmarkdown/bmi.html">체질량지수(BMI) 보고서</a></span></div></div>
+<p><span class="math display">\[BMI = \frac{체중(kg)}{키(미터)^2}\]</span></p>
+<p><span class="math display">\[Bill(부리) = \frac{\text{부리길이}}{부리깊이} \times 2 \]</span></p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> siuba <span class="im">as</span> si</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>( penguins   </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">&gt;&gt;</span> si.select(si._.species, si._.island, si._.bill_length_mm, si._.bill_depth_mm)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">&gt;&gt;</span> si.mutate(bill <span class="op">=</span>  si._.bill_length_mm <span class="op">/</span> si._.bill_depth_mm <span class="op">*</span> <span class="dv">2</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;        species     island  bill_length_mm  bill_depth_mm      bill
+#&gt; 0       Adelie  Torgersen            39.1           18.7  4.181818
+#&gt; 1       Adelie  Torgersen            39.5           17.4  4.540230
+#&gt; 2       Adelie  Torgersen            40.3           18.0  4.477778
+#&gt; 3       Adelie  Torgersen             NaN            NaN       NaN
+#&gt; 4       Adelie  Torgersen            36.7           19.3  3.803109
+#&gt; ..         ...        ...             ...            ...       ...
+#&gt; 339  Chinstrap      Dream            55.8           19.8  5.636364
+#&gt; 340  Chinstrap      Dream            43.5           18.1  4.806630
+#&gt; 341  Chinstrap      Dream            49.6           18.2  5.450549
+#&gt; 342  Chinstrap      Dream            50.8           19.0  5.347368
+#&gt; 343  Chinstrap      Dream            50.2           18.7  5.368984
+#&gt; 
+#&gt; [344 rows x 5 columns]</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="요약-1" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="요약-1"><span class="header-section-number">3.6</span> 요약</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> siuba <span class="im">as</span> si</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>( penguins </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;&gt;</span> si.group_by(si._.species) </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;&gt;</span> si.summarize(부리길이평균 <span class="op">=</span> si._.bill_length_mm.mean())</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;      species     부리길이평균
+#&gt; 0     Adelie  38.791391
+#&gt; 1  Chinstrap  48.833824
+#&gt; 2     Gentoo  47.504878</code></pre>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="pandas-문법" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Pandas 문법</h1>
+<p>칼럼(변수)를 선택하는 다양한 방법</p>
+<section id="df.column_name" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="df.column_name"><span class="header-section-number">4.1</span> <code>df.column_name</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>penguins.island</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0      Torgersen</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      Torgersen</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      Torgersen</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      Torgersen</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      Torgersen</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          ...    </span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 339        Dream</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 340        Dream</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 341        Dream</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 342        Dream</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 343        Dream</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Name: island, Length: 344, dtype: object</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dfcolumn_name" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="dfcolumn_name"><span class="header-section-number">4.2</span> <code>df['column_name']</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>penguins[<span class="st">'island'</span>]</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0      Torgersen</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      Torgersen</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      Torgersen</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      Torgersen</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      Torgersen</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          ...    </span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 339        Dream</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 340        Dream</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 341        Dream</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 342        Dream</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 343        Dream</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Name: island, Length: 344, dtype: object</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dfcolumn_name-1" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="dfcolumn_name-1"><span class="header-section-number">4.3</span> <code>df[['column_name']]</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>penguins[[<span class="st">'island'</span>]]</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         island</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0    Torgersen</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    Torgersen</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    Torgersen</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    Torgersen</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    Torgersen</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ..         ...</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 339      Dream</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 340      Dream</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 341      Dream</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 342      Dream</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 343      Dream</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [344 rows x 1 columns]</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="df.loc-column_name" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="df.loc-column_name"><span class="header-section-number">4.4</span> <code>df.loc[:, 'column_name']</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>penguins.loc[:, <span class="st">'island'</span>]</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0      Torgersen</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      Torgersen</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      Torgersen</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      Torgersen</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      Torgersen</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          ...    </span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 339        Dream</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 340        Dream</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 341        Dream</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 342        Dream</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 343        Dream</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Name: island, Length: 344, dtype: object</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="df.iloc-column_index" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="df.iloc-column_index"><span class="header-section-number">4.5</span> <code>df.iloc[:, column_index]</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>penguins.iloc[:, <span class="dv">1</span>]</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0      Torgersen</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      Torgersen</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      Torgersen</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      Torgersen</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      Torgersen</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          ...    </span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 339        Dream</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 340        Dream</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 341        Dream</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 342        Dream</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 343        Dream</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Name: island, Length: 344, dtype: object</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "복사완료!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "복사완료!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><a href="https://quarto.org/">Quarto</a> 로 제작</div>   
+  </div>
+</footer>
+
+
+
+</body></html>

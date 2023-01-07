@@ -21,8 +21,18 @@ editor_options:
   chunk_output_type: console
 ---
 
-# [통계 강의 슬라이드](https://r2bit.com/practice/slideshows/statistics/toc_stat.html)
 
-- 쥬피터 노트북
-    - [단순회귀모형(OLS)](code/ols.ipynb)
+
+# 확률과 통계 
+
+
+- [통계 개념 슬라이드](https://r2bit.com/practice/slideshows/statistics/toc_stat.html)
+- [OLS 개념과 이론](https://r2bit.com/practice/slideshows/statistics/toc_stat.html#4_%EB%8B%A8%EC%88%9C_%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80)
+  - [단순회귀모형(OLS) - ols.ipynb](code/ols.ipynb)
+- [의사결정 나무모형](https://r2bit.com/practice/decision_tree.html)  
+
+
+
+  
+  
 

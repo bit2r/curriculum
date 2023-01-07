@@ -60,6 +60,8 @@ website:
           - text: "-----"
           - href: 99_statistics.qmd
             text: "통계학"
+          - href: 99_dplyr_pandas.qmd
+            text: "데이터 다루기"            
           - text: "-----"
           - href: 10_cmdline.qmd
             text: "명령라인 데이터 분석"
