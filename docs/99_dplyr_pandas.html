@@ -386,7 +386,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">목차</h2>
    
-  <ul class="collapse">
+  <ul>
   <li><a href="#dplyr-동사" id="toc-dplyr-동사" class="nav-link active" data-scroll-target="#dplyr-동사"><span class="toc-section-number">1</span>  <code>dplyr</code> 동사</a></li>
   <li><a href="#팔머-펭귄" id="toc-팔머-펭귄" class="nav-link" data-scroll-target="#팔머-펭귄"><span class="toc-section-number">2</span>  팔머 펭귄</a>
   <ul class="collapse">
@@ -413,6 +413,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#dfcolumn_name-1" id="toc-dfcolumn_name-1" class="nav-link" data-scroll-target="#dfcolumn_name-1"><span class="toc-section-number">4.3</span>  <code>df[['column_name']]</code></a></li>
   <li><a href="#df.loc-column_name" id="toc-df.loc-column_name" class="nav-link" data-scroll-target="#df.loc-column_name"><span class="toc-section-number">4.4</span>  <code>df.loc[:, 'column_name']</code></a></li>
   <li><a href="#df.iloc-column_index" id="toc-df.iloc-column_index" class="nav-link" data-scroll-target="#df.iloc-column_index"><span class="toc-section-number">4.5</span>  <code>df.iloc[:, column_index]</code></a></li>
+  </ul></li>
+  <li><a href="#파이프-vs-체인줄" id="toc-파이프-vs-체인줄" class="nav-link" data-scroll-target="#파이프-vs-체인줄"><span class="toc-section-number">5</span>  파이프 vs 체인줄</a>
+  <ul class="collapse">
+  <li><a href="#사례" id="toc-사례" class="nav-link" data-scroll-target="#사례"><span class="toc-section-number">5.1</span>  사례</a>
+  <ul class="collapse">
+  <li><a href="#dplyr-파이프" id="toc-dplyr-파이프" class="nav-link" data-scroll-target="#dplyr-파이프"><span class="toc-section-number">5.1.1</span>  dplyr 파이프</a></li>
+  <li><a href="#siuba-파이프" id="toc-siuba-파이프" class="nav-link" data-scroll-target="#siuba-파이프"><span class="toc-section-number">5.1.2</span>  siuba 파이프</a></li>
+  <li><a href="#pandas-체이닝" id="toc-pandas-체이닝" class="nav-link" data-scroll-target="#pandas-체이닝"><span class="toc-section-number">5.1.3</span>  pandas 체이닝</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -912,8 +921,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 343        Dream</span></span>
 <span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Name: island, Length: 344, dtype: object</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+</section>
+<section id="파이프-vs-체인줄" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 파이프 vs 체인줄</h1>
+<section id="사례" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="사례"><span class="header-section-number">5.1</span> 사례</h2>
+<p>부리길이(bill_length_mm)가 5 이상이고, <br> 펭귄종과 부리길이 칼럼만 선택해서 <br> 펭귄종별로 <br> 평균 부리길이를 구하세요. <br></p>
+<section id="dplyr-파이프" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="dplyr-파이프"><span class="header-section-number">5.1.1</span> dplyr 파이프</h3>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(bill_length_mm <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, bill_length_mm) <span class="sc">%&gt;%</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_bill_length =</span> <span class="fu">mean</span>(bill_length_mm))</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt; # A tibble: 3 × 2
+#&gt;   species   mean_bill_length
+#&gt;   &lt;fct&gt;                &lt;dbl&gt;
+#&gt; 1 Adelie                38.8
+#&gt; 2 Chinstrap             48.8
+#&gt; 3 Gentoo                47.5</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="siuba-파이프" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="siuba-파이프"><span class="header-section-number">5.1.2</span> siuba 파이프</h3>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> siuba <span class="im">as</span> si</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>( penguins </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;&gt;</span> si.<span class="bu">filter</span>(si._.bill_length_mm <span class="op">&gt;</span> <span class="dv">5</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;&gt;</span> si.select(si._.species, si._.bill_length_mm)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;&gt;</span> si.group_by(si._.species) </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;&gt;</span> si.summarize(부리길이평균 <span class="op">=</span> si._.bill_length_mm.mean())</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;      species     부리길이평균
+#&gt; 0     Adelie  38.791391
+#&gt; 1  Chinstrap  48.833824
+#&gt; 2     Gentoo  47.504878</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="pandas-체이닝" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="pandas-체이닝"><span class="header-section-number">5.1.3</span> pandas 체이닝</h3>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">\</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  .loc[penguins.bill_length_mm <span class="op">&gt;</span> <span class="dv">5</span>] <span class="op">\</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  .loc[:, [<span class="st">"species"</span>, <span class="st">"bill_length_mm"</span>]] <span class="op">\</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  .groupby(<span class="st">"species"</span>) <span class="op">\</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  .bill_length_mm.mean()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt; species
+#&gt; Adelie       38.791391
+#&gt; Chinstrap    48.833824
+#&gt; Gentoo       47.504878
+#&gt; Name: bill_length_mm, dtype: float64</code></pre>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 </section>
 

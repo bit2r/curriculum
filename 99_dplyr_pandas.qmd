@@ -14,7 +14,7 @@ format:
     code-fold: false
     code-overflow: scroll
     toc: true
-    toc-depth: 2
+    toc-depth: 3
     number-sections: true
     highlight-style: github    
     self-contained: false
@@ -380,3 +380,97 @@ penguins.loc[:, 'island']
 penguins.iloc[:, 1]
 ```
 
+
+# 파이프 vs 체인줄
+
+## 사례
+
+부리길이(bill_length_mm)가 5 이상이고, <br>
+펭귄종과 부리길이 칼럼만 선택해서 <br>
+펭귄종별로 <br>
+평균 부리길이를 구하세요. <br>
+
+
+
+### dplyr 파이프
+
+:::{layout-ncol="2"}
+
+```{r}
+#| eval: false
+penguins %>%
+  filter(bill_length_mm > 5) %>%
+  select(species, bill_length_mm) %>%
+  group_by(species) %>%
+  summarize(mean_bill_length = mean(bill_length_mm))
+```
+
+```{r}
+#| echo: false
+penguins %>%
+  filter(bill_length_mm > 5) %>%
+  select(species, bill_length_mm) %>%
+  group_by(species) %>%
+  summarize(mean_bill_length = mean(bill_length_mm))
+```
+
+:::
+
+### siuba 파이프
+
+:::{layout-ncol="2"}
+
+```{python}
+#| eval: false
+import siuba as si
+
+( penguins 
+    >> si.filter(si._.bill_length_mm > 5)
+    >> si.select(si._.species, si._.bill_length_mm)
+    >> si.group_by(si._.species) 
+    >> si.summarize(부리길이평균 = si._.bill_length_mm.mean())
+)
+```
+
+```{python}
+#| echo: false
+import siuba as si
+
+( penguins 
+    >> si.filter(si._.bill_length_mm > 5)
+    >> si.select(si._.species, si._.bill_length_mm)
+    >> si.group_by(si._.species) 
+    >> si.summarize(부리길이평균 = si._.bill_length_mm.mean())
+)
+```
+
+:::
+
+
+### pandas 체이닝
+
+:::{layout-ncol="2"}
+
+```{python}
+#| eval: false
+import pandas as pd
+
+penguins \
+  .loc[penguins.bill_length_mm > 5] \
+  .loc[:, ["species", "bill_length_mm"]] \
+  .groupby("species") \
+  .bill_length_mm.mean()
+```
+
+```{python}
+#| echo: false
+import pandas as pd
+
+penguins \
+  .loc[penguins.bill_length_mm > 5] \
+  .loc[:, ["species", "bill_length_mm"]] \
+  .groupby("species") \
+  .bill_length_mm.mean()
+```
+
+:::

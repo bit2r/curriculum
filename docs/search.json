@@ -915,5 +915,12 @@
     "title": "데이터 다루기",
     "section": "4.5 df.iloc[:, column_index]",
     "text": "4.5 df.iloc[:, column_index]\n\npenguins.iloc[:, 1]\n#> 0      Torgersen\n#> 1      Torgersen\n#> 2      Torgersen\n#> 3      Torgersen\n#> 4      Torgersen\n#>          ...    \n#> 339        Dream\n#> 340        Dream\n#> 341        Dream\n#> 342        Dream\n#> 343        Dream\n#> Name: island, Length: 344, dtype: object"
+  },
+  {
+    "objectID": "99_dplyr_pandas.html#사례",
+    "href": "99_dplyr_pandas.html#사례",
+    "title": "데이터 다루기",
+    "section": "5.1 사례",
+    "text": "5.1 사례\n부리길이(bill_length_mm)가 5 이상이고,  펭귄종과 부리길이 칼럼만 선택해서  펭귄종별로  평균 부리길이를 구하세요. \n\n5.1.1 dplyr 파이프\n\n\n\npenguins %>%\n  filter(bill_length_mm > 5) %>%\n  select(species, bill_length_mm) %>%\n  group_by(species) %>%\n  summarize(mean_bill_length = mean(bill_length_mm))\n\n\n#> # A tibble: 3 × 2\n#>   species   mean_bill_length\n#>   <fct>                <dbl>\n#> 1 Adelie                38.8\n#> 2 Chinstrap             48.8\n#> 3 Gentoo                47.5\n\n\n\n\n\n5.1.2 siuba 파이프\n\n\n\nimport siuba as si\n\n( penguins \n    >> si.filter(si._.bill_length_mm > 5)\n    >> si.select(si._.species, si._.bill_length_mm)\n    >> si.group_by(si._.species) \n    >> si.summarize(부리길이평균 = si._.bill_length_mm.mean())\n)\n\n\n#>      species     부리길이평균\n#> 0     Adelie  38.791391\n#> 1  Chinstrap  48.833824\n#> 2     Gentoo  47.504878\n\n\n\n\n\n5.1.3 pandas 체이닝\n\n\n\nimport pandas as pd\n\npenguins \\\n  .loc[penguins.bill_length_mm > 5] \\\n  .loc[:, [\"species\", \"bill_length_mm\"]] \\\n  .groupby(\"species\") \\\n  .bill_length_mm.mean()\n\n\n#> species\n#> Adelie       38.791391\n#> Chinstrap    48.833824\n#> Gentoo       47.504878\n#> Name: bill_length_mm, dtype: float64"
   }
 ]
