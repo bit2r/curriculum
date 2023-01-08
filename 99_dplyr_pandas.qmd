@@ -474,3 +474,48 @@ penguins \
 ```
 
 :::
+
+
+# SQL 쿼리문
+
+:::{layout-ncol="2"}
+
+```{r}
+#| eval: false
+
+library(dbplyr)
+
+con <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
+copy_to(con, penguins)
+
+penguins_db <- tbl(con, "penguins")
+
+penguins_db %>%
+  filter(bill_length_mm > 5) %>%
+  select(species, bill_length_mm) %>%
+  group_by(species) %>%
+  summarize(mean_bill_length = mean(bill_length_mm)) %>% 
+  show_query()
+```
+
+```{r}
+#| echo: false
+library(dbplyr)
+
+con <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
+copy_to(con, penguins)
+
+penguins_db <- tbl(con, "penguins")
+
+penguins_db %>%
+  filter(bill_length_mm > 5) %>%
+  select(species, bill_length_mm) %>%
+  group_by(species) %>%
+  summarize(mean_bill_length = mean(bill_length_mm)) %>% 
+  show_query()
+
+```
+
+:::
+
+

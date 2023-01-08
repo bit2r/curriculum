@@ -232,11 +232,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
         <li>
     <a class="dropdown-item" href="./99_dplyr_pandas.html">
- <span class="dropdown-text">데이터 다루기</span></a>
+ <span class="dropdown-text">데이터 다루기 (Pandas)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./99_data_wrangling.html">
- <span class="dropdown-text">데이터 정제</span></a>
+ <span class="dropdown-text">데이터 전처리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_data_wrangling_py.qmd">
+ <span class="dropdown-text">데이터 전처리: 파이썬</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
@@ -405,7 +409,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#이상점-제거" id="toc-이상점-제거" class="nav-link" data-scroll-target="#이상점-제거"><span class="toc-section-number">4</span>  이상점 제거</a></li>
   <li><a href="#공백문자제거" id="toc-공백문자제거" class="nav-link" data-scroll-target="#공백문자제거"><span class="toc-section-number">5</span>  공백문자제거</a></li>
   <li><a href="#칼럼-변환" id="toc-칼럼-변환" class="nav-link" data-scroll-target="#칼럼-변환"><span class="toc-section-number">6</span>  칼럼 변환</a></li>
-  <li><a href="#특정문자-치환" id="toc-특정문자-치환" class="nav-link" data-scroll-target="#특정문자-치환"><span class="toc-section-number">7</span>  특정문자 치환</a></li>
+  <li><a href="#특정문자-변환" id="toc-특정문자-변환" class="nav-link" data-scroll-target="#특정문자-변환"><span class="toc-section-number">7</span>  특정문자 변환</a></li>
+  <li><a href="#결측값-치환" id="toc-결측값-치환" class="nav-link" data-scroll-target="#결측값-치환"><span class="toc-section-number">8</span>  결측값 치환</a></li>
+  <li><a href="#pivoting" id="toc-pivoting" class="nav-link" data-scroll-target="#pivoting"><span class="toc-section-number">9</span>  Pivoting</a>
+  <ul class="collapse">
+  <li><a href="#wide-long" id="toc-wide-long" class="nav-link" data-scroll-target="#wide-long"><span class="toc-section-number">9.1</span>  Wide → Long</a></li>
+  <li><a href="#long-wide" id="toc-long-wide" class="nav-link" data-scroll-target="#long-wide"><span class="toc-section-number">9.2</span>  long → Wide</a></li>
+  </ul></li>
+  <li><a href="#변수-쪼개기" id="toc-변수-쪼개기" class="nav-link" data-scroll-target="#변수-쪼개기"><span class="toc-section-number">10</span>  변수 쪼개기</a></li>
   </ul>
 </nav>
     </div>
@@ -762,13 +773,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="특정문자-치환" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> 특정문자 치환</h1>
+<section id="특정문자-변환" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 특정문자 변환</h1>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.factor, toupper)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species_kr =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{species}_종"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, species_kr, island)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt; # A tibble: 344 × 3
+#&gt;    species species_kr island   
+#&gt;    &lt;fct&gt;   &lt;glue&gt;     &lt;fct&gt;    
+#&gt;  1 Adelie  Adelie_종  Torgersen
+#&gt;  2 Adelie  Adelie_종  Torgersen
+#&gt;  3 Adelie  Adelie_종  Torgersen
+#&gt;  4 Adelie  Adelie_종  Torgersen
+#&gt;  5 Adelie  Adelie_종  Torgersen
+#&gt;  6 Adelie  Adelie_종  Torgersen
+#&gt;  7 Adelie  Adelie_종  Torgersen
+#&gt;  8 Adelie  Adelie_종  Torgersen
+#&gt;  9 Adelie  Adelie_종  Torgersen
+#&gt; 10 Adelie  Adelie_종  Torgersen
+#&gt; # … with 334 more rows</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="결측값-치환" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 결측값 치환</h1>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bill_length_mm =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(bill_length_mm), </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                                 bill_length_mm))</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <pre><code>#&gt; # A tibble: 344 × 8
@@ -777,7 +818,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #&gt;  1 Adelie  Torgersen           39.1          18.7        181    3750 male   2007
 #&gt;  2 Adelie  Torgersen           39.5          17.4        186    3800 fema…  2007
 #&gt;  3 Adelie  Torgersen           40.3          18          195    3250 fema…  2007
-#&gt;  4 Adelie  Torgersen           NA            NA           NA      NA &lt;NA&gt;   2007
+#&gt;  4 Adelie  Torgersen           43.9          NA           NA      NA &lt;NA&gt;   2007
 #&gt;  5 Adelie  Torgersen           36.7          19.3        193    3450 fema…  2007
 #&gt;  6 Adelie  Torgersen           39.3          20.6        190    3650 male   2007
 #&gt;  7 Adelie  Torgersen           38.9          17.8        181    3625 fema…  2007
@@ -786,6 +827,97 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #&gt; 10 Adelie  Torgersen           42            20.2        190    4250 &lt;NA&gt;   2007
 #&gt; # … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,
 #&gt; #   ²​body_mass_g</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="pivoting" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Pivoting</h1>
+<p>폭넓은 데이터(wide-format data)를 긴 데이터(long-format data)로 혹은 반대로 데이터의 형태를 바꾼다.</p>
+<section id="wide-long" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="wide-long"><span class="header-section-number">9.1</span> Wide → Long</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>penguins_long <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"mm"</span>), <span class="at">names_to =</span> <span class="st">"측정변수"</span>, </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"측정값"</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>penguins_long</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt; # A tibble: 1,032 × 7
+#&gt;    species island    body_mass_g sex     year 측정변수          측정값
+#&gt;    &lt;fct&gt;   &lt;fct&gt;           &lt;int&gt; &lt;fct&gt;  &lt;int&gt; &lt;chr&gt;              &lt;dbl&gt;
+#&gt;  1 Adelie  Torgersen        3750 male    2007 bill_length_mm      39.1
+#&gt;  2 Adelie  Torgersen        3750 male    2007 bill_depth_mm       18.7
+#&gt;  3 Adelie  Torgersen        3750 male    2007 flipper_length_mm  181  
+#&gt;  4 Adelie  Torgersen        3800 female  2007 bill_length_mm      39.5
+#&gt;  5 Adelie  Torgersen        3800 female  2007 bill_depth_mm       17.4
+#&gt;  6 Adelie  Torgersen        3800 female  2007 flipper_length_mm  186  
+#&gt;  7 Adelie  Torgersen        3250 female  2007 bill_length_mm      40.3
+#&gt;  8 Adelie  Torgersen        3250 female  2007 bill_depth_mm       18  
+#&gt;  9 Adelie  Torgersen        3250 female  2007 flipper_length_mm  195  
+#&gt; 10 Adelie  Torgersen          NA &lt;NA&gt;    2007 bill_length_mm      NA  
+#&gt; # … with 1,022 more rows</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="long-wide" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="long-wide"><span class="header-section-number">9.2</span> long → Wide</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>penguins_long <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"측정변수"</span>, </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> <span class="st">"측정값"</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_fn =</span> mean)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt; # A tibble: 284 × 8
+#&gt;    species island    body_mass_g sex     year bill_length_mm bill_dept…¹ flipp…²
+#&gt;    &lt;fct&gt;   &lt;fct&gt;           &lt;int&gt; &lt;fct&gt;  &lt;int&gt;          &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;
+#&gt;  1 Adelie  Torgersen        3750 male    2007           39.1        18.7     181
+#&gt;  2 Adelie  Torgersen        3800 female  2007           39.5        17.4     186
+#&gt;  3 Adelie  Torgersen        3250 female  2007           40.3        18       195
+#&gt;  4 Adelie  Torgersen          NA &lt;NA&gt;    2007           NA          NA        NA
+#&gt;  5 Adelie  Torgersen        3450 female  2007           37.7        19.2     194
+#&gt;  6 Adelie  Torgersen        3650 male    2007           39.3        20.6     190
+#&gt;  7 Adelie  Torgersen        3625 female  2007           38.9        17.8     181
+#&gt;  8 Adelie  Torgersen        4675 male    2007           39.2        19.6     195
+#&gt;  9 Adelie  Torgersen        3475 &lt;NA&gt;    2007           34.1        18.1     193
+#&gt; 10 Adelie  Torgersen        4250 &lt;NA&gt;    2007           42          20.2     190
+#&gt; # … with 274 more rows, and abbreviated variable names ¹​bill_depth_mm,
+#&gt; #   ²​flipper_length_mm</code></pre>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="변수-쪼개기" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> 변수 쪼개기</h1>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>penguins_long <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(측정변수, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"부위"</span>, <span class="st">"측정"</span>, <span class="st">"단위"</span>), <span class="at">sep =</span> <span class="st">"_"</span>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt; # A tibble: 1,032 × 9
+#&gt;    species island    body_mass_g sex     year 부위    측정   단위  측정값
+#&gt;    &lt;fct&gt;   &lt;fct&gt;           &lt;int&gt; &lt;fct&gt;  &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;
+#&gt;  1 Adelie  Torgersen        3750 male    2007 bill    length mm      39.1
+#&gt;  2 Adelie  Torgersen        3750 male    2007 bill    depth  mm      18.7
+#&gt;  3 Adelie  Torgersen        3750 male    2007 flipper length mm     181  
+#&gt;  4 Adelie  Torgersen        3800 female  2007 bill    length mm      39.5
+#&gt;  5 Adelie  Torgersen        3800 female  2007 bill    depth  mm      17.4
+#&gt;  6 Adelie  Torgersen        3800 female  2007 flipper length mm     186  
+#&gt;  7 Adelie  Torgersen        3250 female  2007 bill    length mm      40.3
+#&gt;  8 Adelie  Torgersen        3250 female  2007 bill    depth  mm      18  
+#&gt;  9 Adelie  Torgersen        3250 female  2007 flipper length mm     195  
+#&gt; 10 Adelie  Torgersen          NA &lt;NA&gt;    2007 bill    length mm      NA  
+#&gt; # … with 1,022 more rows</code></pre>
 </div>
 </div>
 </div>

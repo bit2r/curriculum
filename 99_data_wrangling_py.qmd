@@ -1,6 +1,6 @@
 ---
-title: "데이터 전처리 (Preprocessing)"
-description: "기계학습과 시각화를 위한 다양한 데이터 정제(Cleansing)하는 방법을 다룹니다."
+title: "데이터 전처리 : 파이썬"
+description: "데이터 전처리 (Preprocessing)를 구성하는 기계학습과 시각화를 위한 다양한 데이터 정제(Cleansing)하는 방법을 다룹니다."
 date: today # 날짜 설정: now, last-modified
 author:
   - name: 이광춘
@@ -29,11 +29,15 @@ knitr:
 ---
 
 
-```{r}
-#| include: false
-library(dplyr)
-library(palmerpenguins)
-```
+
+# 데이터셋
+
+[palmerpenguins](https://github.com/mcnakhaee/palmerpenguins) 데이터셋을 파이썬 데이터 패키지로 구현되어 있어 이를 설치하여 불러 실습에 사용한다.
+
+````bash
+$ pip3 install palmerpenguins
+````
+
 
 
 # 결측값 제거
@@ -42,20 +46,22 @@ library(palmerpenguins)
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
-library(tidyverse)
-library(palmerpenguins)
+import numpy as np
+import pandas as pd
+from palmerpenguins import load_penguins
 
 penguins
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-library(tidyverse)
-library(palmerpenguins)
+import numpy as np
+import pandas as pd
+from palmerpenguins import load_penguins
 
 penguins
 
@@ -66,24 +72,21 @@ penguins
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
 library(tidyverse)
 library(palmerpenguins)
 
-penguins %>% 
-  drop_na()
+penguins \
+  .drop_na()
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-library(tidyverse)
-library(palmerpenguins)
-
-penguins %>% 
-  drop_na()
+penguins \
+  .dropna()
 
 ```
 
@@ -94,43 +97,66 @@ penguins %>%
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
-penguins %>% 
-  select_if(~ !any(is.na(.)))
+penguins \
+  .dropna()
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-penguins %>% 
-  select_if(~ !any(is.na(.)))
+penguins \
+  .dropna(axis = 1)
 ```
 
 :::
+
 
 
 ## 결측값 현황
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
-penguins %>% 
-  summarise(across(everything(), ~ sum(complete.cases(.)))) %>% 
-  pivot_longer( cols = everything(), names_to = "변수", values_to = "정상값") %>% 
-  mutate(결측비율 = 1 - 정상값 / nrow(penguins))
+nan_sum = penguins.isna().sum()
+
+type(nan_sum)
+
+nan_df = nan_sum.to_frame(name = "결측값")
+
+# nan_df = pd.DataFrame(nan_sum).rename(columns = {0:'결측값'})
+
+
+penguins_nrow = penguins.shape[0]
+
+nan_df.assign()
+
+nan_df \
+ .assign(결측비율 = nan_df['결측값'] / penguins_nrow)
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-penguins %>% 
-  summarise(across(everything(), ~ sum(complete.cases(.)))) %>% 
-  pivot_longer( cols = everything(), names_to = "변수", values_to = "정상값") %>% 
-  mutate(결측비율 = 1 - 정상값 / nrow(penguins))
+nan_sum = penguins.isna().sum()
+
+type(nan_sum)
+
+nan_df = nan_sum.to_frame(name = "결측값")
+
+# nan_df = pd.DataFrame(nan_sum).rename(columns = {0:'결측값'})
+
+
+penguins_nrow = penguins.shape[0]
+
+nan_df.assign()
+
+nan_df \
+ .assign(결측비율 = nan_df['결측값'] / penguins_nrow)
 ```
 
 :::
@@ -142,30 +168,39 @@ penguins %>%
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
-penguins_dup <- penguins %>% 
-  slice(1:5) %>% 
-  bind_rows(penguins %>% slice(1:5))
+penguins_dup = penguins \
+  .loc[:, ["species", "island", "bill_length_mm", "bill_depth_mm"]] 
 
-penguins_dup
+penguins_dup_mask = penguins_dup \
+  .duplicated(keep = "first")
 
-penguins_dup %>% 
-  distinct()
+penguins_dup[penguins_dup_mask]
+
+penguins [(penguins['species'] == "Adelie") &
+          (penguins['island']  == "Biscoe") &
+          (penguins['bill_length_mm']  == 35.0) &
+          (penguins['bill_depth_mm']  == 17.9)]
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-penguins_dup <- penguins %>% 
-  slice(1:5) %>% 
-  bind_rows(penguins %>% slice(1:5))
+penguins_dup = penguins \
+  .loc[:, ["species", "island", "bill_length_mm", "bill_depth_mm"]] 
 
-penguins_dup
+penguins_dup_mask = penguins_dup \
+  .duplicated(keep = "first")
 
-penguins_dup %>% 
-  distinct()
+penguins_dup[penguins_dup_mask]
+
+penguins [(penguins['species'] == "Adelie") &
+          (penguins['island']  == "Biscoe") &
+          (penguins['bill_length_mm']  == 35.0) &
+          (penguins['bill_depth_mm']  == 17.9)]
+
 ```
 :::
 
@@ -177,31 +212,22 @@ penguins_dup %>%
 ```{r}
 #| eval: false
 
-penguins_cols <- penguins %>% 
-  select(1:3) %>% 
-  cbind(penguins %>% select(1:3)) 
+penguins_dup_df = pd.concat([penguins[['species', 'island']], penguins['species']], axis=1)
 
-penguins_cols
+penguins_dup_df.columns.duplicated()
 
-duplicated_colnames <- duplicated(colnames(penguins_cols))
-
-penguins_cols[!duplicated_colnames] %>% 
-  as_tibble()
+penguins_dup_df.loc[:,~penguins_dup_df.columns.duplicated()]
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-penguins_cols <- penguins %>% 
-  select(1:3) %>% 
-  cbind(penguins %>% select(1:3)) 
+penguins_dup_df = pd.concat([penguins[['species', 'island']], penguins['species']], axis=1)
 
-# penguins_cols
+penguins_dup_df.columns.duplicated()
 
-duplicated_colnames <- duplicated(colnames(penguins_cols))
+penguins_dup_df.loc[:,~penguins_dup_df.columns.duplicated()]
 
-penguins_cols[!duplicated_colnames] %>% 
-  as_tibble()
 ```
 :::
 
@@ -210,20 +236,22 @@ penguins_cols[!duplicated_colnames] %>%
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
-penguins %>% 
-  select(species, year, island, bill_length_mm) %>% 
-  mutate(year = lubridate::make_date(year = year, month = 7L, day = 1L))
+penguins['year'] = pd.to_datetime(penguins['year'], format='%Y')
+
+penguins \
+  .loc[:, ["species", "year", "island", "bill_length_mm"]]
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-penguins %>% 
-  select(species, year, island, bill_length_mm) %>% 
-  mutate(year = lubridate::make_date(year = year, month = 7L, day = 1L))
+penguins['year'] = pd.to_datetime(penguins['year'], format='%Y')
+
+penguins \
+  .loc[:, ["species", "year", "island", "bill_length_mm"]]
 
 ```
 
