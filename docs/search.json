@@ -957,5 +957,61 @@
     "title": "데이터 전처리 (Preprocessing)",
     "section": "9.2 long → Wide",
     "text": "9.2 long → Wide\n\n\n\npenguins_long %>% \n  pivot_wider(names_from = \"측정변수\", \n              values_from = \"측정값\",\n              values_fn = mean)\n\n\n#> # A tibble: 284 × 8\n#>    species island    body_mass_g sex     year bill_length_mm bill_dept…¹ flipp…²\n#>    <fct>   <fct>           <int> <fct>  <int>          <dbl>       <dbl>   <dbl>\n#>  1 Adelie  Torgersen        3750 male    2007           39.1        18.7     181\n#>  2 Adelie  Torgersen        3800 female  2007           39.5        17.4     186\n#>  3 Adelie  Torgersen        3250 female  2007           40.3        18       195\n#>  4 Adelie  Torgersen          NA <NA>    2007           NA          NA        NA\n#>  5 Adelie  Torgersen        3450 female  2007           37.7        19.2     194\n#>  6 Adelie  Torgersen        3650 male    2007           39.3        20.6     190\n#>  7 Adelie  Torgersen        3625 female  2007           38.9        17.8     181\n#>  8 Adelie  Torgersen        4675 male    2007           39.2        19.6     195\n#>  9 Adelie  Torgersen        3475 <NA>    2007           34.1        18.1     193\n#> 10 Adelie  Torgersen        4250 <NA>    2007           42          20.2     190\n#> # … with 274 more rows, and abbreviated variable names ¹​bill_depth_mm,\n#> #   ²​flipper_length_mm"
+  },
+  {
+    "objectID": "99_data_wrangling_py.html",
+    "href": "99_data_wrangling_py.html",
+    "title": "데이터 전처리 : 파이썬",
+    "section": "",
+    "text": "palmerpenguins 데이터셋을 파이썬 데이터 패키지로 구현되어 있어 이를 설치하여 불러 실습에 사용한다.\n$ pip3 install palmerpenguins"
+  },
+  {
+    "objectID": "99_data_wrangling_py.html#행기준-제거",
+    "href": "99_data_wrangling_py.html#행기준-제거",
+    "title": "데이터 전처리 : 파이썬",
+    "section": "2.1 행기준 제거",
+    "text": "2.1 행기준 제거\n\n\n\npenguins \\\n  .dropna()\n\n\n#>        species     island  bill_length_mm  ...  body_mass_g     sex  year\n#> 0       Adelie  Torgersen            39.1  ...       3750.0    male  2007\n#> 1       Adelie  Torgersen            39.5  ...       3800.0  female  2007\n#> 2       Adelie  Torgersen            40.3  ...       3250.0  female  2007\n#> 4       Adelie  Torgersen            36.7  ...       3450.0  female  2007\n#> 5       Adelie  Torgersen            39.3  ...       3650.0    male  2007\n#> ..         ...        ...             ...  ...          ...     ...   ...\n#> 339  Chinstrap      Dream            55.8  ...       4000.0    male  2009\n#> 340  Chinstrap      Dream            43.5  ...       3400.0  female  2009\n#> 341  Chinstrap      Dream            49.6  ...       3775.0    male  2009\n#> 342  Chinstrap      Dream            50.8  ...       4100.0    male  2009\n#> 343  Chinstrap      Dream            50.2  ...       3775.0  female  2009\n#> \n#> [333 rows x 8 columns]"
+  },
+  {
+    "objectID": "99_data_wrangling_py.html#열기준-제거",
+    "href": "99_data_wrangling_py.html#열기준-제거",
+    "title": "데이터 전처리 : 파이썬",
+    "section": "2.2 열기준 제거",
+    "text": "2.2 열기준 제거\n\n\n\npenguins \\\n  .dropna(axis = 1)\n\n\n#>        species     island  year\n#> 0       Adelie  Torgersen  2007\n#> 1       Adelie  Torgersen  2007\n#> 2       Adelie  Torgersen  2007\n#> 3       Adelie  Torgersen  2007\n#> 4       Adelie  Torgersen  2007\n#> ..         ...        ...   ...\n#> 339  Chinstrap      Dream  2009\n#> 340  Chinstrap      Dream  2009\n#> 341  Chinstrap      Dream  2009\n#> 342  Chinstrap      Dream  2009\n#> 343  Chinstrap      Dream  2009\n#> \n#> [344 rows x 3 columns]"
+  },
+  {
+    "objectID": "99_data_wrangling_py.html#결측값-현황",
+    "href": "99_data_wrangling_py.html#결측값-현황",
+    "title": "데이터 전처리 : 파이썬",
+    "section": "2.3 결측값 현황",
+    "text": "2.3 결측값 현황\n\n\n\nnan_sum = penguins.isna().sum()\n\ntype(nan_sum)\n\nnan_df = nan_sum.to_frame(name = \"결측값\")\n\n# nan_df = pd.DataFrame(nan_sum).rename(columns = {0:'결측값'})\n\n\npenguins_nrow = penguins.shape[0]\n\nnan_df \\\n .assign(결측비율 = nan_df['결측값'] / penguins_nrow)\n\n\n#> <class 'pandas.core.series.Series'>\n#>                    결측값\n#> species              0\n#> island               0\n#> bill_length_mm       2\n#> bill_depth_mm        2\n#> flipper_length_mm    2\n#> body_mass_g          2\n#> sex                 11\n#> year                 0\n#>                    결측값      결측비율\n#> species              0  0.000000\n#> island               0  0.000000\n#> bill_length_mm       2  0.005814\n#> bill_depth_mm        2  0.005814\n#> flipper_length_mm    2  0.005814\n#> body_mass_g          2  0.005814\n#> sex                 11  0.031977\n#> year                 0  0.000000"
+  },
+  {
+    "objectID": "99_data_wrangling_py.html#행기준-제거-1",
+    "href": "99_data_wrangling_py.html#행기준-제거-1",
+    "title": "데이터 전처리 : 파이썬",
+    "section": "3.1 행기준 제거",
+    "text": "3.1 행기준 제거\n\n\n\npenguins_dup = penguins \\\n  .loc[:, [\"species\", \"island\", \"bill_length_mm\", \"bill_depth_mm\"]] \n\npenguins_dup_mask = penguins_dup \\\n  .duplicated(keep = \"first\")\n\npenguins_dup[penguins_dup_mask]\n\npenguins [(penguins['species'] == \"Adelie\") &\n          (penguins['island']  == \"Biscoe\") &\n          (penguins['bill_length_mm']  == 35.0) &\n          (penguins['bill_depth_mm']  == 17.9)]\n\n\n#>     species  island  bill_length_mm  bill_depth_mm\n#> 100  Adelie  Biscoe            35.0           17.9\n#> 104  Adelie  Biscoe            37.9           18.6\n#> 184  Gentoo  Biscoe            45.1           14.5\n#> 199  Gentoo  Biscoe            50.5           15.9\n#>     species  island  bill_length_mm  ...  body_mass_g     sex  year\n#> 52   Adelie  Biscoe            35.0  ...       3450.0  female  2008\n#> 100  Adelie  Biscoe            35.0  ...       3725.0  female  2009\n#> \n#> [2 rows x 8 columns]"
+  },
+  {
+    "objectID": "99_data_wrangling_py.html#열기준-제거-1",
+    "href": "99_data_wrangling_py.html#열기준-제거-1",
+    "title": "데이터 전처리 : 파이썬",
+    "section": "3.2 열기준 제거",
+    "text": "3.2 열기준 제거\n\n\n\npenguins_dup_df = pd.concat([penguins[['species', 'island']], penguins['species']], axis=1)\n\npenguins_dup_df.columns.duplicated()\n\npenguins_dup_df.loc[:,~penguins_dup_df.columns.duplicated()]\n\n\n#> array([False, False,  True])\n#>        species     island\n#> 0       Adelie  Torgersen\n#> 1       Adelie  Torgersen\n#> 2       Adelie  Torgersen\n#> 3       Adelie  Torgersen\n#> 4       Adelie  Torgersen\n#> ..         ...        ...\n#> 339  Chinstrap      Dream\n#> 340  Chinstrap      Dream\n#> 341  Chinstrap      Dream\n#> 342  Chinstrap      Dream\n#> 343  Chinstrap      Dream\n#> \n#> [344 rows x 2 columns]"
+  },
+  {
+    "objectID": "99_data_wrangling_py.html#wide-long",
+    "href": "99_data_wrangling_py.html#wide-long",
+    "title": "데이터 전처리 : 파이썬",
+    "section": "10.1 Wide → Long",
+    "text": "10.1 Wide → Long\n\n\n\npenguins_long = pd.melt(penguins, id_vars=[\"species\"], \n                        value_vars = penguins.columns[penguins.columns.str.contains(\"mm\")], \n                        var_name   = \"측정변수\", \n                        value_name = \"측정값\")\n\npenguins_long\n\n\n#>         species               측정변수    측정값\n#> 0        Adelie     bill_length_mm   39.1\n#> 1        Adelie     bill_length_mm   39.5\n#> 2        Adelie     bill_length_mm   40.3\n#> 3        Adelie     bill_length_mm    NaN\n#> 4        Adelie     bill_length_mm   36.7\n#> ...         ...                ...    ...\n#> 1027  Chinstrap  flipper_length_mm  207.0\n#> 1028  Chinstrap  flipper_length_mm  202.0\n#> 1029  Chinstrap  flipper_length_mm  193.0\n#> 1030  Chinstrap  flipper_length_mm  210.0\n#> 1031  Chinstrap  flipper_length_mm  198.0\n#> \n#> [1032 rows x 3 columns]"
+  },
+  {
+    "objectID": "99_data_wrangling_py.html#long-wide",
+    "href": "99_data_wrangling_py.html#long-wide",
+    "title": "데이터 전처리 : 파이썬",
+    "section": "10.2 long → Wide",
+    "text": "10.2 long → Wide\n\n\n\npenguins_long.reset_index().pivot_table(index   = \"species\", \n                    columns = \"측정변수\", \n                    values  = \"측정값\",\n                    aggfunc = 'mean')\n\n\n#> 측정변수       bill_depth_mm  bill_length_mm  flipper_length_mm\n#> species                                                    \n#> Adelie         18.346358       38.791391         189.953642\n#> Chinstrap      18.420588       48.833824         195.823529\n#> Gentoo         14.982114       47.504878         217.186992"
   }
 ]

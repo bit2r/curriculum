@@ -63,7 +63,8 @@ import numpy as np
 import pandas as pd
 from palmerpenguins import load_penguins
 
-penguins
+penguins = load_penguins()
+penguins.head()
 
 ```
 :::
@@ -75,11 +76,8 @@ penguins
 ```{python}
 #| eval: false
 
-library(tidyverse)
-library(palmerpenguins)
-
 penguins \
-  .drop_na()
+  .dropna()
 ```
 
 ```{python}
@@ -87,7 +85,6 @@ penguins \
 
 penguins \
   .dropna()
-
 ```
 
 :::
@@ -101,7 +98,7 @@ penguins \
 #| eval: false
 
 penguins \
-  .dropna()
+  .dropna(axis = 1)
 ```
 
 ```{python}
@@ -132,8 +129,6 @@ nan_df = nan_sum.to_frame(name = "결측값")
 
 
 penguins_nrow = penguins.shape[0]
-
-nan_df.assign()
 
 nan_df \
  .assign(결측비율 = nan_df['결측값'] / penguins_nrow)
@@ -209,7 +204,7 @@ penguins [(penguins['species'] == "Adelie") &
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
 penguins_dup_df = pd.concat([penguins[['species', 'island']], penguins['species']], axis=1)
@@ -263,30 +258,27 @@ penguins \
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
-penguin_stat <- penguins %>% 
-  drop_na() %>% 
-  summarise(mean = mean(bill_length_mm),
-            sd   = sd(bill_length_mm)) 
+bill_mean = penguins["bill_length_mm"].mean()
+bill_sd = penguins["bill_length_mm"].std()  
 
-penguins %>% 
-  filter(bill_length_mm < penguin_stat$mean - 2 * penguin_stat$sd |
-         bill_length_mm > penguin_stat$mean + 2 * penguin_stat$sd)
+penguins \
+  .loc[(penguins["bill_length_mm"] < bill_mean - 2 * bill_sd) | \
+       (penguins["bill_length_mm"] > bill_mean + 2 * bill_sd), :]
+
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-penguin_stat <- penguins %>% 
-  drop_na() %>% 
-  summarise(mean = mean(bill_length_mm),
-            sd   = sd(bill_length_mm)) 
+bill_mean = penguins["bill_length_mm"].mean()
+bill_sd = penguins["bill_length_mm"].std()  
 
-penguins %>% 
-  filter(bill_length_mm < penguin_stat$mean - 2 * penguin_stat$sd |
-         bill_length_mm > penguin_stat$mean + 2 * penguin_stat$sd)
+penguins \
+  .loc[(penguins["bill_length_mm"] < bill_mean - 2 * bill_sd) | \
+       (penguins["bill_length_mm"] > bill_mean + 2 * bill_sd), :]
 
 ```
 
@@ -296,19 +288,32 @@ penguins %>%
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
-penguins %>% 
-  mutate(species = str_trim(species))
+penguins \
+  .assign(species=lambda x: x["species"].str.strip())
+
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-penguins %>% 
-  mutate(species = str_trim(species))
+penguins \
+  .assign(species=lambda x: x["species"].str.strip())
 
+```
+
+:::
+
+:::{.callout-note}
+### `strip()` 메쏘드
+
+```{python}
+text = ' _ 대한민국 화이팅!!! _ '
+print('[' + text.rstrip() + ']')
+print('[' + text.lstrip() + ']')
+print('[' + text.strip() + ']')
 ```
 
 :::
@@ -318,20 +323,24 @@ penguins %>%
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
-penguins %>% 
-  mutate_if(is.factor, toupper)
-# mutate_if(is.factor, toupper)
+def toupper(x):
+    return x.str.upper()
+
+penguins \
+  .apply(lambda x: toupper(x) if x.dtype == "object" else x)
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-penguins %>% 
-  mutate_if(is.factor, toupper)
-  # mutate_if(is.factor, toupper)
+def toupper(x):
+    return x.str.upper()
+
+penguins \
+  .apply(lambda x: toupper(x) if x.dtype == "object" else x)
 ```
 
 :::
@@ -342,20 +351,20 @@ penguins %>%
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
-penguins %>% 
-  mutate(species_kr = glue::glue("{species}_종")) %>% 
-  select(species, species_kr, island)
+penguins \
+  .assign(species_kr = lambda x: x["species"] + "_종") \
+  .loc[:, ["species", "species_kr", "island"]]
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-penguins %>% 
-  mutate(species_kr = glue::glue("{species}_종")) %>% 
-  select(species, species_kr, island)
+penguins \
+  .assign(species_kr = lambda x: x["species"] + "_종") \
+  .loc[:, ["species", "species_kr", "island"]]
 ```
 
 :::
@@ -366,22 +375,22 @@ penguins %>%
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
-penguins %>% 
-  mutate(bill_length_mm = ifelse(is.na(bill_length_mm), 
-                                 mean(bill_length_mm, na.rm = TRUE),
-                                 bill_length_mm))
+mean_bill_length = penguins["bill_length_mm"].mean()
+
+penguins \
+  .assign(bill_length_mm = lambda x: x["bill_length_mm"].fillna(mean_bill_length))
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-penguins %>% 
-  mutate(bill_length_mm = ifelse(is.na(bill_length_mm), 
-                                 mean(bill_length_mm, na.rm = TRUE),
-                                 bill_length_mm))
+mean_bill_length = penguins["bill_length_mm"].mean()
+
+penguins \
+  .assign(bill_length_mm = lambda x: x["bill_length_mm"].fillna(mean_bill_length))
 ```
 
 :::
@@ -395,22 +404,24 @@ penguins %>%
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
-penguins_long <- penguins %>% 
-  pivot_longer(cols = contains("mm"), names_to = "측정변수", 
-               values_to = "측정값")
+penguins_long = pd.melt(penguins, id_vars=["species"], 
+                        value_vars = penguins.columns[penguins.columns.str.contains("mm")], 
+                        var_name   = "측정변수", 
+                        value_name = "측정값")
 
 penguins_long
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-penguins_long <- penguins %>% 
-  pivot_longer(cols = contains("mm"), names_to = "측정변수", 
-               values_to = "측정값")
+penguins_long = pd.melt(penguins, id_vars=["species"], 
+                        value_vars = penguins.columns[penguins.columns.str.contains("mm")], 
+                        var_name   = "측정변수", 
+                        value_name = "측정값")
 
 penguins_long
 ```
@@ -422,22 +433,22 @@ penguins_long
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
-penguins_long %>% 
-  pivot_wider(names_from = "측정변수", 
-              values_from = "측정값",
-              values_fn = mean)
+penguins_long.reset_index().pivot_table(index   = "species", 
+                    columns = "측정변수", 
+                    values  = "측정값",
+                    aggfunc = 'mean')
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-penguins_long %>% 
-  pivot_wider(names_from = "측정변수", 
-              values_from = "측정값",
-              values_fn = mean)
+penguins_long.reset_index().pivot_table(index   = "species", 
+                    columns = "측정변수", 
+                    values  = "측정값",
+                    aggfunc = 'mean')
 ```
 
 :::
@@ -447,18 +458,22 @@ penguins_long %>%
 
 :::{layout-ncol="2"}
 
-```{r}
+```{python}
 #| eval: false
 
-penguins_long %>% 
-  separate(측정변수, into = c("부위", "측정", "단위"), sep = "_")
+extracted = penguins_long["측정변수"].str.extract(r"([a-z]+?)_([a-z]+?)_(mm)", expand=True)
+extracted.columns = ["부위", "측정", "단위"]
+
+penguins_long.assign(**extracted)
 ```
 
-```{r}
+```{python}
 #| echo: false
 
-penguins_long %>% 
-  separate(측정변수, into = c("부위", "측정", "단위"), sep = "_")
+extracted = penguins_long["측정변수"].str.extract(r"([a-z]+?)_([a-z]+?)_(mm)", expand=True)
+extracted.columns = ["부위", "측정", "단위"]
+
+penguins_long.assign(**extracted)
 
 ```
 
