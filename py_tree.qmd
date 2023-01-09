@@ -19,6 +19,9 @@ format:
     self-contained: false
 editor_options: 
   chunk_output_type: console
+filters:
+   - lightbox
+lightbox: auto  
 ---
 
 # 문제정의

@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="kr" xml:lang="kr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="이광춘">
+<meta name="description" content="데이터과학 자료구조 데이터프레임(DataFrame)을 학습합니다.">
+
+<title>데이터 과학 - 데이터프레임</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "일치 없음",
+    "search-matching-documents-text": "일치된 문서",
+    "search-copy-link-title": "검색 링크 복사",
+    "search-hide-matches-text": "추가 검색 결과 숨기기",
+    "search-more-match-text": "추가 검색결과",
+    "search-more-matches-text": "추가 검색결과",
+    "search-clear-button-title": "제거",
+    "search-detached-cancel-button-title": "취소",
+    "search-submit-button-title": "검색"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">데이터 과학</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">들어가며</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">커리큐럼</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="./curriculum_2023.html">
+ <span class="dropdown-text">2023년</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./curriculum_2022.html">
+ <span class="dropdown-text">2022년</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">모래시계</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--1">    
+        <li>
+    <a class="dropdown-item" href="./timer_five.html">
+ <span class="dropdown-text">5 분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_ten.html">
+ <span class="dropdown-text">10분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_twenty.html">
+ <span class="dropdown-text">20분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_thirty.html">
+ <span class="dropdown-text">30분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_hour.html">
+ <span class="dropdown-text">1시간</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">개발환경</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--2">    
+        <li>
+    <a class="dropdown-item" href="./00_setup.html">
+ <span class="dropdown-text">실습환경</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./01_setup_bash.html">
+ <span class="dropdown-text">CLI 개발환경</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./02_setup_sql.html">
+ <span class="dropdown-text">Sqlite 데이터베이스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./03_setup_python.html">
+ <span class="dropdown-text">파이썬</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./hello_world_jupyter.html">
+ <span class="dropdown-text">쥬피터 노트북</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./04_setup_r.html">
+ <span class="dropdown-text">고급 데이터과학: R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">교재</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--3">    
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./99_statistics.html">
+ <span class="dropdown-text">통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_dplyr_pandas.html">
+ <span class="dropdown-text">데이터 다루기 (Pandas)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_data_wrangling.html">
+ <span class="dropdown-text">데이터 전처리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_data_wrangling_py.html">
+ <span class="dropdown-text">데이터 전처리: 파이썬</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_dataframe.html">
+ <span class="dropdown-text">데이터프레임</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./10_cmdline.html">
+ <span class="dropdown-text">명령라인 데이터 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./11_shell.html">
+ <span class="dropdown-text">쉘(Shell)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./12_writing.html">
+ <span class="dropdown-text">디지털 글쓰기(보고서)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./13_git.html">
+ <span class="dropdown-text">Git/GitHub</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./20_sql.html">
+ <span class="dropdown-text">프로그래밍: SQL</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./21_r.html">
+ <span class="dropdown-text">프로그래밍: R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./22_python.html">
+ <span class="dropdown-text">프로그래밍: 파이썬</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./30_dashboard.html">
+ <span class="dropdown-text">대쉬보드</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./31_models.html">
+ <span class="dropdown-text">기계학습</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./32_product.html">
+ <span class="dropdown-text">데이터과학 제품과 서비스</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./41_time_series.html">
+ <span class="dropdown-text">시계열 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./42_network.html">
+ <span class="dropdown-text">네트워크 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./43_geospatial.html">
+ <span class="dropdown-text">공간정보 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./44_text_mining.html">
+ <span class="dropdown-text">텍스트 데이터</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./51_nlp.html">
+ <span class="dropdown-text">딥러닝 - NLP</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./52_vision.html">
+ <span class="dropdown-text">딥러닝 - 비젼</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">프로젝트</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./project.html">
+ <span class="dropdown-text">프로젝트</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./py_tree.html">
+ <span class="dropdown-text">나무모형</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">데이터셋</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--5">    
+        <li>
+    <a class="dropdown-item" href="./data.html">
+ <span class="dropdown-text">데이터셋</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./data_chatGPT.html">
+ <span class="dropdown-text">chatGPT 데이터셋</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--6" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">운동장</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--6">    
+        <li>
+    <a class="dropdown-item" href="./dataxray.html">
+ <span class="dropdown-text">데이터 X-레이</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./flexdashboard/penguin_flexdashboard.html">
+ <span class="dropdown-text">대쉬보드: 파머펭귄</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--7" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">퀴즈</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--7">    
+        <li>
+    <a class="dropdown-item" href="./mcq_stat.html">
+ <span class="dropdown-text">확률과 통계</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./mcq_ds.html">
+ <span class="dropdown-text">데이터 과학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./mcq_ml.html">
+ <span class="dropdown-text">기계학습</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul>
+  <li><a href="#데이터프레임" id="toc-데이터프레임" class="nav-link active" data-scroll-target="#데이터프레임"><span class="toc-section-number">1</span>  데이터프레임</a></li>
+  <li><a href="#내부-데이터" id="toc-내부-데이터" class="nav-link" data-scroll-target="#내부-데이터"><span class="toc-section-number">2</span>  내부 데이터</a>
+  <ul class="collapse">
+  <li><a href="#list-of-lists" id="toc-list-of-lists" class="nav-link" data-scroll-target="#list-of-lists"><span class="toc-section-number">2.1</span>  list of lists</a></li>
+  <li><a href="#dictionary-of-lists" id="toc-dictionary-of-lists" class="nav-link" data-scroll-target="#dictionary-of-lists"><span class="toc-section-number">2.2</span>  dictionary of lists</a></li>
+  <li><a href="#list-of-dictionaries" id="toc-list-of-dictionaries" class="nav-link" data-scroll-target="#list-of-dictionaries"><span class="toc-section-number">2.3</span>  list of dictionaries</a></li>
+  <li><a href="#list-of-dictionaries-with-data-types" id="toc-list-of-dictionaries-with-data-types" class="nav-link" data-scroll-target="#list-of-dictionaries-with-data-types"><span class="toc-section-number">2.4</span>  list of dictionaries with data types</a></li>
+  <li><a href="#numpy-array" id="toc-numpy-array" class="nav-link" data-scroll-target="#numpy-array"><span class="toc-section-number">2.5</span>  NumPy array</a></li>
+  <li><a href="#numpy-structured-array" id="toc-numpy-structured-array" class="nav-link" data-scroll-target="#numpy-structured-array"><span class="toc-section-number">2.6</span>  NumPy structured array</a></li>
+  <li><a href="#pandas-series" id="toc-pandas-series" class="nav-link" data-scroll-target="#pandas-series"><span class="toc-section-number">2.7</span>  Pandas Series</a></li>
+  <li><a href="#dictionary-of-series" id="toc-dictionary-of-series" class="nav-link" data-scroll-target="#dictionary-of-series"><span class="toc-section-number">2.8</span>  dictionary of Series</a></li>
+  <li><a href="#pandas-panel" id="toc-pandas-panel" class="nav-link" data-scroll-target="#pandas-panel"><span class="toc-section-number">2.9</span>  <del>pandas Panel</del></a></li>
+  <li><a href="#list-of-tuples" id="toc-list-of-tuples" class="nav-link" data-scroll-target="#list-of-tuples"><span class="toc-section-number">2.10</span>  list of tuples</a></li>
+  </ul></li>
+  <li><a href="#외부-데이터" id="toc-외부-데이터" class="nav-link" data-scroll-target="#외부-데이터"><span class="toc-section-number">3</span>  외부 데이터</a>
+  <ul class="collapse">
+  <li><a href="#csv-파일" id="toc-csv-파일" class="nav-link" data-scroll-target="#csv-파일"><span class="toc-section-number">3.1</span>  <code>.csv</code> 파일</a></li>
+  <li><a href="#json-파일" id="toc-json-파일" class="nav-link" data-scroll-target="#json-파일"><span class="toc-section-number">3.2</span>  <code>.json</code> 파일</a></li>
+  <li><a href="#xlsx-파일" id="toc-xlsx-파일" class="nav-link" data-scroll-target="#xlsx-파일"><span class="toc-section-number">3.3</span>  <code>.xlsx</code> 파일</a></li>
+  <li><a href="#sqlite-db-파일" id="toc-sqlite-db-파일" class="nav-link" data-scroll-target="#sqlite-db-파일"><span class="toc-section-number">3.4</span>  <code>SQLite</code> DB 파일</a></li>
+  <li><a href="#html-파일" id="toc-html-파일" class="nav-link" data-scroll-target="#html-파일"><span class="toc-section-number">3.5</span>  <code>html</code> 파일</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">데이터프레임</h1>
+</div>
+
+<div>
+  <div class="description">
+    데이터과학 자료구조 데이터프레임(DataFrame)을 학습합니다.
+  </div>
+</div>
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">저자</div>
+  <div class="quarto-title-meta-heading">소속</div>
+  
+    <div class="quarto-title-meta-contents">
+    이광춘 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            TCS
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">공개</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2023년 01월 09일</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="데이터프레임" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 데이터프레임</h1>
+<ul>
+<li>데이터 과학 자료구조 <a href="https://aispiration.com/data-science/ds-data-structure.html">데이터프레임</a></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="fig/dataframe_pandas.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="fig/dataframe_pandas.jpg" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</section>
+<section id="내부-데이터" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 내부 데이터</h1>
+<section id="list-of-lists" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="list-of-lists"><span class="header-section-number">2.1</span> list of lists</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># list of lists 생성</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [[<span class="st">'Alex'</span>, <span class="dv">10</span>], [<span class="st">'Bob'</span>, <span class="dv">12</span>], [<span class="st">'Clarke'</span>, <span class="dv">13</span>]]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터프레임</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data, columns<span class="op">=</span>[<span class="st">'Name'</span>, <span class="st">'Age'</span>])</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;      Name  Age
+#&gt; 0    Alex   10
+#&gt; 1     Bob   12
+#&gt; 2  Clarke   13</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="dictionary-of-lists" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="dictionary-of-lists"><span class="header-section-number">2.2</span> dictionary of lists</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dictionary of lists 생성</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'Name'</span>: [<span class="st">'Tom'</span>, <span class="st">'Jack'</span>, <span class="st">'Steve'</span>, <span class="st">'Ricky'</span>], <span class="st">'Age'</span>: [<span class="dv">28</span>,<span class="dv">34</span>,<span class="dv">29</span>,<span class="dv">42</span>]}</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;     Name  Age
+#&gt; 0    Tom   28
+#&gt; 1   Jack   34
+#&gt; 2  Steve   29
+#&gt; 3  Ricky   42</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="list-of-dictionaries" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="list-of-dictionaries"><span class="header-section-number">2.3</span> list of dictionaries</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list of dictionaries 생성</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [{<span class="st">'a'</span>: <span class="dv">1</span>, <span class="st">'b'</span>: <span class="dv">2</span>}, {<span class="st">'a'</span>: <span class="dv">5</span>, <span class="st">'b'</span>: <span class="dv">10</span>, <span class="st">'c'</span>: <span class="dv">20</span>}]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;    a   b     c
+#&gt; 0  1   2   NaN
+#&gt; 1  5  10  20.0</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="list-of-dictionaries-with-data-types" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="list-of-dictionaries-with-data-types"><span class="header-section-number">2.4</span> list of dictionaries with data types</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list of dictionary 생성</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>book <span class="op">=</span> [{<span class="st">'id'</span>:<span class="dv">1</span>,<span class="st">'name'</span>:<span class="st">'python'</span>,<span class="st">'price'</span>:<span class="dv">56</span>,<span class="st">'no_of_pages'</span>:<span class="dv">34</span>},</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        {<span class="st">'id'</span>:<span class="dv">2</span>,<span class="st">'name'</span>:<span class="st">'Node-js'</span>,<span class="st">'price'</span>:<span class="dv">45</span>,<span class="st">'no_of_pages'</span>:<span class="dv">54</span>},</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        {<span class="st">'id'</span>:<span class="dv">3</span>,<span class="st">'name'</span>:<span class="st">'R'</span>,<span class="st">'price'</span>:<span class="dv">100</span>,<span class="st">'no_of_pages'</span>:<span class="dv">80</span>},</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        {<span class="st">'id'</span>:<span class="dv">4</span>,<span class="st">'name'</span>:<span class="st">'Html'</span>,<span class="st">'price'</span>:<span class="dv">16</span>,<span class="st">'no_of_pages'</span>:<span class="dv">20</span>}]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 컬럼에 대한 자료형 지정</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>dtypes <span class="op">=</span> {<span class="st">'id'</span>: <span class="bu">int</span>, <span class="st">'name'</span>: <span class="bu">str</span>, <span class="st">'price'</span>: <span class="bu">float</span>, <span class="st">'no_of_pages'</span>: <span class="bu">int</span>}</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># df = pd.DataFrame(book, dtype = {'id': int, 'name': str, 'price': float, 'no_of_pages': int})</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># df = pd.DataFrame(book, dtype = [('id', int), ('name', str), ('price', float), ('no_of_pages', int)])</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame.from_dict(book, orient<span class="op">=</span><span class="st">'columns'</span>).astype(dtypes)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;    id     name  price  no_of_pages
+#&gt; 0   1   python   56.0           34
+#&gt; 1   2  Node-js   45.0           54
+#&gt; 2   3        R  100.0           80
+#&gt; 3   4     Html   16.0           20</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="numpy-array" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="numpy-array"><span class="header-section-number">2.5</span> NumPy array</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numpy Arrary 생성</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data, columns<span class="op">=</span>[<span class="st">'a'</span>, <span class="st">'b'</span>])</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;    a  b
+#&gt; 0  1  2
+#&gt; 1  3  4</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="numpy-structured-array" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="numpy-structured-array"><span class="header-section-number">2.6</span> NumPy structured array</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numpy Arrary 생성</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data, columns<span class="op">=</span>[<span class="st">'a'</span>, <span class="st">'b'</span>])</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;    ID   Name  Age
+#&gt; 0   1  Alice   22
+#&gt; 1   2    Bob   35</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="pandas-series" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="pandas-series"><span class="header-section-number">2.7</span> Pandas Series</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pandas Series 생성</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>ps <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, np.nan, <span class="dv">6</span>, <span class="dv">8</span>])</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(ps, columns<span class="op">=</span>[<span class="st">'Number'</span>])</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;    Number
+#&gt; 0     1.0
+#&gt; 1     3.0
+#&gt; 2     5.0
+#&gt; 3     NaN
+#&gt; 4     6.0
+#&gt; 5     8.0</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="dictionary-of-series" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="dictionary-of-series"><span class="header-section-number">2.8</span> dictionary of Series</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pandas Series 생성</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> pd.Series([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, np.nan, <span class="dv">6</span>, <span class="dv">8</span>])</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> pd.Series([<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">6</span>])</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dictionary of Series 생성</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'First'</span>: s1, <span class="st">'Second'</span>: s2}</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;    First  Second
+#&gt; 0    1.0       4
+#&gt; 1    3.0       7
+#&gt; 2    5.0       5
+#&gt; 3    NaN       2
+#&gt; 4    6.0       3
+#&gt; 5    8.0       6</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="pandas-panel" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="pandas-panel"><span class="header-section-number">2.9</span> <del>pandas Panel</del></h2>
+<p><code>Panel has been deprecated in the 0.20.x release and completely removed from 0.25</code></p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas Panel 생성</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> pd.Panel({<span class="st">'Item1'</span>: pd.DataFrame(np.random.randn(<span class="dv">4</span>, <span class="dv">3</span>)), </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">'Item2'</span>: pd.DataFrame(np.random.randn(<span class="dv">4</span>, <span class="dv">2</span>))})</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(p)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pandas Panel 생성</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'Item1'</span>: pd.DataFrame(np.random.randn(<span class="dv">4</span>, <span class="dv">3</span>)), </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Item2'</span>: pd.DataFrame(np.random.randn(<span class="dv">4</span>, <span class="dv">2</span>))}</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.Panel(data)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-of-tuples" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="list-of-tuples"><span class="header-section-number">2.10</span> list of tuples</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list of tuple 생성</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [(<span class="st">'Alex'</span>, <span class="dv">10</span>), (<span class="st">'Bob'</span>, <span class="dv">12</span>), (<span class="st">'Clarke'</span>, <span class="dv">13</span>)]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data, columns<span class="op">=</span>[<span class="st">'Name'</span>, <span class="st">'Age'</span>])</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;      Name  Age
+#&gt; 0    Alex   10
+#&gt; 1     Bob   12
+#&gt; 2  Clarke   13</code></pre>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="외부-데이터" class="level1 page-columns page-full" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 외부 데이터</h1>
+<section id="csv-파일" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="csv-파일"><span class="header-section-number">3.1</span> <code>.csv</code> 파일</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/datasets/population/master/data/population.csv'</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;       Country Name Country Code  Year      Value
+#&gt; 0       Arab World          ARB  1960   92197753
+#&gt; 1       Arab World          ARB  1961   94724510
+#&gt; 2       Arab World          ARB  1962   97334442
+#&gt; 3       Arab World          ARB  1963  100034179
+#&gt; 4       Arab World          ARB  1964  102832760
+#&gt; ...            ...          ...   ...        ...
+#&gt; 15404     Zimbabwe          ZWE  2014   13586681
+#&gt; 15405     Zimbabwe          ZWE  2015   13814629
+#&gt; 15406     Zimbabwe          ZWE  2016   14030390
+#&gt; 15407     Zimbabwe          ZWE  2017   14236745
+#&gt; 15408     Zimbabwe          ZWE  2018   14439018
+#&gt; 
+#&gt; [15409 rows x 4 columns]</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="json-파일" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="json-파일"><span class="header-section-number">3.2</span> <code>.json</code> 파일</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_json(<span class="st">'https://raw.githubusercontent.com/sparkbyexamples/python-pandas-examples/main/data-files/courses_data.json'</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;   Courses    Fee Duration
+#&gt; 0   Spark  25000  50 Days
+#&gt; 1  Pandas  20000  35 Days
+#&gt; 2    Java  15000</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="xlsx-파일" class="level2 page-columns page-full" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="xlsx-파일"><span class="header-section-number">3.3</span> <code>.xlsx</code> 파일</h2>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">openpyxl 설치: <code>pip3 install openpyxl</code></span></div></div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> ExcelFile</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">'https://github.com/buchs-kevin/Pandas-Excel-Example/raw/master/Pandas-Example.xlsx'</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;       Patient   BP    SO2  DrFirst  DrLast  BP*SO2
+#&gt; 0   Joe Smith  123  1.234    James  Rogers     NaN
+#&gt; 1  Frank Blue   99  1.100  William    Kahn     NaN</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="sqlite-db-파일" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sqlite-db-파일"><span class="header-section-number">3.4</span> <code>SQLite</code> DB 파일</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">'data/portal_mammals.sqlite'</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_sql_query(<span class="st">'SELECT * FROM species;'</span>, conn)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;    species_id             genus          species     taxa
+#&gt; 0          AB        Amphispiza        bilineata     Bird
+#&gt; 1          AH  Ammospermophilus          harrisi   Rodent
+#&gt; 2          AS        Ammodramus       savannarum     Bird
+#&gt; 3          BA           Baiomys          taylori   Rodent
+#&gt; 4          CB   Campylorhynchus  brunneicapillus     Bird
+#&gt; 5          CM       Calamospiza      melanocorys     Bird
+#&gt; 6          CQ        Callipepla         squamata     Bird
+#&gt; 7          CS          Crotalus       scutalatus  Reptile
+#&gt; 8          CT     Cnemidophorus           tigris  Reptile
+#&gt; 9          CU     Cnemidophorus        uniparens  Reptile
+#&gt; 10         CV          Crotalus          viridis  Reptile
+#&gt; 11         DM         Dipodomys         merriami   Rodent
+#&gt; 12         DO         Dipodomys            ordii   Rodent
+#&gt; 13         DS         Dipodomys      spectabilis   Rodent
+#&gt; 14         DX         Dipodomys              sp.   Rodent
+#&gt; 15         EO           Eumeces        obsoletus  Reptile
+#&gt; 16         GS          Gambelia            silus  Reptile
+#&gt; 17         NL           Neotoma         albigula   Rodent
+#&gt; 18         NX           Neotoma              sp.   Rodent
+#&gt; 19         OL         Onychomys      leucogaster   Rodent
+#&gt; 20         OT         Onychomys         torridus   Rodent
+#&gt; 21         OX         Onychomys              sp.   Rodent
+#&gt; 22         PB       Chaetodipus          baileyi   Rodent
+#&gt; 23         PC            Pipilo        chlorurus     Bird
+#&gt; 24         PE        Peromyscus         eremicus   Rodent
+#&gt; 25         PF       Perognathus           flavus   Rodent
+#&gt; 26         PG         Pooecetes        gramineus     Bird
+#&gt; 27         PH       Perognathus         hispidus   Rodent
+#&gt; 28         PI       Chaetodipus      intermedius   Rodent
+#&gt; 29         PL        Peromyscus         leucopus   Rodent
+#&gt; 30         PM        Peromyscus      maniculatus   Rodent
+#&gt; 31         PP       Chaetodipus     penicillatus   Rodent
+#&gt; 32         PU            Pipilo           fuscus     Bird
+#&gt; 33         PX       Chaetodipus              sp.   Rodent
+#&gt; 34         RF   Reithrodontomys       fulvescens   Rodent
+#&gt; 35         RM   Reithrodontomys        megalotis   Rodent
+#&gt; 36         RO   Reithrodontomys         montanus   Rodent
+#&gt; 37         RX   Reithrodontomys              sp.   Rodent
+#&gt; 38         SA        Sylvilagus        audubonii   Rabbit
+#&gt; 39         SB          Spizella          breweri     Bird
+#&gt; 40         SC        Sceloporus           clarki  Reptile
+#&gt; 41         SF          Sigmodon      fulviventer   Rodent
+#&gt; 42         SH          Sigmodon         hispidus   Rodent
+#&gt; 43         SO          Sigmodon     ochrognathus   Rodent
+#&gt; 44         SS      Spermophilus        spilosoma   Rodent
+#&gt; 45         ST      Spermophilus     tereticaudus   Rodent
+#&gt; 46         SU        Sceloporus        undulatus  Reptile
+#&gt; 47         SX          Sigmodon              sp.   Rodent
+#&gt; 48         UL            Lizard              sp.  Reptile
+#&gt; 49         UP            Pipilo              sp.     Bird
+#&gt; 50         UR            Rodent              sp.   Rodent
+#&gt; 51         US           Sparrow              sp.     Bird
+#&gt; 52         ZL       Zonotrichia       leucophrys     Bird
+#&gt; 53         ZM           Zenaida         macroura     Bird</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="html-파일" class="level2 page-columns page-full" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="html-파일"><span class="header-section-number">3.5</span> <code>html</code> 파일</h2>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">lxml 설치 : <code>pip3 install lxml</code></span></div></div>
+<p><a href="https://en.wikipedia.org/wiki/Minnesota">위키백과 Minnesota</a> 웹사이트에서 “United States presidential election results for Minnesota” 선거결과 표 가져온다.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_html(<span class="st">'https://en.wikipedia.org/wiki/Minnesota'</span>, </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                  match<span class="op">=</span><span class="st">'United States presidential election results for Minnesota'</span>)[<span class="dv">0</span>]</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt;     Year Republican         Democratic         Third party        
+#&gt;     Year        No.       %        No.       %         No.       %
+#&gt; 0   2020    1484065  45.28%    1717077  52.40%       76029   2.32%
+#&gt; 1   2016    1323232  44.93%    1367825  46.44%      254176   8.63%
+#&gt; 2   2012    1320225  44.96%    1546167  52.65%       70169   2.39%
+#&gt; 3   2008    1275409  43.82%    1573354  54.06%       61606   2.12%
+#&gt; 4   2004    1346695  47.61%    1445014  51.09%       36678   1.30%
+#&gt; 5   2000    1109659  45.50%    1168266  47.91%      160760   6.59%
+#&gt; 6   1996     766476  34.96%    1120438  51.10%      305726  13.94%
+#&gt; 7   1992     747841  31.85%    1020997  43.48%      579110  24.66%
+#&gt; 8   1988     962337  45.90%    1109471  52.91%       24982   1.19%
+#&gt; 9   1984    1032603  49.54%    1036364  49.72%       15482   0.74%
+#&gt; 10  1980     873241  42.56%     954174  46.50%      224538  10.94%
+#&gt; 11  1976     819395  42.02%    1070440  54.90%       60096   3.08%
+#&gt; 12  1972     898269  51.58%     802346  46.07%       41037   2.36%
+#&gt; 13  1968     658643  41.46%     857738  54.00%       72129   4.54%
+#&gt; 14  1964     559624  36.00%     991117  63.76%        3721   0.24%
+#&gt; 15  1960     757915  49.16%     779933  50.58%        4039   0.26%
+#&gt; 16  1956     719302  53.68%     617525  46.08%        3178   0.24%
+#&gt; 17  1952     763211  55.33%     608458  44.11%        7814   0.57%
+#&gt; 18  1948     483617  39.89%     692966  57.16%       35643   2.94%
+#&gt; 19  1944     527416  46.86%     589864  52.41%        8249   0.73%
+#&gt; 20  1940     596274  47.66%     644196  51.49%       10718   0.86%
+#&gt; 21  1936     350461  31.01%     698811  61.84%       80703   7.14%
+#&gt; 22  1932     363959  36.29%     600806  59.91%       38078   3.80%
+#&gt; 23  1928     560977  57.77%     396451  40.83%       13548   1.40%
+#&gt; 24  1924     420759  51.18%      55913   6.80%      345474  42.02%
+#&gt; 25  1920     519421  70.59%     142994  19.43%       73423   9.98%
+#&gt; 26  1916     179544  46.35%     179152  46.25%       28668   7.40%
+#&gt; 27  1912      64334  19.25%     106426  31.84%      163459  48.91%
+#&gt; 28  1908     195843  59.11%     109401  33.02%       26060   7.87%
+#&gt; 29  1904     216651  73.98%      55187  18.84%       21022   7.18%
+#&gt; 30  1900     190461  60.21%     112901  35.69%       12949   4.09%
+#&gt; 31  1896     193503  56.62%     139735  40.89%        8524   2.49%
+#&gt; 32  1892     122823  45.96%     100920  37.76%       43495  16.28%
+#&gt; 33  1888     142492  54.12%     104385  39.65%       16408   6.23%
+#&gt; 34  1884     111685  58.78%      70065  36.87%        8267   4.35%
+#&gt; 35  1880      93902  62.28%      53315  35.36%        3553   2.36%
+#&gt; 36  1876      72955  58.80%      48587  39.16%        2533   2.04%
+#&gt; 37  1872      55708  61.27%      35211  38.73%           0   0.00%
+#&gt; 38  1868      43722  60.88%      28096  39.12%           0   0.00%
+#&gt; 39  1864      25055  59.06%      17367  40.94%           0   0.00%
+#&gt; 40  1860      22069  63.53%      11920  34.31%         748   2.15%</code></pre>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "복사완료!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "복사완료!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><a href="https://quarto.org/">Quarto</a> 로 제작</div>   
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":true});</script>
+
+
+
+</body></html>
