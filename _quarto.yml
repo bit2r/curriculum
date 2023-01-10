@@ -66,8 +66,10 @@ website:
             text: "데이터 전처리"
           - href: 99_data_wrangling_py.qmd
             text: "데이터 전처리: 파이썬"
+          - href: 99_datatype.qmd
+            text: "자료형과 자료구조"
           - href: 99_dataframe.qmd
-            text: "데이터프레임"
+            text: "데이터프레임"            
           - text: "-----"
           - href: 10_cmdline.qmd
             text: "명령라인 데이터 분석"

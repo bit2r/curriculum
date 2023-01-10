@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="kr" xml:lang="kr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="이광춘">
+<meta name="description" content="데이터과학 자료형과 자료구조를 학습합니다.">
+
+<title>데이터 과학 - 자료형과 자료구조</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "일치 없음",
+    "search-matching-documents-text": "일치된 문서",
+    "search-copy-link-title": "검색 링크 복사",
+    "search-hide-matches-text": "추가 검색 결과 숨기기",
+    "search-more-match-text": "추가 검색결과",
+    "search-more-matches-text": "추가 검색결과",
+    "search-clear-button-title": "제거",
+    "search-detached-cancel-button-title": "취소",
+    "search-submit-button-title": "검색"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">데이터 과학</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">들어가며</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">커리큐럼</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="./curriculum_2023.html">
+ <span class="dropdown-text">2023년</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./curriculum_2022.html">
+ <span class="dropdown-text">2022년</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">모래시계</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--1">    
+        <li>
+    <a class="dropdown-item" href="./timer_five.html">
+ <span class="dropdown-text">5 분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_ten.html">
+ <span class="dropdown-text">10분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_twenty.html">
+ <span class="dropdown-text">20분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_thirty.html">
+ <span class="dropdown-text">30분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_hour.html">
+ <span class="dropdown-text">1시간</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">개발환경</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--2">    
+        <li>
+    <a class="dropdown-item" href="./00_setup.html">
+ <span class="dropdown-text">실습환경</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./01_setup_bash.html">
+ <span class="dropdown-text">CLI 개발환경</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./02_setup_sql.html">
+ <span class="dropdown-text">Sqlite 데이터베이스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./03_setup_python.html">
+ <span class="dropdown-text">파이썬</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./hello_world_jupyter.html">
+ <span class="dropdown-text">쥬피터 노트북</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./04_setup_r.html">
+ <span class="dropdown-text">고급 데이터과학: R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">교재</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--3">    
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./99_statistics.html">
+ <span class="dropdown-text">통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_dplyr_pandas.html">
+ <span class="dropdown-text">데이터 다루기 (Pandas)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_data_wrangling.html">
+ <span class="dropdown-text">데이터 전처리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_data_wrangling_py.html">
+ <span class="dropdown-text">데이터 전처리: 파이썬</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_datatype.html">
+ <span class="dropdown-text">자료형과 자료구조</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_dataframe.html">
+ <span class="dropdown-text">데이터프레임</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./10_cmdline.html">
+ <span class="dropdown-text">명령라인 데이터 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./11_shell.html">
+ <span class="dropdown-text">쉘(Shell)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./12_writing.html">
+ <span class="dropdown-text">디지털 글쓰기(보고서)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./13_git.html">
+ <span class="dropdown-text">Git/GitHub</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./20_sql.html">
+ <span class="dropdown-text">프로그래밍: SQL</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./21_r.html">
+ <span class="dropdown-text">프로그래밍: R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./22_python.html">
+ <span class="dropdown-text">프로그래밍: 파이썬</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./30_dashboard.html">
+ <span class="dropdown-text">대쉬보드</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./31_models.html">
+ <span class="dropdown-text">기계학습</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./32_product.html">
+ <span class="dropdown-text">데이터과학 제품과 서비스</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./41_time_series.html">
+ <span class="dropdown-text">시계열 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./42_network.html">
+ <span class="dropdown-text">네트워크 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./43_geospatial.html">
+ <span class="dropdown-text">공간정보 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./44_text_mining.html">
+ <span class="dropdown-text">텍스트 데이터</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./51_nlp.html">
+ <span class="dropdown-text">딥러닝 - NLP</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./52_vision.html">
+ <span class="dropdown-text">딥러닝 - 비젼</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">프로젝트</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./project.html">
+ <span class="dropdown-text">프로젝트</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./py_tree.html">
+ <span class="dropdown-text">나무모형</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">데이터셋</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--5">    
+        <li>
+    <a class="dropdown-item" href="./data.html">
+ <span class="dropdown-text">데이터셋</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./data_chatGPT.html">
+ <span class="dropdown-text">chatGPT 데이터셋</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--6" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">운동장</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--6">    
+        <li>
+    <a class="dropdown-item" href="./dataxray.html">
+ <span class="dropdown-text">데이터 X-레이</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./flexdashboard/penguin_flexdashboard.html">
+ <span class="dropdown-text">대쉬보드: 파머펭귄</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--7" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">퀴즈</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--7">    
+        <li>
+    <a class="dropdown-item" href="./mcq_stat.html">
+ <span class="dropdown-text">확률과 통계</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./mcq_ds.html">
+ <span class="dropdown-text">데이터 과학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./mcq_ml.html">
+ <span class="dropdown-text">기계학습</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul>
+  <li><a href="#구분-방법" id="toc-구분-방법" class="nav-link active" data-scroll-target="#구분-방법"><span class="toc-section-number">1</span>  구분 방법</a>
+  <ul class="collapse">
+  <li><a href="#non-primitive" id="toc-non-primitive" class="nav-link" data-scroll-target="#non-primitive"><span class="toc-section-number">1.1</span>  (Non) Primitive</a></li>
+  <li><a href="#일반적인-구분" id="toc-일반적인-구분" class="nav-link" data-scroll-target="#일반적인-구분"><span class="toc-section-number">1.2</span>  일반적인 구분</a></li>
+  <li><a href="#데이터-저장-방식" id="toc-데이터-저장-방식" class="nav-link" data-scroll-target="#데이터-저장-방식"><span class="toc-section-number">1.3</span>  데이터 저장 방식</a></li>
+  <li><a href="#기타-구분-방식" id="toc-기타-구분-방식" class="nav-link" data-scroll-target="#기타-구분-방식"><span class="toc-section-number">1.4</span>  기타 구분 방식</a></li>
+  <li><a href="#위키백과-자료구조" id="toc-위키백과-자료구조" class="nav-link" data-scroll-target="#위키백과-자료구조"><span class="toc-section-number">1.5</span>  위키백과 자료구조</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">자료형과 자료구조</h1>
+</div>
+
+<div>
+  <div class="description">
+    데이터과학 자료형과 자료구조를 학습합니다.
+  </div>
+</div>
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">저자</div>
+  <div class="quarto-title-meta-heading">소속</div>
+  
+    <div class="quarto-title-meta-contents">
+    이광춘 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            TCS
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">공개</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2023년 01월 10일</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="구분-방법" class="level1 page-columns page-full" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 구분 방법</h1>
+<section id="non-primitive" class="level2 page-columns page-full" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="non-primitive"><span class="header-section-number">1.1</span> (Non) Primitive</h2>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class=""><a href="fig/data_structure_blog.png" class="lightbox" title="파이썬 자료구조" data-gallery="quarto-lightbox-gallery-1"><img src="fig/data_structure_blog.png" class="img-fluid" alt="파이썬 자료구조"></a> 자료출처: <a href="https://towardsdatascience.com/data-structures-in-python-a-brief-introduction-b4135d7a9b7d"><strong>Data Structures in Python— A Brief Introduction</strong> - There is no one-size-fits-all kind of model when it comes to data structures.</a></span></div></div>
+<p>자료형과 자료구조를 Primitive 를 기준으로 나눌 수도 있다.</p>
+<ul>
+<li>Primitive
+<ul>
+<li>정수형(Integer)</li>
+<li>부동소수형(Float)</li>
+<li>문자형(String)</li>
+<li>부울형(Bloolean)</li>
+</ul></li>
+<li>Non-Primitive
+<ul>
+<li>내장 자료구조(Built-in)
+<ul>
+<li>리스트(List)</li>
+<li>튜플(Tuple)</li>
+<li>집합(Set)</li>
+<li>사전(Dictionary)</li>
+</ul></li>
+<li>사용자 정의(User-defined)
+<ul>
+<li>스택(Stack)</li>
+<li>큐(Queue)</li>
+<li>나무(Tree)</li>
+<li>그래프(Graph)</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="일반적인-구분" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="일반적인-구분"><span class="header-section-number">1.2</span> 일반적인 구분</h2>
+<ul>
+<li>변경가능 자료구조(Mutable data structures): 변경이 가능한 자료구조로 리스트(List), 사전(Dictionary), 집합(Sets)를 들 수 있다.</li>
+<li>변경불가능 자료구조(Immutable data structures): 한번 생성되면 변경이 불가능한 자료구조로 튜플(Tuples), 문자열(Strings)을 들 수 있다.</li>
+<li>순열 자료구조(Sequence data structures): 순열을 저정하는 자료구조로 리스트(list), 튜플(tuple), 문자열(string)을 들 수 있다.</li>
+</ul>
+</section>
+<section id="데이터-저장-방식" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="데이터-저장-방식"><span class="header-section-number">1.3</span> 데이터 저장 방식</h2>
+<ul>
+<li>선형 자료구조(Linear data structures): 데이터를 순차적으로 저장하는 자료구조로 배열(array), 연결 리스트(linked list), 큐(queue)를 들 수 있다.</li>
+<li>비선형 자료구조(Non-linear data structures): 데이터가 순차적으로 저장되지 않는 자료구조로 나무(tree), 그래프(graph), 해쉬테이블(hash table)을 들 수 있다.</li>
+<li>정적 자료구조(Static data structures): 정적 크기를 갖는 자료구조로 한번 생성되면 크기를 다시 재조정할 수 없는 자료구조로 배열(array)과 문자열(string)을 들 수 있다.</li>
+<li>동적 자료구조(Dynamic data structures): 필요한 경우 크기를 자유자재로 조정할 수 있는 자료구조로 리스트(list), 사전(dictionary), 해쉬테이블(hash table)을 들 수 있다.</li>
+</ul>
+</section>
+<section id="기타-구분-방식" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="기타-구분-방식"><span class="header-section-number">1.4</span> 기타 구분 방식</h2>
+<ul>
+<li>순서있는 자료구조(Ordered data structures): 자료가 저장된 순서정보를 담고 있는 자료구조로 리스트(list), 튜플(tuple), 문자열(string)을 들 수 있다.</li>
+<li>순서없는 자료구조(Unordered data structures): 자료가 저장된 순서정보를 담고 있지 않는 자료구조로 사전(dictionary)과 집합(set)을 들 수 있다.</li>
+<li>연관 자료구조(Associative data structures): 키-값(key-value) 쌍을 갖는 자료구조로 키값을 사용해서 값(value)에 접근할 수 있다. 대표적으로 사전(dictionary)과 해쉬 테이블(hash table)을 들 수 있다.</li>
+<li>스택 자료구조(Stack data structures): 스택을 구현한 자료구조</li>
+<li>큐 자료구조(Queue data structures): 큐를 구현한 자료구조</li>
+<li>나무 자료구조(Tree data structures): 나무모양을 갖는 자료구조</li>
+</ul>
+</section>
+<section id="위키백과-자료구조" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="위키백과-자료구조"><span class="header-section-number">1.5</span> 위키백과 자료구조</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="fig/python_datatype.png" class="lightbox" title="파이썬 자료형" data-gallery="quarto-lightbox-gallery-2"><img src="fig/python_datatype.png" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">파이썬 자료형</figcaption><p></p>
+</figure>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "복사완료!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "복사완료!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><a href="https://quarto.org/">Quarto</a> 로 제작</div>   
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":true,"closeEffect":"zoom"});</script>
+
+
+
+</body></html>
