@@ -87,13 +87,3 @@ lightbox: auto
 
 ![파이썬 자료형](fig/python_datatype.png)
 
-
-```{python}
-from lolviz import *
-data = ['hi','mom',{3,4},{"parrt":"user"}]
-g = listviz(data)
-g
-```
-
-
-

@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: docs
   preview:
-    port: 3333
+    port: 7771
     browser: true
   render:
     - "*.qmd"
