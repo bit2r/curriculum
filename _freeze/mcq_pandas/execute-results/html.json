@@ -1,0 +1,14 @@
+{
+  "hash": "32bd1154b0447447cdf622a53bae2b24",
+  "result": {
+    "markdown": "---\ntitle: \"데이터프레임과 시각화\"\ndescription: \"Pandas와 시각화 기본지식을 확인합니다.\"\ndate: today # 날짜 설정: now, last-modified\nauthor:\n  - name: 이광춘\n    affiliation: TCS\ntitle-block-banner: false\nformat:\n  html:\n    css: css/quarto-fonts.css\n    code-fold: false\n    toc: true\n    toc-depth: 2\n    number-sections: true\n    highlight-style: github    \n    self-contained: false\nbibliography: bibliography.bib\nlink-citations: yes\ncsl: apa-single-spaced.csl\nengine: knitr\neditor_options: \n  chunk_output_type: console\nfilters:\n  - lightbox\nlightbox: auto  \neditor: \n  markdown: \n    wrap: 72\n---\n\n\n\n## MCQ 01번 \n\n다음 함수 중 데이터프레임 마지막 항목을 불러오는데 사용되는 명령어는 무엇인가?\n\n1. df.tail()\n1. df.head()\n1. df.close()\n1. df.last()\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 1\n- **난이도: 쉬움**\n:::\n\n## MCQ 02번 \n\n다음 중 시각화 라이브러리가 아닌 것은?\n\n1. Matplotlib\n1. Altair\n1. Seaborn\n1. Numpy\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 4\n- **난이도: 쉬움**\n:::\n\n\n## ~~MCQ 03번~~ \n\n현재 날짜와 시간을 불러오는 함수는?\n\n1. SYSDATE\n1. DATE\n1. GETDATE\n1. SYSDATETIME\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 3\n- **난이도: 쉬움**\n:::\n\n\n## MCQ 04번 \n\n파이썬 코드에서 그래프/플롯을 보고자할 때 사용하는 함수느?\n\n1. show()\n1. plot()\n1. display()\n1. paint()\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 1\n- **난이도: 중간**\n:::\n\n## MCQ 05번 \n\n2D 그래픽 시각화를 위해 사용되는 것은 무엇인가?\n\n1. Matplotlib.numpy\n1. Matplotlib.pip\n1. Matplotlib.plt\n1. Matplotlib.pyplot\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 4\n- **난이도: 중간**\n:::\n\n## MCQ 06번 \n\n데이터프레임 차원정보를 얻는데 사용되는 함수는?\n\n1. df.dimension()\n1. df.shape()\n1. df.show()\n1. df.detail()\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 2\n- **난이도: 중간**\n:::\n\n## MCQ 07번 \n\n데이터프레임에서 칼럼별 결측값을 구하는 방법은?\n\n1. df.isNull()\n1. df.isNaN()\n1. df.isnull().sum()\n1. df.isnull()\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 3\n- **난이도: 중간**\n:::\n\n## MCQ 08번 \n\n데이터의 계층적구조를 표현하는 그래프로 적절한 것은?\n\n1. 산점도(Scatter Plot)\n1. 영역 그래프(Area Graph)\n1. 덴드로그램(Dendrogram)\n1. 피라미드 (Pyramid)\n\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 3\n- **난이도: 중간**\n:::\n\n## MCQ 09번 \n\n그래프 환경설정 상황을 확인하고 환경을 편집하는데 사용되는 명령어는 무엇인가?\n\n1. anova()\n1. rcParams\n1. cum()\n1. plot()\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 2\n- **난이도: 어려움**\n:::\n\n## MCQ 10번 \n\n선으로 변수간 관계를 표현하는 그래프를 일컷는 적절한 용어는?\n\n1. Trendline\n1. Plotline\n1. Gridline\n1. Sparkline\n\n::: {.callout-caution collapse=\"true\"}\n## 정답\n- 정답: 1\n- **난이도: 어려움**\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

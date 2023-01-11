@@ -1132,5 +1132,75 @@
     "title": "자료형과 자료구조",
     "section": "",
     "text": "자료출처: Data Structures in Python— A Brief Introduction - There is no one-size-fits-all kind of model when it comes to data structures.\n자료형과 자료구조를 Primitive 를 기준으로 나눌 수도 있다.\n\nPrimitive\n\n정수형(Integer)\n부동소수형(Float)\n문자형(String)\n부울형(Bloolean)\n\nNon-Primitive\n\n내장 자료구조(Built-in)\n\n리스트(List)\n튜플(Tuple)\n집합(Set)\n사전(Dictionary)\n\n사용자 정의(User-defined)\n\n스택(Stack)\n큐(Queue)\n나무(Tree)\n그래프(Graph)\n\n\n\n\n\n\n\n변경가능 자료구조(Mutable data structures): 변경이 가능한 자료구조로 리스트(List), 사전(Dictionary), 집합(Sets)를 들 수 있다.\n변경불가능 자료구조(Immutable data structures): 한번 생성되면 변경이 불가능한 자료구조로 튜플(Tuples), 문자열(Strings)을 들 수 있다.\n순열 자료구조(Sequence data structures): 순열을 저정하는 자료구조로 리스트(list), 튜플(tuple), 문자열(string)을 들 수 있다.\n\n\n\n\n\n선형 자료구조(Linear data structures): 데이터를 순차적으로 저장하는 자료구조로 배열(array), 연결 리스트(linked list), 큐(queue)를 들 수 있다.\n비선형 자료구조(Non-linear data structures): 데이터가 순차적으로 저장되지 않는 자료구조로 나무(tree), 그래프(graph), 해쉬테이블(hash table)을 들 수 있다.\n정적 자료구조(Static data structures): 정적 크기를 갖는 자료구조로 한번 생성되면 크기를 다시 재조정할 수 없는 자료구조로 배열(array)과 문자열(string)을 들 수 있다.\n동적 자료구조(Dynamic data structures): 필요한 경우 크기를 자유자재로 조정할 수 있는 자료구조로 리스트(list), 사전(dictionary), 해쉬테이블(hash table)을 들 수 있다.\n\n\n\n\n\n순서있는 자료구조(Ordered data structures): 자료가 저장된 순서정보를 담고 있는 자료구조로 리스트(list), 튜플(tuple), 문자열(string)을 들 수 있다.\n순서없는 자료구조(Unordered data structures): 자료가 저장된 순서정보를 담고 있지 않는 자료구조로 사전(dictionary)과 집합(set)을 들 수 있다.\n연관 자료구조(Associative data structures): 키-값(key-value) 쌍을 갖는 자료구조로 키값을 사용해서 값(value)에 접근할 수 있다. 대표적으로 사전(dictionary)과 해쉬 테이블(hash table)을 들 수 있다.\n스택 자료구조(Stack data structures): 스택을 구현한 자료구조\n큐 자료구조(Queue data structures): 큐를 구현한 자료구조\n나무 자료구조(Tree data structures): 나무모양을 갖는 자료구조\n\n\n\n\n\n\n\n파이썬 자료형"
+  },
+  {
+    "objectID": "mcq_pandas.html",
+    "href": "mcq_pandas.html",
+    "title": "데이터프레임과 시각화",
+    "section": "",
+    "text": "다음 함수 중 데이터프레임 마지막 항목을 불러오는데 사용되는 명령어는 무엇인가?\n\ndf.tail()\ndf.head()\ndf.close()\ndf.last()\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 쉬움"
+  },
+  {
+    "objectID": "mcq_pandas.html#mcq-02번",
+    "href": "mcq_pandas.html#mcq-02번",
+    "title": "데이터프레임과 시각화",
+    "section": "2 MCQ 02번",
+    "text": "2 MCQ 02번\n다음 중 시각화 라이브러리가 아닌 것은?\n\nMatplotlib\nAltair\nSeaborn\nNumpy\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 4\n난이도: 쉬움"
+  },
+  {
+    "objectID": "mcq_pandas.html#mcq-03번",
+    "href": "mcq_pandas.html#mcq-03번",
+    "title": "데이터프레임과 시각화",
+    "section": "3 MCQ 03번",
+    "text": "3 MCQ 03번\n현재 날짜와 시간을 불러오는 함수는?\n\nSYSDATE\nDATE\nGETDATE\nSYSDATETIME\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 3\n난이도: 쉬움"
+  },
+  {
+    "objectID": "mcq_pandas.html#mcq-04번",
+    "href": "mcq_pandas.html#mcq-04번",
+    "title": "데이터프레임과 시각화",
+    "section": "4 MCQ 04번",
+    "text": "4 MCQ 04번\n파이썬 코드에서 그래프/플롯을 보고자할 때 사용하는 함수느?\n\nshow()\nplot()\ndisplay()\npaint()\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_pandas.html#mcq-05번",
+    "href": "mcq_pandas.html#mcq-05번",
+    "title": "데이터프레임과 시각화",
+    "section": "5 MCQ 05번",
+    "text": "5 MCQ 05번\n2D 그래픽 시각화를 위해 사용되는 것은 무엇인가?\n\nMatplotlib.numpy\nMatplotlib.pip\nMatplotlib.plt\nMatplotlib.pyplot\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 4\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_pandas.html#mcq-06번",
+    "href": "mcq_pandas.html#mcq-06번",
+    "title": "데이터프레임과 시각화",
+    "section": "6 MCQ 06번",
+    "text": "6 MCQ 06번\n데이터프레임 차원정보를 얻는데 사용되는 함수는?\n\ndf.dimension()\ndf.shape()\ndf.show()\ndf.detail()\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 2\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_pandas.html#mcq-07번",
+    "href": "mcq_pandas.html#mcq-07번",
+    "title": "데이터프레임과 시각화",
+    "section": "7 MCQ 07번",
+    "text": "7 MCQ 07번\n데이터프레임에서 칼럼별 결측값을 구하는 방법은?\n\ndf.isNull()\ndf.isNaN()\ndf.isnull().sum()\ndf.isnull()\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 3\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_pandas.html#mcq-08번",
+    "href": "mcq_pandas.html#mcq-08번",
+    "title": "데이터프레임과 시각화",
+    "section": "8 MCQ 08번",
+    "text": "8 MCQ 08번\n데이터의 계층적구조를 표현하는 그래프로 적절한 것은?\n\n산점도(Scatter Plot)\n영역 그래프(Area Graph)\n덴드로그램(Dendrogram)\n피라미드 (Pyramid)\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 3\n난이도: 중간"
+  },
+  {
+    "objectID": "mcq_pandas.html#mcq-09번",
+    "href": "mcq_pandas.html#mcq-09번",
+    "title": "데이터프레임과 시각화",
+    "section": "9 MCQ 09번",
+    "text": "9 MCQ 09번\n그래프 환경설정 상황을 확인하고 환경을 편집하는데 사용되는 명령어는 무엇인가?\n\nanova()\nrcParams\ncum()\nplot()\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 2\n난이도: 어려움"
+  },
+  {
+    "objectID": "mcq_pandas.html#mcq-10번",
+    "href": "mcq_pandas.html#mcq-10번",
+    "title": "데이터프레임과 시각화",
+    "section": "10 MCQ 10번",
+    "text": "10 MCQ 10번\n선으로 변수간 관계를 표현하는 그래프를 일컷는 적절한 용어는?\n\nTrendline\nPlotline\nGridline\nSparkline\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 어려움"
   }
 ]

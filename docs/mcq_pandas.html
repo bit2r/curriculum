@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="이광춘">
-<meta name="description" content="통계학의 기본기를 다양한 사례를 통해 다져봅니다.">
+<meta name="description" content="Pandas와 시각화 기본지식을 확인합니다.">
 
-<title>데이터 과학 - 통계학</title>
+<title>데이터 과학 - 데이터프레임과 시각화</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -62,6 +62,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="css/quarto-fonts.css">
 </head>
 
 <body class="nav-fixed">
@@ -319,8 +320,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">데이터 과학</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./mcq_ml.html">
- <span class="dropdown-text">기계학습</span></a>
+    <a class="dropdown-item" href="./mcq_pandas.html">
+ <span class="dropdown-text">통계분석: Pandas와 시각화</span></a>
   </li>  
     </ul>
   </li>
@@ -339,7 +340,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">목차</h2>
    
   <ul class="collapse">
-  <li><a href="#확률과-통계" id="toc-확률과-통계" class="nav-link active" data-scroll-target="#확률과-통계"><span class="toc-section-number">1</span>  확률과 통계</a></li>
+  <li><a href="#mcq-01번" id="toc-mcq-01번" class="nav-link active" data-scroll-target="#mcq-01번"><span class="toc-section-number">1</span>  MCQ 01번</a></li>
+  <li><a href="#mcq-02번" id="toc-mcq-02번" class="nav-link" data-scroll-target="#mcq-02번"><span class="toc-section-number">2</span>  MCQ 02번</a></li>
+  <li><a href="#mcq-03번" id="toc-mcq-03번" class="nav-link" data-scroll-target="#mcq-03번"><span class="toc-section-number">3</span>  <del>MCQ 03번</del></a></li>
+  <li><a href="#mcq-04번" id="toc-mcq-04번" class="nav-link" data-scroll-target="#mcq-04번"><span class="toc-section-number">4</span>  MCQ 04번</a></li>
+  <li><a href="#mcq-05번" id="toc-mcq-05번" class="nav-link" data-scroll-target="#mcq-05번"><span class="toc-section-number">5</span>  MCQ 05번</a></li>
+  <li><a href="#mcq-06번" id="toc-mcq-06번" class="nav-link" data-scroll-target="#mcq-06번"><span class="toc-section-number">6</span>  MCQ 06번</a></li>
+  <li><a href="#mcq-07번" id="toc-mcq-07번" class="nav-link" data-scroll-target="#mcq-07번"><span class="toc-section-number">7</span>  MCQ 07번</a></li>
+  <li><a href="#mcq-08번" id="toc-mcq-08번" class="nav-link" data-scroll-target="#mcq-08번"><span class="toc-section-number">8</span>  MCQ 08번</a></li>
+  <li><a href="#mcq-09번" id="toc-mcq-09번" class="nav-link" data-scroll-target="#mcq-09번"><span class="toc-section-number">9</span>  MCQ 09번</a></li>
+  <li><a href="#mcq-10번" id="toc-mcq-10번" class="nav-link" data-scroll-target="#mcq-10번"><span class="toc-section-number">10</span>  MCQ 10번</a></li>
   </ul>
 </nav>
     </div>
@@ -348,12 +358,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">통계학</h1>
+<h1 class="title">데이터프레임과 시각화</h1>
 </div>
 
 <div>
   <div class="description">
-    통계학의 기본기를 다양한 사례를 통해 다져봅니다.
+    Pandas와 시각화 기본지식을 확인합니다.
   </div>
 </div>
 
@@ -387,16 +397,295 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="확률과-통계" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> 확률과 통계</h1>
+<section id="mcq-01번" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="mcq-01번"><span class="header-section-number">1</span> MCQ 01번</h2>
+<p>다음 함수 중 데이터프레임 마지막 항목을 불러오는데 사용되는 명령어는 무엇인가?</p>
+<ol type="1">
+<li>df.tail()</li>
+<li>df.head()</li>
+<li>df.close()</li>
+<li>df.last()</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
-<li><a href="https://r2bit.com/practice/slideshows/statistics/toc_stat.html">통계 개념 슬라이드</a></li>
-<li><a href="https://r2bit.com/practice/slideshows/statistics/toc_stat.html#4_%EB%8B%A8%EC%88%9C_%EC%84%A0%ED%98%95%ED%9A%8C%EA%B7%80">OLS 개념과 이론</a>
-<ul>
-<li><a href="code/ols.ipynb">단순회귀모형(OLS) - ols.ipynb</a></li>
-</ul></li>
-<li><a href="https://r2bit.com/practice/decision_tree.html">의사결정 나무모형</a></li>
+<li>정답: 1</li>
+<li><strong>난이도: 쉬움</strong></li>
 </ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-02번" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="mcq-02번"><span class="header-section-number">2</span> MCQ 02번</h2>
+<p>다음 중 시각화 라이브러리가 아닌 것은?</p>
+<ol type="1">
+<li>Matplotlib</li>
+<li>Altair</li>
+<li>Seaborn</li>
+<li>Numpy</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 4</li>
+<li><strong>난이도: 쉬움</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-03번" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="mcq-03번"><span class="header-section-number">3</span> <del>MCQ 03번</del></h2>
+<p>현재 날짜와 시간을 불러오는 함수는?</p>
+<ol type="1">
+<li>SYSDATE</li>
+<li>DATE</li>
+<li>GETDATE</li>
+<li>SYSDATETIME</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 3</li>
+<li><strong>난이도: 쉬움</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-04번" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="mcq-04번"><span class="header-section-number">4</span> MCQ 04번</h2>
+<p>파이썬 코드에서 그래프/플롯을 보고자할 때 사용하는 함수느?</p>
+<ol type="1">
+<li>show()</li>
+<li>plot()</li>
+<li>display()</li>
+<li>paint()</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 1</li>
+<li><strong>난이도: 중간</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-05번" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="mcq-05번"><span class="header-section-number">5</span> MCQ 05번</h2>
+<p>2D 그래픽 시각화를 위해 사용되는 것은 무엇인가?</p>
+<ol type="1">
+<li>Matplotlib.numpy</li>
+<li>Matplotlib.pip</li>
+<li>Matplotlib.plt</li>
+<li>Matplotlib.pyplot</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 4</li>
+<li><strong>난이도: 중간</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-06번" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="mcq-06번"><span class="header-section-number">6</span> MCQ 06번</h2>
+<p>데이터프레임 차원정보를 얻는데 사용되는 함수는?</p>
+<ol type="1">
+<li>df.dimension()</li>
+<li>df.shape()</li>
+<li>df.show()</li>
+<li>df.detail()</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 2</li>
+<li><strong>난이도: 중간</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-07번" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="mcq-07번"><span class="header-section-number">7</span> MCQ 07번</h2>
+<p>데이터프레임에서 칼럼별 결측값을 구하는 방법은?</p>
+<ol type="1">
+<li>df.isNull()</li>
+<li>df.isNaN()</li>
+<li>df.isnull().sum()</li>
+<li>df.isnull()</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 3</li>
+<li><strong>난이도: 중간</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-08번" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="mcq-08번"><span class="header-section-number">8</span> MCQ 08번</h2>
+<p>데이터의 계층적구조를 표현하는 그래프로 적절한 것은?</p>
+<ol type="1">
+<li>산점도(Scatter Plot)</li>
+<li>영역 그래프(Area Graph)</li>
+<li>덴드로그램(Dendrogram)</li>
+<li>피라미드 (Pyramid)</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 3</li>
+<li><strong>난이도: 중간</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-09번" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="mcq-09번"><span class="header-section-number">9</span> MCQ 09번</h2>
+<p>그래프 환경설정 상황을 확인하고 환경을 편집하는데 사용되는 명령어는 무엇인가?</p>
+<ol type="1">
+<li>anova()</li>
+<li>rcParams</li>
+<li>cum()</li>
+<li>plot()</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 2</li>
+<li><strong>난이도: 어려움</strong></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="mcq-10번" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="mcq-10번"><span class="header-section-number">10</span> MCQ 10번</h2>
+<p>선으로 변수간 관계를 표현하는 그래프를 일컷는 적절한 용어는?</p>
+<ol type="1">
+<li>Trendline</li>
+<li>Plotline</li>
+<li>Gridline</li>
+<li>Sparkline</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+정답
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>정답: 1</li>
+<li><strong>난이도: 어려움</strong></li>
+</ul>
+</div>
+</div>
+</div>
 
 
 </section>

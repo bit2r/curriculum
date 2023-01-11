@@ -1,0 +1,184 @@
+---
+title: "데이터프레임과 시각화"
+description: "Pandas와 시각화 기본지식을 확인합니다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    css: css/quarto-fonts.css
+    code-fold: false
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+bibliography: bibliography.bib
+link-citations: yes
+csl: apa-single-spaced.csl
+engine: knitr
+editor_options: 
+  chunk_output_type: console
+filters:
+  - lightbox
+lightbox: auto  
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+
+## MCQ 01번 
+
+다음 함수 중 데이터프레임 마지막 항목을 불러오는데 사용되는 명령어는 무엇인가?
+
+1. df.tail()
+1. df.head()
+1. df.close()
+1. df.last()
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 1
+- **난이도: 쉬움**
+:::
+
+## MCQ 02번 
+
+다음 중 시각화 라이브러리가 아닌 것은?
+
+1. Matplotlib
+1. Altair
+1. Seaborn
+1. Numpy
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 4
+- **난이도: 쉬움**
+:::
+
+
+## ~~MCQ 03번~~ 
+
+현재 날짜와 시간을 불러오는 함수는?
+
+1. SYSDATE
+1. DATE
+1. GETDATE
+1. SYSDATETIME
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 3
+- **난이도: 쉬움**
+:::
+
+
+## MCQ 04번 
+
+파이썬 코드에서 그래프/플롯을 보고자할 때 사용하는 함수느?
+
+1. show()
+1. plot()
+1. display()
+1. paint()
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 1
+- **난이도: 중간**
+:::
+
+## MCQ 05번 
+
+2D 그래픽 시각화를 위해 사용되는 것은 무엇인가?
+
+1. Matplotlib.numpy
+1. Matplotlib.pip
+1. Matplotlib.plt
+1. Matplotlib.pyplot
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 4
+- **난이도: 중간**
+:::
+
+## MCQ 06번 
+
+데이터프레임 차원정보를 얻는데 사용되는 함수는?
+
+1. df.dimension()
+1. df.shape()
+1. df.show()
+1. df.detail()
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 2
+- **난이도: 중간**
+:::
+
+## MCQ 07번 
+
+데이터프레임에서 칼럼별 결측값을 구하는 방법은?
+
+1. df.isNull()
+1. df.isNaN()
+1. df.isnull().sum()
+1. df.isnull()
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 3
+- **난이도: 중간**
+:::
+
+## MCQ 08번 
+
+데이터의 계층적구조를 표현하는 그래프로 적절한 것은?
+
+1. 산점도(Scatter Plot)
+1. 영역 그래프(Area Graph)
+1. 덴드로그램(Dendrogram)
+1. 피라미드 (Pyramid)
+
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 3
+- **난이도: 중간**
+:::
+
+## MCQ 09번 
+
+그래프 환경설정 상황을 확인하고 환경을 편집하는데 사용되는 명령어는 무엇인가?
+
+1. anova()
+1. rcParams
+1. cum()
+1. plot()
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 2
+- **난이도: 어려움**
+:::
+
+## MCQ 10번 
+
+선으로 변수간 관계를 표현하는 그래프를 일컷는 적절한 용어는?
+
+1. Trendline
+1. Plotline
+1. Gridline
+1. Sparkline
+
+::: {.callout-caution collapse="true"}
+## 정답
+- 정답: 1
+- **난이도: 어려움**
+:::
