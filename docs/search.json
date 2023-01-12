@@ -1061,7 +1061,7 @@
     "href": "99_dataframe.html#numpy-structured-array",
     "title": "데이터프레임",
     "section": "2.6 NumPy structured array",
-    "text": "2.6 NumPy structured array\n\n\n\n# Numpy Arrary 생성\ndata = np.array([[1, 2], [3, 4]])\n\ndf = pd.DataFrame(data, columns=['a', 'b'])\n\nprint(df)\n\n\n#>    ID   Name  Age\n#> 0   1  Alice   22\n#> 1   2    Bob   35"
+    "text": "2.6 NumPy structured array\n\n\n\n# NumPy structured array 생성\ndata = np.array([(1, 'Alice', 22), (2, 'Bob', 35)], dtype=[('ID', 'i4'), ('Name', 'U10'), ('Age', 'i4')])\n\ndf = pd.DataFrame(data)\n\nprint(df)\n\n\n#>    ID   Name  Age\n#> 0   1  Alice   22\n#> 1   2    Bob   35"
   },
   {
     "objectID": "99_dataframe.html#pandas-series",

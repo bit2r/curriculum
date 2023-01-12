@@ -218,10 +218,10 @@ print(df)
 ```{python}
 #| eval: false
 
-# Numpy Arrary 생성
-data = np.array([[1, 2], [3, 4]])
+# NumPy structured array 생성
+data = np.array([(1, 'Alice', 22), (2, 'Bob', 35)], dtype=[('ID', 'i4'), ('Name', 'U10'), ('Age', 'i4')])
 
-df = pd.DataFrame(data, columns=['a', 'b'])
+df = pd.DataFrame(data)
 
 print(df)
 ```
