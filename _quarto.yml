@@ -68,6 +68,8 @@ website:
             text: "데이터 전처리: 파이썬"
           - href: 99_datatype.qmd
             text: "자료형과 자료구조"
+          - href: python_data_structure.qmd
+            text: "[시각화] 자료형과 자료구조"
           - href: 99_dataframe.qmd
             text: "데이터프레임"            
           - text: "-----"

@@ -1202,5 +1202,110 @@
     "title": "데이터프레임과 시각화",
     "section": "10 MCQ 10번",
     "text": "10 MCQ 10번\n선으로 변수간 관계를 표현하는 그래프를 일컷는 적절한 용어는?\n\nTrendline\nPlotline\nGridline\nSparkline\n\n\n\n\n\n\n\n정답\n\n\n\n\n\n\n정답: 1\n난이도: 어려움"
+  },
+  {
+    "objectID": "python_data_structure.html",
+    "href": "python_data_structure.html",
+    "title": "데이터 과학",
+    "section": "",
+    "text": "파이썬 자료구조 시각화를 위해 lolviz 패키지를 설치한다.\n\n# !pip3 install lolviz\n\n\n\n\nlolviz 패키지 README.md 파일에 기술된 코드를 넣어 제대로 헬로월드를 찍어보자\n\nfrom lolviz import *\ndata = ['hi','mom',{3,4},{\"parrt\":\"user\"}]\ng = listviz(data)\ng"
+  },
+  {
+    "objectID": "python_data_structure.html#list-of-lists",
+    "href": "python_data_structure.html#list-of-lists",
+    "title": "데이터 과학",
+    "section": "list of lists",
+    "text": "list of lists\n\nimport pandas as pd\nimport numpy as np\n\n# list of lists 생성\nlist_of_lists = [['Alex', 10], ['Bob', 12], ['Clarke', 13]]\n\nlistviz(list_of_lists)\n\n\n\n\n\nlolviz(list_of_lists)"
+  },
+  {
+    "objectID": "python_data_structure.html#list-of-dictionaries",
+    "href": "python_data_structure.html#list-of-dictionaries",
+    "title": "데이터 과학",
+    "section": "list of dictionaries",
+    "text": "list of dictionaries\n\nlist_of_dict = [{'a': 1, 'b': 2}, {'a': 5, 'b': 10, 'c': 20}]\nlistviz(list_of_dict)\n\n\n\n\n\nobjviz(list_of_dict)"
+  },
+  {
+    "objectID": "python_data_structure.html#list-of-dictionaries-with-data-types",
+    "href": "python_data_structure.html#list-of-dictionaries-with-data-types",
+    "title": "데이터 과학",
+    "section": "list of dictionaries with data types",
+    "text": "list of dictionaries with data types\n\n# list of dictionary 생성\nbook = [{'id':1,'name':'python','price':56,'no_of_pages':34},\n        {'id':2,'name':'Node-js','price':45,'no_of_pages':54},\n        {'id':3,'name':'R','price':100,'no_of_pages':80},\n        {'id':4,'name':'Html','price':16,'no_of_pages':20}]\n\n# 컬럼에 대한 자료형 지정\ndtypes = {'id': int, 'name': str, 'price': float, 'no_of_pages': int}\n\n# df = pd.DataFrame(book, dtype = {'id': int, 'name': str, 'price': float, 'no_of_pages': int})\n# df = pd.DataFrame(book, dtype = [('id', int), ('name', str), ('price', float), ('no_of_pages', int)])\ndf = pd.DataFrame.from_dict(book, orient='columns').astype(dtypes)\n\nlistviz(book)\n\n\n\n\n\nobjviz(book)"
+  },
+  {
+    "objectID": "python_data_structure.html#numpy-array",
+    "href": "python_data_structure.html#numpy-array",
+    "title": "데이터 과학",
+    "section": "NumPy array",
+    "text": "NumPy array\n\nnumpy_arr = np.array([[1, 2], [3, 4]])\nlistviz(numpy_arr)\n\n\n\n\n\nobjviz(numpy_arr)"
+  },
+  {
+    "objectID": "python_data_structure.html#numpy-structured-array",
+    "href": "python_data_structure.html#numpy-structured-array",
+    "title": "데이터 과학",
+    "section": "NumPy structured array",
+    "text": "NumPy structured array\n\n# NumPy structured array 생성\nnp_struct_arr = np.array([(1, 'Alice', 22), (2, 'Bob', 35)], dtype=[('ID', 'i4'), ('Name', 'U10'), ('Age', 'i4')])\n\nlistviz(np_struct_arr)\n\n\n\n\n\nobjviz(np_struct_arr)"
+  },
+  {
+    "objectID": "python_data_structure.html#pandas-series",
+    "href": "python_data_structure.html#pandas-series",
+    "title": "데이터 과학",
+    "section": "Pandas Series",
+    "text": "Pandas Series\n\nps = pd.Series([1, 3, 5, np.nan, 6, 8])\n\nlistviz(ps)\n\n\n\n\n\nobjviz(ps)"
+  },
+  {
+    "objectID": "python_data_structure.html#dictionary-of-series",
+    "href": "python_data_structure.html#dictionary-of-series",
+    "title": "데이터 과학",
+    "section": "dictionary of Series",
+    "text": "dictionary of Series\n\n# Pandas Series 생성\ns1 = pd.Series([1, 3, 5, np.nan, 6, 8])\ns2 = pd.Series([4, 7, 5, 2, 3, 6])\n\n# dictionary of Series 생성\ndict_series = {'First': s1, 'Second': s2}\nlistviz(dict_series)\n\n\n\n\n\nobjviz(dict_series)"
+  },
+  {
+    "objectID": "python_data_structure.html#list-of-tuples",
+    "href": "python_data_structure.html#list-of-tuples",
+    "title": "데이터 과학",
+    "section": "list of tuples",
+    "text": "list of tuples\n\n# list of tuple 생성\nlist_of_tuples = [('Alex', 10), ('Bob', 12), ('Clarke', 13)]\n\nlistviz(list_of_tuples)\n\n\n\n\n\nobjviz(list_of_tuples)"
+  },
+  {
+    "objectID": "python_data_structure.html#array",
+    "href": "python_data_structure.html#array",
+    "title": "데이터 과학",
+    "section": "Array",
+    "text": "Array\n\nimport array\nprim_array = array.array(\"i\",[3,6,9]) # vs array.array(\"f\",[3,6,9])\nlistviz(prim_array)"
+  },
+  {
+    "objectID": "python_data_structure.html#list",
+    "href": "python_data_structure.html#list",
+    "title": "데이터 과학",
+    "section": "list",
+    "text": "list\n\nprim_list = [1,2,3]\nlistviz(prim_list)"
+  },
+  {
+    "objectID": "python_data_structure.html#tuples",
+    "href": "python_data_structure.html#tuples",
+    "title": "데이터 과학",
+    "section": "Tuples",
+    "text": "Tuples\n\nprim_tuple = ('a','b','c','d','e')\nlistviz(prim_tuple)"
+  },
+  {
+    "objectID": "python_data_structure.html#dictionary",
+    "href": "python_data_structure.html#dictionary",
+    "title": "데이터 과학",
+    "section": "Dictionary",
+    "text": "Dictionary\n\nprim_dict = {'하나':1, '둘':2, '셋':3, '넷':4, '다섯':5}\nlistviz(prim_dict)"
+  },
+  {
+    "objectID": "python_data_structure.html#sets",
+    "href": "python_data_structure.html#sets",
+    "title": "데이터 과학",
+    "section": "Sets",
+    "text": "Sets\n\nprim_set = set('abcABC')\nlistviz(prim_set)"
+  },
+  {
+    "objectID": "python_data_structure.html#문자열",
+    "href": "python_data_structure.html#문자열",
+    "title": "데이터 과학",
+    "section": "문자열",
+    "text": "문자열\n\nprim_str = '우리나라'\n\nstrviz(prim_str)"
   }
 ]

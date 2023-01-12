@@ -87,3 +87,6 @@ lightbox: auto
 
 ![파이썬 자료형](fig/python_datatype.png)
 
+# 시각화
+
+- [ipynb 다운로드](python_data_structure.ipynb)
