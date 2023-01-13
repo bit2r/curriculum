@@ -1,0 +1,163 @@
+---
+title: "시각화"
+description: "데이터프레임 시각화를 학습합니다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - flatly
+      - css/quarto-fonts.css
+    code-fold: false
+    code-overflow: scroll
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+editor_options: 
+  chunk_output_type: console
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true  
+filters:
+   - lightbox
+lightbox: auto      
+---
+
+
+# 시각화 패키지
+
+- 정적 그래프
+  - [`plotnine`](https://github.com/has2k1/plotnine)
+  - [`matplotlib`](https://github.com/matplotlib/matplotlib)
+    - NumPy 친화적 그래픽 패키지
+  - [`seaborn`](https://github.com/mwaskom/seaborn)
+    - `matplotlib` 을 기반으로 하고 `pandas` 자료구조 친화적 그래픽 패키지
+- 인터랙티브 그래프    
+  - [`plotly`](https://plotly.com/python/)
+  - [`bokeh`](https://bokeh.org/)
+
+
+# 헬로월드
+
+동일한 시각화 그래프를 다양한 패키지를 활용하여 시각화해보자.
+`seaborn`, `plotnine` 패키지를 사전에 설치한다.
+
+```bash
+$ pip3 install seaborn
+$ pip3 install plotnine
+```
+
+
+::: {.panel-tabset}
+
+### `ggplot`
+
+```{r}
+library(tidyverse)
+library(gapminder)
+
+ggplot(data = gapminder, aes(x = lifeExp, y = gdpPercap)) +
+  geom_point()
+```
+
+### `plotnine`
+
+```{python}
+from plotnine import *
+from gapminder import gapminder
+
+( ggplot(gapminder)
+   + geom_point(aes('lifeExp', 'gdpPercap'))
+)
+```
+
+### `matplotlib`
+
+```{python}
+import matplotlib.pyplot as plt
+from gapminder import gapminder
+
+# 산점도 정의
+plt.scatter(gapminder['lifeExp'], gapminder['gdpPercap'])
+
+# 축 라벨 추가
+plt.xlabel('Life Expectancy')
+plt.ylabel('GDP per Capita')
+
+# 그래프 보이기
+plt.show()
+```
+
+### `seaborn`
+
+```{python}
+import seaborn as sns
+from gapminder import gapminder
+
+# 산점도 정의
+sns.scatterplot(x='lifeExp', y='gdpPercap', data=gapminder)
+
+# 축 라벨 추가
+plt.xlabel('Life Expectancy')
+plt.ylabel('GDP per Capita')
+
+# 그래프 보이기
+plt.show()
+```
+
+:::
+
+
+# 그래프 문법
+
+- [그래프 문법 - `ggplot`](https://aispiration.com/viz/viz-ggplot2-practice.html)
+
+## 시각화 연습 1
+
+```{r}
+library(tidyverse)
+library(gapminder)
+
+gapminder %>% 
+  ggplot(aes(x=year, y=lifeExp, by=country, color=continent)) +
+    geom_line() +
+    labs(x = "연도", y = "기대수명",
+         title = "국가별 평균 기대수명 변화 추이")
+```
+
+
+```{python}
+import matplotlib as mpl 
+import matplotlib.pyplot as plt 
+import matplotlib.font_manager as fm  
+
+print(fm.findSystemFonts(fontpaths=None, fontext='ttf'))
+
+import plotnine as p9
+from gapminder import gapminder
+
+fontpath = 'c:/windows/fonts/NanumGothic.ttf'
+font_name = fm.FontProperties(fname=fontpath, size=10).get_name()
+print(font_name)
+plt.rc('font', family=font_name)
+
+mpl.rcParams['axes.unicode_minus'] = False
+
+( p9.ggplot(gapminder)
+    + p9.aes(x='year', y='lifeExp', group='country', color='continent')
+    + p9.geom_line()
+    + p9.labs(x='연도', y='기대수명', title='국가별 평균 기대수명 변화 추이') 
+    + theme(text=element_text(fontproperties=font_name))
+    
+)
+
+```
+

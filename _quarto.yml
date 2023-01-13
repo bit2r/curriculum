@@ -71,8 +71,11 @@ website:
           - href: python_data_structure.qmd
             text: "[시각화] 자료형과 자료구조"
           - href: 99_dataframe.qmd
-            text: "데이터프레임"            
+            text: "데이터프레임"
           - text: "-----"
+          - href: 99_viz.qmd
+            text: "시각화"          
+          - text: "-----"          
           - href: 10_cmdline.qmd
             text: "명령라인 데이터 분석"
           - href: 11_shell.qmd

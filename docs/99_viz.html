@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="kr" xml:lang="kr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="이광춘">
+<meta name="description" content="데이터프레임 시각화를 학습합니다.">
+
+<title>데이터 과학 - 시각화</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "일치 없음",
+    "search-matching-documents-text": "일치된 문서",
+    "search-copy-link-title": "검색 링크 복사",
+    "search-hide-matches-text": "추가 검색 결과 숨기기",
+    "search-more-match-text": "추가 검색결과",
+    "search-more-matches-text": "추가 검색결과",
+    "search-clear-button-title": "제거",
+    "search-detached-cancel-button-title": "취소",
+    "search-submit-button-title": "검색"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">데이터 과학</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">들어가며</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">커리큐럼</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="./curriculum_2023.html">
+ <span class="dropdown-text">2023년</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./curriculum_2022.html">
+ <span class="dropdown-text">2022년</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">모래시계</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--1">    
+        <li>
+    <a class="dropdown-item" href="./timer_five.html">
+ <span class="dropdown-text">5 분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_ten.html">
+ <span class="dropdown-text">10분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_twenty.html">
+ <span class="dropdown-text">20분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_thirty.html">
+ <span class="dropdown-text">30분</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./timer_hour.html">
+ <span class="dropdown-text">1시간</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">개발환경</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--2">    
+        <li>
+    <a class="dropdown-item" href="./00_setup.html">
+ <span class="dropdown-text">실습환경</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./01_setup_bash.html">
+ <span class="dropdown-text">CLI 개발환경</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./02_setup_sql.html">
+ <span class="dropdown-text">Sqlite 데이터베이스</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./03_setup_python.html">
+ <span class="dropdown-text">파이썬</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./hello_world_jupyter.html">
+ <span class="dropdown-text">쥬피터 노트북</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./04_setup_r.html">
+ <span class="dropdown-text">고급 데이터과학: R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">교재</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--3">    
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./99_statistics.html">
+ <span class="dropdown-text">통계학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_dplyr_pandas.html">
+ <span class="dropdown-text">데이터 다루기 (Pandas)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_data_wrangling.html">
+ <span class="dropdown-text">데이터 전처리</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_data_wrangling_py.html">
+ <span class="dropdown-text">데이터 전처리: 파이썬</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_datatype.html">
+ <span class="dropdown-text">자료형과 자료구조</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./python_data_structure.html">
+ <span class="dropdown-text">[시각화] 자료형과 자료구조</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./99_dataframe.html">
+ <span class="dropdown-text">데이터프레임</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./99_viz.html">
+ <span class="dropdown-text">시각화</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./10_cmdline.html">
+ <span class="dropdown-text">명령라인 데이터 분석</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./11_shell.html">
+ <span class="dropdown-text">쉘(Shell)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./12_writing.html">
+ <span class="dropdown-text">디지털 글쓰기(보고서)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./13_git.html">
+ <span class="dropdown-text">Git/GitHub</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./20_sql.html">
+ <span class="dropdown-text">프로그래밍: SQL</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./21_r.html">
+ <span class="dropdown-text">프로그래밍: R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./22_python.html">
+ <span class="dropdown-text">프로그래밍: 파이썬</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./30_dashboard.html">
+ <span class="dropdown-text">대쉬보드</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./31_models.html">
+ <span class="dropdown-text">기계학습</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./32_product.html">
+ <span class="dropdown-text">데이터과학 제품과 서비스</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./41_time_series.html">
+ <span class="dropdown-text">시계열 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./42_network.html">
+ <span class="dropdown-text">네트워크 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./43_geospatial.html">
+ <span class="dropdown-text">공간정보 데이터</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./44_text_mining.html">
+ <span class="dropdown-text">텍스트 데이터</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./51_nlp.html">
+ <span class="dropdown-text">딥러닝 - NLP</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./52_vision.html">
+ <span class="dropdown-text">딥러닝 - 비젼</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">프로젝트</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--4">    
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./project.html">
+ <span class="dropdown-text">프로젝트</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="./py_tree.html">
+ <span class="dropdown-text">나무모형</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">데이터셋</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--5">    
+        <li>
+    <a class="dropdown-item" href="./data.html">
+ <span class="dropdown-text">데이터셋</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./data_chatGPT.html">
+ <span class="dropdown-text">chatGPT 데이터셋</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--6" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">운동장</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--6">    
+        <li>
+    <a class="dropdown-item" href="./dataxray.html">
+ <span class="dropdown-text">데이터 X-레이</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./flexdashboard/penguin_flexdashboard.html">
+ <span class="dropdown-text">대쉬보드: 파머펭귄</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--7" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">퀴즈</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu--7">    
+        <li>
+    <a class="dropdown-item" href="./mcq_stat.html">
+ <span class="dropdown-text">확률과 통계</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./mcq_ds.html">
+ <span class="dropdown-text">데이터 과학</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./mcq_pandas.html">
+ <span class="dropdown-text">통계분석: Pandas와 시각화</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul>
+  <li><a href="#시각화-패키지" id="toc-시각화-패키지" class="nav-link active" data-scroll-target="#시각화-패키지"><span class="toc-section-number">1</span>  시각화 패키지</a></li>
+  <li><a href="#헬로월드" id="toc-헬로월드" class="nav-link" data-scroll-target="#헬로월드"><span class="toc-section-number">2</span>  헬로월드</a></li>
+  <li><a href="#그래프-문법" id="toc-그래프-문법" class="nav-link" data-scroll-target="#그래프-문법"><span class="toc-section-number">3</span>  그래프 문법</a>
+  <ul class="collapse">
+  <li><a href="#시각화-연습-1" id="toc-시각화-연습-1" class="nav-link" data-scroll-target="#시각화-연습-1"><span class="toc-section-number">3.1</span>  시각화 연습 1</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">시각화</h1>
+</div>
+
+<div>
+  <div class="description">
+    데이터프레임 시각화를 학습합니다.
+  </div>
+</div>
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">저자</div>
+  <div class="quarto-title-meta-heading">소속</div>
+  
+    <div class="quarto-title-meta-contents">
+    이광춘 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            TCS
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">공개</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2023년 01월 14일</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="시각화-패키지" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 시각화 패키지</h1>
+<ul>
+<li>정적 그래프
+<ul>
+<li><a href="https://github.com/has2k1/plotnine"><code>plotnine</code></a></li>
+<li><a href="https://github.com/matplotlib/matplotlib"><code>matplotlib</code></a>
+<ul>
+<li>NumPy 친화적 그래픽 패키지</li>
+</ul></li>
+<li><a href="https://github.com/mwaskom/seaborn"><code>seaborn</code></a>
+<ul>
+<li><code>matplotlib</code> 을 기반으로 하고 <code>pandas</code> 자료구조 친화적 그래픽 패키지</li>
+</ul></li>
+</ul></li>
+<li>인터랙티브 그래프
+<ul>
+<li><a href="https://plotly.com/python/"><code>plotly</code></a></li>
+<li><a href="https://bokeh.org/"><code>bokeh</code></a></li>
+</ul></li>
+</ul>
+</section>
+<section id="헬로월드" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 헬로월드</h1>
+<p>동일한 시각화 그래프를 다양한 패키지를 활용하여 시각화해보자. <code>seaborn</code>, <code>plotnine</code> 패키지를 사전에 설치한다.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip3 install seaborn</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip3 install plotnine</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><code>ggplot</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><code>plotnine</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false"><code>matplotlib</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false"><code>seaborn</code></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> gdpPercap)) <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="99_viz_files/figure-html/unnamed-chunk-1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="99_viz_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gapminder <span class="im">import</span> gapminder</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>( ggplot(gapminder)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>   <span class="op">+</span> geom_point(aes(<span class="st">'lifeExp'</span>, <span class="st">'gdpPercap'</span>))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;ggplot: (150290983979)&gt;</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="99_viz_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="99_viz_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="614"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gapminder <span class="im">import</span> gapminder</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 산점도 정의</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(gapminder[<span class="st">'lifeExp'</span>], gapminder[<span class="st">'gdpPercap'</span>])</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 축 라벨 추가</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'GDP per Capita'</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 그래프 보이기</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="99_viz_files/figure-html/unnamed-chunk-3-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="99_viz_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid figure-img" width="614"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gapminder <span class="im">import</span> gapminder</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 산점도 정의</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'lifeExp'</span>, y<span class="op">=</span><span class="st">'gdpPercap'</span>, data<span class="op">=</span>gapminder)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 축 라벨 추가</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Life Expectancy'</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'GDP per Capita'</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 그래프 보이기</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="99_viz_files/figure-html/unnamed-chunk-4-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="99_viz_files/figure-html/unnamed-chunk-4-5.png" class="img-fluid figure-img" width="614"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="그래프-문법" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 그래프 문법</h1>
+<ul>
+<li><a href="https://aispiration.com/viz/viz-ggplot2-practice.html">그래프 문법 - <code>ggplot</code></a></li>
+</ul>
+<section id="시각화-연습-1" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="시각화-연습-1"><span class="header-section-number">3.1</span> 시각화 연습 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>lifeExp, <span class="at">by=</span>country, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"연도"</span>, <span class="at">y =</span> <span class="st">"기대수명"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"국가별 평균 기대수명 변화 추이"</span>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="99_viz_files/figure-html/unnamed-chunk-5-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="99_viz_files/figure-html/unnamed-chunk-5-7.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.font_manager <span class="im">as</span> fm  </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fm.findSystemFonts(fontpaths<span class="op">=</span><span class="va">None</span>, fontext<span class="op">=</span><span class="st">'ttf'</span>))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ['C:\\WINDOWS\\Fonts\\phagspab.ttf', 'C:\\Windows\\Fonts\\holomdl2.ttf', 'C:\\Windows\\Fonts\\LTYPEBO.TTF', 'C:\\Windows\\Fonts\\cambria.ttc', 'C:\\Windows\\Fonts\\D2Coding-Ver1.3.2-20180524-ligature.ttc', 'C:\\WINDOWS\\Fonts\\HancomEQN.ttf', 'C:\\WINDOWS\\Fonts\\H2SA1M.TTF', 'C:\\Windows\\Fonts\\georgiai.ttf', 'C:\\WINDOWS\\Fonts\\NanumGothicExtraBold_0.ttf', 'C:\\Windows\\Fonts\\D2Coding-Ver1.3.2-20180524-ligature.ttf', 'C:\\WINDOWS\\Fonts\\FRADMIT.TTF', 'C:\\Windows\\Fonts\\BOD_CI.TTF', 'C:\\Windows\\Fonts\\COPRGTL.TTF', 'C:\\Windows\\Fonts\\TCMI____.TTF', 'C:\\WINDOWS\\Fonts\\H2GTRM.TTF', 'C:\\WINDOWS\\Fonts\\HARLOWSI.TTF', 'C:\\Windows\\Fonts\\ITCKRIST.TTF', 'C:\\WINDOWS\\Fonts\\calibrili.ttf', 'C:\\Windows\\Fonts\\NanumGothicLight.otf', 'C:\\WINDOWS\\Fonts\\courbi.ttf', 'C:\\Windows\\Fonts\\cambriai.ttf', 'C:\\Windows\\Fonts\\HanSantteutDotum-Bold.ttf', 'C:\\WINDOWS\\Fonts\\NanumGothic.ttf', 'C:\\WINDOWS\\Fonts\\LeelUIsl.ttf', 'C:\\Windows\\Fonts\\SNAP____.TTF', 'C:\\WINDOWS\\Fonts\\Sitka.ttc', 'C:\\WINDOWS\\Fonts\\trebucit.ttf', 'C:\\Windows\\Fonts\\LBRITEI.TTF', 'C:\\WINDOWS\\Fonts\\FRAMDCN.TTF', 'C:\\WINDOWS\\Fonts\\MAGNETOB.TTF', 'C:\\WINDOWS\\Fonts\\l_10646.ttf', 'C:\\WINDOWS\\Fonts\\PALSCRI.TTF', 'C:\\Windows\\Fonts\\palab.ttf', 'C:\\Windows\\Fonts\\palai.ttf', 'C:\\Windows\\Fonts\\HANBatangB.ttf', 'C:\\Windows\\Fonts\\arial.ttf', 'C:\\Windows\\Fonts\\FELIXTI.TTF', 'C:\\WINDOWS\\Fonts\\NanumBarunpenB.ttf', 'C:\\Windows\\Fonts\\STENCIL.TTF', 'C:\\Windows\\Fonts\\VINERITC.TTF', 'C:\\Windows\\Fonts\\LFAXI.TTF', 'C:\\Windows\\Fonts\\GOUDOSI.TTF', 'C:\\Windows\\Fonts\\BRITANIC.TTF', 'C:\\WINDOWS\\Fonts\\NotoSansKR-Light.otf', 'C:\\Windows\\Fonts\\msjhl.ttc', 'C:\\Windows\\Fonts\\FRABK.TTF', 'C:\\WINDOWS\\Fonts\\BAUHS93.TTF', 'C:\\Windows\\Fonts\\ariblk.ttf', 'C:\\Windows\\Fonts\\ntailub.ttf', 'C:\\Windows\\Fonts\\constan.ttf', 'C:\\Windows\\Fonts\\CascadiaCode.ttf', 'C:\\WINDOWS\\Fonts\\taileb.ttf', 'C:\\Windows\\Fonts\\MATURASC.TTF', 'C:\\Windows\\Fonts\\CALISTI.TTF', 'C:\\Windows\\Fonts\\ARIALN.TTF', 'C:\\Windows\\Fonts\\ALGER.TTF', 'C:\\WINDOWS\\Fonts\\BRLNSDB.TTF', 'C:\\Windows\\Fonts\\MTEXTRA.TTF', 'C:\\WINDOWS\\Fonts\\MAIAN.TTF', 'C:\\Windows\\Fonts\\seguili.ttf', 'C:\\Windows\\Fonts\\CENSCBK.TTF', 'C:\\WINDOWS\\Fonts\\Candara.ttf', 'C:\\Windows\\Fonts\\IMPRISHA.TTF', 'C:\\WINDOWS\\Fonts\\NanumPen.ttf', 'C:\\WINDOWS\\Fonts\\times.ttf', 'C:\\WINDOWS\\Fonts\\WINGDNG2.TTF', 'C:\\Windows\\Fonts\\HanSantteutDotum-Regular.ttf', 'C:\\WINDOWS\\Fonts\\CHILLER.TTF', 'C:\\WINDOWS\\Fonts\\NanumMyeongjoExtraBold.ttf', 'C:\\WINDOWS\\Fonts\\phagspa.ttf', 'C:\\WINDOWS\\Fonts\\PERB____.TTF', 'C:\\WINDOWS\\Fonts\\POORICH.TTF', 'C:\\WINDOWS\\Fonts\\seguili.ttf', 'C:\\Windows\\Fonts\\VIVALDII.TTF', 'C:\\WINDOWS\\Fonts\\GILSANUB.TTF', 'C:\\Windows\\Fonts\\CURLZ___.TTF', 'C:\\WINDOWS\\Fonts\\segoeuib.ttf', 'C:\\WINDOWS\\Fonts\\timesbi.ttf', 'C:\\WINDOWS\\Fonts\\SHOWG.TTF', 'C:\\WINDOWS\\Fonts\\GOUDOS.TTF', 'C:\\WINDOWS\\Fonts\\HANBatang.ttf', 'C:\\Windows\\Fonts\\FREESCPT.TTF', 'C:\\Windows\\Fonts\\SCRIPTBL.TTF', 'C:\\WINDOWS\\Fonts\\COPRGTB.TTF', 'C:\\WINDOWS\\Fonts\\HANDotum.ttf', 'C:\\WINDOWS\\Fonts\\NanumBarunGothicBold.ttf', 'C:\\WINDOWS\\Fonts\\mvboli.ttf', 'C:\\Windows\\Fonts\\HTOWERTI.TTF', 'C:\\WINDOWS\\Fonts\\CALIFR.TTF', 'C:\\Windows\\Fonts\\YuGothR.ttc', 'C:\\WINDOWS\\Fonts\\NotoSansKR-Medium.otf', 'C:\\WINDOWS\\Fonts\\LFAX.TTF', 'C:\\WINDOWS\\Fonts\\LTYPEBO.TTF', 'C:\\Windows\\Fonts\\consola.ttf', 'C:\\WINDOWS\\Fonts\\AGENCYR.TTF', 'C:\\WINDOWS\\Fonts\\GOTHICB.TTF', 'C:\\Windows\\Fonts\\couri.ttf', 'C:\\Windows\\Fonts\\BOD_CBI.TTF', 'C:\\WINDOWS\\Fonts\\Candarai.ttf', 'C:\\Windows\\Fonts\\PERBI___.TTF', 'C:\\Windows\\Fonts\\SHOWG.TTF', 'C:\\Windows\\Fonts\\Alternate Gothic No2 BT.ttf', 'C:\\Windows\\Fonts\\simsun.ttc', 'C:\\WINDOWS\\Fonts\\georgiaz.ttf', 'C:\\Windows\\Fonts\\l_10646.ttf', 'C:\\WINDOWS\\Fonts\\AGENCYB.TTF', 'C:\\Windows\\Fonts\\ROCC____.TTF', 'C:\\Windows\\Fonts\\CALISTB.TTF', 'C:\\WINDOWS\\Fonts\\H2GPRM.TTF', 'C:\\WINDOWS\\Fonts\\TCCB____.TTF', 'C:\\Windows\\Fonts\\BRLNSR.TTF', 'C:\\Windows\\Fonts\\BELL.TTF', 'C:\\WINDOWS\\Fonts\\arialbi.ttf', 'C:\\WINDOWS\\Fonts\\NGULIM.TTF', 'C:\\Users\\statkclee\\AppData\\Local\\Microsoft\\Windows\\Fonts\\D2Coding-Ver1.3.2-20180524-all.ttc', 'C:\\WINDOWS\\Fonts\\arialbd.ttf', 'C:\\WINDOWS\\Fonts\\ROCKEB.TTF', 'C:\\WINDOWS\\Fonts\\seguihis.ttf', 'C:\\WINDOWS\\Fonts\\NanumBarunGothic.ttf', 'C:\\WINDOWS\\Fonts\\consolab.ttf', 'C:\\Windows\\Fonts\\gadugib.ttf', 'C:\\WINDOWS\\Fonts\\mingliub.ttc', 'C:\\Windows\\Fonts\\constanb.ttf', 'C:\\WINDOWS\\Fonts\\HMFMMUEX.TTC', 'C:\\Windows\\Fonts\\msyi.ttf', 'C:\\WINDOWS\\Fonts\\corbelz.ttf', 'C:\\Windows\\Fonts\\GIL_____.TTF', 'C:\\Windows\\Fonts\\wingding.ttf', 'C:\\Windows\\Fonts\\LEELAWAD.TTF', 'C:\\Windows\\Fonts\\COPRGTB.TTF', 'C:\\WINDOWS\\Fonts\\cour.ttf', 'C:\\Windows\\Fonts\\timesi.ttf', 'C:\\Windows\\Fonts\\gulim.ttc', 'C:\\WINDOWS\\Fonts\\calibrib.ttf', 'C:\\WINDOWS\\Fonts\\SitkaI.ttc', 'C:\\WINDOWS\\Fonts\\LSANSD.TTF', 'C:\\Windows\\Fonts\\segmdl2.ttf', 'C:\\WINDOWS\\Fonts\\cambria.ttc', 'C:\\WINDOWS\\Fonts\\ARIALNB.TTF', 'C:\\WINDOWS\\Fonts\\BOD_B.TTF', 'C:\\WINDOWS\\Fonts\\HANBatangB.ttf', 'C:\\Windows\\Fonts\\HMKMAMI.TTF', 'C:\\WINDOWS\\Fonts\\GOUDOSI.TTF', 'C:\\Windows\\Fonts\\MAIAN.TTF', 'C:\\WINDOWS\\Fonts\\marlett.ttf', 'C:\\Windows\\Fonts\\H2GPRM.TTF', 'C:\\WINDOWS\\Fonts\\HANBatangExt.ttf', 'C:\\WINDOWS\\Fonts\\segoeuil.ttf', 'C:\\WINDOWS\\Fonts\\FORTE.TTF', 'C:\\WINDOWS\\Fonts\\LBRITEI.TTF', 'C:\\WINDOWS\\Fonts\\tahoma.ttf', 'C:\\Windows\\Fonts\\NanumGothicExtraBold_0.ttf', 'C:\\WINDOWS\\Fonts\\GIL_____.TTF', 'C:\\WINDOWS\\Fonts\\NanumMyeongjo.ttf', 'C:\\Windows\\Fonts\\segoepr.ttf', 'C:\\WINDOWS\\Fonts\\H2MKPB.TTF', 'C:\\Windows\\Fonts\\ANTQUABI.TTF', 'C:\\WINDOWS\\Fonts\\msgothic.ttc', 'C:\\Windows\\Fonts\\LBRITEDI.TTF', 'C:\\WINDOWS\\Fonts\\cambriab.ttf', 'C:\\WINDOWS\\Fonts\\Gabriola.ttf', 'C:\\Windows\\Fonts\\BELLB.TTF', 'C:\\Windows\\Fonts\\Candara.ttf', 'C:\\Windows\\Fonts\\TCM_____.TTF', 'C:\\WINDOWS\\Fonts\\ebrima.ttf', 'C:\\Windows\\Fonts\\BSSYM7.TTF', 'C:\\WINDOWS\\Fonts\\SCHLBKB.TTF', 'C:\\WINDOWS\\Fonts\\cambriaz.ttf', 'C:\\WINDOWS\\Fonts\\NotoSansKR-Regular.otf', 'C:\\Windows\\Fonts\\BRADHITC.TTF', 'C:\\Windows\\Fonts\\FRSCRIPT.TTF', 'C:\\WINDOWS\\Fonts\\arial.ttf', 'C:\\Windows\\Fonts\\segoeuiz.ttf', 'C:\\Windows\\Fonts\\MSUIGHUB.TTF', 'C:\\Windows\\Fonts\\RAGE.TTF', 'C:\\WINDOWS\\Fonts\\JOKERMAN.TTF', 'C:\\Windows\\Fonts\\LFAX.TTF', 'C:\\Windows\\Fonts\\segoeui.ttf', 'C:\\WINDOWS\\Fonts\\ROCKI.TTF', 'C:\\Windows\\Fonts\\HANBatang.ttf', 'C:\\WINDOWS\\Fonts\\TCM_____.TTF', 'C:\\WINDOWS\\Fonts\\NanumGothicExtraBold.ttf', 'C:\\WINDOWS\\Fonts\\VLADIMIR.TTF', 'C:\\Windows\\Fonts\\OUTLOOK.TTF', 'C:\\Windows\\Fonts\\ANTQUAB.TTF', 'C:\\Windows\\Fonts\\corbelz.ttf', 'C:\\Windows\\Fonts\\GOTHICBI.TTF', 'C:\\WINDOWS\\Fonts\\ROCC____.TTF', 'C:\\WINDOWS\\Fonts\\RAVIE.TTF', 'C:\\WINDOWS\\Fonts\\trebucbi.ttf', 'C:\\WINDOWS\\Fonts\\seguisym.ttf', 'C:\\WINDOWS\\Fonts\\BOOKOSB.TTF', 'C:\\Windows\\Fonts\\LBRITED.TTF', 'C:\\Windows\\Fonts\\ebrima.ttf', 'C:\\WINDOWS\\Fonts\\BOD_CB.TTF', 'C:\\WINDOWS\\Fonts\\seguisbi.ttf', 'C:\\WINDOWS\\Fonts\\FRABK.TTF', 'C:\\Windows\\Fonts\\malgunsl.ttf', 'C:\\Windows\\Fonts\\consolab.ttf', 'C:\\WINDOWS\\Fonts\\msjh.ttc', 'C:\\Windows\\Fonts\\JUICE___.TTF', 'C:\\WINDOWS\\Fonts\\ARLRDBD.TTF', 'C:\\WINDOWS\\Fonts\\NotoSansKR-Thin.otf', 'C:\\Windows\\Fonts\\segoescb.ttf', 'C:\\WINDOWS\\Fonts\\BERNHC.TTF', 'C:\\Windows\\Fonts\\seguisli.ttf', 'C:\\WINDOWS\\Fonts\\MSUIGHUR.TTF', 'C:\\Windows\\Fonts\\RAVIE.TTF', 'C:\\WINDOWS\\Fonts\\GOTHICI.TTF', 'C:\\WINDOWS\\Fonts\\trebucbd.ttf', 'C:\\Windows\\Fonts\\LSANSI.TTF', 'C:\\WINDOWS\\Fonts\\FTLTLT.TTF', 'C:\\WINDOWS\\Fonts\\REFSAN.TTF', 'C:\\WINDOWS\\Fonts\\OUTLOOK.TTF', 'C:\\Windows\\Fonts\\SCHLBKI.TTF', 'C:\\Windows\\Fonts\\DUBAI-MEDIUM.TTF', 'C:\\WINDOWS\\Fonts\\HMKMMAG.TTF', 'C:\\Windows\\Fonts\\NotoSansKR-Black.otf', 'C:\\Windows\\Fonts\\H2GTRM.TTF', 'C:\\WINDOWS\\Fonts\\MISTRAL.TTF', 'C:\\WINDOWS\\Fonts\\tahomabd.ttf', 'C:\\Windows\\Fonts\\cour.ttf', 'C:\\WINDOWS\\Fonts\\SCHLBKBI.TTF', 'C:\\Windows\\Fonts\\REFSPCL.TTF', 'C:\\WINDOWS\\Fonts\\SCHLBKI.TTF', 'C:\\Windows\\Fonts\\taileb.ttf', 'C:\\Windows\\Fonts\\ARLRDBD.TTF', 'C:\\WINDOWS\\Fonts\\OLDENGL.TTF', 'C:\\WINDOWS\\Fonts\\D2Coding-Ver1.3.2-20180524-ligature.ttc', 'C:\\Windows\\Fonts\\constanz.ttf', 'C:\\WINDOWS\\Fonts\\D2Coding-Ver1.3.2-20180524-ligature.ttf', 'C:\\Windows\\Fonts\\gadugi.ttf', 'C:\\Windows\\Fonts\\NanumGothicExtraBold.otf', 'C:\\WINDOWS\\Fonts\\constan.ttf', 'C:\\WINDOWS\\Fonts\\FREESCPT.TTF', 'C:\\WINDOWS\\Fonts\\MaruBuri-Regular.ttf', 'C:\\WINDOWS\\Fonts\\CascadiaMono.ttf', 'C:\\Windows\\Fonts\\PERTILI.TTF', 'C:\\Windows\\Fonts\\BKANT.TTF', 'C:\\Windows\\Fonts\\LCALLIG.TTF', 'C:\\WINDOWS\\Fonts\\BOOKOSBI.TTF', 'C:\\WINDOWS\\Fonts\\H2PORM.TTF', 'C:\\WINDOWS\\Fonts\\H2GTRE.TTF', 'C:\\WINDOWS\\Fonts\\BOD_CI.TTF', 'C:\\WINDOWS\\Fonts\\HanSantteutDotum-Regular.ttf', 'C:\\Windows\\Fonts\\arialbi.ttf', 'C:\\Windows\\Fonts\\GOUDOS.TTF', 'C:\\Windows\\Fonts\\LSANS.TTF', 'C:\\WINDOWS\\Fonts\\BOD_I.TTF', 'C:\\Windows\\Fonts\\TCCEB.TTF', 'C:\\WINDOWS\\Fonts\\LCALLIG.TTF', 'C:\\WINDOWS\\Fonts\\malgunsl.ttf', 'C:\\WINDOWS\\Fonts\\ITCKRIST.TTF', 'C:\\Windows\\Fonts\\segoesc.ttf', 'C:\\Windows\\Fonts\\LATINWD.TTF', 'C:\\Windows\\Fonts\\msyhl.ttc', 'C:\\Windows\\Fonts\\Candarali.ttf', 'C:\\WINDOWS\\Fonts\\NanumGothicLight.otf', 'C:\\WINDOWS\\Fonts\\H2MJRE.TTF', 'C:\\WINDOWS\\Fonts\\BOD_BLAI.TTF', 'C:\\WINDOWS\\Fonts\\ntailub.ttf', 'C:\\WINDOWS\\Fonts\\FRADMCN.TTF', 'C:\\Windows\\Fonts\\ARIALNB.TTF', 'C:\\Windows\\Fonts\\GILLUBCD.TTF', 'C:\\WINDOWS\\Fonts\\comicz.ttf', 'C:\\Windows\\Fonts\\BELLI.TTF', 'C:\\Windows\\Fonts\\GARABD.TTF', 'C:\\Windows\\Fonts\\GILB____.TTF', 'C:\\Windows\\Fonts\\HANBatangExtBB.ttf', 'C:\\Windows\\Fonts\\CASTELAR.TTF', 'C:\\WINDOWS\\Fonts\\verdana.ttf', 'C:\\Users\\statkclee\\AppData\\Local\\Microsoft\\Windows\\Fonts\\MaruBuri-SemiBold.ttf', 'C:\\Windows\\Fonts\\consolai.ttf', 'C:\\WINDOWS\\Fonts\\SNAP____.TTF', 'C:\\WINDOWS\\Fonts\\PERTILI.TTF', 'C:\\Windows\\Fonts\\impact.ttf', 'C:\\Windows\\Fonts\\NanumBarunGothicUltraLight.ttf', 'C:\\Windows\\Fonts\\CALISTBI.TTF', 'C:\\WINDOWS\\Fonts\\COPRGTL.TTF', 'C:\\Windows\\Fonts\\corbeli.ttf', 'C:\\Windows\\Fonts\\mmrtextb.ttf', 'C:\\Windows\\Fonts\\calibrib.ttf', 'C:\\Windows\\Fonts\\FRADM.TTF', 'C:\\Windows\\Fonts\\trebucbi.ttf', 'C:\\WINDOWS\\Fonts\\Candaraz.ttf', 'C:\\Windows\\Fonts\\LeelaUIb.ttf', 'C:\\WINDOWS\\Fonts\\OCRAEXT.TTF', 'C:\\Windows\\Fonts\\Candaral.ttf', 'C:\\Windows\\Fonts\\HMFMPYUN.TTF', 'C:\\Windows\\Fonts\\FRAHVIT.TTF', 'C:\\Windows\\Fonts\\PERI____.TTF', 'C:\\Windows\\Fonts\\GLSNECB.TTF', 'C:\\Windows\\Fonts\\ERASLGHT.TTF', 'C:\\Windows\\Fonts\\ELEPHNT.TTF', 'C:\\WINDOWS\\Fonts\\Inkfree.ttf', 'C:\\WINDOWS\\Fonts\\TCCM____.TTF', 'C:\\WINDOWS\\Fonts\\ROCKBI.TTF', 'C:\\Windows\\Fonts\\SitkaI.ttc', 'C:\\Windows\\Fonts\\SitkaZ.ttc', 'C:\\Windows\\Fonts\\corbel.ttf', 'C:\\Windows\\Fonts\\PERB____.TTF', 'C:\\WINDOWS\\Fonts\\taile.ttf', 'C:\\Windows\\Fonts\\timesbi.ttf', 'C:\\WINDOWS\\Fonts\\ENGR.TTF', 'C:\\Windows\\Fonts\\Candaraz.ttf', 'C:\\Windows\\Fonts\\MaruBuri-Bold.ttf', 'C:\\WINDOWS\\Fonts\\MaruBuri-Light.ttf', 'C:\\WINDOWS\\Fonts\\REFSPCL.TTF', 'C:\\Windows\\Fonts\\GILC____.TTF', 'C:\\Windows\\Fonts\\msjh.ttc', 'C:\\WINDOWS\\Fonts\\BRADHITC.TTF', 'C:\\Windows\\Fonts\\constani.ttf', 'C:\\WINDOWS\\Fonts\\LeelawUI.ttf', 'C:\\Windows\\Fonts\\ROCKEB.TTF', 'C:\\Windows\\Fonts\\BOOKOS.TTF', 'C:\\Windows\\Fonts\\LeelUIsl.ttf', 'C:\\Windows\\Fonts\\H2HDRM.TTF', 'C:\\WINDOWS\\Fonts\\PLAYBILL.TTF', 'C:\\Windows\\Fonts\\OCRAEXT.TTF', 'C:\\WINDOWS\\Fonts\\ntailu.ttf', 'C:\\WINDOWS\\Fonts\\BRUSHSCI.TTF', 'C:\\WINDOWS\\Fonts\\corbel.ttf', 'C:\\Windows\\Fonts\\ARIALNBI.TTF', 'C:\\Windows\\Fonts\\HTOWERT.TTF', 'C:\\Users\\statkclee\\AppData\\Local\\Microsoft\\Windows\\Fonts\\NotoSansKR-Medium.otf', 'C:\\WINDOWS\\Fonts\\CASTELAR.TTF', 'C:\\WINDOWS\\Fonts\\TCCEB.TTF', 'C:\\Windows\\Fonts\\H2MJSM.TTF', 'C:\\WINDOWS\\Fonts\\javatext.ttf', 'C:\\Windows\\Fonts\\ELEPHNTI.TTF', 'C:\\Users\\statkclee\\AppData\\Local\\Microsoft\\Windows\\Fonts\\NotoSansKR-Thin.otf', 'C:\\Windows\\Fonts\\BAUHS93.TTF', 'C:\\Windows\\Fonts\\GARAIT.TTF', 'C:\\WINDOWS\\Fonts\\ariali.ttf', 'C:\\Windows\\Fonts\\NotoSansKR-Light.otf', 'C:\\Windows\\Fonts\\GOUDYSTO.TTF', 'C:\\WINDOWS\\Fonts\\ARIALNBI.TTF', 'C:\\Windows\\Fonts\\segoeuii.ttf', 'C:\\Windows\\Fonts\\ERASBD.TTF', 'C:\\WINDOWS\\Fonts\\HARNGTON.TTF', 'C:\\WINDOWS\\Fonts\\msyi.ttf', 'C:\\Windows\\Fonts\\GOTHIC.TTF', 'C:\\WINDOWS\\Fonts\\consolaz.ttf', 'C:\\WINDOWS\\Fonts\\simsun.ttc', 'C:\\WINDOWS\\Fonts\\bahnschrift.ttf', 'C:\\Windows\\Fonts\\LTYPEO.TTF', 'C:\\WINDOWS\\Fonts\\CENSCBK.TTF', 'C:\\WINDOWS\\Fonts\\LHANDW.TTF', 'C:\\Windows\\Fonts\\calibrii.ttf', 'C:\\Windows\\Fonts\\NotoSansKR-Bold.otf', 'C:\\Windows\\Fonts\\HancomEQN.ttf', 'C:\\WINDOWS\\Fonts\\Alternate Gothic No2 BT.ttf', 'C:\\WINDOWS\\Fonts\\CascadiaCode.ttf', 'C:\\Windows\\Fonts\\PLAYBILL.TTF', 'C:\\Windows\\Fonts\\Inkfree.ttf', 'C:\\Windows\\Fonts\\CALIFI.TTF', 'C:\\WINDOWS\\Fonts\\LFAXD.TTF', 'C:\\WINDOWS\\Fonts\\CALIFB.TTF', 'C:\\WINDOWS\\Fonts\\HTOWERTI.TTF', 'C:\\Windows\\Fonts\\msyhbd.ttc', 'C:\\Windows\\Fonts\\phagspab.ttf', 'C:\\Windows\\Fonts\\NIAGSOL.TTF', 'C:\\Windows\\Fonts\\BOD_I.TTF', 'C:\\WINDOWS\\Fonts\\ERASLGHT.TTF', 'C:\\WINDOWS\\Fonts\\framdit.ttf', 'C:\\WINDOWS\\Fonts\\INFROMAN.TTF', 'C:\\WINDOWS\\Fonts\\MSUIGHUB.TTF', 'C:\\WINDOWS\\Fonts\\H2MJSM.TTF', 'C:\\Windows\\Fonts\\MSUIGHUR.TTF', 'C:\\WINDOWS\\Fonts\\SitkaZ.ttc', 'C:\\Windows\\Fonts\\HANDotumB.ttf', 'C:\\Windows\\Fonts\\mvboli.ttf', 'C:\\WINDOWS\\Fonts\\MaruBuri-Bold.ttf', 'C:\\WINDOWS\\Fonts\\LTYPE.TTF', 'C:\\WINDOWS\\Fonts\\CURLZ___.TTF', 'C:\\WINDOWS\\Fonts\\seguibli.ttf', 'C:\\Windows\\Fonts\\REFSAN.TTF', 'C:\\WINDOWS\\Fonts\\Hancom Gothic Bold.ttf', 'C:\\WINDOWS\\Fonts\\HANDotumExt.ttf', 'C:\\WINDOWS\\Fonts\\HanSantteutDotum-Bold.ttf', 'C:\\Windows\\Fonts\\TCB_____.TTF', 'C:\\Windows\\Fonts\\verdanaz.ttf', 'C:\\WINDOWS\\Fonts\\PER_____.TTF', 'C:\\Windows\\Fonts\\NanumMyeongjoExtraBold.ttf', 'C:\\Windows\\Fonts\\HANDotumExt.ttf', 'C:\\WINDOWS\\Fonts\\seguiemj.ttf', 'C:\\WINDOWS\\Fonts\\GILLUBCD.TTF', 'C:\\WINDOWS\\Fonts\\GILI____.TTF', 'C:\\WINDOWS\\Fonts\\himalaya.ttf', 'C:\\Windows\\Fonts\\SCHLBKBI.TTF', 'C:\\WINDOWS\\Fonts\\BOD_CBI.TTF', 'C:\\Windows\\Fonts\\webdings.ttf', 'C:\\Windows\\Fonts\\YuGothB.ttc', 'C:\\WINDOWS\\Fonts\\FRAHVIT.TTF', 'C:\\Windows\\Fonts\\POORICH.TTF', 'C:\\Windows\\Fonts\\ROCK.TTF', 'C:\\WINDOWS\\Fonts\\IMPRISHA.TTF', 'C:\\Windows\\Fonts\\GILBI___.TTF', 'C:\\Windows\\Fonts\\tahomabd.ttf', 'C:\\Windows\\Fonts\\JOKERMAN.TTF', 'C:\\Windows\\Fonts\\sylfaen.ttf', 'C:\\Windows\\Fonts\\H2MKPB.TTF', 'C:\\WINDOWS\\Fonts\\palab.ttf', 'C:\\WINDOWS\\Fonts\\BRLNSR.TTF', 'C:\\WINDOWS\\Fonts\\GOTHICBI.TTF', 'C:\\Windows\\Fonts\\GOTHICI.TTF', 'C:\\WINDOWS\\Fonts\\GOTHIC.TTF', 'C:\\WINDOWS\\Fonts\\Nirmala.ttf', 'C:\\Windows\\Fonts\\NanumGothic_0.ttf', 'C:\\Windows\\Fonts\\mmrtext.ttf', 'C:\\WINDOWS\\Fonts\\LBRITED.TTF', 'C:\\WINDOWS\\Fonts\\mmrtextb.ttf', 'C:\\Windows\\Fonts\\FTLTLT.TTF', 'C:\\Windows\\Fonts\\NanumGothicBold_0.ttf', 'C:\\WINDOWS\\Fonts\\BOD_PSTC.TTF', 'C:\\WINDOWS\\Fonts\\PARCHM.TTF', 'C:\\WINDOWS\\Fonts\\gulim.ttc', 'C:\\WINDOWS\\Fonts\\calibrii.ttf', 'C:\\Windows\\Fonts\\LeelawUI.ttf', 'C:\\WINDOWS\\Fonts\\ROCCB___.TTF', 'C:\\Windows\\Fonts\\PAPYRUS.TTF', 'C:\\Windows\\Fonts\\PRISTINA.TTF', 'C:\\Windows\\Fonts\\lucon.ttf', 'C:\\WINDOWS\\Fonts\\HANBatangExtB.ttf', 'C:\\WINDOWS\\Fonts\\HMKMAMI.TTF', 'C:\\WINDOWS\\Fonts\\msyhbd.ttc', 'C:\\WINDOWS\\Fonts\\seguisb.ttf', 'C:\\Windows\\Fonts\\calibrili.ttf', 'C:\\Windows\\Fonts\\MaruBuri-Light.ttf', 'C:\\WINDOWS\\Fonts\\NanumGothicExtraBold.otf', 'C:\\WINDOWS\\Fonts\\GARA.TTF', 'C:\\WINDOWS\\Fonts\\CALIST.TTF', 'C:\\WINDOWS\\Fonts\\PERTIBD.TTF', 'C:\\Users\\statkclee\\AppData\\Local\\Microsoft\\Windows\\Fonts\\NotoSansKR-Regular.otf', 'C:\\Windows\\Fonts\\corbelb.ttf', 'C:\\Windows\\Fonts\\seguihis.ttf', 'C:\\WINDOWS\\Fonts\\comicbd.ttf', 'C:\\WINDOWS\\Fonts\\MTEXTRA.TTF', 'C:\\Windows\\Fonts\\BOD_BLAR.TTF', 'C:\\WINDOWS\\Fonts\\LeelaUIb.ttf', 'C:\\WINDOWS\\Fonts\\gadugi.ttf', 'C:\\WINDOWS\\Fonts\\MTCORSVA.TTF', 'C:\\Windows\\Fonts\\symbol.ttf', 'C:\\WINDOWS\\Fonts\\DUBAI-MEDIUM.TTF', 'C:\\Windows\\Fonts\\NanumBarunpenR.ttf', 'C:\\Windows\\Fonts\\pala.ttf', 'C:\\WINDOWS\\Fonts\\WINGDNG3.TTF', 'C:\\Windows\\Fonts\\INFROMAN.TTF', 'C:\\Windows\\Fonts\\msgothic.ttc', 'C:\\WINDOWS\\Fonts\\NanumGothicBold.otf', 'C:\\Windows\\Fonts\\cambriab.ttf', 'C:\\WINDOWS\\Fonts\\DUBAI-REGULAR.TTF', 'C:\\WINDOWS\\Fonts\\NanumGothicBold_0.ttf', 'C:\\Windows\\Fonts\\mingliub.ttc', 'C:\\WINDOWS\\Fonts\\H2PORL.TTF', 'C:\\WINDOWS\\Fonts\\PERBI___.TTF', 'C:\\WINDOWS\\Fonts\\verdanab.ttf', 'C:\\Windows\\Fonts\\H2GTRE.TTF', 'C:\\WINDOWS\\Fonts\\ALGER.TTF', 'C:\\Windows\\Fonts\\Hancom Gothic Regular.ttf', 'C:\\WINDOWS\\Fonts\\BOD_BLAR.TTF', 'C:\\WINDOWS\\Fonts\\ANTQUABI.TTF', 'C:\\WINDOWS\\Fonts\\CALISTB.TTF', 'C:\\WINDOWS\\Fonts\\NanumGothicLight_0.ttf', 'C:\\WINDOWS\\Fonts\\seguisli.ttf', 'C:\\WINDOWS\\Fonts\\verdanaz.ttf', 'C:\\Windows\\Fonts\\georgia.ttf', 'C:\\WINDOWS\\Fonts\\segoeui.ttf', 'C:\\Windows\\Fonts\\consolaz.ttf', 'C:\\WINDOWS\\Fonts\\FRAHV.TTF', 'C:\\Windows\\Fonts\\msjhbd.ttc', 'C:\\WINDOWS\\Fonts\\ONYX.TTF', 'C:\\Windows\\Fonts\\WINGDNG3.TTF', 'C:\\WINDOWS\\Fonts\\BKANT.TTF', 'C:\\WINDOWS\\Fonts\\HYHWPEQ.TTF', 'C:\\WINDOWS\\Fonts\\HANDotumB.ttf', 'C:\\Windows\\Fonts\\comicbd.ttf', 'C:\\WINDOWS\\Fonts\\SitkaB.ttc', 'C:\\Windows\\Fonts\\bahnschrift.ttf', 'C:\\WINDOWS\\Fonts\\sylfaen.ttf', 'C:\\Windows\\Fonts\\ANTQUAI.TTF', 'C:\\Windows\\Fonts\\Nirmala.ttf', 'C:\\WINDOWS\\Fonts\\verdanai.ttf', 'C:\\WINDOWS\\Fonts\\HMFMOLD.TTF', 'C:\\Windows\\Fonts\\GOUDOSB.TTF', 'C:\\Windows\\Fonts\\CALIFB.TTF', 'C:\\Windows\\Fonts\\FRADMCN.TTF', 'C:\\WINDOWS\\Fonts\\impact.ttf', 'C:\\WINDOWS\\Fonts\\constanz.ttf', 'C:\\WINDOWS\\Fonts\\BOD_R.TTF', 'C:\\WINDOWS\\Fonts\\LFAXDI.TTF', 'C:\\Windows\\Fonts\\BOOKOSBI.TTF', 'C:\\Windows\\Fonts\\CALIST.TTF', 'C:\\WINDOWS\\Fonts\\mmrtext.ttf', 'C:\\WINDOWS\\Fonts\\calibriz.ttf', 'C:\\WINDOWS\\Fonts\\LTYPEB.TTF', 'C:\\WINDOWS\\Fonts\\calibri.ttf', 'C:\\Windows\\Fonts\\MTCORSVA.TTF', 'C:\\Windows\\Fonts\\JUMJA.TTF', 'C:\\Windows\\Fonts\\GOTHICB.TTF', 'C:\\WINDOWS\\Fonts\\trebuc.ttf', 'C:\\Windows\\Fonts\\LTYPE.TTF', 'C:\\Windows\\Fonts\\corbell.ttf', 'C:\\Windows\\Fonts\\ERASDEMI.TTF', 'C:\\WINDOWS\\Fonts\\LSANSDI.TTF', 'C:\\Windows\\Fonts\\Candarab.ttf', 'C:\\Windows\\Fonts\\SitkaB.ttc', 'C:\\Windows\\Fonts\\taile.ttf', 'C:\\WINDOWS\\Fonts\\ANTQUAI.TTF', 'C:\\WINDOWS\\Fonts\\georgiab.ttf', 'C:\\Windows\\Fonts\\Sitka.ttc', 'C:\\Windows\\Fonts\\phagspa.ttf', 'C:\\WINDOWS\\Fonts\\ERASBD.TTF', 'C:\\WINDOWS\\Fonts\\georgiai.ttf', 'C:\\Windows\\Fonts\\BOD_PSTC.TTF', 'C:\\WINDOWS\\Fonts\\GOUDOSB.TTF', 'C:\\WINDOWS\\Fonts\\segoeuiz.ttf', 'C:\\Windows\\Fonts\\PALSCRI.TTF', 'C:\\WINDOWS\\Fonts\\corbell.ttf', 'C:\\WINDOWS\\Fonts\\GARABD.TTF', 'C:\\WINDOWS\\Fonts\\ITCBLKAD.TTF', 'C:\\WINDOWS\\Fonts\\PERI____.TTF', 'C:\\WINDOWS\\Fonts\\LSANSI.TTF', 'C:\\WINDOWS\\Fonts\\NanumBarunGothicLight.ttf', 'C:\\Windows\\Fonts\\BOD_CR.TTF', 'C:\\WINDOWS\\Fonts\\CALIFI.TTF', 'C:\\Windows\\Fonts\\palabi.ttf', 'C:\\Windows\\Fonts\\NanumBarunGothicLight.ttf', 'C:\\WINDOWS\\Fonts\\RAGE.TTF', 'C:\\Windows\\Fonts\\FRAHV.TTF', 'C:\\WINDOWS\\Fonts\\HTOWERT.TTF', 'C:\\Windows\\Fonts\\HMFMMUEX.TTC', 'C:\\Windows\\Fonts\\KUNSTLER.TTF', 'C:\\Windows\\Fonts\\simsunb.ttf', 'C:\\Windows\\Fonts\\FRAMDCN.TTF', 'C:\\WINDOWS\\Fonts\\GLECB.TTF', 'C:\\WINDOWS\\Fonts\\YuGothM.ttc', 'C:\\Windows\\Fonts\\ROCKB.TTF', 'C:\\WINDOWS\\Fonts\\constani.ttf', 'C:\\Windows\\Fonts\\BROADW.TTF', 'C:\\Windows\\Fonts\\LSANSDI.TTF', 'C:\\Windows\\Fonts\\CALIFR.TTF', 'C:\\Users\\statkclee\\AppData\\Local\\Microsoft\\Windows\\Fonts\\NotoSerifKR.ttf', 'C:\\Windows\\Fonts\\ROCCB___.TTF', 'C:\\Windows\\Fonts\\NanumMyeongjo.ttf', 'C:\\WINDOWS\\Fonts\\GARAIT.TTF', 'C:\\WINDOWS\\Fonts\\gadugib.ttf', 'C:\\Windows\\Fonts\\seguibli.ttf', 'C:\\WINDOWS\\Fonts\\HMKMRHD.TTF', 'C:\\Windows\\Fonts\\NanumBrush.ttf', 'C:\\WINDOWS\\Fonts\\BOOKOS.TTF', 'C:\\WINDOWS\\Fonts\\ITCEDSCR.TTF', 'C:\\WINDOWS\\Fonts\\NotoSansKR-Black.otf', 'C:\\Windows\\Fonts\\D2CodingBold-Ver1.3.2-20180524-ligature.ttf', 'C:\\Windows\\Fonts\\DUBAI-LIGHT.TTF', 'C:\\WINDOWS\\Fonts\\VINERITC.TTF', 'C:\\Users\\statkclee\\AppData\\Local\\Microsoft\\Windows\\Fonts\\NotoSansKR-Light.otf', 'C:\\WINDOWS\\Fonts\\framd.ttf', 'C:\\Windows\\Fonts\\SCHLBKB.TTF', 'C:\\WINDOWS\\Fonts\\ANTQUAB.TTF', 'C:\\Windows\\Fonts\\OLDENGL.TTF', 'C:\\Windows\\Fonts\\NanumGothic.otf', 'C:\\Users\\statkclee\\AppData\\Local\\Microsoft\\Windows\\Fonts\\NotoSansKR-Bold.otf', 'C:\\WINDOWS\\Fonts\\georgia.ttf', 'C:\\Windows\\Fonts\\ROCKI.TTF', 'C:\\Windows\\Fonts\\HANDotum.ttf', 'C:\\Windows\\Fonts\\NotoSansKR-Thin.otf', 'C:\\Windows\\Fonts\\courbd.ttf', 'C:\\Windows\\Fonts\\BERNHC.TTF', 'C:\\WINDOWS\\Fonts\\ELEPHNTI.TTF', 'C:\\Windows\\Fonts\\ariali.ttf', 'C:\\WINDOWS\\Fonts\\GILB____.TTF', 'C:\\Windows\\Fonts\\TCCB____.TTF', 'C:\\Windows\\Fonts\\YuGothL.ttc', 'C:\\Windows\\Fonts\\msyh.ttc', 'C:\\WINDOWS\\Fonts\\MaruBuri-ExtraLight.ttf', 'C:\\WINDOWS\\Fonts\\consolai.ttf', 'C:\\WINDOWS\\Fonts\\GOUDYSTO.TTF', 'C:\\Windows\\Fonts\\timesbd.ttf', 'C:\\Windows\\Fonts\\HANWing2.ttf', 'C:\\Windows\\Fonts\\NanumGothicLight_0.ttf', 'C:\\WINDOWS\\Fonts\\msyh.ttc', 'C:\\Windows\\Fonts\\HARLOWSI.TTF', 'C:\\WINDOWS\\Fonts\\LATINWD.TTF', 'C:\\Windows\\Fonts\\NotoSansKR-Regular.otf', 'C:\\Windows\\Fonts\\BOD_BLAI.TTF', 'C:\\WINDOWS\\Fonts\\NirmalaB.ttf', 'C:\\WINDOWS\\Fonts\\wingding.ttf', 'C:\\Users\\statkclee\\AppData\\Local\\Microsoft\\Windows\\Fonts\\MaruBuri-Light.ttf', 'C:\\Windows\\Fonts\\MaruBuri-Regular.ttf', 'C:\\Windows\\Fonts\\COOPBL.TTF', 'C:\\Windows\\Fonts\\TEMPSITC.TTF', 'C:\\WINDOWS\\Fonts\\comic.ttf', 'C:\\WINDOWS\\Fonts\\GLSNECB.TTF', 'C:\\Windows\\Fonts\\NanumBarunGothicBold.ttf', 'C:\\Windows\\Fonts\\verdanab.ttf', 'C:\\WINDOWS\\Fonts\\NirmalaS.ttf', 'C:\\Windows\\Fonts\\Gabriola.ttf', 'C:\\WINDOWS\\Fonts\\NIAGSOL.TTF', 'C:\\WINDOWS\\Fonts\\FELIXTI.TTF', 'C:\\WINDOWS\\Fonts\\ARIALN.TTF', 'C:\\WINDOWS\\Fonts\\BELLI.TTF', 'C:\\WINDOWS\\Fonts\\NanumBarunGothicUltraLight.ttf', 'C:\\WINDOWS\\Fonts\\Candarali.ttf', 'C:\\Windows\\Fonts\\verdanai.ttf', 'C:\\WINDOWS\\Fonts\\MOD20.TTF', 'C:\\WINDOWS\\Fonts\\NIAGENG.TTF', 'C:\\Windows\\Fonts\\LSANSD.TTF', 'C:\\Windows\\Fonts\\ebrimabd.ttf', 'C:\\Windows\\Fonts\\seguibl.ttf', 'C:\\WINDOWS\\Fonts\\segoesc.ttf', 'C:\\WINDOWS\\Fonts\\holomdl2.ttf', 'C:\\Windows\\Fonts\\BOOKOSB.TTF', 'C:\\Windows\\Fonts\\NotoSansKR-Medium.otf', 'C:\\Windows\\Fonts\\LHANDW.TTF', 'C:\\Windows\\Fonts\\CascadiaMono.ttf', 'C:\\Windows\\Fonts\\malgun.ttf', 'C:\\WINDOWS\\Fonts\\segmdl2.ttf', 'C:\\Windows\\Fonts\\VLADIMIR.TTF', 'C:\\Windows\\Fonts\\comici.ttf', 'C:\\Windows\\Fonts\\ENGR.TTF', 'C:\\Windows\\Fonts\\MaruBuri-SemiBold.ttf', 'C:\\WINDOWS\\Fonts\\BELLB.TTF', 'C:\\Windows\\Fonts\\seguiemj.ttf', 'C:\\Windows\\Fonts\\segoeuisl.ttf', 'C:\\Windows\\Fonts\\comicz.ttf', 'C:\\Windows\\Fonts\\malgunbd.ttf', 'C:\\Windows\\Fonts\\segoeuil.ttf', 'C:\\Windows\\Fonts\\HYHWPEQ.TTF', 'C:\\Windows\\Fonts\\CENTURY.TTF', 'C:\\WINDOWS\\Fonts\\GILC____.TTF', 'C:\\Windows\\Fonts\\trebuc.ttf', 'C:\\Windows\\Fonts\\H2PORL.TTF', 'C:\\WINDOWS\\Fonts\\LBRITE.TTF', 'C:\\Windows\\Fonts\\corbelli.ttf', 'C:\\Windows\\Fonts\\MISTRAL.TTF', 'C:\\Windows\\Fonts\\BOD_R.TTF', 'C:\\WINDOWS\\Fonts\\LFAXI.TTF', 'C:\\WINDOWS\\Fonts\\FRABKIT.TTF', 'C:\\WINDOWS\\Fonts\\NanumGothicLight.ttf', 'C:\\WINDOWS\\Fonts\\pala.ttf', 'C:\\WINDOWS\\Fonts\\LBRITEDI.TTF', 'C:\\Windows\\Fonts\\TCCM____.TTF', 'C:\\WINDOWS\\Fonts\\micross.ttf', 'C:\\Users\\statkclee\\AppData\\Local\\Microsoft\\Windows\\Fonts\\MaruBuri-Regular.ttf', 'C:\\WINDOWS\\Fonts\\monbaiti.ttf', 'C:\\Windows\\Fonts\\trebucit.ttf', 'C:\\Windows\\Fonts\\BOD_B.TTF', 'C:\\WINDOWS\\Fonts\\BOD_CR.TTF', 'C:\\WINDOWS\\Fonts\\COLONNA.TTF', 'C:\\WINDOWS\\Fonts\\PAPYRUS.TTF', 'C:\\Windows\\Fonts\\Hancom Gothic Bold.ttf', 'C:\\Windows\\Fonts\\H2SA1M.TTF', 'C:\\WINDOWS\\Fonts\\ELEPHNT.TTF', 'C:\\WINDOWS\\Fonts\\simsunb.ttf', 'C:\\Windows\\Fonts\\NanumPen.ttf', 'C:\\WINDOWS\\Fonts\\batang.ttc', 'C:\\WINDOWS\\Fonts\\DUBAI-BOLD.TTF', 'C:\\Windows\\Fonts\\ROCKBI.TTF', 'C:\\WINDOWS\\Fonts\\HMFMPYUN.TTF', 'C:\\WINDOWS\\Fonts\\NanumGothicBold.ttf', 'C:\\WINDOWS\\Fonts\\VIVALDII.TTF', 'C:\\WINDOWS\\Fonts\\YuGothB.ttc', 'C:\\WINDOWS\\Fonts\\palabi.ttf', 'C:\\Windows\\Fonts\\LFAXDI.TTF', 'C:\\WINDOWS\\Fonts\\timesbd.ttf', 'C:\\Windows\\Fonts\\MOD20.TTF', 'C:\\Windows\\Fonts\\FRADMIT.TTF', 'C:\\WINDOWS\\Fonts\\HATTEN.TTF', 'C:\\Windows\\Fonts\\GARA.TTF', 'C:\\Windows\\Fonts\\LEELAWDB.TTF', 'C:\\Windows\\Fonts\\HMKMRHD.TTF', 'C:\\Windows\\Fonts\\segoeuib.ttf', 'C:\\WINDOWS\\Fonts\\H2GSRB.TTF', 'C:\\WINDOWS\\Fonts\\HANBatangExtBB.ttf', 'C:\\Windows\\Fonts\\BASKVILL.TTF', 'C:\\WINDOWS\\Fonts\\MATURASC.TTF', 'C:\\WINDOWS\\Fonts\\H2HDRM.TTF', 'C:\\Windows\\Fonts\\cambriaz.ttf', 'C:\\WINDOWS\\Fonts\\LSANS.TTF', 'C:\\Windows\\Fonts\\NanumBarunpenB.ttf', 'C:\\Windows\\Fonts\\Candarai.ttf', 'C:\\Windows\\Fonts\\ITCBLKAD.TTF', 'C:\\Windows\\Fonts\\courbi.ttf', 'C:\\WINDOWS\\Fonts\\DUBAI-LIGHT.TTF', 'C:\\WINDOWS\\Fonts\\timesi.ttf', 'C:\\Windows\\Fonts\\NGULIM.TTF', 'C:\\WINDOWS\\Fonts\\msyhl.ttc', 'C:\\Windows\\Fonts\\BOOKOSI.TTF', 'C:\\WINDOWS\\Fonts\\courbd.ttf', 'C:\\Windows\\Fonts\\seguisb.ttf', 'C:\\Windows\\Fonts\\FORTE.TTF', 'C:\\Windows\\Fonts\\CHILLER.TTF', 'C:\\Windows\\Fonts\\CENTAUR.TTF', 'C:\\Windows\\Fonts\\GLECB.TTF', 'C:\\Windows\\Fonts\\H2MJRE.TTF', 'C:\\Windows\\Fonts\\NanumGothicBold.otf', 'C:\\WINDOWS\\Fonts\\SCRIPTBL.TTF', 'C:\\WINDOWS\\Fonts\\cambriai.ttf', 'C:\\WINDOWS\\Fonts\\COOPBL.TTF', 'C:\\Windows\\Fonts\\MaruBuri-ExtraLight.ttf', 'C:\\WINDOWS\\Fonts\\ebrimabd.ttf', 'C:\\WINDOWS\\Fonts\\YuGothR.ttc', 'C:\\WINDOWS\\Fonts\\GIGI.TTF', 'C:\\Windows\\Fonts\\MAGNETOB.TTF', 'C:\\WINDOWS\\Fonts\\CENTURY.TTF', 'C:\\Windows\\Fonts\\YuGothM.ttc', 'C:\\Windows\\Fonts\\HATTEN.TTF', 'C:\\WINDOWS\\Fonts\\corbelli.ttf', 'C:\\Windows\\Fonts\\BRUSHSCI.TTF', 'C:\\Users\\statkclee\\AppData\\Local\\Microsoft\\Windows\\Fonts\\MaruBuri-ExtraLight.ttf', 'C:\\Windows\\Fonts\\LBRITE.TTF', 'C:\\Users\\statkclee\\AppData\\Local\\Microsoft\\Windows\\Fonts\\FiraCode-VariableFont_wght.ttf', 'C:\\WINDOWS\\Fonts\\GILBI___.TTF', 'C:\\Windows\\Fonts\\himalaya.ttf', 'C:\\WINDOWS\\Fonts\\NanumGothic_0.ttf', 'C:\\WINDOWS\\Fonts\\segoepr.ttf', 'C:\\WINDOWS\\Fonts\\msjhbd.ttc', 'C:\\Windows\\Fonts\\batang.ttc', 'C:\\Windows\\Fonts\\HANBatangExt.ttf', 'C:\\Windows\\Fonts\\HARNGTON.TTF', 'C:\\WINDOWS\\Fonts\\FRSCRIPT.TTF', 'C:\\Windows\\Fonts\\calibri.ttf', 'C:\\WINDOWS\\Fonts\\BROADW.TTF', 'C:\\Windows\\Fonts\\seguisym.ttf', 'C:\\Windows\\Fonts\\AGENCYB.TTF', 'C:\\Windows\\Fonts\\PARCHM.TTF', 'C:\\Windows\\Fonts\\AGENCYR.TTF', 'C:\\Windows\\Fonts\\NanumBarunGothic.ttf', 'C:\\WINDOWS\\Fonts\\CENTAUR.TTF', 'C:\\Windows\\Fonts\\ONYX.TTF', 'C:\\WINDOWS\\Fonts\\msjhl.ttc', 'C:\\Windows\\Fonts\\framdit.ttf', 'C:\\Windows\\Fonts\\tahoma.ttf', 'C:\\WINDOWS\\Fonts\\comici.ttf', 'C:\\WINDOWS\\Fonts\\NanumBrush.ttf', 'C:\\WINDOWS\\Fonts\\segoeprb.ttf', 'C:\\WINDOWS\\Fonts\\Candarab.ttf', 'C:\\Windows\\Fonts\\GIGI.TTF', 'C:\\WINDOWS\\Fonts\\CALISTBI.TTF', 'C:\\WINDOWS\\Fonts\\PRISTINA.TTF', 'C:\\WINDOWS\\Fonts\\palai.ttf', 'C:\\Windows\\Fonts\\calibriz.ttf', 'C:\\Windows\\Fonts\\WINGDNG2.TTF', 'C:\\Windows\\Fonts\\HMKMMAG.TTF', 'C:\\WINDOWS\\Fonts\\TCB_____.TTF', 'C:\\WINDOWS\\Fonts\\lucon.ttf', 'C:\\WINDOWS\\Fonts\\NanumMyeongjoBold.ttf', 'C:\\Windows\\Fonts\\COLONNA.TTF', 'C:\\WINDOWS\\Fonts\\KUNSTLER.TTF', 'C:\\WINDOWS\\Fonts\\webdings.ttf', 'C:\\WINDOWS\\Fonts\\calibril.ttf', 'C:\\WINDOWS\\Fonts\\symbol.ttf', 'C:\\Users\\statkclee\\AppData\\Local\\Microsoft\\Windows\\Fonts\\NotoSansKR-Black.otf', 'C:\\Windows\\Fonts\\DUBAI-REGULAR.TTF', 'C:\\Windows\\Fonts\\BOD_BI.TTF', 'C:\\Windows\\Fonts\\calibril.ttf', 'C:\\WINDOWS\\Fonts\\BELL.TTF', 'C:\\Windows\\Fonts\\H2PORM.TTF', 'C:\\WINDOWS\\Fonts\\malgunbd.ttf', 'C:\\Windows\\Fonts\\TCBI____.TTF', 'C:\\WINDOWS\\Fonts\\BRLNSB.TTF', 'C:\\Windows\\Fonts\\BOD_CB.TTF', 'C:\\WINDOWS\\Fonts\\seguibl.ttf', 'C:\\WINDOWS\\Fonts\\segoescb.ttf', 'C:\\Windows\\Fonts\\comic.ttf', 'C:\\Windows\\Fonts\\HMFMOLD.TTF', 'C:\\WINDOWS\\Fonts\\BASKVILL.TTF', 'C:\\WINDOWS\\Fonts\\corbelb.ttf', 'C:\\Windows\\Fonts\\LTYPEB.TTF', 'C:\\Windows\\Fonts\\PER_____.TTF', 'C:\\WINDOWS\\Fonts\\MaruBuri-SemiBold.ttf', 'C:\\Windows\\Fonts\\micross.ttf', 'C:\\Windows\\Fonts\\trebucbd.ttf', 'C:\\Windows\\Fonts\\PERTIBD.TTF', 'C:\\Windows\\Fonts\\GILSANUB.TTF', 'C:\\Users\\statkclee\\AppData\\Local\\Microsoft\\Windows\\Fonts\\MaruBuri-Bold.ttf', 'C:\\WINDOWS\\Fonts\\NotoSansKR-Bold.otf', 'C:\\WINDOWS\\Fonts\\D2CodingBold-Ver1.3.2-20180524-ligature.ttf', 'C:\\Windows\\Fonts\\georgiab.ttf', 'C:\\Windows\\Fonts\\ERASMD.TTF', 'C:\\Windows\\Fonts\\HANBatangExtB.ttf', 'C:\\WINDOWS\\Fonts\\Candaral.ttf', 'C:\\WINDOWS\\Fonts\\Hancom Gothic Regular.ttf', 'C:\\Windows\\Fonts\\ARIALNI.TTF', 'C:\\Windows\\Fonts\\segoeprb.ttf', 'C:\\Windows\\Fonts\\DUBAI-BOLD.TTF', 'C:\\WINDOWS\\Fonts\\couri.ttf', 'C:\\WINDOWS\\Fonts\\JUMJA.TTF', 'C:\\WINDOWS\\Fonts\\TCBI____.TTF', 'C:\\WINDOWS\\Fonts\\LEELAWAD.TTF', 'C:\\WINDOWS\\Fonts\\FRADM.TTF', 'C:\\WINDOWS\\Fonts\\corbeli.ttf', 'C:\\WINDOWS\\Fonts\\LTYPEO.TTF', 'C:\\WINDOWS\\Fonts\\JUICE___.TTF', 'C:\\Windows\\Fonts\\javatext.ttf', 'C:\\WINDOWS\\Fonts\\consola.ttf', 'C:\\WINDOWS\\Fonts\\BSSYM7.TTF', 'C:\\WINDOWS\\Fonts\\malgun.ttf', 'C:\\WINDOWS\\Fonts\\YuGothL.ttc', 'C:\\Windows\\Fonts\\NIAGENG.TTF', 'C:\\WINDOWS\\Fonts\\BOOKOSI.TTF', 'C:\\WINDOWS\\Fonts\\BRITANIC.TTF', 'C:\\WINDOWS\\Fonts\\ERASDEMI.TTF', 'C:\\Windows\\Fonts\\FRABKIT.TTF', 'C:\\Windows\\Fonts\\BRLNSDB.TTF', 'C:\\Windows\\Fonts\\arialbd.ttf', 'C:\\WINDOWS\\Fonts\\segoeuii.ttf', 'C:\\Windows\\Fonts\\NanumMyeongjoBold.ttf', 'C:\\WINDOWS\\Fonts\\ROCKB.TTF', 'C:\\WINDOWS\\Fonts\\TEMPSITC.TTF', 'C:\\WINDOWS\\Fonts\\LEELAWDB.TTF', 'C:\\WINDOWS\\Fonts\\D2Coding-Ver1.3.2-20180524-all.ttc', 'C:\\Windows\\Fonts\\verdana.ttf', 'C:\\Windows\\Fonts\\LFAXD.TTF', 'C:\\WINDOWS\\Fonts\\TCMI____.TTF', 'C:\\WINDOWS\\Fonts\\NanumBarunpenR.ttf', 'C:\\WINDOWS\\Fonts\\ARIALNI.TTF', 'C:\\WINDOWS\\Fonts\\STENCIL.TTF', 'C:\\Windows\\Fonts\\GILI____.TTF', 'C:\\WINDOWS\\Fonts\\CALISTI.TTF', 'C:\\Windows\\Fonts\\framd.ttf', 'C:\\WINDOWS\\Fonts\\segoeuisl.ttf', 'C:\\WINDOWS\\Fonts\\ariblk.ttf', 'C:\\Windows\\Fonts\\monbaiti.ttf', 'C:\\WINDOWS\\Fonts\\constanb.ttf', 'C:\\Windows\\Fonts\\times.ttf', 'C:\\WINDOWS\\Fonts\\ROCK.TTF', 'C:\\Windows\\Fonts\\BRLNSB.TTF', 'C:\\WINDOWS\\Fonts\\HANWing2.ttf', 'C:\\Windows\\Fonts\\D2Coding-Ver1.3.2-20180524-all.ttc', 'C:\\Windows\\Fonts\\seguisbi.ttf', 'C:\\Windows\\Fonts\\ITCEDSCR.TTF', 'C:\\Windows\\Fonts\\ntailu.ttf', 'C:\\Windows\\Fonts\\H2GSRB.TTF', 'C:\\Windows\\Fonts\\NirmalaS.ttf', 'C:\\Windows\\Fonts\\NirmalaB.ttf', 'C:\\WINDOWS\\Fonts\\ERASMD.TTF', 'C:\\Windows\\Fonts\\georgiaz.ttf', 'C:\\WINDOWS\\Fonts\\BOD_BI.TTF', 'C:\\WINDOWS\\Fonts\\NanumGothic.otf']</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotnine <span class="im">as</span> p9</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gapminder <span class="im">import</span> gapminder</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>fontpath <span class="op">=</span> <span class="st">'c:/windows/fonts/NanumGothic.ttf'</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>font_name <span class="op">=</span> fm.FontProperties(fname<span class="op">=</span>fontpath, size<span class="op">=</span><span class="dv">10</span>).get_name()</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(font_name)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NanumGothic</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'font'</span>, family<span class="op">=</span>font_name)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>mpl.rcParams[<span class="st">'axes.unicode_minus'</span>] <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>( p9.ggplot(gapminder)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.aes(x<span class="op">=</span><span class="st">'year'</span>, y<span class="op">=</span><span class="st">'lifeExp'</span>, group<span class="op">=</span><span class="st">'country'</span>, color<span class="op">=</span><span class="st">'continent'</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.geom_line()</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> p9.labs(x<span class="op">=</span><span class="st">'연도'</span>, y<span class="op">=</span><span class="st">'기대수명'</span>, title<span class="op">=</span><span class="st">'국가별 평균 기대수명 변화 추이'</span>) </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> theme(text<span class="op">=</span>element_text(fontproperties<span class="op">=</span>font_name))</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;ggplot: (150295264187)&gt;</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; findfont: Font family ['NanumGothic'] not found. Falling back to DejaVu Sans.</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 50672 (\N{HANGUL SYLLABLE YEON}) missing from current font.</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 46020 (\N{HANGUL SYLLABLE DO}) missing from current font.</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 44592 (\N{HANGUL SYLLABLE GI}) missing from current font.</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 45824 (\N{HANGUL SYLLABLE DAE}) missing from current font.</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 49688 (\N{HANGUL SYLLABLE SU}) missing from current font.</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 47749 (\N{HANGUL SYLLABLE MYEONG}) missing from current font.</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; findfont: Font family ['NanumGothic'] not found. Falling back to DejaVu Sans.</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 44397 (\N{HANGUL SYLLABLE GUG}) missing from current font.</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 44032 (\N{HANGUL SYLLABLE GA}) missing from current font.</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 48324 (\N{HANGUL SYLLABLE BYEOL}) missing from current font.</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 54217 (\N{HANGUL SYLLABLE PYEONG}) missing from current font.</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 44512 (\N{HANGUL SYLLABLE GYUN}) missing from current font.</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 48320 (\N{HANGUL SYLLABLE BYEON}) missing from current font.</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 54868 (\N{HANGUL SYLLABLE HWA}) missing from current font.</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 52628 (\N{HANGUL SYLLABLE CU}) missing from current font.</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C:\Users\statkclee\AppData\Local\R\win-library\4.2\reticulate\python\rpytools\call.py:13: UserWarning: Glyph 51060 (\N{HANGUL SYLLABLE I}) missing from current font.</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="99_viz_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="99_viz_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="614"></a></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "복사완료!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "복사완료!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><a href="https://quarto.org/">Quarto</a> 로 제작</div>   
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom"});</script>
+
+
+
+</body></html>
