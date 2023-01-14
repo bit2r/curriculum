@@ -31,6 +31,10 @@ filters:
 lightbox: auto      
 ---
 
+# 그래프 문법
+
+- [데이터 시각화 - 그래프 문법 실무](https://aispiration.com/viz/viz-ggplot2-practice.html)
+
 
 # 시각화 패키지
 
@@ -122,42 +126,121 @@ plt.show()
 
 ## 시각화 연습 1
 
+::: {.panel-tabset}
+
+### `ggplot`
+
 ```{r}
 library(tidyverse)
 library(gapminder)
 
 gapminder %>% 
-  ggplot(aes(x=year, y=lifeExp, by=country, color=continent)) +
+  ggplot(aes(x=year, y=lifeExp, group = country, color=continent)) +
     geom_line() +
     labs(x = "연도", y = "기대수명",
          title = "국가별 평균 기대수명 변화 추이")
 ```
 
+### `plotnine`
 
 ```{python}
-import matplotlib as mpl 
 import matplotlib.pyplot as plt 
-import matplotlib.font_manager as fm  
-
-print(fm.findSystemFonts(fontpaths=None, fontext='ttf'))
-
 import plotnine as p9
 from gapminder import gapminder
-
-fontpath = 'c:/windows/fonts/NanumGothic.ttf'
-font_name = fm.FontProperties(fname=fontpath, size=10).get_name()
-print(font_name)
-plt.rc('font', family=font_name)
-
-mpl.rcParams['axes.unicode_minus'] = False
 
 ( p9.ggplot(gapminder)
     + p9.aes(x='year', y='lifeExp', group='country', color='continent')
     + p9.geom_line()
     + p9.labs(x='연도', y='기대수명', title='국가별 평균 기대수명 변화 추이') 
-    + theme(text=element_text(fontproperties=font_name))
-    
 )
 
 ```
 
+### `matplotlib`
+
+```{python}
+import matplotlib.pyplot as plt
+from gapminder import gapminder
+
+plt.figure(figsize=(10,5))
+
+continent_colors = {'Africa':'red', 'Americas':'blue', 'Asia':'green', 'Europe':'black', 'Oceania':'purple'}
+
+for continent, group in gapminder.groupby('continent'):
+    color = continent_colors[continent]
+    for country, sub_group in group.groupby('country'):
+        plt.plot(sub_group['year'], sub_group['lifeExp'], color = color)
+
+plt.xlabel("연도")
+plt.ylabel("기대수명")
+plt.title("국가별 평균 기대수명 변화 추이")
+
+# create a custom legend
+for continent, color in continent_colors.items():
+    plt.scatter([], [], c=color, label=continent)
+    
+plt.legend(scatterpoints=1, frameon=False, labelspacing=0.3, bbox_to_anchor=(1.1, 1), loc='upper right', bbox_transform=plt.gcf().transFigure)
+
+plt.show()
+```
+
+### `seaborn`
+
+```{python}
+import matplotlib.pyplot as plt
+from gapminder import gapminder
+
+import seaborn as sns
+
+continent_colors = {'Africa':'red', 'Americas':'blue', 'Asia':'green', 'Europe':'black', 'Oceania':'purple'}
+
+sns.set(rc={'figure.figsize':(10,5)})
+
+for continent, group in gapminder.groupby('continent'):
+    color = continent_colors[continent]
+    for country, sub_group in group.groupby('country'):
+        sns.lineplot(x="year", y="lifeExp", data=sub_group, color=color)
+
+plt.xlabel("연도")
+plt.ylabel("기대수명")
+plt.title("국가별 평균 기대수명 변화 추이")
+
+# create a custom legend
+for continent, color in continent_colors.items():
+    plt.scatter([], [], c=color, label=continent)
+    
+plt.legend(scatterpoints=1, frameon=False, labelspacing=0.3, bbox_to_anchor=(1.1, 1), loc='upper right', bbox_transform=plt.gcf().transFigure)    
+
+plt.show()
+
+```
+
+
+:::
+
+
+## 시각화 연습 2
+
+
+2002년 기준 각 대륙별 1인당 GDP와 평균수명을 시각화하세요.
+
+
+```{r}
+gapminder::gapminder %>% 
+  filter(year == 2002) %>% 
+  ggplot() + 
+    aes(x = gdpPercap) + 
+    aes(y = lifeExp) + 
+    geom_point() + 
+    aes(color = continent) + 
+    aes(size = pop/1000000) + 
+    labs(size = "Population\n(millions)") + 
+    labs(color = NULL) + 
+    labs(x = "Per Capita GDP ($US)") + 
+    labs(y = "Life expecancy (years)") + 
+    labs(title = "Life expectancy vs Per Capita GDP, 2002") + 
+    labs(subtitle = "Data Source: gapminder package") + 
+    labs(caption = "Produced for MA206 in Fall AY2023") + 
+    facet_wrap(~ continent)
+```
+```
