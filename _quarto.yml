@@ -75,6 +75,8 @@ website:
           - text: "-----"
           - href: 99_viz.qmd
             text: "시각화"          
+          - href: 99_programming.qmd
+            text: "파이썬 프로그래밍"
           - text: "-----"          
           - href: 10_cmdline.qmd
             text: "명령라인 데이터 분석"

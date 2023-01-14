@@ -1,0 +1,217 @@
+---
+title: "파이썬 프로그래밍"
+description: "데이터 과학을 위한 프로그래밍을 배워봅니다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - flatly
+      - css/quarto-fonts.css
+    code-fold: false
+    code-overflow: scroll
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+editor_options: 
+  chunk_output_type: console
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true  
+filters:
+   - lightbox
+lightbox: auto      
+---
+
+# 정규화
+
+파이썬 정규화 함수를 작성하고 이를 통해 정규분포 난수에서 나온 표본을 표준정규분포로 정규화하는 코드.
+
+```{python}
+import numpy as np 
+
+# 정규분포에서 나온 난수
+mu, sigma = 100, 10 
+
+random_samples = np.random.normal(mu, sigma, size = 10)
+
+# 정규화 값을 저장
+results = []
+
+# 정규화 함수
+def normalize(sample):
+  return( (sample - mu) / sigma)
+
+# 정규화
+for sample in random_samples:
+    results.append( normalize(sample) )
+
+print(results)
+```
+
+# 벡터화
+
+**벡터화(Vectorization)**는 데이터 과학에서 크게 두가지 점에서 중요하다. 
+
+- 루프 반복문을 돌리는 대신 전체 배열과 행렬에 연산작업을 수행하여 속도를 높임. 특히 데이터가 큰 경우 큰 효과를 볼 수 있음. 대체로 Vectorization은 C 혹은 포트란으로 작성됨.
+- 동일한 작업을 벡터화 코드로 작성하게 되면 가독성을 크게 높이고 코드가 간결해지는 장점이 있음.
+
+:::{.panel-tabset}
+
+## for 루프 작성
+
+```{python}
+import numpy as np
+
+# 배열 두개를 생성
+A_arr = np.array([1, 2, 3, 4, 5])
+B_arr = np.array([6, 7, 8, 7, 8])
+
+# 최종 결과 저장
+result_arr = []
+
+# 각 배열 항목별로 연산작업을 수행
+for i in range(len(A_arr)):
+    result_arr.append(A_arr[i] + B_arr[i])
+
+print(result_arr)
+```
+
+
+## 벡터화 코드
+
+```{python}
+import numpy as np
+
+# 배열 두개를 생성
+A_arr = np.array([1, 2, 3, 4, 5])
+B_arr = np.array([6, 7, 8, 7, 8])
+
+# 벡터화 연산
+result_arr = A_arr + B_arr
+
+print(result_arr)
+```
+
+:::
+
+
+# 제곱 방법
+
+다양한 방식으로 데이터에 함수 (제곱)를 적용시켜 보자.
+
+:::{.panel-tabset}
+
+## `for` 루프
+
+```{python}
+samples = [1, 2, 3, 4, 5]
+squared_samples = []
+
+for sample in samples:
+    squared_samples.append(sample**2)
+    
+squared_samples
+```
+
+## list comprehension
+
+```{python}
+samples = [1, 2, 3, 4, 5]
+squared_samples = [x**2 for x in samples]
+squared_samples
+```
+
+## 생성자(generator)
+
+```{python}
+samples = (1, 2, 3, 4, 5)
+squared_samples = (x**2 for x in samples)
+list(squared_samples)
+```
+
+## `map()` 함수
+
+```{python}
+samples = [1, 2, 3, 4, 5]
+squared_samples = list(map(lambda x: x**2, samples))
+squared_samples
+```
+
+## `numpy` 배열
+
+```{python}
+samples_arr = np.array([1, 2, 3, 4, 5])
+squared_samples = samples_arr ** 2
+squared_samples
+# print(squared_samples)
+```
+
+## pandas 데이터프레임
+
+```{python}
+import pandas as pd
+samples = [1, 2, 3, 4, 5]
+
+df = pd.DataFrame(samples, columns=["samples"])
+df["squared_numbers"] = df["samples"].apply(lambda x: x**2)
+print(df)
+```
+
+:::
+
+# `gapminder` 데이터셋
+
+## 사용자 정의 함수
+
+```{python}
+import pandas as pd
+
+df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})
+
+# 제곱함수
+def square(x):
+    return x**2
+
+# A 칼럽에 사용자 정의 함수를 적용
+df['A_squared'] = df['A'].apply(square)
+
+print(df)
+```
+
+
+## `apply()` 함수
+
+```{python}
+import pandas as pd
+from gapminder import gapminder
+
+gapminder['GDP'] = gapminder.apply(lambda row: row['pop'] * row['gdpPercap'] / 10**9, axis=1)
+
+gapminder[['country', 'pop', 'gdpPercap', 'GDP']]
+```
+
+
+## 사용자 정의 함수
+
+```{python}
+import pandas as pd
+from gapminder import gapminder
+from functools import partial
+
+def calculate_gdp(row):
+  return(row['pop'] * row['gdpPercap'] / 10**9)
+
+gapminder['GDP'] = gapminder.apply(calculate_gdp, axis=1)
+
+gapminder[['country', 'pop', 'gdpPercap', 'GDP']]
+```
+

@@ -1328,5 +1328,82 @@
     "title": "시각화",
     "section": "4.2 시각화 연습 2",
     "text": "4.2 시각화 연습 2\n2002년 기준 각 대륙별 1인당 GDP와 평균수명을 시각화하세요.\n\ngapminder::gapminder %>% \n  filter(year == 2002) %>% \n  ggplot() + \n    aes(x = gdpPercap) + \n    aes(y = lifeExp) + \n    geom_point() + \n    aes(color = continent) + \n    aes(size = pop/1000000) + \n    labs(size = \"Population\\n(millions)\") + \n    labs(color = NULL) + \n    labs(x = \"Per Capita GDP ($US)\") + \n    labs(y = \"Life expecancy (years)\") + \n    labs(title = \"Life expectancy vs Per Capita GDP, 2002\") + \n    labs(subtitle = \"Data Source: gapminder package\") + \n    labs(caption = \"Produced for MA206 in Fall AY2023\") + \n    facet_wrap(~ continent)\n\n\n\n\n\n\n\n\n```"
+  },
+  {
+    "objectID": "99_programming.html",
+    "href": "99_programming.html",
+    "title": "파이썬 프로그래밍",
+    "section": "",
+    "text": "파이썬 정규화 함수를 작성하고 이를 통해 정규분포 난수에서 나온 표본을 표준정규분포로 정규화하는 코드.\n\nimport numpy as np \n\n# 정규분포에서 나온 난수\nmu, sigma = 100, 10 \n\nrandom_samples = np.random.normal(mu, sigma, size = 10)\n\n# 정규화 값을 저장\nresults = []\n\n# 정규화 함수\ndef normalize(sample):\n  return( (sample - mu) / sigma)\n\n# 정규화\nfor sample in random_samples:\n    results.append( normalize(sample) )\n\nprint(results)\n#> [-0.37082741498345084, 0.8656631990371195, -0.18901873427866747, 0.82126547785832, -1.829051157694846, -0.533750732400371, -0.6976763280348308, -0.14691958971619384, 0.03463514277669048, -1.5771028398960425]"
+  },
+  {
+    "objectID": "99_programming.html#벡터화-코드",
+    "href": "99_programming.html#벡터화-코드",
+    "title": "파이썬 프로그래밍",
+    "section": "2.1 벡터화 코드",
+    "text": "2.1 벡터화 코드\n\nimport numpy as np\n\n# 배열 두개를 생성\nA_arr = np.array([1, 2, 3, 4, 5])\nB_arr = np.array([6, 7, 8, 7, 8])\n\n# 벡터화 연산\nresult_arr = A_arr + B_arr\n\nprint(result_arr)\n#> [ 7  9 11 11 13]"
+  },
+  {
+    "objectID": "99_programming.html#for-루프",
+    "href": "99_programming.html#for-루프",
+    "title": "파이썬 프로그래밍",
+    "section": "3.1 for 루프",
+    "text": "3.1 for 루프\n\nsamples = [1, 2, 3, 4, 5]\nsquared_samples = []\n\nfor sample in samples:\n    squared_samples.append(sample**2)\n    \nsquared_samples\n#> [1, 4, 9, 16, 25]"
+  },
+  {
+    "objectID": "99_programming.html#list-comprehension",
+    "href": "99_programming.html#list-comprehension",
+    "title": "파이썬 프로그래밍",
+    "section": "3.2 list comprehension",
+    "text": "3.2 list comprehension\n\nsamples = [1, 2, 3, 4, 5]\nsquared_samples = [x**2 for x in samples]\nsquared_samples\n#> [1, 4, 9, 16, 25]"
+  },
+  {
+    "objectID": "99_programming.html#생성자generator",
+    "href": "99_programming.html#생성자generator",
+    "title": "파이썬 프로그래밍",
+    "section": "3.3 생성자(generator)",
+    "text": "3.3 생성자(generator)\n\nsamples = (1, 2, 3, 4, 5)\nsquared_samples = (x**2 for x in samples)\nlist(squared_samples)\n#> [1, 4, 9, 16, 25]"
+  },
+  {
+    "objectID": "99_programming.html#map-함수",
+    "href": "99_programming.html#map-함수",
+    "title": "파이썬 프로그래밍",
+    "section": "3.4 map() 함수",
+    "text": "3.4 map() 함수\n\nsamples = [1, 2, 3, 4, 5]\nsquared_samples = list(map(lambda x: x**2, samples))\nsquared_samples\n#> [1, 4, 9, 16, 25]"
+  },
+  {
+    "objectID": "99_programming.html#numpy-배열",
+    "href": "99_programming.html#numpy-배열",
+    "title": "파이썬 프로그래밍",
+    "section": "3.5 numpy 배열",
+    "text": "3.5 numpy 배열\n\nsamples_arr = np.array([1, 2, 3, 4, 5])\nsquared_samples = samples_arr ** 2\nsquared_samples\n# print(squared_samples)\n#> array([ 1,  4,  9, 16, 25])"
+  },
+  {
+    "objectID": "99_programming.html#pandas-데이터프레임",
+    "href": "99_programming.html#pandas-데이터프레임",
+    "title": "파이썬 프로그래밍",
+    "section": "3.6 pandas 데이터프레임",
+    "text": "3.6 pandas 데이터프레임\n\nimport pandas as pd\nsamples = [1, 2, 3, 4, 5]\n\ndf = pd.DataFrame(samples, columns=[\"samples\"])\ndf[\"squared_numbers\"] = df[\"samples\"].apply(lambda x: x**2)\nprint(df)\n#>    samples  squared_numbers\n#> 0        1                1\n#> 1        2                4\n#> 2        3                9\n#> 3        4               16\n#> 4        5               25"
+  },
+  {
+    "objectID": "99_programming.html#사용자-정의-함수",
+    "href": "99_programming.html#사용자-정의-함수",
+    "title": "파이썬 프로그래밍",
+    "section": "4.1 사용자 정의 함수",
+    "text": "4.1 사용자 정의 함수\n\nimport pandas as pd\n\ndf = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})\n\n# 제곱함수\ndef square(x):\n    return x**2\n\n# A 칼럽에 사용자 정의 함수를 적용\ndf['A_squared'] = df['A'].apply(square)\n\nprint(df)\n#>    A  B  A_squared\n#> 0  1  4          1\n#> 1  2  5          4\n#> 2  3  6          9"
+  },
+  {
+    "objectID": "99_programming.html#apply-함수",
+    "href": "99_programming.html#apply-함수",
+    "title": "파이썬 프로그래밍",
+    "section": "4.2 apply() 함수",
+    "text": "4.2 apply() 함수\n\nimport pandas as pd\nfrom gapminder import gapminder\n\ngapminder['GDP'] = gapminder.apply(lambda row: row['pop'] * row['gdpPercap'] / 10**9, axis=1)\n\ngapminder[['country', 'pop', 'gdpPercap', 'GDP']]\n#>           country       pop   gdpPercap       GDP\n#> 0     Afghanistan   8425333  779.445314  6.567086\n#> 1     Afghanistan   9240934  820.853030  7.585449\n#> 2     Afghanistan  10267083  853.100710  8.758856\n#> 3     Afghanistan  11537966  836.197138  9.648014\n#> 4     Afghanistan  13079460  739.981106  9.678553\n#> ...           ...       ...         ...       ...\n#> 1699     Zimbabwe   9216418  706.157306  6.508241\n#> 1700     Zimbabwe  10704340  693.420786  7.422612\n#> 1701     Zimbabwe  11404948  792.449960  9.037851\n#> 1702     Zimbabwe  11926563  672.038623  8.015111\n#> 1703     Zimbabwe  12311143  469.709298  5.782658\n#> \n#> [1704 rows x 4 columns]"
+  },
+  {
+    "objectID": "99_programming.html#사용자-정의-함수-1",
+    "href": "99_programming.html#사용자-정의-함수-1",
+    "title": "파이썬 프로그래밍",
+    "section": "4.3 사용자 정의 함수",
+    "text": "4.3 사용자 정의 함수\n\nimport pandas as pd\nfrom gapminder import gapminder\nfrom functools import partial\n\ndef calculate_gdp(row):\n  return(row['pop'] * row['gdpPercap'] / 10**9)\n\ngapminder['GDP'] = gapminder.apply(calculate_gdp, axis=1)\n\ngapminder[['country', 'pop', 'gdpPercap', 'GDP']]\n#>           country       pop   gdpPercap       GDP\n#> 0     Afghanistan   8425333  779.445314  6.567086\n#> 1     Afghanistan   9240934  820.853030  7.585449\n#> 2     Afghanistan  10267083  853.100710  8.758856\n#> 3     Afghanistan  11537966  836.197138  9.648014\n#> 4     Afghanistan  13079460  739.981106  9.678553\n#> ...           ...       ...         ...       ...\n#> 1699     Zimbabwe   9216418  706.157306  6.508241\n#> 1700     Zimbabwe  10704340  693.420786  7.422612\n#> 1701     Zimbabwe  11404948  792.449960  9.037851\n#> 1702     Zimbabwe  11926563  672.038623  8.015111\n#> 1703     Zimbabwe  12311143  469.709298  5.782658\n#> \n#> [1704 rows x 4 columns]"
   }
 ]
