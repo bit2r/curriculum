@@ -1405,5 +1405,12 @@
     "title": "파이썬 프로그래밍",
     "section": "4.3 사용자 정의 함수",
     "text": "4.3 사용자 정의 함수\n\nimport pandas as pd\nfrom gapminder import gapminder\nfrom functools import partial\n\ndef calculate_gdp(row):\n  return(row['pop'] * row['gdpPercap'] / 10**9)\n\ngapminder['GDP'] = gapminder.apply(calculate_gdp, axis=1)\n\ngapminder[['country', 'pop', 'gdpPercap', 'GDP']]\n#>           country       pop   gdpPercap       GDP\n#> 0     Afghanistan   8425333  779.445314  6.567086\n#> 1     Afghanistan   9240934  820.853030  7.585449\n#> 2     Afghanistan  10267083  853.100710  8.758856\n#> 3     Afghanistan  11537966  836.197138  9.648014\n#> 4     Afghanistan  13079460  739.981106  9.678553\n#> ...           ...       ...         ...       ...\n#> 1699     Zimbabwe   9216418  706.157306  6.508241\n#> 1700     Zimbabwe  10704340  693.420786  7.422612\n#> 1701     Zimbabwe  11404948  792.449960  9.037851\n#> 1702     Zimbabwe  11926563  672.038623  8.015111\n#> 1703     Zimbabwe  12311143  469.709298  5.782658\n#> \n#> [1704 rows x 4 columns]"
+  },
+  {
+    "objectID": "99_feature_eng.html",
+    "href": "99_feature_eng.html",
+    "title": "피처 공학",
+    "section": "",
+    "text": "1 Feature Engineering\n기계학습 모형을 개발할 때 피처 공학으로 자주 사용되는 기법은 다음과 같다.\n\n범주형: One-hot encoding\n연속형: 정규화(Normalization) 혹은 표준화(standardization)\n연속형 → 범주형: 비닝(Binning) 혹은 이산화(discretization)\n연속형: 교호작용(interaction) 과 다항식 확장\n새로운 피처 생성: 기존 피쳐를 변환 혹은 총계작업\n피처 제거: 관련없거나 중복된 피쳐 제거\n차원 축소: PCA 등\n…"
   }
 ]

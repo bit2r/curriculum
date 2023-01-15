@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="이광춘">
-<meta name="description" content="디지털 전환 시대 맞춤형 데이터 과학 교육을 실시합니다.">
+<meta name="description" content="기계학습 Feature Engineering 기법을 학습합니다.">
 
-<title>데이터 과학 - 들어가며</title>
+<title>데이터 과학 - 피처 공학</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,8 +41,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -83,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">
+    <a class="nav-link" href="./index.html">
  <span class="menu-text">들어가며</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -351,49 +349,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">들어가며</h1>
-                  <div>
-        <div class="description">
-          디지털 전환 시대 맞춤형 데이터 과학 교육을 실시합니다.
-        </div>
-      </div>
-                </div>
-  </div>
-    
-  <div class="quarto-title-meta-author">
-    <div class="quarto-title-meta-heading">저자</div>
-    <div class="quarto-title-meta-heading">소속</div>
-    
-      <div class="quarto-title-meta-contents">
-      <a href="https://www.linkedin.com/in/kwangchunlee/">이광춘</a> 
-    </div>
-      <div class="quarto-title-meta-contents">
-          <p class="affiliation">
-              <a href="https://github.com/bit2r">
-              한국 R 사용자회
-              </a>
-            </p>
-        </div>
-      </div>
-
-  <div class="quarto-title-meta">
-
-        
-      <div>
-      <div class="quarto-title-meta-heading">공개</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">2023년 01월 15일</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -401,29 +357,67 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#교육-전후" id="toc-교육-전후" class="nav-link active" data-scroll-target="#교육-전후"><span class="toc-section-number">1</span>  교육 전후</a></li>
+  <li><a href="#feature-engineering" id="toc-feature-engineering" class="nav-link active" data-scroll-target="#feature-engineering"><span class="toc-section-number">1</span>  Feature Engineering</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">피처 공학</h1>
+</div>
 
+<div>
+  <div class="description">
+    기계학습 Feature Engineering 기법을 학습합니다.
+  </div>
+</div>
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">저자</div>
+  <div class="quarto-title-meta-heading">소속</div>
+  
+    <div class="quarto-title-meta-contents">
+    이광춘 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            TCS
+          </p>
+      </div>
+    </div>
 
-<section id="교육-전후" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> 교육 전후</h1>
-<p>체계적인 데이터 과학 교육전에는 실무 업무를 동시에 진행하면서 그때 그때 필요한 도구를 학습하여 적용하는 방식으로 진행된 반면 교육 후에는 다양한 도구를 그때 데이터의 상황과 문제에 맞춰 체계적으로 데이터 과학 제품을 개발하여 가치를 창출하고 유지발전시켜 나가게 됩니다.</p>
-<div id="before-after" class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="fig/now_gs.mp4"></video></div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="fig/future_gs.mp4"></video></div>
-</div>
-</div>
-</div>
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">공개</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2023년 01월 15일</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="feature-engineering" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Feature Engineering</h1>
+<p>기계학습 모형을 개발할 때 피처 공학으로 자주 사용되는 기법은 다음과 같다.</p>
+<ul>
+<li>범주형: One-hot encoding</li>
+<li>연속형: 정규화(Normalization) 혹은 표준화(standardization)</li>
+<li>연속형 → 범주형: 비닝(Binning) 혹은 이산화(discretization)</li>
+<li>연속형: 교호작용(interaction) 과 다항식 확장</li>
+<li>새로운 피처 생성: 기존 피쳐를 변환 혹은 총계작업</li>
+<li>피처 제거: 관련없거나 중복된 피쳐 제거</li>
+<li>차원 축소: PCA 등</li>
+<li>…</li>
+</ul>
 
 
 </section>
@@ -568,8 +562,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left"><a href="https://quarto.org/">Quarto</a> 로 제작</div>   
   </div>
 </footer>
-<script>videojs(video_shortcode_videojs_video1);</script>
-<script>videojs(video_shortcode_videojs_video2);</script>
 
 
 

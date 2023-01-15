@@ -60,6 +60,7 @@ website:
           - text: "-----"
           - href: 99_statistics.qmd
             text: "통계학"
+          - text: "-----"
           - href: 99_dplyr_pandas.qmd
             text: "데이터 다루기 (Pandas)"
           - href: 99_data_wrangling.qmd
@@ -77,6 +78,8 @@ website:
             text: "시각화"          
           - href: 99_programming.qmd
             text: "파이썬 프로그래밍"
+          - href: 99_feature_eng.qmd
+            text: "피처 공학"
           - text: "-----"          
           - href: 10_cmdline.qmd
             text: "명령라인 데이터 분석"

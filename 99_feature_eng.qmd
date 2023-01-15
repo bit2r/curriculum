@@ -1,0 +1,49 @@
+---
+title: "피처 공학"
+description: "기계학습 Feature Engineering 기법을 학습합니다."
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - flatly
+      - css/quarto-fonts.css
+    code-fold: false
+    code-overflow: scroll
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+editor_options: 
+  chunk_output_type: console
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true  
+filters:
+   - lightbox
+lightbox: auto      
+---
+
+# Feature Engineering
+
+기계학습 모형을 개발할 때 피처 공학으로 자주 사용되는 기법은 다음과 같다.
+
+- 범주형: One-hot encoding
+- 연속형: 정규화(Normalization) 혹은 표준화(standardization)
+- 연속형 &rarr; 범주형: 비닝(Binning) 혹은 이산화(discretization)
+- 연속형: 교호작용(interaction) 과 다항식 확장
+- 새로운 피처 생성: 기존 피쳐를 변환 혹은 총계작업
+- 피처 제거: 관련없거나 중복된 피쳐 제거
+- 차원 축소: PCA 등
+- ...
+
+
+
+

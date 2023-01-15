@@ -1,0 +1,14 @@
+{
+  "hash": "0e2f015686dab020a18492405084127f",
+  "result": {
+    "markdown": "---\ntitle: \"피처 공학\"\ndescription: \"기계학습 Feature Engineering 기법을 학습합니다.\"\ndate: today # 날짜 설정: now, last-modified\nauthor:\n  - name: 이광춘\n    affiliation: TCS\ntitle-block-banner: false\nformat:\n  html:\n    theme: \n      - flatly\n      - css/quarto-fonts.css\n    code-fold: false\n    code-overflow: scroll\n    toc: true\n    toc-depth: 3\n    number-sections: true\n    highlight-style: github    \n    self-contained: false\neditor_options: \n  chunk_output_type: console\nknitr:\n  opts_chunk: \n    collapse: true\n    comment: \"#>\" \n    R.options:\n      knitr.graphics.auto_pdf: true  \nfilters:\n   - lightbox\nlightbox: auto      \n---\n\n\n# Feature Engineering\n\n기계학습 모형을 개발할 때 피처 공학으로 자주 사용되는 기법은 다음과 같다.\n\n- 범주형: One-hot encoding\n- 연속형: 정규화(Normalization) 혹은 표준화(standardization)\n- 연속형 &rarr; 범주형: 비닝(Binning) 혹은 이산화(discretization)\n- 연속형: 교호작용(interaction) 과 다항식 확장\n- 새로운 피처 생성: 기존 피쳐를 변환 혹은 총계작업\n- 피처 제거: 관련없거나 중복된 피쳐 제거\n- 차원 축소: PCA 등\n- ...\n\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
