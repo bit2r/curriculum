@@ -1,6 +1,6 @@
 ---
-title: "2022년 교과과정"
-description: 실무적으로 데이터를 통해 가치를 창출하는데 꼭 필요한 기본기를 교육합니다.
+title: "시민 데이터 과학"
+description: 본격적인 데이터 과학을 다루기 전에 시민 데이터 과학자로 필요한 역량을 학습합니다.
 date: today # 날짜 설정: now, last-modified
 author:
   - name: 이광춘
@@ -42,6 +42,7 @@ knitr:
 
 # 학습 내용
 
+![](fig/study_curriculum.jpeg)
 
 ```{r}
 #| echo: false
