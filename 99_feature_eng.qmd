@@ -44,6 +44,158 @@ lightbox: auto
 - 차원 축소: PCA 등
 - ...
 
+# 암수구별 예측모형
+
+[[Cloudera - 고객이탈 예측모형 그리고 API](https://aispiration.com/model/model-cloudera.html)]{.aside}
 
 
+$$\text{펭귄성별} = f(x) + \epsilon$$
+
+## 예측 모형 기본
+
+```{python}
+# 기계학습 팩키지
+import pandas as pd
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, precision_score, recall_score
+from palmerpenguins import load_penguins
+
+
+# 데이터셋
+penguins = load_penguins()
+
+# 데이터 전처리
+penguins = penguins.dropna()
+penguins['sex'] = penguins['sex'].map({'female': 0, 'male': 1})
+
+X = penguins[["bill_length_mm", "bill_depth_mm", "flipper_length_mm", "body_mass_g"]]
+y = penguins["sex"]
+
+# 훈련 시험데이터셋 분리
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# 로지스틱 이항 분류모형
+clf = LogisticRegression(max_iter = 1000, solver = 'lbfgs',
+                         class_weight = 'balance', random_state=1717)
+clf.fit(X_train, y_train)
+
+# 기계학습 모형 시험
+y_pred = clf.predict(X_test)
+
+
+```
+
+## 모형 평가
+
+[- [알고리즘 성능평가](https://aispiration.com/ml/ml-assessment.html)
+- [예측모형 가치(Business Value)](https://aispiration.com/model/model-business-value.html)]{.aside}
+
+
+:::{.panel-tabset}
+
+### 요약통계량
+
+```{python}
+# 시험평가결과
+acc = accuracy_score(y_test, y_pred)
+prec = precision_score(y_test, y_pred, pos_label = 1)
+rec = recall_score(y_test, y_pred, pos_label = 1)
+
+print(f"Accuracy: {acc}")
+print(f"Precision: {prec}")
+print(f"Recall: {rec}")
+```
+
+
+### 표
+
+```{python}
+from sklearn.metrics import confusion_matrix
+
+conf_matrix = confusion_matrix(y_test, y_pred)
+
+print(conf_matrix)
+```
+
+### 그래프
+
+```{python}
+import seaborn as sns
+sns.heatmap(conf_matrix, annot = True, 
+            xticklabels = ["Negative", "Positive"], 
+            yticklabels = ["Negative", "Positive"], cmap="Blues")
+```
+
+:::
+
+# 범주형 Feature
+
+[[SettingWithCopy Warning or Error 해결방안](https://blog.naver.com/PostView.nhn?blogId=wideeyed&logNo=221817400937)]{.aside}
+
+```{python}
+pd.set_option('mode.chained_assignment',  None)
+# 데이터셋
+penguins_fe = load_penguins()
+
+# 데이터 전처리
+penguins_fe = penguins_fe.dropna()
+penguins_fe['sex'] = penguins_fe['sex'].map({'female': 0, 'male': 1})
+penguins_fe = pd.get_dummies(penguins_fe, columns=['species', 'island', 'year'])
+
+y = penguins_fe["sex"]
+X = penguins_fe.drop(['sex'], axis=1)
+
+# 훈련 시험데이터셋 분리
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# 로지스틱 이항 분류모형
+clf = LogisticRegression(max_iter = 1000, solver = 'lbfgs',
+                         class_weight = 'balance', random_state=1717)
+clf.fit(X_train, y_train)
+
+# 기계학습 모형 시험
+y_pred = clf.predict(X_test)
+
+```
+
+## 모형 평가
+
+:::{.panel-tabset}
+
+### 요약통계량
+
+```{python}
+# 시험평가결과
+acc = accuracy_score(y_test, y_pred)
+prec = precision_score(y_test, y_pred, pos_label = 1)
+rec = recall_score(y_test, y_pred, pos_label = 1)
+
+print(f"Accuracy: {acc}")
+print(f"Precision: {prec}")
+print(f"Recall: {rec}")
+```
+
+
+### 표
+
+```{python}
+from sklearn.metrics import confusion_matrix
+
+conf_matrix = confusion_matrix(y_test, y_pred)
+
+print(conf_matrix)
+```
+
+### 그래프
+
+```{python}
+import seaborn as sns
+sns.heatmap(conf_matrix, annot = True, 
+            xticklabels = ["Negative", "Positive"], 
+            yticklabels = ["Negative", "Positive"], cmap="Blues")
+```
+
+:::
 

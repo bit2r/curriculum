@@ -1411,6 +1411,27 @@
     "href": "99_feature_eng.html",
     "title": "피처 공학",
     "section": "",
-    "text": "1 Feature Engineering\n기계학습 모형을 개발할 때 피처 공학으로 자주 사용되는 기법은 다음과 같다.\n\n범주형: One-hot encoding\n연속형: 정규화(Normalization) 혹은 표준화(standardization)\n연속형 → 범주형: 비닝(Binning) 혹은 이산화(discretization)\n연속형: 교호작용(interaction) 과 다항식 확장\n새로운 피처 생성: 기존 피쳐를 변환 혹은 총계작업\n피처 제거: 관련없거나 중복된 피쳐 제거\n차원 축소: PCA 등\n…"
+    "text": "기계학습 모형을 개발할 때 피처 공학으로 자주 사용되는 기법은 다음과 같다.\n\n범주형: One-hot encoding\n연속형: 정규화(Normalization) 혹은 표준화(standardization)\n연속형 → 범주형: 비닝(Binning) 혹은 이산화(discretization)\n연속형: 교호작용(interaction) 과 다항식 확장\n새로운 피처 생성: 기존 피쳐를 변환 혹은 총계작업\n피처 제거: 관련없거나 중복된 피쳐 제거\n차원 축소: PCA 등\n…"
+  },
+  {
+    "objectID": "99_feature_eng.html#모형-평가",
+    "href": "99_feature_eng.html#모형-평가",
+    "title": "피처 공학",
+    "section": "2.2 모형 평가",
+    "text": "2.2 모형 평가\n- 알고리즘 성능평가 - 예측모형 가치(Business Value)\n\n요약통계량표그래프\n\n\n\n# 시험평가결과\nacc = accuracy_score(y_test, y_pred)\nprec = precision_score(y_test, y_pred, pos_label = 1)\nrec = recall_score(y_test, y_pred, pos_label = 1)\n\nprint(f\"Accuracy: {acc}\")\n#> Accuracy: 0.7761194029850746\nprint(f\"Precision: {prec}\")\n#> Precision: 0.8108108108108109\nprint(f\"Recall: {rec}\")\n#> Recall: 0.7894736842105263\n\n\n\n\nfrom sklearn.metrics import confusion_matrix\n\nconf_matrix = confusion_matrix(y_test, y_pred)\n\nprint(conf_matrix)\n#> [[22  7]\n#>  [ 8 30]]\n\n\n\n\nimport seaborn as sns\nsns.heatmap(conf_matrix, annot = True, \n            xticklabels = [\"Negative\", \"Positive\"], \n            yticklabels = [\"Negative\", \"Positive\"], cmap=\"Blues\")"
+  },
+  {
+    "objectID": "99_feature_eng.html#예측-모형-기본",
+    "href": "99_feature_eng.html#예측-모형-기본",
+    "title": "피처 공학",
+    "section": "2.1 예측 모형 기본",
+    "text": "2.1 예측 모형 기본\n\n# 기계학습 팩키지\nimport pandas as pd\nfrom sklearn.preprocessing import OneHotEncoder\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score\nfrom palmerpenguins import load_penguins\n\n\n# 데이터셋\npenguins = load_penguins()\n\n# 데이터 전처리\npenguins = penguins.dropna()\npenguins['sex'] = penguins['sex'].map({'female': 0, 'male': 1})\n\nX = penguins[[\"bill_length_mm\", \"bill_depth_mm\", \"flipper_length_mm\", \"body_mass_g\"]]\ny = penguins[\"sex\"]\n\n# 훈련 시험데이터셋 분리\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)\n\n# 로지스틱 이항 분류모형\nclf = LogisticRegression(max_iter = 1000, solver = 'lbfgs',\n                         class_weight = 'balance', random_state=1717)\nclf.fit(X_train, y_train)\n\n# 기계학습 모형 시험\n\nLogisticRegression(class_weight='balance', max_iter=1000, random_state=1717)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.LogisticRegressionLogisticRegression(class_weight='balance', max_iter=1000, random_state=1717)\n\ny_pred = clf.predict(X_test)"
+  },
+  {
+    "objectID": "99_feature_eng.html#모형-평가-1",
+    "href": "99_feature_eng.html#모형-평가-1",
+    "title": "피처 공학",
+    "section": "3.1 모형 평가",
+    "text": "3.1 모형 평가\n\n요약통계량표그래프\n\n\n\n# 시험평가결과\nacc = accuracy_score(y_test, y_pred)\nprec = precision_score(y_test, y_pred, pos_label = 1)\nrec = recall_score(y_test, y_pred, pos_label = 1)\n\nprint(f\"Accuracy: {acc}\")\n#> Accuracy: 0.8805970149253731\nprint(f\"Precision: {prec}\")\n#> Precision: 0.9629629629629629\nprint(f\"Recall: {rec}\")\n#> Recall: 0.7878787878787878\n\n\n\n\nfrom sklearn.metrics import confusion_matrix\n\nconf_matrix = confusion_matrix(y_test, y_pred)\n\nprint(conf_matrix)\n#> [[33  1]\n#>  [ 7 26]]\n\n\n\n\nimport seaborn as sns\nsns.heatmap(conf_matrix, annot = True, \n            xticklabels = [\"Negative\", \"Positive\"], \n            yticklabels = [\"Negative\", \"Positive\"], cmap=\"Blues\")"
   }
 ]
