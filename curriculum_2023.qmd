@@ -42,7 +42,7 @@ knitr:
 
 # 학습 내용
 
-![](fig/study_curriculum.jpeg)
+![](fig/study_curriculum.jpg)
 
 ```{r}
 #| echo: false
