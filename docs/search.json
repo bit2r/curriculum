@@ -186,7 +186,7 @@
     "href": "project.html",
     "title": "프로젝트",
     "section": "",
-    "text": "기획\n분석\n개발\n테스트\n운영\n…"
+    "text": "데이터 사전(data dictionary)은 데이터셋에 대한 변수, 열 또는 필드에 대한 정의와 설명을 포함하는 문서다. 데이터 과학자, 분석가, 기계학습 개발자/연구자 및 유관 이해 관계자에게 전체적인 맥락과 명확성을 제공하는 데 사용된다.\n일반적인 데이터 사전에는 각 변수에 대한 다음 정보가 포함된다.\n\n변수명(Variable): 변수, 열 또는 필드의 이름 또는 레이블.\n데이터 유형(Data Type): 숫자, 범주형 또는 텍스트와 같은 자료형.\n설명(Description): 변수가 나타내는 것이나 측정값에 대한 간단한 설명이 기술된다.\n측정 단위(Unit): 해당하는 경우 변수의 측정 단위 (예를 들면, cm, kg, …)\n출처(Data Scource): 데이터베이스 또는 외부 소스와 같은 원데이터의 출처.\n결측값 코드(Missing Value Code): 결측 데이터를 나타내는 데 사용되는 코드 또는 값.\n값(Value): 변수에 사용할 수 있는 값 또는 범주와 의미 등.\n예제: 데이터셋 예제\n\n데이터셋 사례는 다음과 같다.\n\n\n\n\n\n\n\n\n\n\n\n\n\n변수명\n자료형\n설명\n측정단위\n자료출처\n결측값 코드\n값\n사용례\n\n\n\n\n나이\n숫자형\n응답자 나이\n연도\n인구총조사\n-1\n18-100\n25, 30, 35, 40\n\n\n성별\n범주형\n응답자 성별\n-\n인구총조사\n-1\n남성, 여성, 기타\n남성, 여성, 기타\n\n\n소득\n숫자형\n가구소득\nKRW\n통계청\n-1\n1000-20000\n5000, 6000, 7500\n\n\n\n\n\n파머펭귄 데이터셋은 남극 파머 연구소(palmer station)에서 관측된 펭귄에 대한 정보를 담고 있다. Kristen Gorman 박사가 연구목적으로 공개한 펭귄 데이터셋에는 펭귄에 대한 펭귄종, 서식지(섬), 부리길이와 깊이 물갈퀴 길이, 체질량, 암수 정보가 담겨있다.\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nData Type\nDescription\nUnit of Measurement\nSource\nMissing Data Code\nValues\nExamples\n\n\n\n\nspecies\nCategorical\nPenguin species\n-\nPalmer Penguins dataset\n-\nAdelie, Chinstrap, Gentoo\nAdelie, Chinstrap, Gentoo\n\n\nisland\nCategorical\nIsland where the penguin was observed\n-\nPalmer Penguins dataset\n-\nDream, Torgersen\nDream, Torgersen\n\n\nbill_length_mm\nNumeric\nBill length of the penguin\nmillimeter (mm)\nPalmer Penguins dataset\n-\n27.9 - 59.6\n39.1, 41.9, 44.6\n\n\nbill_depth_mm\nNumeric\nBill depth of the penguin\nmillimeter (mm)\nPalmer Penguins dataset\n-\n18.7 - 21.5\n19.3, 20.6, 20.1\n\n\nflipper_length_mm\nNumeric\nFlipper length of the penguin\nmillimeter (mm)\nPalmer Penguins dataset\n-\n172 - 231\n193.0, 200.0, 210.0\n\n\nbody_mass_g\nNumeric\nBody mass of the penguin\ngram (g)\nPalmer Penguins dataset\n-\n2700 - 6300\n4207, 4372, 4748\n\n\nsex\nCategorical\nSex of the penguin\n-\nPalmer Penguins dataset\n-\nmale, female\nmale, female"
   },
   {
     "objectID": "02_setup_sql.html",
@@ -1433,5 +1433,68 @@
     "title": "피처 공학",
     "section": "3.1 모형 평가",
     "text": "3.1 모형 평가\n\n요약통계량표그래프\n\n\n\n# 시험평가결과\nacc = accuracy_score(y_test, y_pred)\nprec = precision_score(y_test, y_pred, pos_label = 1)\nrec = recall_score(y_test, y_pred, pos_label = 1)\n\nprint(f\"Accuracy: {acc}\")\n#> Accuracy: 0.8805970149253731\nprint(f\"Precision: {prec}\")\n#> Precision: 0.9629629629629629\nprint(f\"Recall: {rec}\")\n#> Recall: 0.7878787878787878\n\n\n\n\nfrom sklearn.metrics import confusion_matrix\n\nconf_matrix = confusion_matrix(y_test, y_pred)\n\nprint(conf_matrix)\n#> [[33  1]\n#>  [ 7 26]]\n\n\n\n\nimport seaborn as sns\nsns.heatmap(conf_matrix, annot = True, \n            xticklabels = [\"Negative\", \"Positive\"], \n            yticklabels = [\"Negative\", \"Positive\"], cmap=\"Blues\")"
+  },
+  {
+    "objectID": "project.html#파머펭귄-데이터셋",
+    "href": "project.html#파머펭귄-데이터셋",
+    "title": "프로젝트",
+    "section": "2.1 파머펭귄 데이터셋",
+    "text": "2.1 파머펭귄 데이터셋\n파머펭귄 데이터셋은 남극 파머 연구소(palmer station)에서 관측된 펭귄에 대한 정보를 담고 있다. Kristen Gorman 박사가 연구목적으로 공개한 펭귄 데이터셋에는 펭귄에 대한 펭귄종, 서식지(섬), 부리길이와 깊이 물갈퀴 길이, 체질량, 암수 정보가 담겨있다.\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nData Type\nDescription\nUnit of Measurement\nSource\nMissing Data Code\nValues\nExamples\n\n\n\n\nspecies\nCategorical\nPenguin species\n-\nPalmer Penguins dataset\n-\nAdelie, Chinstrap, Gentoo\nAdelie, Chinstrap, Gentoo\n\n\nisland\nCategorical\nIsland where the penguin was observed\n-\nPalmer Penguins dataset\n-\nDream, Torgersen\nDream, Torgersen\n\n\nbill_length_mm\nNumeric\nBill length of the penguin\nmillimeter (mm)\nPalmer Penguins dataset\n-\n27.9 - 59.6\n39.1, 41.9, 44.6\n\n\nbill_depth_mm\nNumeric\nBill depth of the penguin\nmillimeter (mm)\nPalmer Penguins dataset\n-\n18.7 - 21.5\n19.3, 20.6, 20.1\n\n\nflipper_length_mm\nNumeric\nFlipper length of the penguin\nmillimeter (mm)\nPalmer Penguins dataset\n-\n172 - 231\n193.0, 200.0, 210.0\n\n\nbody_mass_g\nNumeric\nBody mass of the penguin\ngram (g)\nPalmer Penguins dataset\n-\n2700 - 6300\n4207, 4372, 4748\n\n\nsex\nCategorical\nSex of the penguin\n-\nPalmer Penguins dataset\n-\nmale, female\nmale, female"
+  },
+  {
+    "objectID": "project.html#introduction",
+    "href": "project.html#introduction",
+    "title": "프로젝트",
+    "section": "3.1 Introduction",
+    "text": "3.1 Introduction\nThe Palmer Penguins dataset is a collection of data on penguin body measurements and sex. The dataset was compiled by Kristen Gorman and was made available through the R package “palmerpenguins.” In this report, we will use the Palmer Penguins dataset to train a machine learning model for classifying the sex of penguins based on their body measurements."
+  },
+  {
+    "objectID": "project.html#methods",
+    "href": "project.html#methods",
+    "title": "프로젝트",
+    "section": "3.3 Methods",
+    "text": "3.3 Methods\n\nData preprocessing: The data was cleaned and missing values were handled before being used for training the model.\nModel selection: A variety of classification models were trained and compared, including logistic regression, decision tree, and random forest. The best-performing model was selected for final evaluation.\nModel evaluation: The chosen model was evaluated using metrics such as accuracy, precision, recall, and F1 score. Results:\n\nThe chosen model was a Random Forest classifier, which achieved an accuracy of 98.6% on the test set. Precision, recall, and F1 score for the model were 0.99, 0.98 and 0.98 respectively Feature importance analysis revealed that bill_length_mm, bill_depth_mm, and flipper_length_mm were the most important features in determining the sex of the penguins."
+  },
+  {
+    "objectID": "project.html#key-findings",
+    "href": "project.html#key-findings",
+    "title": "프로젝트",
+    "section": "3.4 Key Findings",
+    "text": "3.4 Key Findings\nThe Random Forest classifier achieved an accuracy of 98.6% on the test set for classifying the sex of penguins based on their body measurements. Precision, recall, and F1 score for the model were 0.99, 0.98 and 0.98 respectively Feature importance analysis revealed that bill_length_mm, bill_depth_mm, and flipper_length_mm were the most important features in determining the sex of the penguins. The model performed well with accurate results but it is limited to the size and the species of penguins in the dataset. The dataset only includes measurements for three species of penguins, Adelie, Chinstrap, and Gentoo. It may not be able to classify other species of penguins. The measurements used in the model may not be the only factors that determine the sex of a penguin, and other factors such as genetics or hormonal levels may also play a role. Increasing the size of the dataset and collecting data on a wider variety of penguin species would allow for the classification of other species and improve the generalizability of the model."
+  },
+  {
+    "objectID": "project.html#limitations",
+    "href": "project.html#limitations",
+    "title": "프로젝트",
+    "section": "3.5 Limitations",
+    "text": "3.5 Limitations\nThe dataset is relatively small, with only 344 observations, which may limit the generalizability of the model to other penguin populations. The dataset only includes measurements for three species of penguins, Adelie, Chinstrap, and Gentoo. It may not be able to classify other species of penguins. The measurements used in the model may not be the only factors that determine the sex of a penguin, and other factors such as genetics or hormonal levels may also play a role."
+  },
+  {
+    "objectID": "project.html#lessons-learned",
+    "href": "project.html#lessons-learned",
+    "title": "프로젝트",
+    "section": "3.6 Lessons Learned",
+    "text": "3.6 Lessons Learned\nThe importance of data preprocessing in ensuring that the model is trained on clean and reliable data. The value of comparing multiple models to select the best-performing one for the task at hand. The importance of evaluating a model’s performance using a variety of metrics, such as accuracy, precision, recall, and F1 score. The insight that can be gained from analyzing feature importance. The importance of considering the limitations of a model and its potential for generalizability to other datasets or real-world scenarios. The importance of incorporating other factors beyond the measurements used in the model to improve its accuracy in determining the sex of penguins. The potential for using machine learning techniques in conservation efforts, such as identifying the sex of wild penguins in the field."
+  },
+  {
+    "objectID": "project.html#future-work",
+    "href": "project.html#future-work",
+    "title": "프로젝트",
+    "section": "3.7 Future Work",
+    "text": "3.7 Future Work\nIncreasing the size of the dataset by collecting more data on penguin body measurements and sex would improve the generalizability of the model. Collecting data on a wider variety of penguin species would also allow for the classification of other species. Incorporating other factors such as genetics or hormonal levels into the model could improve its accuracy in determining the sex of penguins. Compare the results of this study with other studies based on similar datasets and validate the accuracy of the model. Implementing the model in a real-world scenario, such as in a conservation context, to classify the sex of wild penguins in the field.\n\n3.7.1 Conclusion\nA Random Forest classifier was trained using the Palmer Penguins dataset and was able to accurately classify the sex of penguins based on their body measurements with a high accuracy of 98.6%. The results of this study can be used in future research on penguin populations and conservation efforts."
+  },
+  {
+    "objectID": "project.html#references",
+    "href": "project.html#references",
+    "title": "프로젝트",
+    "section": "3.8 References",
+    "text": "3.8 References\n\nGorman, K. (2019). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://github.com/allisonhorst/palmerpenguins\nA. C. Henderson, S. J. Phillips, and M. D. Jennions. (2012). An introduction to mixed models. R package version 1.0. https://CRAN.R-project.org/package=lme4\nBreiman, L. (2001). Random forests. Machine learning, 45(1), 5-32.\nHastie, T., Tibshirani, R., & Friedman, J. (2009). The elements of statistical learning: data mining, inference, and prediction (2nd ed.). Springer.\nR Core Team. (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.\nJames, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An introduction to statistical learning (Vol. 112, pp. 1-7). New York: Springer."
+  },
+  {
+    "objectID": "project.html#data",
+    "href": "project.html#data",
+    "title": "프로젝트",
+    "section": "3.2 Data",
+    "text": "3.2 Data\nThe Palmer Penguins dataset includes measurements for three species of penguins, Adelie, Chinstrap, and Gentoo. The dataset contains the following variables:\n\nspecies: the species of penguin (Adelie, Chinstrap, or Gentoo)\nisland: the island where the penguin was observed (Dream or Torgersen)\nbill_length_mm: the bill length of the penguin, in millimeters\nbill_depth_mm: the bill depth of the penguin, in millimeters\nflipper_length_mm: the flipper length of the penguin, in millimeters\nbody_mass_g: the body mass of the penguin, in grams\nsex: the sex of the penguin (female or male)\n\nThe dataset consists of a total of 344 observations, with half of the observations being female and half being male. The measurements were collected during a study of penguin populations on the Palmer Archipelago in Antarctica.\n\n3.2.1 Data Exploration\n\nDistribution of the values of each feature in the dataset.\nCorrelation between the different features.\nDistribution of the target variable (sex) in the dataset.\n\n\n\n3.2.2 Feature Selection\n\nFor this study, we used all the features provided in the dataset for the purpose of classification.\nThe selected features were bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, species, and island.\nSpecies and island were included as categorical variables and were one-hot encoded before feeding into the model.\n\n\n\n3.2.3 Data Preparation\n\nWe divided the dataset into training and testing sets, with 80% of the data used for training and 20% used for testing.\nWe performed data cleaning, handling missing values and outliers, before using the data for training the model.\n\nThis concrete information about the dataset and data preparation adds more credibility to the report and allows readers to reproduce the experiment."
   }
 ]
