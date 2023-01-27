@@ -1,0 +1,86 @@
+---
+title: "펭균 ML 보고서"
+description: "펭귄 암수예측 기계학습모형 개발 보고서"
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - flatly
+      - css/quarto-fonts.css
+    code-fold: false
+    code-overflow: scroll
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+editor_options: 
+  chunk_output_type: console
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true  
+filters:
+   - lightbox
+lightbox: auto      
+---
+
+
+# 들어가며
+
+파머 펭귄 성별 분류 머신러닝 모델은 인구 관리 및 모니터링을 더 효율적으로 할 수 있기 때문에 중요합니다. 개별 펭귄의 성별을 정확하게 식별함으로써 펭귄 서식지에서 성비와 산란 패턴을 더 잘 이해하고 추적 할 수 있습니다. 이러한 정보는 지구온난화로 인한 기후위기 시대 펭귄생존을 보장하는 데 필수적입니다. 또한 성별 분류 모델은 노동집약적인 성별 식별 업무를 대폭 줄여 시간과 자원을 절약을 효율적으로 사용할 수 있도록 기여합니다.
+
+# 데이터
+
+## 데이터 입수
+
+펭귄 데이터를 입수할 수 있는 방법은 크게 3가지가 있습니다.
+
+- 데이터 패키지
+- 로컬 csv 파일
+- 클라우드 저장소: Microsoft Azure Blob Storage, Google Cloud Storage, DigitalOcean Spaces, Backblaze B2, Wasabi Hot Cloud Storage, Alibaba Cloud OSS, IBM Cloud Object Storage, Oracle Cloud Infrastructure Object Storage, OpenStack Object Storage (Swift), Rackspace Cloud Files
+
+### 데이터 패키지
+
+:::{.panel-tabset}
+
+#### R
+
+```{r}
+library(palmerpenguins)
+
+penguins <- palmerpenguins::penguins
+
+penguins
+```
+
+#### Python
+
+
+
+```bash
+$ pip install palmerpenguins
+```
+
+
+```{python}
+import pandas as pd
+from palmerpenguins import load_penguins 
+
+penguins = load_penguins()
+
+penguins.head()
+```
+
+
+:::
+
+
+
+

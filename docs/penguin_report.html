@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="이광춘">
-<meta name="description" content="모둠을 구성해서 데이터 과학 프로젝트를 통해 데이터과학 제품과 서비스를 개발합니다.">
+<meta name="description" content="펭귄 암수예측 기계학습모형 개발 보고서">
 
-<title>데이터 과학 - 프로젝트</title>
+<title>데이터 과학 - 펭균 ML 보고서</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -361,22 +424,14 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">목차</h2>
    
+  <ul>
+  <li><a href="#들어가며" id="toc-들어가며" class="nav-link active" data-scroll-target="#들어가며"><span class="toc-section-number">1</span>  들어가며</a></li>
+  <li><a href="#데이터" id="toc-데이터" class="nav-link" data-scroll-target="#데이터"><span class="toc-section-number">2</span>  데이터</a>
   <ul class="collapse">
-  <li><a href="#데이터-사전" id="toc-데이터-사전" class="nav-link active" data-scroll-target="#데이터-사전"><span class="toc-section-number">1</span>  데이터 사전</a>
+  <li><a href="#데이터-입수" id="toc-데이터-입수" class="nav-link" data-scroll-target="#데이터-입수"><span class="toc-section-number">2.1</span>  데이터 입수</a>
   <ul class="collapse">
-  <li><a href="#파머펭귄-데이터셋" id="toc-파머펭귄-데이터셋" class="nav-link" data-scroll-target="#파머펭귄-데이터셋"><span class="toc-section-number">1.1</span>  파머펭귄 데이터셋</a></li>
+  <li><a href="#데이터-패키지" id="toc-데이터-패키지" class="nav-link" data-scroll-target="#데이터-패키지"><span class="toc-section-number">2.1.1</span>  데이터 패키지</a></li>
   </ul></li>
-  <li><a href="#기계학습-보고서" id="toc-기계학습-보고서" class="nav-link" data-scroll-target="#기계학습-보고서"><span class="toc-section-number">2</span>  기계학습 보고서</a></li>
-  <li><a href="#machine-learning-report" id="toc-machine-learning-report" class="nav-link" data-scroll-target="#machine-learning-report"><span class="toc-section-number">3</span>  Machine Learning Report</a>
-  <ul class="collapse">
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="toc-section-number">3.1</span>  Introduction</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="toc-section-number">3.2</span>  Data</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="toc-section-number">3.3</span>  Methods</a></li>
-  <li><a href="#key-findings" id="toc-key-findings" class="nav-link" data-scroll-target="#key-findings"><span class="toc-section-number">3.4</span>  Key Findings</a></li>
-  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations"><span class="toc-section-number">3.5</span>  Limitations</a></li>
-  <li><a href="#lessons-learned" id="toc-lessons-learned" class="nav-link" data-scroll-target="#lessons-learned"><span class="toc-section-number">3.6</span>  Lessons Learned</a></li>
-  <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work"><span class="toc-section-number">3.7</span>  Future Work</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="toc-section-number">3.8</span>  References</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -386,12 +441,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">프로젝트</h1>
+<h1 class="title">펭균 ML 보고서</h1>
 </div>
 
 <div>
   <div class="description">
-    모둠을 구성해서 데이터 과학 프로젝트를 통해 데이터과학 제품과 서비스를 개발합니다.
+    펭귄 암수예측 기계학습모형 개발 보고서
   </div>
 </div>
 
@@ -425,287 +480,73 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="데이터-사전" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> 데이터 사전</h1>
-<p><strong>데이터 사전(data dictionary)</strong>은 데이터셋에 대한 변수, 열 또는 필드에 대한 정의와 설명을 포함하는 문서다. 데이터 과학자, 분석가, 기계학습 개발자/연구자 및 유관 이해 관계자에게 전체적인 맥락과 명확성을 제공하는 데 사용된다.</p>
-<p>일반적인 데이터 사전에는 각 변수에 대한 다음 정보가 포함된다.</p>
+<section id="들어가며" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 들어가며</h1>
+<p>파머 펭귄 성별 분류 머신러닝 모델은 인구 관리 및 모니터링을 더 효율적으로 할 수 있기 때문에 중요합니다. 개별 펭귄의 성별을 정확하게 식별함으로써 펭귄 서식지에서 성비와 산란 패턴을 더 잘 이해하고 추적 할 수 있습니다. 이러한 정보는 지구온난화로 인한 기후위기 시대 펭귄생존을 보장하는 데 필수적입니다. 또한 성별 분류 모델은 노동집약적인 성별 식별 업무를 대폭 줄여 시간과 자원을 절약을 효율적으로 사용할 수 있도록 기여합니다.</p>
+</section>
+<section id="데이터" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 데이터</h1>
+<section id="데이터-입수" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="데이터-입수"><span class="header-section-number">2.1</span> 데이터 입수</h2>
+<p>펭귄 데이터를 입수할 수 있는 방법은 크게 3가지가 있습니다.</p>
 <ul>
-<li>변수명(Variable): 변수, 열 또는 필드의 이름 또는 레이블.</li>
-<li>데이터 유형(Data Type): 숫자, 범주형 또는 텍스트와 같은 자료형.</li>
-<li>설명(Description): 변수가 나타내는 것이나 측정값에 대한 간단한 설명이 기술된다.</li>
-<li>측정 단위(Unit): 해당하는 경우 변수의 측정 단위 (예를 들면, cm, kg, …)</li>
-<li>출처(Data Scource): 데이터베이스 또는 외부 소스와 같은 원데이터의 출처.</li>
-<li>결측값 코드(Missing Value Code): 결측 데이터를 나타내는 데 사용되는 코드 또는 값.</li>
-<li>값(Value): 변수에 사용할 수 있는 값 또는 범주와 의미 등.</li>
-<li>예제: 데이터셋 예제</li>
+<li>데이터 패키지</li>
+<li>로컬 csv 파일</li>
+<li>클라우드 저장소: Microsoft Azure Blob Storage, Google Cloud Storage, DigitalOcean Spaces, Backblaze B2, Wasabi Hot Cloud Storage, Alibaba Cloud OSS, IBM Cloud Object Storage, Oracle Cloud Infrastructure Object Storage, OpenStack Object Storage (Swift), Rackspace Cloud Files</li>
 </ul>
-<p>데이터셋 사례는 다음과 같다.</p>
-<table class="table">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>변수명</th>
-<th>자료형</th>
-<th>설명</th>
-<th>측정단위</th>
-<th>자료출처</th>
-<th>결측값 코드</th>
-<th>값</th>
-<th>사용례</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>나이</td>
-<td>숫자형</td>
-<td>응답자 나이</td>
-<td>연도</td>
-<td>인구총조사</td>
-<td>-1</td>
-<td>18-100</td>
-<td>25, 30, 35, 40</td>
-</tr>
-<tr class="even">
-<td>성별</td>
-<td>범주형</td>
-<td>응답자 성별</td>
-<td>-</td>
-<td>인구총조사</td>
-<td>-1</td>
-<td>남성, 여성, 기타</td>
-<td>남성, 여성, 기타</td>
-</tr>
-<tr class="odd">
-<td>소득</td>
-<td>숫자형</td>
-<td>가구소득</td>
-<td>KRW</td>
-<td>통계청</td>
-<td>-1</td>
-<td>1000-20000</td>
-<td>5000, 6000, 7500</td>
-</tr>
-</tbody>
-</table>
-<section id="파머펭귄-데이터셋" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="파머펭귄-데이터셋"><span class="header-section-number">1.1</span> 파머펭귄 데이터셋</h2>
-<p>파머펭귄 데이터셋은 남극 파머 연구소(palmer station)에서 관측된 펭귄에 대한 정보를 담고 있다. Kristen Gorman 박사가 연구목적으로 공개한 펭귄 데이터셋에는 펭귄에 대한 펭귄종, 서식지(섬), 부리길이와 깊이 물갈퀴 길이, 체질량, 암수 정보가 담겨있다.</p>
-<table class="table">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 24%">
-<col style="width: 10%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 14%">
-<col style="width: 14%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Variable</th>
-<th>Data Type</th>
-<th>Description</th>
-<th>Unit of Measurement</th>
-<th>Source</th>
-<th>Missing Data Code</th>
-<th>Values</th>
-<th>Examples</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>species</td>
-<td>Categorical</td>
-<td>Penguin species</td>
-<td>-</td>
-<td>Palmer Penguins dataset</td>
-<td>-</td>
-<td>Adelie, Chinstrap, Gentoo</td>
-<td>Adelie, Chinstrap, Gentoo</td>
-</tr>
-<tr class="even">
-<td>island</td>
-<td>Categorical</td>
-<td>Island where the penguin was observed</td>
-<td>-</td>
-<td>Palmer Penguins dataset</td>
-<td>-</td>
-<td>Dream, Torgersen</td>
-<td>Dream, Torgersen</td>
-</tr>
-<tr class="odd">
-<td>bill_length_mm</td>
-<td>Numeric</td>
-<td>Bill length of the penguin</td>
-<td>millimeter (mm)</td>
-<td>Palmer Penguins dataset</td>
-<td>-</td>
-<td>27.9 - 59.6</td>
-<td>39.1, 41.9, 44.6</td>
-</tr>
-<tr class="even">
-<td>bill_depth_mm</td>
-<td>Numeric</td>
-<td>Bill depth of the penguin</td>
-<td>millimeter (mm)</td>
-<td>Palmer Penguins dataset</td>
-<td>-</td>
-<td>18.7 - 21.5</td>
-<td>19.3, 20.6, 20.1</td>
-</tr>
-<tr class="odd">
-<td>flipper_length_mm</td>
-<td>Numeric</td>
-<td>Flipper length of the penguin</td>
-<td>millimeter (mm)</td>
-<td>Palmer Penguins dataset</td>
-<td>-</td>
-<td>172 - 231</td>
-<td>193.0, 200.0, 210.0</td>
-</tr>
-<tr class="even">
-<td>body_mass_g</td>
-<td>Numeric</td>
-<td>Body mass of the penguin</td>
-<td>gram (g)</td>
-<td>Palmer Penguins dataset</td>
-<td>-</td>
-<td>2700 - 6300</td>
-<td>4207, 4372, 4748</td>
-</tr>
-<tr class="odd">
-<td>sex</td>
-<td>Categorical</td>
-<td>Sex of the penguin</td>
-<td>-</td>
-<td>Palmer Penguins dataset</td>
-<td>-</td>
-<td>male, female</td>
-<td>male, female</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="기계학습-보고서" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> 기계학습 보고서</h1>
-<p>기계학습 보고서는 대략 다음 순서를 갖는다.</p>
-<ol type="1">
-<li>들어가며</li>
-</ol>
-<ul>
-<li>보고서의 목적과 해결하려는 문제의 중요성을 포함한 전반적인 내용을 담아낸다.</li>
-</ul>
-<ol type="1">
-<li>데이터</li>
-</ol>
-<ul>
-<li>기계학습에 사용되는 데이터에 대한 내용을 기술한다. 원천데이터와 전처리 방법을 포함한 데이터 정제방법, Feature Engineering, 데이터 사례수(훈련 및 시험) 등 데이터 전반적인 사항을 기술한다.</li>
-</ul>
-<ol type="1">
-<li>방법론: 기계학습에 사용된 알고리즘에 대해 기술하고 특히 기계학습 모형을 평가하는 기법도 필히 포함시킨다.</li>
-<li>결과: 기계학습 평가 측도(정확도, RMSE, precision/recall 등)를 사용하여 기계학습 모형의 성능을 적시한다.</li>
-<li>시각화 및 결론: 기계학습 모형을 관련 담당자와 의사소통에 필요한 표/시각화 산출물 사용하여 주요 사항에 대해 기술한다.</li>
-<li>한계 및 후속 방안: 기계학습 모형의 한계와 더불어 프로젝트를 통해 배운 사항과 개선할 사항에 대해 정리하고 후속 프로젝트에 대한 제언도 남긴다.</li>
-<li>참고문헌: 기계학습 보고서에 언급된 데이터를 포함한 관련 참고문헌을 적시한다.</li>
-</ol>
-</section>
-<section id="machine-learning-report" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Machine Learning Report</h1>
-<p>Sex Classification Model using Palmer Penguins Data Set</p>
-<section id="introduction" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.1</span> Introduction</h2>
-<p>The Palmer Penguins dataset is a collection of data on penguin body measurements and sex. The dataset was compiled by Kristen Gorman and was made available through the R package “palmerpenguins.” In this report, we will use the Palmer Penguins dataset to train a machine learning model for classifying the sex of penguins based on their body measurements.</p>
-</section>
-<section id="data" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="data"><span class="header-section-number">3.2</span> Data</h2>
-<p>The Palmer Penguins dataset includes measurements for three species of penguins, Adelie, Chinstrap, and Gentoo. The dataset contains the following variables:</p>
-<ul>
-<li>species: the species of penguin (Adelie, Chinstrap, or Gentoo)</li>
-<li>island: the island where the penguin was observed (Dream or Torgersen)</li>
-<li>bill_length_mm: the bill length of the penguin, in millimeters</li>
-<li>bill_depth_mm: the bill depth of the penguin, in millimeters</li>
-<li>flipper_length_mm: the flipper length of the penguin, in millimeters</li>
-<li>body_mass_g: the body mass of the penguin, in grams</li>
-<li>sex: the sex of the penguin (female or male)</li>
-</ul>
-<p>The dataset consists of a total of 344 observations, with half of the observations being female and half being male. The measurements were collected during a study of penguin populations on the Palmer Archipelago in Antarctica.</p>
-<section id="data-exploration" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="data-exploration"><span class="header-section-number">3.2.1</span> Data Exploration</h3>
-<ul>
-<li>Distribution of the values of each feature in the dataset.</li>
-<li>Correlation between the different features.</li>
-<li>Distribution of the target variable (sex) in the dataset.</li>
-</ul>
-</section>
-<section id="feature-selection" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="feature-selection"><span class="header-section-number">3.2.2</span> Feature Selection</h3>
-<ul>
-<li>For this study, we used all the features provided in the dataset for the purpose of classification.</li>
-<li>The selected features were bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, species, and island.</li>
-<li>Species and island were included as categorical variables and were one-hot encoded before feeding into the model.</li>
-</ul>
-</section>
-<section id="data-preparation" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="data-preparation"><span class="header-section-number">3.2.3</span> Data Preparation</h3>
-<ul>
-<li>We divided the dataset into training and testing sets, with 80% of the data used for training and 20% used for testing.</li>
-<li>We performed data cleaning, handling missing values and outliers, before using the data for training the model.</li>
-</ul>
-<p>This concrete information about the dataset and data preparation adds more credibility to the report and allows readers to reproduce the experiment.</p>
-</section>
-</section>
-<section id="methods" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="methods"><span class="header-section-number">3.3</span> Methods</h2>
-<ul>
-<li>Data preprocessing: The data was cleaned and missing values were handled before being used for training the model.</li>
-<li>Model selection: A variety of classification models were trained and compared, including logistic regression, decision tree, and random forest. The best-performing model was selected for final evaluation.</li>
-<li>Model evaluation: The chosen model was evaluated using metrics such as accuracy, precision, recall, and F1 score. Results:</li>
-</ul>
-<p>The chosen model was a Random Forest classifier, which achieved an accuracy of 98.6% on the test set. Precision, recall, and F1 score for the model were 0.99, 0.98 and 0.98 respectively Feature importance analysis revealed that bill_length_mm, bill_depth_mm, and flipper_length_mm were the most important features in determining the sex of the penguins.</p>
-</section>
-<section id="key-findings" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="key-findings"><span class="header-section-number">3.4</span> Key Findings</h2>
-<p>The Random Forest classifier achieved an accuracy of 98.6% on the test set for classifying the sex of penguins based on their body measurements. Precision, recall, and F1 score for the model were 0.99, 0.98 and 0.98 respectively Feature importance analysis revealed that bill_length_mm, bill_depth_mm, and flipper_length_mm were the most important features in determining the sex of the penguins. The model performed well with accurate results but it is limited to the size and the species of penguins in the dataset. The dataset only includes measurements for three species of penguins, Adelie, Chinstrap, and Gentoo. It may not be able to classify other species of penguins. The measurements used in the model may not be the only factors that determine the sex of a penguin, and other factors such as genetics or hormonal levels may also play a role. Increasing the size of the dataset and collecting data on a wider variety of penguin species would allow for the classification of other species and improve the generalizability of the model.</p>
-</section>
-<section id="limitations" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="limitations"><span class="header-section-number">3.5</span> Limitations</h2>
-<p>The dataset is relatively small, with only 344 observations, which may limit the generalizability of the model to other penguin populations. The dataset only includes measurements for three species of penguins, Adelie, Chinstrap, and Gentoo. It may not be able to classify other species of penguins. The measurements used in the model may not be the only factors that determine the sex of a penguin, and other factors such as genetics or hormonal levels may also play a role.</p>
-</section>
-<section id="lessons-learned" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="lessons-learned"><span class="header-section-number">3.6</span> Lessons Learned</h2>
-<p>The importance of data preprocessing in ensuring that the model is trained on clean and reliable data. The value of comparing multiple models to select the best-performing one for the task at hand. The importance of evaluating a model’s performance using a variety of metrics, such as accuracy, precision, recall, and F1 score. The insight that can be gained from analyzing feature importance. The importance of considering the limitations of a model and its potential for generalizability to other datasets or real-world scenarios. The importance of incorporating other factors beyond the measurements used in the model to improve its accuracy in determining the sex of penguins. The potential for using machine learning techniques in conservation efforts, such as identifying the sex of wild penguins in the field.</p>
-</section>
-<section id="future-work" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="future-work"><span class="header-section-number">3.7</span> Future Work</h2>
-<p>Increasing the size of the dataset by collecting more data on penguin body measurements and sex would improve the generalizability of the model. Collecting data on a wider variety of penguin species would also allow for the classification of other species. Incorporating other factors such as genetics or hormonal levels into the model could improve its accuracy in determining the sex of penguins. Compare the results of this study with other studies based on similar datasets and validate the accuracy of the model. Implementing the model in a real-world scenario, such as in a conservation context, to classify the sex of wild penguins in the field.</p>
-<section id="conclusion" class="level3" data-number="3.7.1">
-<h3 data-number="3.7.1" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">3.7.1</span> Conclusion</h3>
-<p>A Random Forest classifier was trained using the Palmer Penguins dataset and was able to accurately classify the sex of penguins based on their body measurements with a high accuracy of 98.6%. The results of this study can be used in future research on penguin populations and conservation efforts.</p>
-</section>
-</section>
-<section id="references" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="references"><span class="header-section-number">3.8</span> References</h2>
-<ul>
-<li>Gorman, K. (2019). palmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. https://github.com/allisonhorst/palmerpenguins</li>
-<li>A. C. Henderson, S. J. Phillips, and M. D. Jennions. (2012). An introduction to mixed models. R package version 1.0. https://CRAN.R-project.org/package=lme4</li>
-<li>Breiman, L. (2001). Random forests. Machine learning, 45(1), 5-32.</li>
-<li>Hastie, T., Tibshirani, R., &amp; Friedman, J. (2009). The elements of statistical learning: data mining, inference, and prediction (2nd ed.). Springer.</li>
-<li>R Core Team. (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.</li>
-<li>James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). An introduction to statistical learning (Vol. 112, pp.&nbsp;1-7). New York: Springer.</li>
-</ul>
+<section id="데이터-패키지" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="데이터-패키지"><span class="header-section-number">2.1.1</span> 데이터 패키지</h3>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>penguins</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 344 × 8</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;      &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 Adelie  Torgersen           39.1          18.7        181    3750 male   2007</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 Adelie  Torgersen           39.5          17.4        186    3800 fema…  2007</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 Adelie  Torgersen           40.3          18          195    3250 fema…  2007</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 Adelie  Torgersen           NA            NA           NA      NA &lt;NA&gt;   2007</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 Adelie  Torgersen           36.7          19.3        193    3450 fema…  2007</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Adelie  Torgersen           39.3          20.6        190    3650 male   2007</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 Adelie  Torgersen           38.9          17.8        181    3625 fema…  2007</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 Adelie  Torgersen           39.2          19.6        195    4675 male   2007</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Adelie  Torgersen           34.1          18.1        193    3475 &lt;NA&gt;   2007</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 Adelie  Torgersen           42            20.2        190    4250 &lt;NA&gt;   2007</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; #   ²​body_mass_g</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install palmerpenguins</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> load_penguins()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>penguins.head()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   species     island  bill_length_mm  ...  body_mass_g     sex  year</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0  Adelie  Torgersen            39.1  ...       3750.0    male  2007</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  Adelie  Torgersen            39.5  ...       3800.0  female  2007</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  Adelie  Torgersen            40.3  ...       3250.0  female  2007</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  Adelie  Torgersen             NaN  ...          NaN     NaN  2007</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  Adelie  Torgersen            36.7  ...       3450.0  female  2007</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5 rows x 8 columns]</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 </section>
 

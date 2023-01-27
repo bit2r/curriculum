@@ -125,6 +125,8 @@ website:
           - href: project.qmd
             text: "프로젝트"
           - text: "-----"
+          - href: penguin_report.qmd
+            text: "펭균 ML 보고서"
       - text: "데이터셋"
         menu:
           - href: data.qmd
