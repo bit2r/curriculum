@@ -1559,5 +1559,68 @@
     "title": "펭균 ML 보고서",
     "section": "4.5 시각화",
     "text": "4.5 시각화\n\npenguins_tbl %>% \n  explore(body_mass_g, bill_length_mm, target = sex)\n\n\n\n\n\n\n\n\n\nlibrary(tidymodels)\nlibrary(parttree)\n\npenguins_dt <- \n  decision_tree() %>%\n  set_engine(\"rpart\") %>%\n  set_mode(\"classification\") %>%\n  fit(sex ~ body_mass_g + bill_length_mm, data = penguins_tbl)\n\n# 시각화\npenguins_tbl %>%\n  ggplot(aes(x = body_mass_g, y = bill_length_mm)) +\n  # geom_jitter(aes(col=species), alpha=0.7) +\n  geom_point(aes(color = sex)) +\n  geom_parttree(data = penguins_dt, aes(fill=sex), alpha = 0.1,\n                flipaxes = FALSE) +\n  scale_color_manual(values = c(\"female\"  = \"blue\",\n                              \"male\" = \"red\")) +\n  scale_fill_manual(values = c(\"female\"  = \"blue\",\n                              \"male\" = \"red\")) +  \n  theme_minimal()"
+  },
+  {
+    "objectID": "penguin_report.html#훈련시험-데이터셋",
+    "href": "penguin_report.html#훈련시험-데이터셋",
+    "title": "펭균 ML 보고서",
+    "section": "5.1 훈련/시험 데이터셋",
+    "text": "5.1 훈련/시험 데이터셋\n7:3으로 훈련시험 데이터셋을 나눈다.\n\nlibrary(tidymodels)\n\nset.seed(123)\npenguin_split <- initial_split(penguins_tbl, strata = sex, prop = 0.7)\npenguin_train <- training(penguin_split)\npenguin_test <- testing(penguin_split)\n\nset.seed(123)\npenguin_boot <- bootstraps(penguin_train)\npenguin_boot\n#> # Bootstrap sampling \n#> # A tibble: 25 × 2\n#>    splits           id         \n#>    <list>           <chr>      \n#>  1 <split [238/87]> Bootstrap01\n#>  2 <split [238/85]> Bootstrap02\n#>  3 <split [238/87]> Bootstrap03\n#>  4 <split [238/86]> Bootstrap04\n#>  5 <split [238/79]> Bootstrap05\n#>  6 <split [238/83]> Bootstrap06\n#>  7 <split [238/88]> Bootstrap07\n#>  8 <split [238/83]> Bootstrap08\n#>  9 <split [238/91]> Bootstrap09\n#> 10 <split [238/87]> Bootstrap10\n#> # … with 15 more rows"
+  },
+  {
+    "objectID": "penguin_report.html#feature-engineering",
+    "href": "penguin_report.html#feature-engineering",
+    "title": "펭균 ML 보고서",
+    "section": "5.2 Feature Engineering",
+    "text": "5.2 Feature Engineering\n숫자형 변수에 대해서 정규화 작업을 진행하고 범주형 변수에 대해서 One-Hot 인코딩 작업을 수행하여 Feature 로 추가시킨다.\n\npenguin_rec <- recipe(sex ~ ., data = penguin_train) %>%\n  step_corr(all_numeric(), threshold = 0.9) %>% \n  step_normalize(all_numeric()) %>% \n  step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE)\n\npenguin_rec\n#> Recipe\n#> \n#> Inputs:\n#> \n#>       role #variables\n#>    outcome          1\n#>  predictor          7\n#> \n#> Operations:\n#> \n#> Correlation filter on all_numeric()\n#> Centering and scaling for all_numeric()\n#> Dummy variables from all_nominal(), -all_outcomes()"
+  },
+  {
+    "objectID": "penguin_report.html#기본모형rf",
+    "href": "penguin_report.html#기본모형rf",
+    "title": "펭균 ML 보고서",
+    "section": "5.3 기본모형(RF)",
+    "text": "5.3 기본모형(RF)\n\nrf_spec <- rand_forest() %>%\n  set_mode(\"classification\") %>% \n  set_engine(\"ranger\") \n\nrf_spec\n#> Random Forest Model Specification (classification)\n#> \n#> Computational engine: ranger"
+  },
+  {
+    "objectID": "penguin_report.html#작업흐름",
+    "href": "penguin_report.html#작업흐름",
+    "title": "펭균 ML 보고서",
+    "section": "5.4 작업흐름",
+    "text": "5.4 작업흐름\n\npenguin_wf <- workflow() %>%\n  add_recipe(penguin_rec) %>% \n  add_model(rf_spec)\n\npenguin_wf\n#> ══ Workflow ════════════════════════════════════════════════════════════════════\n#> Preprocessor: Recipe\n#> Model: rand_forest()\n#> \n#> ── Preprocessor ────────────────────────────────────────────────────────────────\n#> 3 Recipe Steps\n#> \n#> • step_corr()\n#> • step_normalize()\n#> • step_dummy()\n#> \n#> ── Model ───────────────────────────────────────────────────────────────────────\n#> Random Forest Model Specification (classification)\n#> \n#> Computational engine: ranger"
+  },
+  {
+    "objectID": "penguin_report.html#병렬처리-설정",
+    "href": "penguin_report.html#병렬처리-설정",
+    "title": "펭균 ML 보고서",
+    "section": "5.5 병렬처리 설정",
+    "text": "5.5 병렬처리 설정\n\nlibrary(doParallel)\n\ncores <- parallel::detectCores(logical = FALSE)\ncl <- makePSOCKcluster(cores)\nregisterDoParallel(cores = cl)\n\nset.seed(77)"
+  },
+  {
+    "objectID": "penguin_report.html#훈련-적합",
+    "href": "penguin_report.html#훈련-적합",
+    "title": "펭균 ML 보고서",
+    "section": "5.6 훈련 적합",
+    "text": "5.6 훈련 적합\n\ntictoc::tic()\n\nrf_rs <- penguin_wf %>%\n  fit_resamples(\n    resamples = penguin_boot,\n    control = control_resamples(save_pred = TRUE)\n  )\n\nrf_rs\n#> # Resampling results\n#> # Bootstrap sampling \n#> # A tibble: 25 × 5\n#>    splits           id          .metrics         .notes           .predictions\n#>    <list>           <chr>       <list>           <list>           <list>      \n#>  1 <split [238/87]> Bootstrap01 <tibble [2 × 4]> <tibble [0 × 3]> <tibble>    \n#>  2 <split [238/85]> Bootstrap02 <tibble [2 × 4]> <tibble [0 × 3]> <tibble>    \n#>  3 <split [238/87]> Bootstrap03 <tibble [2 × 4]> <tibble [0 × 3]> <tibble>    \n#>  4 <split [238/86]> Bootstrap04 <tibble [2 × 4]> <tibble [0 × 3]> <tibble>    \n#>  5 <split [238/79]> Bootstrap05 <tibble [2 × 4]> <tibble [0 × 3]> <tibble>    \n#>  6 <split [238/83]> Bootstrap06 <tibble [2 × 4]> <tibble [0 × 3]> <tibble>    \n#>  7 <split [238/88]> Bootstrap07 <tibble [2 × 4]> <tibble [0 × 3]> <tibble>    \n#>  8 <split [238/83]> Bootstrap08 <tibble [2 × 4]> <tibble [0 × 3]> <tibble>    \n#>  9 <split [238/91]> Bootstrap09 <tibble [2 × 4]> <tibble [0 × 3]> <tibble>    \n#> 10 <split [238/87]> Bootstrap10 <tibble [2 × 4]> <tibble [0 × 3]> <tibble>    \n#> # … with 15 more rows\n\ntictoc::toc()\n#> 6.66 sec elapsed"
+  },
+  {
+    "objectID": "penguin_report.html#모델-평가",
+    "href": "penguin_report.html#모델-평가",
+    "title": "펭균 ML 보고서",
+    "section": "5.7 모델 평가",
+    "text": "5.7 모델 평가\n\ncollect_metrics(rf_rs)\n#> # A tibble: 2 × 6\n#>   .metric  .estimator  mean     n std_err .config             \n#>   <chr>    <chr>      <dbl> <int>   <dbl> <chr>               \n#> 1 accuracy binary     0.887    25 0.00746 Preprocessor1_Model1\n#> 2 roc_auc  binary     0.946    25 0.00396 Preprocessor1_Model1\n\n\n5.7.1 오차 행렬\n\nrf_rs %>% \n  conf_mat_resampled() %>% \n  pivot_wider(names_from = Truth, values_from = Freq)\n#> # A tibble: 2 × 3\n#>   Prediction female  male\n#>   <fct>       <dbl> <dbl>\n#> 1 female      37.7   4.88\n#> 2 male         4.84 38.4\n\n\n\n5.7.2 ROC 곡선\n\nrf_rs %>% \n  collect_predictions() %>%\n  group_by(id) %>%\n  roc_curve(sex, .pred_female) %>%\n  ggplot(aes(1 - specificity, sensitivity, color = id)) +\n  geom_abline(lty = 2, color = \"gray80\", size = 1.5) +\n  geom_path(show.legend = FALSE, alpha = 0.6, size = 1.2) +\n  coord_equal()"
+  },
+  {
+    "objectID": "penguin_report.html#최종-모형",
+    "href": "penguin_report.html#최종-모형",
+    "title": "펭균 ML 보고서",
+    "section": "5.8 최종 모형",
+    "text": "5.8 최종 모형\n\npenguin_final <- penguin_wf %>%\n  last_fit(penguin_split)\n\npenguin_final\n#> # Resampling results\n#> # Manual resampling \n#> # A tibble: 1 × 6\n#>   splits            id               .metrics .notes   .predictions .workflow \n#>   <list>            <chr>            <list>   <list>   <list>       <list>    \n#> 1 <split [238/104]> train/test split <tibble> <tibble> <tibble>     <workflow>"
+  },
+  {
+    "objectID": "penguin_report.html#모형-성능",
+    "href": "penguin_report.html#모형-성능",
+    "title": "펭균 ML 보고서",
+    "section": "5.9 모형 성능",
+    "text": "5.9 모형 성능\n\nmodel_perf <- collect_metrics(penguin_final)\n\n암수 성별 예측모형의 최종 모형 정확도는 0.8557692 이고 ROC 는 0.9377778 이다.\n\ncollect_predictions(penguin_final) %>%\n  conf_mat(sex, .pred_class)\n#>           Truth\n#> Prediction female male\n#>     female     41    6\n#>     male        9   48\n\n실제 암컷 펭귄을 수컷 펭귄으로 오분류하는 것이 그 반의 경우보다 30% 정도 더 높게 나온다."
   }
 ]

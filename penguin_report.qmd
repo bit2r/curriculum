@@ -300,3 +300,162 @@ penguins_tbl %>%
 ```
 
 
+# 암수 분류 모형
+
+## 훈련/시험 데이터셋
+
+7:3으로 훈련시험 데이터셋을 나눈다.
+
+```{r}
+library(tidymodels)
+
+set.seed(123)
+penguin_split <- initial_split(penguins_tbl, strata = sex, prop = 0.7)
+penguin_train <- training(penguin_split)
+penguin_test <- testing(penguin_split)
+
+set.seed(123)
+penguin_boot <- bootstraps(penguin_train)
+penguin_boot
+```
+
+## Feature Engineering
+
+숫자형 변수에 대해서 정규화 작업을 진행하고 범주형 변수에 대해서 One-Hot 인코딩 작업을 수행하여 Feature 로 추가시킨다.
+
+```{r}
+penguin_rec <- recipe(sex ~ ., data = penguin_train) %>%
+  step_corr(all_numeric(), threshold = 0.9) %>% 
+  step_normalize(all_numeric()) %>% 
+  step_dummy(all_nominal(), -all_outcomes(), one_hot = TRUE)
+
+penguin_rec
+```
+
+## 기본모형(RF)
+
+```{r}
+rf_spec <- rand_forest() %>%
+  set_mode("classification") %>% 
+  set_engine("ranger") 
+
+rf_spec
+```
+
+## 작업흐름
+
+```{r}
+penguin_wf <- workflow() %>%
+  add_recipe(penguin_rec) %>% 
+  add_model(rf_spec)
+
+penguin_wf
+```
+
+
+## 병렬처리 설정
+
+```{r}
+library(doParallel)
+
+cores <- parallel::detectCores(logical = FALSE)
+cl <- makePSOCKcluster(cores)
+registerDoParallel(cores = cl)
+
+set.seed(77)
+```
+
+
+## 훈련 적합
+
+```{r}
+tictoc::tic()
+
+rf_rs <- penguin_wf %>%
+  fit_resamples(
+    resamples = penguin_boot,
+    control = control_resamples(save_pred = TRUE)
+  )
+
+rf_rs
+
+tictoc::toc()
+```
+
+## 모델 평가
+
+```{r}
+collect_metrics(rf_rs)
+```
+
+### 오차 행렬
+
+```{r}
+rf_rs %>% 
+  conf_mat_resampled() %>% 
+  pivot_wider(names_from = Truth, values_from = Freq)
+```
+
+### ROC 곡선
+
+```{r}
+rf_rs %>% 
+  collect_predictions() %>%
+  group_by(id) %>%
+  roc_curve(sex, .pred_female) %>%
+  ggplot(aes(1 - specificity, sensitivity, color = id)) +
+  geom_abline(lty = 2, color = "gray80", size = 1.5) +
+  geom_path(show.legend = FALSE, alpha = 0.6, size = 1.2) +
+  coord_equal()
+```
+
+##  최종 모형
+
+```{r}
+penguin_final <- penguin_wf %>%
+  last_fit(penguin_split)
+
+penguin_final
+```
+
+## 모형 성능
+
+```{r}
+model_perf <- collect_metrics(penguin_final)
+```
+
+암수 성별 예측모형의 최종 모형 정확도는 `r model_perf %>% filter(.metric == "accuracy") %>% pull(.estimate)` 이고  ROC 는 `r model_perf %>% filter(.metric == "roc_auc") %>% pull(.estimate)` 이다.
+
+```{r}
+collect_predictions(penguin_final) %>%
+  conf_mat(sex, .pred_class)
+```
+
+실제 암컷 펭귄을 수컷 펭귄으로 오분류하는 것이 그 반의 경우보다 30% 정도 더 높게 나온다.
+
+# 설명가능한 ML
+
+```{r}
+#| eval: false
+
+library(DALEXtra)
+library(modelStudio)
+
+penguin_fit <- penguin_wf %>%
+  fit(data = penguin_train)
+
+explainer <- explain_tidymodels(penguin_fit,
+                                data = penguin_test,
+                                y = penguin_test$sex,
+                                label = "tidymodels")
+
+new_penguins <- penguin_test %>% slice(1:3) %>% as.data.frame()
+rownames(new_penguins) <- c("penguin_1", "penguin_2", "penguin_3")
+
+modelStudio(explainer, new_penguins,  B = 50)
+
+penguin_test
+
+```
+
+
