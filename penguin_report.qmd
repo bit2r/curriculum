@@ -50,7 +50,11 @@ lightbox: auto
 
 :::{.panel-tabset}
 
-#### R
+```bash
+> install.packages('palmerpenguins')
+```
+
+#### R - `palmerpenguins`
 
 ```{r}
 library(palmerpenguins)
@@ -60,9 +64,7 @@ penguins <- palmerpenguins::penguins
 penguins
 ```
 
-#### Python
-
-
+#### Python - `palmerpenguins`
 
 ```bash
 $ pip install palmerpenguins
@@ -78,9 +80,223 @@ penguins = load_penguins()
 penguins.head()
 ```
 
+:::
+
+
+### csv 데이터
+
+:::{.panel-tabset}
+
+#### R - `csv`
+
+```{r}
+library(tidyverse)
+
+penguins_csv <- read_csv('data/penguins.csv')
+
+penguins_csv
+```
+
+
+#### Python - `csv`
+
+```{python}
+import pandas as pd
+
+palmer_df = pd.read_csv('data/penguins.csv')
+
+print(palmer_df.head())
+
+```
+
+:::
+
+### 클라우드 저장소
+
+:::{.panel-tabset}
+
+#### Onedrive
+
+```{r}
+library(pins)
+library(Microsoft365R)
+
+od <- Microsoft365R::get_personal_onedrive()
+board <- board_ms365(od, "krvote_board")
+# board %>% pin_write(penguins)
+
+board %>% pin_read("penguins")
+```
+
+#### AWS S3
+
+#### Google Cloud Storage 
+
+:::
+
+# 데이터 전처리
+
+펭귄 데이터는 교육용으로 제공되지만 다른 데이터셋과 달리 결측값(`NA`)도 포함되어 있어 
+본격적인 분석을 위해서 결측값 현황을 정확히 확인하고 결측값에 대한 적절한 전략을 세우고 이를 처리해야 한다.
+
+## 결측값 현황
+
+데이터프레임에 결측값이 어떻게 분포되어 있는지 먼저 시각적으로 파악하자.
+상당수 결측값이 `sex` 칼럼에 몰려있는 것이 확인된다.
+특히, 일부 펭귄의 경우 측정 변수가 모두 결측된 현황도 파악할 수 있다.
+
+
+:::{.panel-tabset}
+
+### 전체 현황
+
+```{r}
+library(tidyverse)
+library(naniar)
+library(palmerpenguins)
+
+penguins_raw <- palmerpenguins::penguins
+
+vis_miss(penguins_raw)
+
+```
+
+
+### 결측값 모아보기
+
+```{r}
+vis_miss(penguins_raw, cluster = TRUE, sort_miss = TRUE)
+```
+
+:::
+
+시각적으로 확인한 후에 기술통계량을 통해 정확한 결측값 현황을 확인해보자.
+
+:::{.panel-tabset}
+
+### 전체 값 수
+
+```{r}
+nrow(penguins_raw) * ncol(penguins_raw)
+```
+
+
+### 결측값 수
+
+```{r}
+naniar::n_miss(penguins_raw)
+```
+
+### 완전한 값의 수
+
+```{r}
+naniar::n_complete(penguins_raw)
+```
+
+### 변수별 결측값
+
+```{r}
+miss_var_summary(penguins_raw)
+```
+
+
+### 관측점별 결측값
+
+```{r}
+miss_case_summary(penguins_raw)
+```
 
 :::
 
 
+## 결측값 처리 전략
+
+결측값 현황을 살펴보고 결측값이 많은 4번, 272번 펭귄은 분석에서 제거하고 `sex` 암수변수는 범주형 변수라 평균과 유사한 기능을 하는 최빈값(Mode) 정보를 이용하여 결측값을 채워넣는 것으로 한다.
+
+
+```{r}
+
+# get_mode <- function(x) {
+#   ux <- unique(x)
+#   ux[which.max(tabulate(match(x, ux)))]
+# }
+# 
+# get_mode(penguins_csv$sex)
+
+penguins_tbl <- penguins_raw %>% 
+  filter( !row_number() %in% c(4, 272) ) %>% 
+  mutate( sex = as.character(sex)) %>% 
+  mutate( sex = if_else(is.na(sex), "male", sex)) %>% 
+  mutate( sex = factor( sex, levels = c("female", "male")))
+
+
+```
+
+# 탐색적 데이터 분석
+
+결측값 제거 등을 통해 데이터 전처리 작업이 완료되었다.
+다음 단계로 탐색적 데이터 분석을 통해 암수성별과 관련된 정보를 탐색적으로 파악해보자.
+
+## 기술통계량
+
+```{r}
+library(explore)
+
+penguins_tbl %>% 
+  describe()
+```
+
+
+## 단변량분석
+
+```{r}
+penguins_tbl %>% 
+  explore_all()
+```
+
+## 암수(target) 연관성
+
+```{r}
+penguins_tbl %>% 
+  explore_all(target = sex)
+```
+
+## 암수(target) 의사결정나무
+
+```{r}
+penguins_tbl %>% 
+  explain_tree(target = sex)
+```
+
+## 시각화
+
+```{r}
+penguins_tbl %>% 
+  explore(body_mass_g, bill_length_mm, target = sex)
+```
+
+```{r}
+library(tidymodels)
+library(parttree)
+
+penguins_dt <- 
+  decision_tree() %>%
+  set_engine("rpart") %>%
+  set_mode("classification") %>%
+  fit(sex ~ body_mass_g + bill_length_mm, data = penguins_tbl)
+
+# 시각화
+penguins_tbl %>%
+  ggplot(aes(x = body_mass_g, y = bill_length_mm)) +
+  # geom_jitter(aes(col=species), alpha=0.7) +
+  geom_point(aes(color = sex)) +
+  geom_parttree(data = penguins_dt, aes(fill=sex), alpha = 0.1,
+                flipaxes = FALSE) +
+  scale_color_manual(values = c("female"  = "blue",
+                              "male" = "red")) +
+  scale_fill_manual(values = c("female"  = "blue",
+                              "male" = "red")) +  
+  theme_minimal()
+```
 
 
