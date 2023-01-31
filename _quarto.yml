@@ -127,6 +127,8 @@ website:
           - text: "-----"
           - href: penguin_report.qmd
             text: "펭균 ML 보고서"
+          - href: modelStudio/index.html
+            text: "펭균 ML XAI"            
       - text: "데이터셋"
         menu:
           - href: data.qmd

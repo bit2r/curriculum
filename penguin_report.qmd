@@ -11,7 +11,7 @@ format:
     theme: 
       - flatly
       - css/quarto-fonts.css
-    code-fold: false
+    code-fold: true
     code-overflow: scroll
     toc: true
     toc-depth: 3
@@ -435,27 +435,51 @@ collect_predictions(penguin_final) %>%
 
 # 설명가능한 ML
 
+[`DALEX`](https://ema.drwhy.ai/) 패키지 도구를 사용하여 기계확습모형을 꼼꼼히 살펴본다.
+
 ```{r}
 #| eval: false
 
-library(DALEXtra)
-library(modelStudio)
+library(DALEX)
+library(DALEXtra) 
+library(modelStudio) # install_dependencies()
 
 penguin_fit <- penguin_wf %>%
   fit(data = penguin_train)
 
-explainer <- explain_tidymodels(penguin_fit,
-                                data = penguin_test,
-                                y = penguin_test$sex,
-                                label = "tidymodels")
+y_penguin <- as.numeric(penguin_train$sex)
 
-new_penguins <- penguin_test %>% slice(1:3) %>% as.data.frame()
-rownames(new_penguins) <- c("penguin_1", "penguin_2", "penguin_3")
+penguin_explainer <- explain_tidymodels(penguin_fit,
+                     data = penguin_train,
+                     y = y_penguin,
+                     label = "Penguin RF")
 
-modelStudio(explainer, new_penguins,  B = 50)
+set.seed(123)
+new_penguins <- penguin_train %>% slice_sample(n = 3)
 
-penguin_test
+modelStudio(penguin_explainer, new_observation = new_penguins)
 
 ```
+
+
+
+```{=html}
+<iframe width="1200" height="1000" src="modelStudio/index.html" title="Quarto Documentation"></iframe>
+```
+
+
+# 주요 기여사항
+
+파머 펭귄 성별 분류 머신러닝 모델은 인구 관리 및 모니터링을 더 효율적으로 할 수 있는 예측 분류 모형을 개발하였다. 예측 모형의 정확도는 `r model_perf %>% filter(.metric == "accuracy") %>% pull(.estimate)` 으로 기존 통계모형보다 우수한 정확도를 보이고 있다. 
+
+
+# 한계
+
+예측 모형의 정확도가 `r model_perf %>% filter(.metric == "accuracy") %>% pull(.estimate)` 으로 기존 통계모형보다 높지만 실제 업무에 배포하여 적용하는 기준 정확도 **95%**에는 미치지 못하는 한계가 있고, 개발된 암수분류 모형을 실제 운영환경에서 사용할 수 있는 추가 작업이 필요한 것으로 확인되었습니다.
+
+
+# 결론
+
+개별 펭귄의 성별을 정확하게 식별함으로써 펭귄 서식지에서 성비와 산란 패턴을 더 잘 이해하고 추적 할수 있는 성별 예측 기계학습 모형을 개발하였고 이를 실제 업무에 적용하기 위한 도전과제도 추가로 발굴되었다. 금번 프로젝트가 후속 연구개발로 이어져 기후 온난화로 인한 안정적인 펭귄 개체수 유지를 위한 발판으로 이어질 것으로 기대된다.
 
 
