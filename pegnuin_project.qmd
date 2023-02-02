@@ -1,0 +1,134 @@
+---
+title: "펭균 ML 프로젝트"
+description: "펭귄 ML 모형 개발 프로젝트 구조"
+date: today # 날짜 설정: now, last-modified
+author:
+  - name: 이광춘
+    affiliation: TCS
+title-block-banner: false
+format:
+  html:
+    theme: 
+      - flatly
+      - css/quarto-fonts.css
+    code-fold: true
+    code-overflow: scroll
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    highlight-style: github    
+    self-contained: false
+editor_options: 
+  chunk_output_type: console
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#>" 
+    R.options:
+      knitr.graphics.auto_pdf: true  
+filters:
+   - lightbox
+lightbox: auto      
+---
+
+
+# ML 프로젝트 구조
+
+ML을 포함한 데이터 과학 프로젝트는 다음과 같은 구조를 가지고 있다.
+
+
+:::{.panel-tabset}
+
+## ML 프로젝트 일반
+
+```bash
+project_name/
+    data/
+        raw/
+        processed/
+        external/
+    notebooks/
+        exploratory/
+        models/
+    src/
+        data_processing/
+        model_training/
+        visualization/
+    models/
+        saved/
+    reports/
+        figures/
+        presentations/
+        papers/
+    README.md
+    requirements.txt
+    setup.py
+```
+
+
+## 펭귄 ML 프로젝트 (파이썬)
+
+```bash
+penguins_classification/
+    data/
+        raw/
+            penguins_raw.csv
+        processed/
+            penguins_processed.csv
+    notebooks/
+        exploratory/
+            penguins_eda.ipynb
+        models/
+            penguins_model_development.ipynb
+    src/
+        data_processing/
+            penguins_processing.py
+        model_training/
+            penguins_training.py
+        visualization/
+            penguins_visualization.py
+    models/
+        saved/
+            penguins_model.pkl
+    reports/
+        figures/
+            penguins_confusion_matrix.png
+            penguins_feature_importance.png
+        presentations/
+            penguins_presentation.pptx
+    README.md
+    requirements.txt
+    setup.py
+```
+
+
+## 펭귄 ML 프로젝트 (R)
+
+```bash
+project_name/
+    data/
+        raw/
+        processed/
+        external/
+    notebooks/
+        exploratory/
+        models/
+    src/
+        data_processing/
+        model_training/
+        visualization/
+    models/
+        saved/
+    reports/
+        figures/
+        presentations/
+        papers/
+    README.md
+    renv.lock
+    setup.R
+```
+
+:::
+
+
+

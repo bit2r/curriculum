@@ -1,0 +1,14 @@
+{
+  "hash": "26b55a8cd0737cfd8d67402eca381b99",
+  "result": {
+    "markdown": "---\ntitle: \"펭균 ML 프로젝트\"\ndescription: \"펭귄 ML 모형 개발 프로젝트 구조\"\ndate: today # 날짜 설정: now, last-modified\nauthor:\n  - name: 이광춘\n    affiliation: TCS\ntitle-block-banner: false\nformat:\n  html:\n    theme: \n      - flatly\n      - css/quarto-fonts.css\n    code-fold: true\n    code-overflow: scroll\n    toc: true\n    toc-depth: 3\n    number-sections: true\n    highlight-style: github    \n    self-contained: false\neditor_options: \n  chunk_output_type: console\nknitr:\n  opts_chunk: \n    collapse: true\n    comment: \"#>\" \n    R.options:\n      knitr.graphics.auto_pdf: true  \nfilters:\n   - lightbox\nlightbox: auto      \n---\n\n\n\n# ML 프로젝트 구조\n\nML을 포함한 데이터 과학 프로젝트는 다음과 같은 구조를 가지고 있다.\n\n\n:::{.panel-tabset}\n\n## ML 프로젝트 일반\n\n```bash\nproject_name/\n    data/\n        raw/\n        processed/\n        external/\n    notebooks/\n        exploratory/\n        models/\n    src/\n        data_processing/\n        model_training/\n        visualization/\n    models/\n        saved/\n    reports/\n        figures/\n        presentations/\n        papers/\n    README.md\n    requirements.txt\n    setup.py\n```\n\n\n## 펭귄 ML 프로젝트 (파이썬)\n\n```bash\npenguins_classification/\n    data/\n        raw/\n            penguins_raw.csv\n        processed/\n            penguins_processed.csv\n    notebooks/\n        exploratory/\n            penguins_eda.ipynb\n        models/\n            penguins_model_development.ipynb\n    src/\n        data_processing/\n            penguins_processing.py\n        model_training/\n            penguins_training.py\n        visualization/\n            penguins_visualization.py\n    models/\n        saved/\n            penguins_model.pkl\n    reports/\n        figures/\n            penguins_confusion_matrix.png\n            penguins_feature_importance.png\n        presentations/\n            penguins_presentation.pptx\n    README.md\n    requirements.txt\n    setup.py\n```\n\n\n## 펭귄 ML 프로젝트 (R)\n\n```bash\nproject_name/\n    data/\n        raw/\n        processed/\n        external/\n    notebooks/\n        exploratory/\n        models/\n    src/\n        data_processing/\n        model_training/\n        visualization/\n    models/\n        saved/\n    reports/\n        figures/\n        presentations/\n        papers/\n    README.md\n    renv.lock\n    setup.R\n```\n\n:::\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

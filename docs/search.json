@@ -1622,5 +1622,12 @@
     "title": "펭균 ML 보고서",
     "section": "5.9 모형 성능",
     "text": "5.9 모형 성능\n\n\n코드\nmodel_perf <- collect_metrics(penguin_final)\n\n\n암수 성별 예측모형의 최종 모형 정확도는 0.8557692 이고 ROC 는 0.9377778 이다.\n\n\n코드\ncollect_predictions(penguin_final) %>%\n  conf_mat(sex, .pred_class)\n#>           Truth\n#> Prediction female male\n#>     female     41    6\n#>     male        9   48\n\n\n실제 암컷 펭귄을 수컷 펭귄으로 오분류하는 것이 그 반의 경우보다 30% 정도 더 높게 나온다."
+  },
+  {
+    "objectID": "pegnuin_project.html",
+    "href": "pegnuin_project.html",
+    "title": "펭균 ML 프로젝트",
+    "section": "",
+    "text": "1 ML 프로젝트 구조\nML을 포함한 데이터 과학 프로젝트는 다음과 같은 구조를 가지고 있다.\n\nML 프로젝트 일반펭귄 ML 프로젝트 (파이썬)펭귄 ML 프로젝트 (R)\n\n\nproject_name/\n    data/\n        raw/\n        processed/\n        external/\n    notebooks/\n        exploratory/\n        models/\n    src/\n        data_processing/\n        model_training/\n        visualization/\n    models/\n        saved/\n    reports/\n        figures/\n        presentations/\n        papers/\n    README.md\n    requirements.txt\n    setup.py\n\n\npenguins_classification/\n    data/\n        raw/\n            penguins_raw.csv\n        processed/\n            penguins_processed.csv\n    notebooks/\n        exploratory/\n            penguins_eda.ipynb\n        models/\n            penguins_model_development.ipynb\n    src/\n        data_processing/\n            penguins_processing.py\n        model_training/\n            penguins_training.py\n        visualization/\n            penguins_visualization.py\n    models/\n        saved/\n            penguins_model.pkl\n    reports/\n        figures/\n            penguins_confusion_matrix.png\n            penguins_feature_importance.png\n        presentations/\n            penguins_presentation.pptx\n    README.md\n    requirements.txt\n    setup.py\n\n\nproject_name/\n    data/\n        raw/\n        processed/\n        external/\n    notebooks/\n        exploratory/\n        models/\n    src/\n        data_processing/\n        model_training/\n        visualization/\n    models/\n        saved/\n    reports/\n        figures/\n        presentations/\n        papers/\n    README.md\n    renv.lock\n    setup.R"
   }
 ]
