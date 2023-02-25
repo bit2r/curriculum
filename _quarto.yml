@@ -150,7 +150,13 @@ website:
           - href: mcq_ds.qmd
             text: "데이터 과학"
           - href: mcq_pandas.qmd
-            text: "통계분석: Pandas와 시각화"            
+            text: "통계분석: Pandas와 시각화"
+      - text: "MLOps"
+        menu:
+          - text: "-----"
+          - href: wsl_linux.qmd
+            text: "WSL 리눅스"
+            
           
 format:
   html:

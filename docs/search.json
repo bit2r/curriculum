@@ -1629,5 +1629,47 @@
     "title": "펭균 ML 프로젝트",
     "section": "",
     "text": "1 ML 프로젝트 구조\nML을 포함한 데이터 과학 프로젝트는 다음과 같은 구조를 가지고 있다.\n\nML 프로젝트 일반펭귄 ML 프로젝트 (파이썬)펭귄 ML 프로젝트 (R)\n\n\nproject_name/\n    data/\n        raw/\n        processed/\n        external/\n    notebooks/\n        exploratory/\n        models/\n    src/\n        data_processing/\n        model_training/\n        visualization/\n    models/\n        saved/\n    reports/\n        figures/\n        presentations/\n        papers/\n    README.md\n    requirements.txt\n    setup.py\n\n\npenguins_classification/\n    data/\n        raw/\n            penguins_raw.csv\n        processed/\n            penguins_processed.csv\n    notebooks/\n        exploratory/\n            penguins_eda.ipynb\n        models/\n            penguins_model_development.ipynb\n    src/\n        data_processing/\n            penguins_processing.py\n        model_training/\n            penguins_training.py\n        visualization/\n            penguins_visualization.py\n    models/\n        saved/\n            penguins_model.pkl\n    reports/\n        figures/\n            penguins_confusion_matrix.png\n            penguins_feature_importance.png\n        presentations/\n            penguins_presentation.pptx\n    README.md\n    requirements.txt\n    setup.py\n\n\nproject_name/\n    data/\n        raw/\n        processed/\n        external/\n    notebooks/\n        exploratory/\n        models/\n    src/\n        data_processing/\n        model_training/\n        visualization/\n    models/\n        saved/\n    reports/\n        figures/\n        presentations/\n        papers/\n    README.md\n    renv.lock\n    setup.R"
+  },
+  {
+    "objectID": "wsl_linux.html",
+    "href": "wsl_linux.html",
+    "title": "MLOps",
+    "section": "",
+    "text": "윈도우에서 리눅스를 사용하는 방식은 진화를 거듭했지만 최근에는 Microsoft Store에서 ubuntu 리눅스를 앱 사용하듯이 설치해서 사용하면 된다.\n데이터 과학 : 윈도우 10 - WSL (우분투 배쉬), 2019년 경\n\n\n\n\n\n\n\n/mnt/ 디렉토리 아래 C:\\, D:\\ 드라이브를 찾을 수 있고 그 아래 작업 디렉토리와 파일로 이동하면 후속 작업을 이어서 수행할 수 있다.\nstatkclee@dl:/mnt/d/tcs/curriculum/mlops$ cd /mnt/\nstatkclee@dl:/mnt$ ls\nc  d  wsl\nstatkclee@dl:/mnt$ cd d/tcs/curriculum/mlops/\nstatkclee@dl:/mnt/d/tcs/curriculum/mlops$ pwd\n/mnt/d/tcs/curriculum/mlops"
+  },
+  {
+    "objectID": "wsl_linux.html#파이썬-코드",
+    "href": "wsl_linux.html#파이썬-코드",
+    "title": "MLOps",
+    "section": "2.1 파이썬 코드",
+    "text": "2.1 파이썬 코드\n패키지 상단에 설치하고 파머펭귄 패키지 데이터를 가져와서 결측값 제거하고 기계학습 관련 훈련/시험 데이터 나누고, Random Forest 예측모형으로 성별 예측 모형 개발하고 시험데이터로 성별 예측모형 정확도를 측정한다.\n\nimport numpy as np\nimport pandas as pd\nfrom palmerpenguins import load_penguins\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import accuracy_score\n\npenguins = load_penguins()\n\ndf = penguins.dropna()\n\n# X, y 구분\nX = df[['bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g']]\ny = df['sex']\n\n# 훈련 시험데이터 분리\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# RF 분류모형\nrfc = RandomForestClassifier()\n\n# 기계학습\nrfc.fit(X_train, y_train)\n\n# 예측값 생성\ny_pred = rfc.predict(X_test)\n\n# 평가\naccuracy = accuracy_score(y_test, y_pred)\nprint('정확도(Accuracy):', accuracy)"
+  },
+  {
+    "objectID": "wsl_linux.html#실제-배포환경",
+    "href": "wsl_linux.html#실제-배포환경",
+    "title": "MLOps",
+    "section": "2.2 실제 배포환경",
+    "text": "2.2 실제 배포환경\n개발환경에서 성별예측모형을 개발했지만 이를 배포하게 되면 배포될 컴퓨터에는 관련 패키지가 설치되어 있지 않다. 그렇다고 수작업으로 requirements.txt 파일에 관련 패키지를 수작업으로 일일이 넣을 수는 없다."
+  },
+  {
+    "objectID": "wsl_linux.html#pipreqs-패키지",
+    "href": "wsl_linux.html#pipreqs-패키지",
+    "title": "MLOps",
+    "section": "2.3 pipreqs 패키지",
+    "text": "2.3 pipreqs 패키지\npipreqs 패키지는 pip freeze 명령어와 비교하여 해당 프로젝트(디렉토리)의 파이썬 패키지만 requirements.txt 파일에 담아낸다.\nstatkclee@dl:/mnt/d/tcs/curriculum/mlops/vanilla$ pip install pipreqs\nDefaulting to user installation because normal site-packages is not writeable\nRequirement already satisfied: pipreqs in /home/statkclee/.local/lib/python3.10/site-packages (0.4.11)\nRequirement already satisfied: yarg in /home/statkclee/.local/lib/python3.10/site-packages (from pipreqs) (0.1.9)\nRequirement already satisfied: docopt in /home/statkclee/.local/lib/python3.10/site-packages (from pipreqs) (0.6.2)\nRequirement already satisfied: requests in /home/statkclee/.local/lib/python3.10/site-packages (from yarg->pipreqs) (2.28.2)\nRequirement already satisfied: idna<4,>=2.5 in /home/statkclee/.local/lib/python3.10/site-packages (from requests->yarg->pipreqs) (3.4)\nRequirement already satisfied: urllib3<1.27,>=1.21.1 in /home/statkclee/.local/lib/python3.10/site-packages (from requests->yarg->pipreqs) (1.26.14)\nRequirement already satisfied: certifi>=2017.4.17 in /home/statkclee/.local/lib/python3.10/site-packages (from requests->yarg->pipreqs) (2022.12.7)\nRequirement already satisfied: charset-normalizer<4,>=2 in /home/statkclee/.local/lib/python3.10/site-packages (from requests->yarg->pipreqs) (3.0.1)"
+  },
+  {
+    "objectID": "wsl_linux.html#패키지-설치",
+    "href": "wsl_linux.html#패키지-설치",
+    "title": "MLOps",
+    "section": "2.4 패키지 설치",
+    "text": "2.4 패키지 설치\npip install -r requirements.txt 명령어로 암수성별 예측 기계학습모형 개발에 사용된 패키지를 일괄 설치할 수 있다.\nstatkclee@dl:/mnt/d/tcs/curriculum/mlops/vanilla$ pipreqs .\nstatkclee@dl:/mnt/d/tcs/curriculum/mlops/vanilla$ ls\npenguins.py  requirements.txt\n\nstatkclee@dl:/mnt/d/tcs/curriculum/mlops/vanilla$ pip install -r requirements.txt\nDefaulting to user installation because normal site-packages is not writeable\nRequirement already satisfied: numpy==1.24.2 in /home/statkclee/.local/lib/python3.10/site-packages (from -r requirements.txt (line 1)) (1.24.2)\nCollecting palmerpenguins==0.1.4\n  Downloading palmerpenguins-0.1.4-py3-none-any.whl (17 kB)\nCollecting pandas==1.5.3\n  Downloading pandas-1.5.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.1 MB)\n     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.1/12.1 MB 11.3 MB/s eta 0:00:00\nCollecting scikit_learn==1.2.1\n  Downloading scikit_learn-1.2.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (9.6 MB)\n     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.6/9.6 MB 11.4 MB/s eta 0:00:00\nCollecting pytz>=2020.1\n  Downloading pytz-2022.7.1-py2.py3-none-any.whl (499 kB)\n     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 499.4/499.4 kB 10.3 MB/s eta 0:00:00\nCollecting python-dateutil>=2.8.1\n  Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)\n     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 247.7/247.7 kB 9.7 MB/s eta 0:00:00\nCollecting scipy>=1.3.2\n  Downloading scipy-1.10.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (34.4 MB)\n     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 34.4/34.4 MB 10.9 MB/s eta 0:00:00\nCollecting joblib>=1.1.1\n  Downloading joblib-1.2.0-py3-none-any.whl (297 kB)\n     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 298.0/298.0 kB 9.8 MB/s eta 0:00:00\nCollecting threadpoolctl>=2.0.0\n  Downloading threadpoolctl-3.1.0-py3-none-any.whl (14 kB)\nRequirement already satisfied: six>=1.5 in /usr/lib/python3/dist-packages (from python-dateutil>=2.8.1->pandas==1.5.3->-r requirements.txt (line 3)) (1.16.0)\nInstalling collected packages: pytz, threadpoolctl, scipy, python-dateutil, joblib, scikit_learn, pandas, palmerpenguins\nSuccessfully installed joblib-1.2.0 palmerpenguins-0.1.4 pandas-1.5.3 python-dateutil-2.8.2 pytz-2022.7.1 scikit_learn-1.2.1 scipy-1.10.1 threadpoolctl-3.1.0"
+  },
+  {
+    "objectID": "wsl_linux.html#실행",
+    "href": "wsl_linux.html#실행",
+    "title": "MLOps",
+    "section": "2.5 실행",
+    "text": "2.5 실행\npython3 penguins.py 명령어로 개발환경에서 제작한 암수성별 예측모형을 성공적으로 배포함을 확인할 수 있다.\nstatkclee@dl:/mnt/d/tcs/curriculum/mlops/vanilla$ python3 penguins.py\n정확도(Accuracy): 0.835820895522388"
   }
 ]
