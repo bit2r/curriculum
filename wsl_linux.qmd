@@ -149,6 +149,28 @@ statkclee@dl:/mnt/d/tcs/curriculum/mlops/vanilla$ python3 penguins.py
 정확도(Accuracy): 0.835820895522388
 ```
 
+# 기계학습 코드 모듈화
+
+스크립트로 작성한 코드를 함수로 기능을 구분하여 작성한다.
+동일한 기능을 제공하고 있으나 향후 코드 유지보수를 효율적으로 수행할 수 있게 한다.
+암수성별 예측모형을 리팩토링하여 다시 제작하여 실행한다.
+
+```{r}
+library(reticulate)
+
+reticulate::source_python("mlops/vanilla_module/penguins_functions.py")
+
+py$accuracy
+```
+
+## 파이썬 코드
+
+기능을 함수로 담아내어 모듈화시킨 코드는 다음과 같다.
+
+```{.python include="mlops/vanilla_module/penguins_functions.py"}
+```
+
+
 
 # 파이프라인 기계학습
 
