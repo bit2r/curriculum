@@ -153,10 +153,9 @@ website:
             text: "통계분석: Pandas와 시각화"
       - text: "MLOps"
         menu:
-          - text: "-----"
           - href: wsl_linux.qmd
-            text: "WSL 리눅스"
-            
+            text: "WSL 리눅스 배포"
+          - text: "-----"
           
 format:
   html:

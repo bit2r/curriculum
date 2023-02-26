@@ -1,6 +1,6 @@
 ---
 title: "MLOps"
-description: "WSL 리눅스"
+description: "WSL 리눅스 배포"
 date: today # 날짜 설정: now, last-modified
 author:
   - name: 이광춘
@@ -149,4 +149,132 @@ statkclee@dl:/mnt/d/tcs/curriculum/mlops/vanilla$ python3 penguins.py
 정확도(Accuracy): 0.835820895522388
 ```
 
+
+# 파이프라인 기계학습
+
+기계학습 파이프라인을 구축하여 암수성별 예측모형을 개발한다.
+
+```{r}
+library(reticulate)
+
+reticulate::source_python("mlops/pipeline/penguins_pipeline.py")
+
+py$accuracy
+```
+
+## 파이썬 코드
+
+Feature Engineering과 예측모형을 `Pipeline()` 함수에 넣어 체계화한다.
+
+```{.python include="mlops/pipeline/penguins_pipeline.py"}
+```
+
+## 실행
+
+`python3 penguins_pipeline.py` 명령어로 개발환경에서 파이프라인 방식을 적용하여 제작한 암수성별 예측모형을 성공적으로 배포함을 확인할 수 있다.
+
+```bash
+statkclee@dl:/mnt/d/tcs/curriculum/mlops/pipeline$ python3 penguins_pipeline.py
+파이프라인 방식 정확도(Accuracy): 0.8507462686567164
+```
+
+# 객체지향 기계학습
+
+기계학습모형을 객체지향 클래스로 구축하여 암수성별 예측모형을 클래스로 개발하여 적용시킨다.
+
+```{r}
+library(reticulate)
+
+reticulate::source_python("mlops/oop/penguins_oop.py")
+
+py$accuracy
+```
+
+## 파이썬 코드
+
+객체지향 `PenguinSexClassifier` 클래스를 생성하여 기계학습 예측모형을 제작할 수 있다.
+
+```{.python include="mlops/oop/penguins_oop.py"}
+```
+
+## 실행
+
+`python3 ` 명령어로 개발환경에서 객체지향 방식으로 개발한 클래스 방식을 적용하여 제작한 암수성별 예측모형을 성공적으로 배포함을 확인할 수 있다.
+
+```bash
+statkclee@dl:/mnt/d/tcs/curriculum/mlops/oop$ python3 penguins_oop.py
+OOP 정확도(Accuracy): 0.8656716417910447
+```
+
+# `Makefile` 자동화
+
+## 파이썬 파일
+
+암수성별 예측모형 정확도를 텍스트 파일에 저장하는 로직을 추가한다.
+이를 통해 `requirements.txt` 파일을 저장시킨다.
+
+```{.python include="mlops/makefile/penguins_pipeline.py"}
+```
+
+## `Makefile`
+
+자동화 대상을 다음과 같이 정리한다.
+
+1. `make requirements` : 파이썬 패키지 설치 목록을 `requirements.txt` 에 작성한다.
+1. `make install` : `requirements.txt` 파일에 저장된 패키지를 설치한다.
+1. `make run` : 암수성별 예측모형을 실행하고 예측정확도를 `results.txt` 파일에 기록한다.
+
+```{.python include="mlops/makefile/Makefile"}
+```
+
+## 작업 예시
+
+```{bash}
+#| eval: false
+statkclee@dl:/mnt/d/tcs/curriculum/mlops/makefile$ make help
+Usage: make [target]
+
+Targets:
+  help            Show this help message
+  all              Install dependencies and run the script
+  requirements  Generate requirements.txt using pipreqs
+  install          Install dependencies
+  run              Run the script
+  clean          Clean up the project directory
+
+statkclee@dl:/mnt/d/tcs/curriculum/mlops/makefile$ make requirements
+pip3 install pipreqs
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pipreqs in /home/statkclee/.local/lib/python3.10/site-packages (0.4.11)
+Requirement already satisfied: docopt in /home/statkclee/.local/lib/python3.10/site-packages (from pipreqs) (0.6.2)
+Requirement already satisfied: yarg in /home/statkclee/.local/lib/python3.10/site-packages (from pipreqs) (0.1.9)
+Requirement already satisfied: requests in /home/statkclee/.local/lib/python3.10/site-packages (from yarg->pipreqs) (2.28.2)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /home/statkclee/.local/lib/python3.10/site-packages (from requests->yarg->pipreqs) (1.26.14)
+Requirement already satisfied: charset-normalizer<4,>=2 in /home/statkclee/.local/lib/python3.10/site-packages (from requests->yarg->pipreqs) (3.0.1)
+Requirement already satisfied: certifi>=2017.4.17 in /home/statkclee/.local/lib/python3.10/site-packages (from requests->yarg->pipreqs) (2022.12.7)
+Requirement already satisfied: idna<4,>=2.5 in /home/statkclee/.local/lib/python3.10/site-packages (from requests->yarg->pipreqs) (3.4)
+pipreqs --force .
+INFO: Successfully saved requirements file in ./requirements.txt
+
+statkclee@dl:/mnt/d/tcs/curriculum/mlops/makefile$ make install
+pip3 install -r requirements.txt
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: numpy==1.24.2 in /home/statkclee/.local/lib/python3.10/site-packages (from -r requirements.txt (line 1)) (1.24.2)
+Requirement already satisfied: palmerpenguins==0.1.4 in /home/statkclee/.local/lib/python3.10/site-packages (from -r requirements.txt (line 2)) (0.1.4)
+Requirement already satisfied: pandas==1.5.3 in /home/statkclee/.local/lib/python3.10/site-packages (from -r requirements.txt (line 3)) (1.5.3)
+Requirement already satisfied: scikit_learn==1.2.1 in /home/statkclee/.local/lib/python3.10/site-packages (from -r requirements.txt (line 4)) (1.2.1)
+Requirement already satisfied: pytz>=2020.1 in /home/statkclee/.local/lib/python3.10/site-packages (from pandas==1.5.3->-r requirements.txt (line 3)) (2022.7.1)
+Requirement already satisfied: python-dateutil>=2.8.1 in /home/statkclee/.local/lib/python3.10/site-packages (from pandas==1.5.3->-r requirements.txt (line 3)) (2.8.2)
+Requirement already satisfied: scipy>=1.3.2 in /home/statkclee/.local/lib/python3.10/site-packages (from scikit_learn==1.2.1->-r requirements.txt (line 4)) (1.10.1)
+Requirement already satisfied: joblib>=1.1.1 in /home/statkclee/.local/lib/python3.10/site-packages (from scikit_learn==1.2.1->-r requirements.txt (line 4)) (1.2.0)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /home/statkclee/.local/lib/python3.10/site-packages (from scikit_learn==1.2.1->-r requirements.txt (line 4)) (3.1.0)
+Requirement already satisfied: six>=1.5 in /usr/lib/python3/dist-packages (from python-dateutil>=2.8.1->pandas==1.5.3->-r requirements.txt (line 3)) (1.16.0)
+
+statkclee@dl:/mnt/d/tcs/curriculum/mlops/makefile$ make run
+python3 penguins_pipeline.py
+파이프라인 방식 정확도(Accuracy): 0.835820895522388
+
+statkclee@dl:/mnt/d/tcs/curriculum/mlops/makefile$ ls
+Makefile  penguins_pipeline.py  requirements.txt  results.txt
+```
 
